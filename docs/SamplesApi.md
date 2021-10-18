@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.SamplesApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,10 +28,10 @@ from ecotaxa_cli_py.api import samples_api
 from ecotaxa_cli_py.model.sample_model import SampleModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -41,7 +41,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -49,7 +49,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    sample_id = 1 # int | Internal, the unique numeric id of this sample.
+    sample_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -65,7 +65,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_id** | **int**| Internal, the unique numeric id of this sample. |
+ **sample_id** | **int**|  |
 
 ### Return type
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sample_set_get_stats_sample_set_taxo_stats_get**
-> [SampleTaxoStatsModel] sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
+> [SampleTaxoStatsModel] sample_set_get_stats_sample_set_taxo_stats_get()
 
 Sample Set Get Stats
 
@@ -108,10 +108,10 @@ from ecotaxa_cli_py.api import samples_api
 from ecotaxa_cli_py.model.sample_taxo_stats_model import SampleTaxoStatsModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,7 +121,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -129,12 +129,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    sample_ids = "15,5" # str | String containing the list of one or more sample ids separated by non-num char.
+    sample_ids = "15,5" # str | String containing the list of one or more sample ids separated by non-num char. (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Sample Set Get Stats
-        api_response = api_instance.sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
+        api_response = api_instance.sample_set_get_stats_sample_set_taxo_stats_get(sample_ids=sample_ids)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling SamplesApi->sample_set_get_stats_sample_set_taxo_stats_get: %s\n" % e)
@@ -145,7 +146,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. |
+ **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. | [optional]
 
 ### Return type
 
@@ -171,11 +172,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **samples_search_samples_search_get**
-> [SampleModel] samples_search_samples_search_get(project_ids, id_pattern)
+> [SampleModel] samples_search_samples_search_get()
 
 Samples Search
 
-**Search for samples.**
+**Search for samples**
 
 ### Example
 
@@ -188,10 +189,10 @@ from ecotaxa_cli_py.api import samples_api
 from ecotaxa_cli_py.model.sample_model import SampleModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -201,7 +202,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -209,13 +210,14 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    project_ids = "1,55" # str | String containing the list of one or more project id separated by non-num char.
-    id_pattern = "*" # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive.
+    project_ids = "1,55" # str | String containing the list of one or more project id separated by non-num char. (optional)
+    id_pattern = "*" # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive. (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Samples Search
-        api_response = api_instance.samples_search_samples_search_get(project_ids, id_pattern)
+        api_response = api_instance.samples_search_samples_search_get(project_ids=project_ids, id_pattern=id_pattern)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling SamplesApi->samples_search_samples_search_get: %s\n" % e)
@@ -226,8 +228,8 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. |
- **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. |
+ **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional]
+ **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. | [optional]
 
 ### Return type
 
@@ -270,10 +272,10 @@ from ecotaxa_cli_py.api import samples_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -283,7 +285,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

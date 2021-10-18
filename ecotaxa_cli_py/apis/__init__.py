@@ -20,7 +20,7 @@ from ecotaxa_cli_py.api.wip_api import WIPApi
 from ecotaxa_cli_py.api.acquisitions_api import AcquisitionsApi
 from ecotaxa_cli_py.api.authentification_api import AuthentificationApi
 from ecotaxa_cli_py.api.collections_api import CollectionsApi
-from ecotaxa_cli_py.api.instruments_api import InstrumentsApi
+from ecotaxa_cli_py.api.instrument_api import InstrumentApi
 from ecotaxa_cli_py.api.jobs_api import JobsApi
 from ecotaxa_cli_py.api.misc_api import MiscApi
 from ecotaxa_cli_py.api.object_api import ObjectApi

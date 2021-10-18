@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.FilesApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 List Common Files
 
-**List the common files** which are usable for some file-related operations.  *e.g. import.*
+List the common files which are usable for some file-related operations e.g. import.
 
 ### Example
 
@@ -27,10 +27,10 @@ from ecotaxa_cli_py.api import files_api
 from ecotaxa_cli_py.model.directory_model import DirectoryModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,7 +40,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
-    path = "/ftp_plankton/Ecotaxa_Exported_data" # str | 
+    path = "path_example" # str | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 List User Files
 
-**List the private files** which are usable for some file-related operations.  *e.g. import.*
+List the private files which are usable for some file-related operations e.g. import.
 
 ### Example
 
@@ -107,10 +107,10 @@ from ecotaxa_cli_py.api import files_api
 from ecotaxa_cli_py.model.directory_model import DirectoryModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -120,7 +120,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 Put User File
 
-**Upload a file for the current user.**  The returned text will contain a serve-side path which is usable for some file-related operations.  *e.g. import.*
+Upload a file for the current user. The returned text will contain a serve-side path which is usable for some file-related operations e.g. import.
 
 ### Example
 
@@ -186,10 +186,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import files_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -199,7 +199,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -208,8 +208,8 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     file = open('/path/to/file', 'rb') # file_type | 
-    path = "path_example" # str | The client-side full path of the file. (optional)
-    tag = "tag_example" # str | If a tag is provided, then all files with the same tag are grouped (in a sub-directory). Otherwise, a temp directory with only this file will be created. (optional)
+    path = "path_example" # str |  (optional)
+    tag = "tag_example" # str |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -235,8 +235,8 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **file_type**|  |
- **path** | **str**| The client-side full path of the file. | [optional]
- **tag** | **str**| If a tag is provided, then all files with the same tag are grouped (in a sub-directory). Otherwise, a temp directory with only this file will be created. | [optional]
+ **path** | **str**|  | [optional]
+ **tag** | **str**|  | [optional]
 
 ### Return type
 

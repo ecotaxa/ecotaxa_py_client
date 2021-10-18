@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.MiscApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Do Nothing
 
-**This entry point will just do nothing.**  It's also used for exporting models we need on client side.
+This entry point will just do nothing.     It's also used for exporting models we need on client side.
 
 ### Example
 
@@ -25,10 +25,10 @@ import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import misc_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -38,7 +38,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 System Error
 
-**Return a 500 internal error**, on purpose so the stack trace is visible and client can see what it gives.
+This entry point will return a 500 internal error, on purpose so the stack trace is visible and client can see what it gives.
 
 ### Example
 
@@ -98,10 +98,10 @@ import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import misc_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -111,7 +111,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -160,7 +160,7 @@ This endpoint does not need any parameter.
 
 Used Constants
 
-**Return useful strings for user dialog.**  Now also used for values extracted from Config.
+This entry point will return useful strings for user dialog. Now also used for values extracted from Config.
 
 ### Example
 
@@ -171,10 +171,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import misc_api
 from ecotaxa_cli_py.model.constants import Constants
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 

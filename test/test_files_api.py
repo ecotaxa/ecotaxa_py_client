@@ -23,22 +23,22 @@ class TestFilesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_list_common_files(self):
-        """Test case for list_common_files
+    def test_list_common_files_common_files_get(self):
+        """Test case for list_common_files_common_files_get
 
         List Common Files  # noqa: E501
         """
         pass
 
-    def test_list_user_files(self):
-        """Test case for list_user_files
+    def test_list_user_files_my_files_sub_path_get(self):
+        """Test case for list_user_files_my_files_sub_path_get
 
         List User Files  # noqa: E501
         """
         pass
 
-    def test_post_user_file(self):
-        """Test case for post_user_file
+    def test_put_user_file_my_files_post(self):
+        """Test case for put_user_file_my_files_post
 
         Put User File  # noqa: E501
         """

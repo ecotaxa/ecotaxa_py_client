@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.CollectionsApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **collection_by_short_title_collections_by_short_title_get**
-> CollectionModel collection_by_short_title_collections_by_short_title_get(q)
+> CollectionModel collection_by_short_title_collections_by_short_title_get()
 
 Collection By Short Title
 
@@ -31,10 +31,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.collection_model import CollectionModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
@@ -42,12 +42,13 @@ configuration = ecotaxa_cli_py.Configuration(
 with ecotaxa_cli_py.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    q = "My coll" # str | Search by **exact** short title.
+    q = "My coll" # str | Search by **exact** short title (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Collection By Short Title
-        api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q)
+        api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q=q)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_short_title_collections_by_short_title_get: %s\n" % e)
@@ -58,7 +59,7 @@ with ecotaxa_cli_py.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** short title. |
+ **q** | **str**| Search by **exact** short title | [optional]
 
 ### Return type
 
@@ -84,7 +85,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collection_by_title_collections_by_title_get**
-> CollectionModel collection_by_title_collections_by_title_get(q)
+> CollectionModel collection_by_title_collections_by_title_get()
 
 Collection By Title
 
@@ -100,10 +101,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.collection_model import CollectionModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
@@ -111,12 +112,13 @@ configuration = ecotaxa_cli_py.Configuration(
 with ecotaxa_cli_py.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    q = "My collection" # str | Search by **exact** title.
+    q = "My collection" # str | Search by **exact** title (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Collection By Title
-        api_response = api_instance.collection_by_title_collections_by_title_get(q)
+        api_response = api_instance.collection_by_title_collections_by_title_get(q=q)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_title_collections_by_title_get: %s\n" % e)
@@ -127,7 +129,7 @@ with ecotaxa_cli_py.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** title. |
+ **q** | **str**| Search by **exact** title | [optional]
 
 ### Return type
 
@@ -170,10 +172,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.create_collection_req import CreateCollectionReq
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -183,7 +185,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -236,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **emodnet_format_export_collections_collection_id_export_emodnet_get**
-> EMODnetExportRsp emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+> EMODnetExportRsp emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
 
 Emodnet Format Export
 
@@ -253,10 +255,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.emo_dnet_export_rsp import EMODnetExportRsp
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -266,7 +268,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -274,16 +276,25 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | Internal, the unique numeric id of this collection.
-    dry_run = False # bool | If set, then only a diagnostic of doability will be done.
-    with_zeroes = False # bool | If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.
-    auto_morpho = False # bool | If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.
-    with_computations = False # bool | If set, then an attempt will be made to compute organisms concentrations and biovolumes.
+    collection_id = 1 # int | 
+    dry_run = False # bool | If set, then only a diagnostic of doability will be done. (optional)
+    with_zeroes = False # bool | If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. (optional)
+    auto_morpho = False # bool | If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. (optional)
+    with_computations = False # bool | If set, then an attempt will be made to compute organisms concentrations and biovolumes. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
+        pprint(api_response)
+    except ecotaxa_cli_py.ApiException as e:
+        print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Emodnet Format Export
+        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run=dry_run, with_zeroes=with_zeroes, auto_morpho=auto_morpho, with_computations=with_computations)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
@@ -294,11 +305,11 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
- **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. |
- **with_zeroes** | **bool**| If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. |
- **auto_morpho** | **bool**| If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. |
- **with_computations** | **bool**| If set, then an attempt will be made to compute organisms concentrations and biovolumes. |
+ **collection_id** | **int**|  |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. | [optional]
+ **with_zeroes** | **bool**| If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. | [optional]
+ **auto_morpho** | **bool**| If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. | [optional]
+ **with_computations** | **bool**| If set, then an attempt will be made to compute organisms concentrations and biovolumes. | [optional]
 
 ### Return type
 
@@ -340,10 +351,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -353,7 +364,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -361,7 +372,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+    collection_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -377,7 +388,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **collection_id** | **int**|  |
 
 ### Return type
 
@@ -420,10 +431,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.collection_model import CollectionModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -433,7 +444,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -441,7 +452,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+    collection_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -457,7 +468,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **collection_id** | **int**|  |
 
 ### Return type
 
@@ -483,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_collections_collections_search_get**
-> [CollectionModel] search_collections_collections_search_get(title)
+> [CollectionModel] search_collections_collections_search_get()
 
 Search Collections
 
@@ -500,10 +511,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.collection_model import CollectionModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -513,7 +524,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -521,12 +532,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    title = "%coll%" # str | Search by title, use % for searching with 'any char'.
+    title = "%coll%" # str | Search by title, use % for searching with 'any char'. (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Search Collections
-        api_response = api_instance.search_collections_collections_search_get(title)
+        api_response = api_instance.search_collections_collections_search_get(title=title)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling CollectionsApi->search_collections_collections_search_get: %s\n" % e)
@@ -537,7 +549,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. |
+ **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. | [optional]
 
 ### Return type
 
@@ -567,7 +579,7 @@ Name | Type | Description  | Notes
 
 Update Collection
 
-**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   **Returns NULL upon success.**   🔒 *For admins only.*
+**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   🔒 *For admins only.*
 
 ### Example
 
@@ -580,10 +592,10 @@ from ecotaxa_cli_py.api import collections_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.collection_model import CollectionModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -593,7 +605,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -601,7 +613,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+    collection_id = 1 # int | 
     collection_model = CollectionModel(
         project_ids=[1],
         provider_user=,
@@ -609,7 +621,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         creator_users=[
             UserModel(
                 id=1,
-                email="ecotaxa.api.user@gmail.com",
+                email="user@email.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -622,7 +634,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         associate_users=[
             UserModel(
                 id=1,
-                email="ecotaxa.api.user@gmail.com",
+                email="user@email.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -657,7 +669,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **collection_id** | **int**|  |
  **collection_model** | [**CollectionModel**](CollectionModel.md)|  |
 
 ### Return type

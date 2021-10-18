@@ -1,18 +1,18 @@
-# ecotaxa_cli_py.AuthentificationApi
+# ecotaxa_cli_py.InstrumentApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**login_login_post**](AuthentificationApi.md#login_login_post) | **POST** /login | Login
+[**instrument_query_instruments_get**](InstrumentApi.md#instrument_query_instruments_get) | **GET** /instruments/ | Instrument Query
 
 
-# **login_login_post**
-> str login_login_post(login_req)
+# **instrument_query_instruments_get**
+> [str] instrument_query_instruments_get()
 
-Login
+Instrument Query
 
-**Login barrier,**   If successful, the login will returns a **JWT** which will have to be used in bearer authentication scheme for subsequent calls.
+Returns the list of instruments, inside specific project(s).
 
 ### Example
 
@@ -20,9 +20,8 @@ Login
 ```python
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import authentification_api
+from ecotaxa_cli_py.api import instrument_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.login_req import LoginReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -34,19 +33,17 @@ configuration = ecotaxa_cli_py.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = authentification_api.AuthentificationApi(api_client)
-    login_req = LoginReq(
-        password="UserPassword!",
-        username="user@email.com",
-    ) # LoginReq | 
+    api_instance = instrument_api.InstrumentApi(api_client)
+    project_ids = "1,2,3" # str | String containing the list of one or more project id separated by non-num char. (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
-        # Login
-        api_response = api_instance.login_login_post(login_req)
+        # Instrument Query
+        api_response = api_instance.instrument_query_instruments_get(project_ids=project_ids)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling AuthentificationApi->login_login_post: %s\n" % e)
+        print("Exception when calling InstrumentApi->instrument_query_instruments_get: %s\n" % e)
 ```
 
 
@@ -54,11 +51,11 @@ with ecotaxa_cli_py.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login_req** | [**LoginReq**](LoginReq.md)|  |
+ **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional]
 
 ### Return type
 
-**str**
+**[str]**
 
 ### Authorization
 
@@ -66,7 +63,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.WIPApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 System Status
 
-**Report the status**, mainly used for verifying that the server is up.
+Report the status, mainly used for verifying that the server is up.
 
 ### Example
 
@@ -23,10 +23,10 @@ import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import wip_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -36,7 +36,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

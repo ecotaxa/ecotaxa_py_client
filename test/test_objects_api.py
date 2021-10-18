@@ -23,92 +23,92 @@ class TestObjectsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_classify_auto_object_set(self):
-        """Test case for classify_auto_object_set
+    def test_classify_auto_object_set_object_set_classify_auto_post(self):
+        """Test case for classify_auto_object_set_object_set_classify_auto_post
 
         Classify Auto Object Set  # noqa: E501
         """
         pass
 
-    def test_classify_object_set(self):
-        """Test case for classify_object_set
+    def test_classify_object_set_object_set_classify_post(self):
+        """Test case for classify_object_set_object_set_classify_post
 
         Classify Object Set  # noqa: E501
         """
         pass
 
-    def test_compute_project_cnn(self):
-        """Test case for compute_project_cnn
+    def test_compute_project_cnn_project_do_cnn_get(self):
+        """Test case for compute_project_cnn_project_do_cnn_get
 
         Compute Project Cnn  # noqa: E501
         """
         pass
 
-    def test_erase_object_set(self):
-        """Test case for erase_object_set
+    def test_erase_object_set_object_set_delete(self):
+        """Test case for erase_object_set_object_set_delete
 
         Erase Object Set  # noqa: E501
         """
         pass
 
-    def test_export_object_set(self):
-        """Test case for export_object_set
+    def test_export_object_set_object_set_export_post(self):
+        """Test case for export_object_set_object_set_export_post
 
         Export Object Set  # noqa: E501
         """
         pass
 
-    def test_get_object_set(self):
-        """Test case for get_object_set
+    def test_get_object_set_object_set_project_id_query_post(self):
+        """Test case for get_object_set_object_set_project_id_query_post
 
         Get Object Set  # noqa: E501
         """
         pass
 
-    def test_get_object_set_summary(self):
-        """Test case for get_object_set_summary
+    def test_get_object_set_summary_object_set_project_id_summary_post(self):
+        """Test case for get_object_set_summary_object_set_project_id_summary_post
 
         Get Object Set Summary  # noqa: E501
         """
         pass
 
-    def test_predict_object_set(self):
-        """Test case for predict_object_set
+    def test_predict_object_set_object_set_predict_post(self):
+        """Test case for predict_object_set_object_set_predict_post
 
         Predict Object Set  # noqa: E501
         """
         pass
 
-    def test_query_object_set_parents(self):
-        """Test case for query_object_set_parents
+    def test_query_object_set_parents_object_set_parents_post(self):
+        """Test case for query_object_set_parents_object_set_parents_post
 
         Query Object Set Parents  # noqa: E501
         """
         pass
 
-    def test_reclassify_object_set(self):
-        """Test case for reclassify_object_set
+    def test_reclassify_object_set_object_set_project_id_reclassify_post(self):
+        """Test case for reclassify_object_set_object_set_project_id_reclassify_post
 
         Reclassify Object Set  # noqa: E501
         """
         pass
 
-    def test_reset_object_set_to_predicted(self):
-        """Test case for reset_object_set_to_predicted
+    def test_reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(self):
+        """Test case for reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post
 
         Reset Object Set To Predicted  # noqa: E501
         """
         pass
 
-    def test_revert_object_set_to_history(self):
-        """Test case for revert_object_set_to_history
+    def test_revert_object_set_to_history_object_set_project_id_revert_to_history_post(self):
+        """Test case for revert_object_set_to_history_object_set_project_id_revert_to_history_post
 
         Revert Object Set To History  # noqa: E501
         """
         pass
 
-    def test_update_object_set(self):
-        """Test case for update_object_set
+    def test_update_object_set_object_set_update_post(self):
+        """Test case for update_object_set_object_set_update_post
 
         Update Object Set  # noqa: E501
         """

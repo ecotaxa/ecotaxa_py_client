@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.UsersApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **get_current_user_prefs_users_my_preferences_project_id_get**
-> str get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
+> str get_current_user_prefs_users_my_preferences_project_id_get(project_id)
 
 Get Current User Prefs
 
@@ -29,10 +29,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -42,7 +42,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -50,13 +50,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    project_id = 1 # int | Internal, numeric id of the project.
-    key = "filters" # str | The preference key, as text.
+    project_id = 1 # int | 
+    key = "filters" # str | The preference key. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Get Current User Prefs
-        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
+        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id)
+        pprint(api_response)
+    except ecotaxa_cli_py.ApiException as e:
+        print("Exception when calling UsersApi->get_current_user_prefs_users_my_preferences_project_id_get: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get Current User Prefs
+        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id, key=key)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling UsersApi->get_current_user_prefs_users_my_preferences_project_id_get: %s\n" % e)
@@ -67,8 +76,8 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
+ **project_id** | **int**|  |
+ **key** | **str**| The preference key. | [optional]
 
 ### Return type
 
@@ -111,10 +120,10 @@ from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.user_model import UserModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -124,7 +133,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -132,7 +141,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    user_id = 1 # int | Internal, the unique numeric id of this user.
+    user_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -148,7 +157,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, the unique numeric id of this user. |
+ **user_id** | **int**|  |
 
 ### Return type
 
@@ -190,10 +199,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.user_model import UserModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -203,7 +212,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -265,10 +274,10 @@ from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.user_model import UserModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -278,7 +287,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -329,11 +338,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_current_user_prefs_users_my_preferences_project_id_put**
-> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
+> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs_users_my_preferences_project_id_put(project_id)
 
 Set Current User Prefs
 
-**Sets one preference**, for a project and for the currently authenticated user.  Available keys are **cwd**, **img_import** and **filters**.  The key disappears if set to empty string.  **Returns NULL upon success.**
+**Sets one preference**, for a project and for the currently authenticated user.  Available keys are **cwd**, **img_import** and **filters**.  The key disappears if set to empty string.
 
 ### Example
 
@@ -345,10 +354,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -358,7 +367,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -366,14 +375,23 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    project_id = 1 # int | Internal, numeric id of the project.
-    key = "filters" # str | The preference key, as text.
-    value = "{"dispfield": " dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value", "ipp": "500", "magenabled": "1", "popupenabled": "1", "sortby": "orig_id", "sortorder": "asc", "statusfilter": "", "zoom": "90"}" # str | The value to set this preference to, as text.
+    project_id = 1 # int | 
+    key = "filters" # str | The preference key. (optional)
+    value = "{"dispfield": " dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value", "ipp": "500", "magenabled": "1", "popupenabled": "1", "sortby": "orig_id", "sortorder": "asc", "statusfilter": "", "zoom": "90"}" # str | The value to set this preference to. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Set Current User Prefs
-        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
+        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id)
+        pprint(api_response)
+    except ecotaxa_cli_py.ApiException as e:
+        print("Exception when calling UsersApi->set_current_user_prefs_users_my_preferences_project_id_put: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Set Current User Prefs
+        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id, key=key, value=value)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling UsersApi->set_current_user_prefs_users_my_preferences_project_id_put: %s\n" % e)
@@ -384,9 +402,9 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
- **value** | **str**| The value to set this preference to, as text. |
+ **project_id** | **int**|  |
+ **key** | **str**| The preference key. | [optional]
+ **value** | **str**| The value to set this preference to. | [optional]
 
 ### Return type
 
@@ -416,7 +434,7 @@ Name | Type | Description  | Notes
 
 Show Current User
 
-Returns **currently authenticated user's** (i.e. you) information, permissions and last used projects.
+Returns **currently authenticated user's** information, permissions and last used projects.
 
 ### Example
 
@@ -428,10 +446,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import users_api
 from ecotaxa_cli_py.model.user_model_with_rights import UserModelWithRights
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -441,7 +459,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

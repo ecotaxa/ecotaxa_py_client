@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.TaxonomyTreeApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Add Taxon In Central
 
-**Create a taxon** on EcoTaxoServer.  🔒 Logged user must be manager (on any project) or application admin.
+Create a taxon on EcoTaxoServer. Logged user must be manager (on any project) or application admin.
 
 ### Example
 
@@ -35,10 +35,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -48,7 +48,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -56,12 +56,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    name = "Echinodermata" # str | The taxon/category verbatim name.
-    parent_id = 2367 # int | It's not possible to create a root taxon.
-    taxotype = "P" # str | The taxon type, 'M' for Morpho or 'P' for Phylo.
-    creator_email = "user.creator@email.com" # str | The email of the taxo creator.
-    source_desc = "null" # str | The source description. (optional)
-    source_url = "http://www.google.fr/" # str | The source url. (optional)
+    name = "name_example" # str | 
+    parent_id = 1 # int | 
+    taxotype = "taxotype_example" # str | 
+    creator_email = "creator_email_example" # str | 
+    source_desc = "source_desc_example" # str |  (optional)
+    source_url = "source_url_example" # str |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -86,12 +86,12 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| The taxon/category verbatim name. |
- **parent_id** | **int**| It&#39;s not possible to create a root taxon. |
- **taxotype** | **str**| The taxon type, &#39;M&#39; for Morpho or &#39;P&#39; for Phylo. |
- **creator_email** | **str**| The email of the taxo creator. |
- **source_desc** | **str**| The source description. | [optional]
- **source_url** | **str**| The source url. | [optional]
+ **name** | **str**|  |
+ **parent_id** | **int**|  |
+ **taxotype** | **str**|  |
+ **creator_email** | **str**|  |
+ **source_desc** | **str**|  | [optional]
+ **source_url** | **str**|  | [optional]
 
 ### Return type
 
@@ -117,11 +117,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_taxon_in_central_taxon_central_taxon_id_get**
-> [TaxonCentral] get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
+> bool, date, datetime, dict, float, int, list, str, none_type get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
 
 Get Taxon In Central
 
-Return **EcoTaxoServer full record for this taxon**.
+Get EcoTaxoServer full record for this taxon.
 
 ### Example
 
@@ -131,13 +131,12 @@ Return **EcoTaxoServer full record for this taxon**.
 import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_central import TaxonCentral
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -147,7 +146,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -155,7 +154,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
+    taxon_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -171,11 +170,11 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+ **taxon_id** | **int**|  |
 
 ### Return type
 
-[**[TaxonCentral]**](TaxonCentral.md)
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -201,7 +200,7 @@ Name | Type | Description  | Notes
 
 Pull Taxa Update From Central
 
-**Returns what changed in EcoTaxoServer managed tree** and update local tree accordingly.  i.e. : the number of inserts as nbr_inserts, updates as nbr_updates and errors as errors.
+Get what changed in EcoTaxoServer managed tree and update local tree accordingly.
 
 ### Example
 
@@ -212,10 +211,10 @@ import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -225,7 +224,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -274,7 +273,7 @@ This endpoint does not need any parameter.
 
 Push Taxa Stats In Central
 
-**Push present instance stats**, into EcoTaxoServer.
+Push present instance stats into EcoTaxoServer.
 
 ### Example
 
@@ -285,10 +284,10 @@ import time
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -298,7 +297,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -347,7 +346,7 @@ This endpoint does not need any parameter.
 
 Query Root Taxa
 
-**Return all taxa with no parent.**
+Return all taxa with no parent.
 
 ### Example
 
@@ -358,10 +357,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxon_model import TaxonModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
@@ -410,7 +409,7 @@ No authorization required
 
 Query Taxa Set
 
-Returns **information about several taxa**, including their lineage.
+Information about several taxa, including their lineage. The separator between numbers is arbitrary non-digit, e.g. \":\", \"|\" or \",\"
 
 ### Example
 
@@ -423,10 +422,10 @@ from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxon_model import TaxonModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -436,7 +435,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -444,7 +443,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    ids = "1:2:3" # str | The separator between numbers is arbitrary non-digit, e.g. ':', '|' or ','.
+    ids = "ids_example" # str | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -460,7 +459,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| The separator between numbers is arbitrary non-digit, e.g. &#39;:&#39;, &#39;|&#39; or &#39;,&#39;. |
+ **ids** | **str**|  |
 
 ### Return type
 
@@ -490,7 +489,7 @@ Name | Type | Description  | Notes
 
 Query Taxa
 
-Returns **information about the taxon** corresponding to the given id, including its lineage.
+Information about a single taxon, including its lineage.
 
 ### Example
 
@@ -503,10 +502,10 @@ from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxon_model import TaxonModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -516,7 +515,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -524,7 +523,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
+    taxon_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -540,7 +539,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+ **taxon_id** | **int**|  |
 
 ### Return type
 
@@ -570,7 +569,7 @@ Name | Type | Description  | Notes
 
 Query Taxa Usage
 
-**Where a given taxon is used.**  Only validated uses are returned.
+Where a given taxon is used. Only validated uses are returned.
 
 ### Example
 
@@ -583,10 +582,10 @@ from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxon_usage_model import TaxonUsageModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -596,7 +595,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -604,7 +603,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
+    taxon_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -620,7 +619,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+ **taxon_id** | **int**|  |
 
 ### Return type
 
@@ -646,11 +645,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassif_project_stats_taxa_reclassification_history_project_id_get**
-> [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
+> bool, date, datetime, dict, float, int, list, str, none_type reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
 
 Reclassif Project Stats
 
-Dig into reclassification logs and **return the associations (source → target) for previous reclassifications.**
+Dig into reclassification logs and return the associations source->target for previous reclassifications.
 
 ### Example
 
@@ -662,10 +661,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -675,7 +674,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -683,7 +682,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    project_id = 1 # int | Internal, numeric id of the project.
+    project_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -699,11 +698,11 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
+ **project_id** | **int**|  |
 
 ### Return type
 
-**[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -729,7 +728,7 @@ Name | Type | Description  | Notes
 
 Reclassif Stats
 
-Dig into reclassification logs and, for each input category id, **determine the most chosen target category, excluding the advised one.**  By convention, if nothing relevant is found, the input category itself is returned. So one can expect that the returned list has the same size as the required one.
+Dig into reclassification logs and, for each input category id, determine the most chosen target category, excluding the advised one. By convention, if nothing relevant is found, the input category itself is returned. So one can expect that the returned list has the same size as the required one.
 
 ### Example
 
@@ -742,10 +741,10 @@ from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxon_model import TaxonModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -755,7 +754,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -763,7 +762,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxa_ids = "12876" # str | String containing the list of one or more taxa id separated by non-num char.
+    taxa_ids = "taxa_ids_example" # str | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -779,7 +778,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxa_ids** | **str**| String containing the list of one or more taxa id separated by non-num char. |
+ **taxa_ids** | **str**|  |
 
 ### Return type
 
@@ -809,7 +808,7 @@ Name | Type | Description  | Notes
 
 Search Taxa
 
-**Search for taxa by name.**  Queries can be 'small', i.e. of length ﹤3 and even zero-length.  🔓 For a public, unauthenticated call : - zero-length and small queries always return nothing. - otherwise, a full search is done and results are returned in alphabetical order.  🔒 For an authenticated call : - zero-length queries: return the MRU list in full. - small queries: the MRU list is searched, so that taxa in the recent list are returned, if matching. - otherwise, a full search is done. Results are ordered so that taxa in the project list are in first,     and are signalled as such in the response.
+Search for taxa by name.  Queries can be 'small', i.e. of length < 3 and even zero-length. For a public, unauthenticated call: - zero-length and small queries always return nothing. - otherwise, a full search is done and results are returned in alphabetical order.  Behavior for an authenticated call: - zero-length queries: return the MRU list in full. - small queries: the MRU list is searched, so that taxa in the recent list are returned, if matching. - otherwise, a full search is done. Results are ordered so that taxa in the project list are in first,     and are signalled as such in the response.
 
 ### Example
 
@@ -822,10 +821,10 @@ from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.taxa_search_rsp import TaxaSearchRsp
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -835,7 +834,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -843,8 +842,8 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    query = "Ban" # str | Use this query for matching returned taxa names.
-    project_id = 1 # int | Internal, numeric id of the project. (optional)
+    query = "query_example" # str | 
+    project_id = 1 # int |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -869,8 +868,8 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **str**| Use this query for matching returned taxa names. |
- **project_id** | **int**| Internal, numeric id of the project. | [optional]
+ **query** | **str**|  |
+ **project_id** | **int**|  | [optional]
 
 ### Return type
 
@@ -900,7 +899,7 @@ Name | Type | Description  | Notes
 
 Taxa Tree Status
 
-**Return the status of taxonomy tree** w/r to freshness.
+Return the status of taxonomy tree w/r to freshness.
 
 ### Example
 
@@ -912,10 +911,10 @@ import ecotaxa_cli_py
 from ecotaxa_cli_py.api import taxonomy_tree_api
 from ecotaxa_cli_py.model.taxonomy_tree_status import TaxonomyTreeStatus
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -925,7 +924,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

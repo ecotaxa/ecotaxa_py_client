@@ -1,6 +1,6 @@
 # ExportRsp
 
-Export response.
+Export response. TODO: Should inherit the other way round.
 
 ## Properties
 Name | Type | Description | Notes

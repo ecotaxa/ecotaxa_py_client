@@ -23,85 +23,85 @@ class TestTaxonomyTreeApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_add_taxon_in_central(self):
-        """Test case for add_taxon_in_central
+    def test_add_taxon_in_central_taxon_central_put(self):
+        """Test case for add_taxon_in_central_taxon_central_put
 
         Add Taxon In Central  # noqa: E501
         """
         pass
 
-    def test_get_taxon_in_central(self):
-        """Test case for get_taxon_in_central
+    def test_get_taxon_in_central_taxon_central_taxon_id_get(self):
+        """Test case for get_taxon_in_central_taxon_central_taxon_id_get
 
         Get Taxon In Central  # noqa: E501
         """
         pass
 
-    def test_pull_taxa_update_from_central(self):
-        """Test case for pull_taxa_update_from_central
+    def test_pull_taxa_update_from_central_taxa_pull_from_central_get(self):
+        """Test case for pull_taxa_update_from_central_taxa_pull_from_central_get
 
         Pull Taxa Update From Central  # noqa: E501
         """
         pass
 
-    def test_push_taxa_stats_in_central(self):
-        """Test case for push_taxa_stats_in_central
+    def test_push_taxa_stats_in_central_taxa_stats_push_to_central_get(self):
+        """Test case for push_taxa_stats_in_central_taxa_stats_push_to_central_get
 
         Push Taxa Stats In Central  # noqa: E501
         """
         pass
 
-    def test_query_root_taxa(self):
-        """Test case for query_root_taxa
+    def test_query_root_taxa_taxa_get(self):
+        """Test case for query_root_taxa_taxa_get
 
         Query Root Taxa  # noqa: E501
         """
         pass
 
-    def test_query_taxa(self):
-        """Test case for query_taxa
-
-        Query Taxa  # noqa: E501
-        """
-        pass
-
-    def test_query_taxa_set(self):
-        """Test case for query_taxa_set
+    def test_query_taxa_set_taxon_set_query_get(self):
+        """Test case for query_taxa_set_taxon_set_query_get
 
         Query Taxa Set  # noqa: E501
         """
         pass
 
-    def test_query_taxa_usage(self):
-        """Test case for query_taxa_usage
+    def test_query_taxa_taxon_taxon_id_get(self):
+        """Test case for query_taxa_taxon_taxon_id_get
+
+        Query Taxa  # noqa: E501
+        """
+        pass
+
+    def test_query_taxa_usage_taxon_taxon_id_usage_get(self):
+        """Test case for query_taxa_usage_taxon_taxon_id_usage_get
 
         Query Taxa Usage  # noqa: E501
         """
         pass
 
-    def test_reclassif_project_stats(self):
-        """Test case for reclassif_project_stats
+    def test_reclassif_project_stats_taxa_reclassification_history_project_id_get(self):
+        """Test case for reclassif_project_stats_taxa_reclassification_history_project_id_get
 
         Reclassif Project Stats  # noqa: E501
         """
         pass
 
-    def test_reclassif_stats(self):
-        """Test case for reclassif_stats
+    def test_reclassif_stats_taxa_reclassification_stats_get(self):
+        """Test case for reclassif_stats_taxa_reclassification_stats_get
 
         Reclassif Stats  # noqa: E501
         """
         pass
 
-    def test_search_taxa(self):
-        """Test case for search_taxa
+    def test_search_taxa_taxon_set_search_get(self):
+        """Test case for search_taxa_taxon_set_search_get
 
         Search Taxa  # noqa: E501
         """
         pass
 
-    def test_taxa_tree_status(self):
-        """Test case for taxa_tree_status
+    def test_taxa_tree_status_taxa_status_get(self):
+        """Test case for taxa_tree_status_taxa_status_get
 
         Taxa Tree Status  # noqa: E501
         """

@@ -1,6 +1,6 @@
 # ecotaxa_cli_py.AcquisitionsApi
 
-All URIs are relative to *https://raw.githubusercontent.com/api*
+All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ from ecotaxa_cli_py.api import acquisitions_api
 from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,7 +40,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
-    acquisition_id = 1 # int | Internal, the unique numeric id of this acquisition.
+    acquisition_id = 1 # int | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -64,7 +64,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acquisition_id** | **int**| Internal, the unique numeric id of this acquisition. |
+ **acquisition_id** | **int**|  |
 
 ### Return type
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **acquisitions_search_acquisitions_search_get**
-> [AcquisitionModel] acquisitions_search_acquisitions_search_get(project_id)
+> [AcquisitionModel] acquisitions_search_acquisitions_search_get()
 
 Acquisitions Search
 
@@ -107,10 +107,10 @@ from ecotaxa_cli_py.api import acquisitions_api
 from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -120,7 +120,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -128,12 +128,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
-    project_id = 1 # int | The project id.
+    project_id = 1 # int | The project id (optional)
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Acquisitions Search
-        api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id)
+        api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id=project_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisitions_search_acquisitions_search_get: %s\n" % e)
@@ -144,7 +145,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| The project id. |
+ **project_id** | **int**| The project id | [optional]
 
 ### Return type
 
@@ -174,7 +175,7 @@ Name | Type | Description  | Notes
 
 Update Acquisitions
 
-Do the required **update for each acquisition in the set**.  **Return the number of updated entities.**
+Do the required **update for each acquisition in the set**.  Return the number of updated entities.
 
 ### Example
 
@@ -187,10 +188,10 @@ from ecotaxa_cli_py.api import acquisitions_api
 from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
 from pprint import pprint
-# Defining the host is optional and defaults to https://raw.githubusercontent.com/api
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -200,7 +201,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
 configuration = ecotaxa_cli_py.Configuration(
-    host = "https://raw.githubusercontent.com/api"
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
