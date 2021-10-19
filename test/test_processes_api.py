@@ -23,15 +23,15 @@ class TestProcessesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_process_query_process_process_id_get(self):
-        """Test case for process_query_process_process_id_get
+    def test_process_query(self):
+        """Test case for process_query
 
         Process Query  # noqa: E501
         """
         pass
 
-    def test_update_processes_process_set_update_post(self):
-        """Test case for update_processes_process_set_update_post
+    def test_update_processes(self):
+        """Test case for update_processes
 
         Update Processes  # noqa: E501
         """

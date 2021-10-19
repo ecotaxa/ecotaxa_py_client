@@ -4,13 +4,13 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**do_nothing_noop_get**](MiscApi.md#do_nothing_noop_get) | **GET** /noop | Do Nothing
-[**system_error_error_get**](MiscApi.md#system_error_error_get) | **GET** /error | System Error
-[**used_constants_constants_get**](MiscApi.md#used_constants_constants_get) | **GET** /constants | Used Constants
+[**do_nothing**](MiscApi.md#do_nothing) | **GET** /noop | Do Nothing
+[**system_error**](MiscApi.md#system_error) | **GET** /error | System Error
+[**used_constants**](MiscApi.md#used_constants) | **GET** /constants | Used Constants
 
 
-# **do_nothing_noop_get**
-> dict do_nothing_noop_get()
+# **do_nothing**
+> dict do_nothing()
 
 Do Nothing
 
@@ -50,10 +50,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Do Nothing
-        api_response = api_instance.do_nothing_noop_get()
+        api_response = api_instance.do_nothing()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling MiscApi->do_nothing_noop_get: %s\n" % e)
+        print("Exception when calling MiscApi->do_nothing: %s\n" % e)
 ```
 
 
@@ -82,8 +82,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **system_error_error_get**
-> bool, date, datetime, dict, float, int, list, str, none_type system_error_error_get()
+# **system_error**
+> bool, date, datetime, dict, float, int, list, str, none_type system_error()
 
 System Error
 
@@ -123,10 +123,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # System Error
-        api_response = api_instance.system_error_error_get()
+        api_response = api_instance.system_error()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling MiscApi->system_error_error_get: %s\n" % e)
+        print("Exception when calling MiscApi->system_error: %s\n" % e)
 ```
 
 
@@ -155,8 +155,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **used_constants_constants_get**
-> Constants used_constants_constants_get()
+# **used_constants**
+> Constants used_constants()
 
 Used Constants
 
@@ -186,10 +186,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Used Constants
-        api_response = api_instance.used_constants_constants_get()
+        api_response = api_instance.used_constants()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling MiscApi->used_constants_constants_get: %s\n" % e)
+        print("Exception when calling MiscApi->used_constants: %s\n" % e)
 ```
 
 

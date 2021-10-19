@@ -4,18 +4,18 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collection_by_short_title_collections_by_short_title_get**](CollectionsApi.md#collection_by_short_title_collections_by_short_title_get) | **GET** /collections/by_short_title | Collection By Short Title
-[**collection_by_title_collections_by_title_get**](CollectionsApi.md#collection_by_title_collections_by_title_get) | **GET** /collections/by_title | Collection By Title
-[**create_collection_collections_create_post**](CollectionsApi.md#create_collection_collections_create_post) | **POST** /collections/create | Create Collection
-[**emodnet_format_export_collections_collection_id_export_emodnet_get**](CollectionsApi.md#emodnet_format_export_collections_collection_id_export_emodnet_get) | **GET** /collections/{collection_id}/export/emodnet | Emodnet Format Export
-[**erase_collection_collections_collection_id_delete**](CollectionsApi.md#erase_collection_collections_collection_id_delete) | **DELETE** /collections/{collection_id} | Erase Collection
-[**get_collection_collections_collection_id_get**](CollectionsApi.md#get_collection_collections_collection_id_get) | **GET** /collections/{collection_id} | Get Collection
-[**search_collections_collections_search_get**](CollectionsApi.md#search_collections_collections_search_get) | **GET** /collections/search | Search Collections
-[**update_collection_collections_collection_id_put**](CollectionsApi.md#update_collection_collections_collection_id_put) | **PUT** /collections/{collection_id} | Update Collection
+[**collection_by_short_title**](CollectionsApi.md#collection_by_short_title) | **GET** /collections/by_short_title | Collection By Short Title
+[**collection_by_title**](CollectionsApi.md#collection_by_title) | **GET** /collections/by_title | Collection By Title
+[**create_collection**](CollectionsApi.md#create_collection) | **POST** /collections/create | Create Collection
+[**emodnet_format_export**](CollectionsApi.md#emodnet_format_export) | **GET** /collections/{collection_id}/export/emodnet | Emodnet Format Export
+[**erase_collection**](CollectionsApi.md#erase_collection) | **DELETE** /collections/{collection_id} | Erase Collection
+[**get_collection**](CollectionsApi.md#get_collection) | **GET** /collections/{collection_id} | Get Collection
+[**search_collections**](CollectionsApi.md#search_collections) | **GET** /collections/search | Search Collections
+[**update_collection**](CollectionsApi.md#update_collection) | **PUT** /collections/{collection_id} | Update Collection
 
 
-# **collection_by_short_title_collections_by_short_title_get**
-> CollectionModel collection_by_short_title_collections_by_short_title_get()
+# **collection_by_short_title**
+> CollectionModel collection_by_short_title()
 
 Collection By Short Title
 
@@ -48,10 +48,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Collection By Short Title
-        api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q=q)
+        api_response = api_instance.collection_by_short_title(q=q)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->collection_by_short_title_collections_by_short_title_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->collection_by_short_title: %s\n" % e)
 ```
 
 
@@ -84,8 +84,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **collection_by_title_collections_by_title_get**
-> CollectionModel collection_by_title_collections_by_title_get()
+# **collection_by_title**
+> CollectionModel collection_by_title()
 
 Collection By Title
 
@@ -118,10 +118,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Collection By Title
-        api_response = api_instance.collection_by_title_collections_by_title_get(q=q)
+        api_response = api_instance.collection_by_title(q=q)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->collection_by_title_collections_by_title_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->collection_by_title: %s\n" % e)
 ```
 
 
@@ -154,8 +154,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_collection_collections_create_post**
-> int create_collection_collections_create_post(create_collection_req)
+# **create_collection**
+> int create_collection(create_collection_req)
 
 Create Collection
 
@@ -201,10 +201,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Create Collection
-        api_response = api_instance.create_collection_collections_create_post(create_collection_req)
+        api_response = api_instance.create_collection(create_collection_req)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->create_collection_collections_create_post: %s\n" % e)
+        print("Exception when calling CollectionsApi->create_collection: %s\n" % e)
 ```
 
 
@@ -237,8 +237,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **emodnet_format_export_collections_collection_id_export_emodnet_get**
-> EMODnetExportRsp emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
+# **emodnet_format_export**
+> EMODnetExportRsp emodnet_format_export(collection_id)
 
 Emodnet Format Export
 
@@ -285,19 +285,19 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
+        api_response = api_instance.emodnet_format_export(collection_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->emodnet_format_export: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run=dry_run, with_zeroes=with_zeroes, auto_morpho=auto_morpho, with_computations=with_computations)
+        api_response = api_instance.emodnet_format_export(collection_id, dry_run=dry_run, with_zeroes=with_zeroes, auto_morpho=auto_morpho, with_computations=with_computations)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->emodnet_format_export: %s\n" % e)
 ```
 
 
@@ -334,8 +334,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **erase_collection_collections_collection_id_delete**
-> int erase_collection_collections_collection_id_delete(collection_id)
+# **erase_collection**
+> int erase_collection(collection_id)
 
 Erase Collection
 
@@ -377,10 +377,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Erase Collection
-        api_response = api_instance.erase_collection_collections_collection_id_delete(collection_id)
+        api_response = api_instance.erase_collection(collection_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->erase_collection_collections_collection_id_delete: %s\n" % e)
+        print("Exception when calling CollectionsApi->erase_collection: %s\n" % e)
 ```
 
 
@@ -413,8 +413,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_collection_collections_collection_id_get**
-> CollectionModel get_collection_collections_collection_id_get(collection_id)
+# **get_collection**
+> CollectionModel get_collection(collection_id)
 
 Get Collection
 
@@ -457,10 +457,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Collection
-        api_response = api_instance.get_collection_collections_collection_id_get(collection_id)
+        api_response = api_instance.get_collection(collection_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->get_collection_collections_collection_id_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->get_collection: %s\n" % e)
 ```
 
 
@@ -493,8 +493,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_collections_collections_search_get**
-> [CollectionModel] search_collections_collections_search_get()
+# **search_collections**
+> [CollectionModel] search_collections()
 
 Search Collections
 
@@ -538,10 +538,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Search Collections
-        api_response = api_instance.search_collections_collections_search_get(title=title)
+        api_response = api_instance.search_collections(title=title)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->search_collections_collections_search_get: %s\n" % e)
+        print("Exception when calling CollectionsApi->search_collections: %s\n" % e)
 ```
 
 
@@ -574,8 +574,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_collection_collections_collection_id_put**
-> bool, date, datetime, dict, float, int, list, str, none_type update_collection_collections_collection_id_put(collection_id, collection_model)
+# **update_collection**
+> bool, date, datetime, dict, float, int, list, str, none_type update_collection(collection_id, collection_model)
 
 Update Collection
 
@@ -658,10 +658,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update Collection
-        api_response = api_instance.update_collection_collections_collection_id_put(collection_id, collection_model)
+        api_response = api_instance.update_collection(collection_id, collection_model)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling CollectionsApi->update_collection_collections_collection_id_put: %s\n" % e)
+        print("Exception when calling CollectionsApi->update_collection: %s\n" % e)
 ```
 
 

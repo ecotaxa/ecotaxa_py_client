@@ -35,14 +35,14 @@ class MiscApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.do_nothing_noop_get_endpoint = _Endpoint(
+        self.do_nothing_endpoint = _Endpoint(
             settings={
                 'response_type': (dict,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/noop',
-                'operation_id': 'do_nothing_noop_get',
+                'operation_id': 'do_nothing',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -79,14 +79,14 @@ class MiscApi(object):
             },
             api_client=api_client
         )
-        self.system_error_error_get_endpoint = _Endpoint(
+        self.system_error_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/error',
-                'operation_id': 'system_error_error_get',
+                'operation_id': 'system_error',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -123,12 +123,12 @@ class MiscApi(object):
             },
             api_client=api_client
         )
-        self.used_constants_constants_get_endpoint = _Endpoint(
+        self.used_constants_endpoint = _Endpoint(
             settings={
                 'response_type': (Constants,),
                 'auth': [],
                 'endpoint_path': '/constants',
-                'operation_id': 'used_constants_constants_get',
+                'operation_id': 'used_constants',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -166,7 +166,7 @@ class MiscApi(object):
             api_client=api_client
         )
 
-    def do_nothing_noop_get(
+    def do_nothing(
         self,
         **kwargs
     ):
@@ -176,7 +176,7 @@ class MiscApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.do_nothing_noop_get(async_req=True)
+        >>> thread = api.do_nothing(async_req=True)
         >>> result = thread.get()
 
 
@@ -225,9 +225,9 @@ class MiscApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.do_nothing_noop_get_endpoint.call_with_http_info(**kwargs)
+        return self.do_nothing_endpoint.call_with_http_info(**kwargs)
 
-    def system_error_error_get(
+    def system_error(
         self,
         **kwargs
     ):
@@ -237,7 +237,7 @@ class MiscApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.system_error_error_get(async_req=True)
+        >>> thread = api.system_error(async_req=True)
         >>> result = thread.get()
 
 
@@ -286,9 +286,9 @@ class MiscApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.system_error_error_get_endpoint.call_with_http_info(**kwargs)
+        return self.system_error_endpoint.call_with_http_info(**kwargs)
 
-    def used_constants_constants_get(
+    def used_constants(
         self,
         **kwargs
     ):
@@ -298,7 +298,7 @@ class MiscApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.used_constants_constants_get(async_req=True)
+        >>> thread = api.used_constants(async_req=True)
         >>> result = thread.get()
 
 
@@ -347,5 +347,5 @@ class MiscApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.used_constants_constants_get_endpoint.call_with_http_info(**kwargs)
+        return self.used_constants_endpoint.call_with_http_info(**kwargs)
 

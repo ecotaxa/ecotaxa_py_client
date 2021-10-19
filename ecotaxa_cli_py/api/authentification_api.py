@@ -36,12 +36,12 @@ class AuthentificationApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.login_login_post_endpoint = _Endpoint(
+        self.login_endpoint = _Endpoint(
             settings={
                 'response_type': (str,),
                 'auth': [],
                 'endpoint_path': '/login',
-                'operation_id': 'login_login_post',
+                'operation_id': 'login',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -87,7 +87,7 @@ class AuthentificationApi(object):
             api_client=api_client
         )
 
-    def login_login_post(
+    def login(
         self,
         login_req,
         **kwargs
@@ -98,7 +98,7 @@ class AuthentificationApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.login_login_post(login_req, async_req=True)
+        >>> thread = api.login(login_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -151,5 +151,5 @@ class AuthentificationApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['login_req'] = \
             login_req
-        return self.login_login_post_endpoint.call_with_http_info(**kwargs)
+        return self.login_endpoint.call_with_http_info(**kwargs)
 

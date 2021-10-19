@@ -10,7 +10,7 @@
 # sys.setrecursionlimit(n)
 
 from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
-from ecotaxa_cli_py.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_cli_py.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
 from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
 from ecotaxa_cli_py.model.classify_auto_req import ClassifyAutoReq
 from ecotaxa_cli_py.model.classify_req import ClassifyReq

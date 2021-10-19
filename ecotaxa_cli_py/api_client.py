@@ -762,10 +762,10 @@ class Endpoint(object):
         Example:
 
         api_instance = FilesApi()
-        api_instance.list_common_files_common_files_get  # this is an instance of the class Endpoint
-        api_instance.list_common_files_common_files_get()  # this invokes api_instance.list_common_files_common_files_get.__call__()
+        api_instance.list_common_files  # this is an instance of the class Endpoint
+        api_instance.list_common_files()  # this invokes api_instance.list_common_files.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.list_common_files_common_files_get.callable or self.callable in this class
+        api_instance.list_common_files.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

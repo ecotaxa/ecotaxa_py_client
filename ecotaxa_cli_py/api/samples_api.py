@@ -38,14 +38,14 @@ class SamplesApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.sample_query_sample_sample_id_get_endpoint = _Endpoint(
+        self.sample_query_endpoint = _Endpoint(
             settings={
                 'response_type': (SampleModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/sample/{sample_id}',
-                'operation_id': 'sample_query_sample_sample_id_get',
+                'operation_id': 'sample_query',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -89,14 +89,14 @@ class SamplesApi(object):
             },
             api_client=api_client
         )
-        self.sample_set_get_stats_sample_set_taxo_stats_get_endpoint = _Endpoint(
+        self.sample_set_get_stats_endpoint = _Endpoint(
             settings={
                 'response_type': ([SampleTaxoStatsModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/sample_set/taxo_stats',
-                'operation_id': 'sample_set_get_stats_sample_set_taxo_stats_get',
+                'operation_id': 'sample_set_get_stats',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -138,14 +138,14 @@ class SamplesApi(object):
             },
             api_client=api_client
         )
-        self.samples_search_samples_search_get_endpoint = _Endpoint(
+        self.samples_search_endpoint = _Endpoint(
             settings={
                 'response_type': ([SampleModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/samples/search',
-                'operation_id': 'samples_search_samples_search_get',
+                'operation_id': 'samples_search',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -192,14 +192,14 @@ class SamplesApi(object):
             },
             api_client=api_client
         )
-        self.update_samples_sample_set_update_post_endpoint = _Endpoint(
+        self.update_samples_endpoint = _Endpoint(
             settings={
                 'response_type': (int,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/sample_set/update',
-                'operation_id': 'update_samples_sample_set_update_post',
+                'operation_id': 'update_samples',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -245,7 +245,7 @@ class SamplesApi(object):
             api_client=api_client
         )
 
-    def sample_query_sample_sample_id_get(
+    def sample_query(
         self,
         sample_id,
         **kwargs
@@ -256,7 +256,7 @@ class SamplesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.sample_query_sample_sample_id_get(sample_id, async_req=True)
+        >>> thread = api.sample_query(sample_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -309,9 +309,9 @@ class SamplesApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['sample_id'] = \
             sample_id
-        return self.sample_query_sample_sample_id_get_endpoint.call_with_http_info(**kwargs)
+        return self.sample_query_endpoint.call_with_http_info(**kwargs)
 
-    def sample_set_get_stats_sample_set_taxo_stats_get(
+    def sample_set_get_stats(
         self,
         **kwargs
     ):
@@ -321,7 +321,7 @@ class SamplesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.sample_set_get_stats_sample_set_taxo_stats_get(async_req=True)
+        >>> thread = api.sample_set_get_stats(async_req=True)
         >>> result = thread.get()
 
 
@@ -371,9 +371,9 @@ class SamplesApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.sample_set_get_stats_sample_set_taxo_stats_get_endpoint.call_with_http_info(**kwargs)
+        return self.sample_set_get_stats_endpoint.call_with_http_info(**kwargs)
 
-    def samples_search_samples_search_get(
+    def samples_search(
         self,
         **kwargs
     ):
@@ -383,7 +383,7 @@ class SamplesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.samples_search_samples_search_get(async_req=True)
+        >>> thread = api.samples_search(async_req=True)
         >>> result = thread.get()
 
 
@@ -434,9 +434,9 @@ class SamplesApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.samples_search_samples_search_get_endpoint.call_with_http_info(**kwargs)
+        return self.samples_search_endpoint.call_with_http_info(**kwargs)
 
-    def update_samples_sample_set_update_post(
+    def update_samples(
         self,
         bulk_update_req,
         **kwargs
@@ -447,7 +447,7 @@ class SamplesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_samples_sample_set_update_post(bulk_update_req, async_req=True)
+        >>> thread = api.update_samples(bulk_update_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -500,5 +500,5 @@ class SamplesApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['bulk_update_req'] = \
             bulk_update_req
-        return self.update_samples_sample_set_update_post_endpoint.call_with_http_info(**kwargs)
+        return self.update_samples_endpoint.call_with_http_info(**kwargs)
 

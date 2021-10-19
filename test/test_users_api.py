@@ -23,43 +23,43 @@ class TestUsersApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_current_user_prefs_users_my_preferences_project_id_get(self):
-        """Test case for get_current_user_prefs_users_my_preferences_project_id_get
+    def test_get_current_user_prefs(self):
+        """Test case for get_current_user_prefs
 
         Get Current User Prefs  # noqa: E501
         """
         pass
 
-    def test_get_user_users_user_id_get(self):
-        """Test case for get_user_users_user_id_get
+    def test_get_user(self):
+        """Test case for get_user
 
         Get User  # noqa: E501
         """
         pass
 
-    def test_get_users_users_get(self):
-        """Test case for get_users_users_get
+    def test_get_users(self):
+        """Test case for get_users
 
         Get Users  # noqa: E501
         """
         pass
 
-    def test_search_user_users_search_get(self):
-        """Test case for search_user_users_search_get
+    def test_search_user(self):
+        """Test case for search_user
 
         Search User  # noqa: E501
         """
         pass
 
-    def test_set_current_user_prefs_users_my_preferences_project_id_put(self):
-        """Test case for set_current_user_prefs_users_my_preferences_project_id_put
+    def test_set_current_user_prefs(self):
+        """Test case for set_current_user_prefs
 
         Set Current User Prefs  # noqa: E501
         """
         pass
 
-    def test_show_current_user_users_me_get(self):
-        """Test case for show_current_user_users_me_get
+    def test_show_current_user(self):
+        """Test case for show_current_user
 
         Show Current User  # noqa: E501
         """

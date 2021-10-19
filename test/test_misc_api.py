@@ -23,22 +23,22 @@ class TestMiscApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_do_nothing_noop_get(self):
-        """Test case for do_nothing_noop_get
+    def test_do_nothing(self):
+        """Test case for do_nothing
 
         Do Nothing  # noqa: E501
         """
         pass
 
-    def test_system_error_error_get(self):
-        """Test case for system_error_error_get
+    def test_system_error(self):
+        """Test case for system_error
 
         System Error  # noqa: E501
         """
         pass
 
-    def test_used_constants_constants_get(self):
-        """Test case for used_constants_constants_get
+    def test_used_constants(self):
+        """Test case for used_constants
 
         Used Constants  # noqa: E501
         """

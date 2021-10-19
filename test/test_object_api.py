@@ -23,15 +23,15 @@ class TestObjectApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_object_query_history_object_object_id_history_get(self):
-        """Test case for object_query_history_object_object_id_history_get
+    def test_object_query_history(self):
+        """Test case for object_query_history
 
         Object Query History  # noqa: E501
         """
         pass
 
-    def test_object_query_object_object_id_get(self):
-        """Test case for object_query_object_object_id_get
+    def test_object_query(self):
+        """Test case for object_query
 
         Object Query  # noqa: E501
         """

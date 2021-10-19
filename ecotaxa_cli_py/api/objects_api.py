@@ -21,7 +21,7 @@ from ecotaxa_cli_py.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from ecotaxa_cli_py.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_cli_py.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
 from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
 from ecotaxa_cli_py.model.classify_auto_req import ClassifyAutoReq
 from ecotaxa_cli_py.model.classify_req import ClassifyReq
@@ -44,14 +44,14 @@ class ObjectsApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.classify_auto_object_set_object_set_classify_auto_post_endpoint = _Endpoint(
+        self.classify_auto_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/classify_auto',
-                'operation_id': 'classify_auto_object_set_object_set_classify_auto_post',
+                'operation_id': 'classify_auto_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -96,14 +96,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.classify_object_set_object_set_classify_post_endpoint = _Endpoint(
+        self.classify_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/classify',
-                'operation_id': 'classify_object_set_object_set_classify_post',
+                'operation_id': 'classify_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -148,14 +148,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.erase_object_set_object_set_delete_endpoint = _Endpoint(
+        self.erase_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/',
-                'operation_id': 'erase_object_set_object_set_delete',
+                'operation_id': 'erase_object_set',
                 'http_method': 'DELETE',
                 'servers': None,
             },
@@ -200,23 +200,23 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.export_object_set_object_set_export_post_endpoint = _Endpoint(
+        self.export_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (ExportRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/export',
-                'operation_id': 'export_object_set_object_set_export_post',
+                'operation_id': 'export_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
             params_map={
                 'all': [
-                    'body_export_object_set_object_set_export_post',
+                    'body_export_object_set',
                 ],
                 'required': [
-                    'body_export_object_set_object_set_export_post',
+                    'body_export_object_set',
                 ],
                 'nullable': [
                 ],
@@ -231,13 +231,13 @@ class ObjectsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'body_export_object_set_object_set_export_post':
+                    'body_export_object_set':
                         (BodyExportObjectSetObjectSetExportPost,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'body_export_object_set_object_set_export_post': 'body',
+                    'body_export_object_set': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -252,14 +252,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.get_object_set_object_set_project_id_query_post_endpoint = _Endpoint(
+        self.get_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (ObjectSetQueryRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/{project_id}/query',
-                'operation_id': 'get_object_set_object_set_project_id_query_post',
+                'operation_id': 'get_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -330,14 +330,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.get_object_set_summary_object_set_project_id_summary_post_endpoint = _Endpoint(
+        self.get_object_set_summary_endpoint = _Endpoint(
             settings={
                 'response_type': (ObjectSetSummaryRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/{project_id}/summary',
-                'operation_id': 'get_object_set_summary_object_set_project_id_summary_post',
+                'operation_id': 'get_object_set_summary',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -394,14 +394,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.query_object_set_parents_object_set_parents_post_endpoint = _Endpoint(
+        self.query_object_set_parents_endpoint = _Endpoint(
             settings={
                 'response_type': (ObjectSetQueryRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/parents',
-                'operation_id': 'query_object_set_parents_object_set_parents_post',
+                'operation_id': 'query_object_set_parents',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -446,14 +446,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.reclassify_object_set_object_set_project_id_reclassify_post_endpoint = _Endpoint(
+        self.reclassify_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/{project_id}/reclassify',
-                'operation_id': 'reclassify_object_set_object_set_project_id_reclassify_post',
+                'operation_id': 'reclassify_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -516,14 +516,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post_endpoint = _Endpoint(
+        self.reset_object_set_to_predicted_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/{project_id}/reset_to_predicted',
-                'operation_id': 'reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post',
+                'operation_id': 'reset_object_set_to_predicted',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -574,14 +574,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.revert_object_set_to_history_object_set_project_id_revert_to_history_post_endpoint = _Endpoint(
+        self.revert_object_set_to_history_endpoint = _Endpoint(
             settings={
                 'response_type': (ObjectSetRevertToHistoryRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/{project_id}/revert_to_history',
-                'operation_id': 'revert_object_set_to_history_object_set_project_id_revert_to_history_post',
+                'operation_id': 'revert_object_set_to_history',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -643,14 +643,14 @@ class ObjectsApi(object):
             },
             api_client=api_client
         )
-        self.update_object_set_object_set_update_post_endpoint = _Endpoint(
+        self.update_object_set_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object_set/update',
-                'operation_id': 'update_object_set_object_set_update_post',
+                'operation_id': 'update_object_set',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -696,7 +696,7 @@ class ObjectsApi(object):
             api_client=api_client
         )
 
-    def classify_auto_object_set_object_set_classify_auto_post(
+    def classify_auto_object_set(
         self,
         classify_auto_req,
         **kwargs
@@ -707,7 +707,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.classify_auto_object_set_object_set_classify_auto_post(classify_auto_req, async_req=True)
+        >>> thread = api.classify_auto_object_set(classify_auto_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -760,9 +760,9 @@ class ObjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['classify_auto_req'] = \
             classify_auto_req
-        return self.classify_auto_object_set_object_set_classify_auto_post_endpoint.call_with_http_info(**kwargs)
+        return self.classify_auto_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def classify_object_set_object_set_classify_post(
+    def classify_object_set(
         self,
         classify_req,
         **kwargs
@@ -773,7 +773,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.classify_object_set_object_set_classify_post(classify_req, async_req=True)
+        >>> thread = api.classify_object_set(classify_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -826,9 +826,9 @@ class ObjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['classify_req'] = \
             classify_req
-        return self.classify_object_set_object_set_classify_post_endpoint.call_with_http_info(**kwargs)
+        return self.classify_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def erase_object_set_object_set_delete(
+    def erase_object_set(
         self,
         request_body,
         **kwargs
@@ -839,7 +839,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_object_set_object_set_delete(request_body, async_req=True)
+        >>> thread = api.erase_object_set(request_body, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -892,11 +892,11 @@ class ObjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['request_body'] = \
             request_body
-        return self.erase_object_set_object_set_delete_endpoint.call_with_http_info(**kwargs)
+        return self.erase_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def export_object_set_object_set_export_post(
+    def export_object_set(
         self,
-        body_export_object_set_object_set_export_post,
+        body_export_object_set,
         **kwargs
     ):
         """Export Object Set  # noqa: E501
@@ -905,11 +905,11 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.export_object_set_object_set_export_post(body_export_object_set_object_set_export_post, async_req=True)
+        >>> thread = api.export_object_set(body_export_object_set, async_req=True)
         >>> result = thread.get()
 
         Args:
-            body_export_object_set_object_set_export_post (BodyExportObjectSetObjectSetExportPost):
+            body_export_object_set (BodyExportObjectSetObjectSetExportPost):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -956,11 +956,11 @@ class ObjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['body_export_object_set_object_set_export_post'] = \
-            body_export_object_set_object_set_export_post
-        return self.export_object_set_object_set_export_post_endpoint.call_with_http_info(**kwargs)
+        kwargs['body_export_object_set'] = \
+            body_export_object_set
+        return self.export_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def get_object_set_object_set_project_id_query_post(
+    def get_object_set(
         self,
         project_id,
         project_filters,
@@ -972,7 +972,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_object_set_object_set_project_id_query_post(project_id, project_filters, async_req=True)
+        >>> thread = api.get_object_set(project_id, project_filters, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1032,9 +1032,9 @@ class ObjectsApi(object):
             project_id
         kwargs['project_filters'] = \
             project_filters
-        return self.get_object_set_object_set_project_id_query_post_endpoint.call_with_http_info(**kwargs)
+        return self.get_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def get_object_set_summary_object_set_project_id_summary_post(
+    def get_object_set_summary(
         self,
         project_id,
         only_total,
@@ -1047,7 +1047,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_object_set_summary_object_set_project_id_summary_post(project_id, only_total, project_filters, async_req=True)
+        >>> thread = api.get_object_set_summary(project_id, only_total, project_filters, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1106,9 +1106,9 @@ class ObjectsApi(object):
             only_total
         kwargs['project_filters'] = \
             project_filters
-        return self.get_object_set_summary_object_set_project_id_summary_post_endpoint.call_with_http_info(**kwargs)
+        return self.get_object_set_summary_endpoint.call_with_http_info(**kwargs)
 
-    def query_object_set_parents_object_set_parents_post(
+    def query_object_set_parents(
         self,
         request_body,
         **kwargs
@@ -1119,7 +1119,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_object_set_parents_object_set_parents_post(request_body, async_req=True)
+        >>> thread = api.query_object_set_parents(request_body, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1172,9 +1172,9 @@ class ObjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['request_body'] = \
             request_body
-        return self.query_object_set_parents_object_set_parents_post_endpoint.call_with_http_info(**kwargs)
+        return self.query_object_set_parents_endpoint.call_with_http_info(**kwargs)
 
-    def reclassify_object_set_object_set_project_id_reclassify_post(
+    def reclassify_object_set(
         self,
         project_id,
         forced_id,
@@ -1188,7 +1188,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters, async_req=True)
+        >>> thread = api.reclassify_object_set(project_id, forced_id, reason, project_filters, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1250,9 +1250,9 @@ class ObjectsApi(object):
             reason
         kwargs['project_filters'] = \
             project_filters
-        return self.reclassify_object_set_object_set_project_id_reclassify_post_endpoint.call_with_http_info(**kwargs)
+        return self.reclassify_object_set_endpoint.call_with_http_info(**kwargs)
 
-    def reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(
+    def reset_object_set_to_predicted(
         self,
         project_id,
         project_filters,
@@ -1264,7 +1264,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(project_id, project_filters, async_req=True)
+        >>> thread = api.reset_object_set_to_predicted(project_id, project_filters, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1320,9 +1320,9 @@ class ObjectsApi(object):
             project_id
         kwargs['project_filters'] = \
             project_filters
-        return self.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post_endpoint.call_with_http_info(**kwargs)
+        return self.reset_object_set_to_predicted_endpoint.call_with_http_info(**kwargs)
 
-    def revert_object_set_to_history_object_set_project_id_revert_to_history_post(
+    def revert_object_set_to_history(
         self,
         project_id,
         dry_run,
@@ -1335,7 +1335,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.revert_object_set_to_history_object_set_project_id_revert_to_history_post(project_id, dry_run, project_filters, async_req=True)
+        >>> thread = api.revert_object_set_to_history(project_id, dry_run, project_filters, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1395,9 +1395,9 @@ class ObjectsApi(object):
             dry_run
         kwargs['project_filters'] = \
             project_filters
-        return self.revert_object_set_to_history_object_set_project_id_revert_to_history_post_endpoint.call_with_http_info(**kwargs)
+        return self.revert_object_set_to_history_endpoint.call_with_http_info(**kwargs)
 
-    def update_object_set_object_set_update_post(
+    def update_object_set(
         self,
         bulk_update_req,
         **kwargs
@@ -1408,7 +1408,7 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_object_set_object_set_update_post(bulk_update_req, async_req=True)
+        >>> thread = api.update_object_set(bulk_update_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1461,5 +1461,5 @@ class ObjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['bulk_update_req'] = \
             bulk_update_req
-        return self.update_object_set_object_set_update_post_endpoint.call_with_http_info(**kwargs)
+        return self.update_object_set_endpoint.call_with_http_info(**kwargs)
 

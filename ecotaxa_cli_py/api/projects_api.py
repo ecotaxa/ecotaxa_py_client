@@ -46,14 +46,14 @@ class ProjectsApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.create_project_projects_create_post_endpoint = _Endpoint(
+        self.create_project_endpoint = _Endpoint(
             settings={
                 'response_type': (int,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/create',
-                'operation_id': 'create_project_projects_create_post',
+                'operation_id': 'create_project',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -98,14 +98,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.erase_project_projects_project_id_delete_endpoint = _Endpoint(
+        self.erase_project_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}',
-                'operation_id': 'erase_project_projects_project_id_delete',
+                'operation_id': 'erase_project',
                 'http_method': 'DELETE',
                 'servers': None,
             },
@@ -154,14 +154,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.import_file_file_import_project_id_post_endpoint = _Endpoint(
+        self.import_file_endpoint = _Endpoint(
             settings={
                 'response_type': (ImportRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/file_import/{project_id}',
-                'operation_id': 'import_file_file_import_project_id_post',
+                'operation_id': 'import_file',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -212,14 +212,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_check_projects_project_id_check_get_endpoint = _Endpoint(
+        self.project_check_endpoint = _Endpoint(
             settings={
                 'response_type': ([str],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}/check',
-                'operation_id': 'project_check_projects_project_id_check_get',
+                'operation_id': 'project_check',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -263,14 +263,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_merge_projects_project_id_merge_post_endpoint = _Endpoint(
+        self.project_merge_endpoint = _Endpoint(
             settings={
                 'response_type': (MergeRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}/merge',
-                'operation_id': 'project_merge_projects_project_id_merge_post',
+                'operation_id': 'project_merge',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -324,14 +324,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_query_projects_project_id_get_endpoint = _Endpoint(
+        self.project_query_endpoint = _Endpoint(
             settings={
                 'response_type': (ProjectModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}',
-                'operation_id': 'project_query_projects_project_id_get',
+                'operation_id': 'project_query',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -380,14 +380,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_recompute_geography_projects_project_id_recompute_geo_post_endpoint = _Endpoint(
+        self.project_recompute_geography_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}/recompute_geo',
-                'operation_id': 'project_recompute_geography_projects_project_id_recompute_geo_post',
+                'operation_id': 'project_recompute_geography',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -431,14 +431,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_set_get_stats_project_set_taxo_stats_get_endpoint = _Endpoint(
+        self.project_set_get_stats_endpoint = _Endpoint(
             settings={
                 'response_type': ([ProjectTaxoStatsModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/project_set/taxo_stats',
-                'operation_id': 'project_set_get_stats_project_set_taxo_stats_get',
+                'operation_id': 'project_set_get_stats',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -485,14 +485,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_set_get_user_stats_project_set_user_stats_get_endpoint = _Endpoint(
+        self.project_set_get_user_stats_endpoint = _Endpoint(
             settings={
                 'response_type': ([ProjectUserStatsModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/project_set/user_stats',
-                'operation_id': 'project_set_get_user_stats_project_set_user_stats_get',
+                'operation_id': 'project_set_get_user_stats',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -534,14 +534,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_stats_projects_project_id_stats_get_endpoint = _Endpoint(
+        self.project_stats_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}/stats',
-                'operation_id': 'project_stats_projects_project_id_stats_get',
+                'operation_id': 'project_stats',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -585,14 +585,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.project_subset_projects_project_id_subset_post_endpoint = _Endpoint(
+        self.project_subset_endpoint = _Endpoint(
             settings={
                 'response_type': (SubsetRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}/subset',
-                'operation_id': 'project_subset_projects_project_id_subset_post',
+                'operation_id': 'project_subset',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -643,14 +643,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.search_projects_projects_search_get_endpoint = _Endpoint(
+        self.search_projects_endpoint = _Endpoint(
             settings={
                 'response_type': ([ProjectModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/search',
-                'operation_id': 'search_projects_projects_search_get',
+                'operation_id': 'search_projects',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -732,14 +732,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.simple_import_simple_import_project_id_post_endpoint = _Endpoint(
+        self.simple_import_endpoint = _Endpoint(
             settings={
                 'response_type': (SimpleImportRsp,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/simple_import/{project_id}',
-                'operation_id': 'simple_import_simple_import_project_id_post',
+                'operation_id': 'simple_import',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -796,14 +796,14 @@ class ProjectsApi(object):
             },
             api_client=api_client
         )
-        self.update_project_projects_project_id_put_endpoint = _Endpoint(
+        self.update_project_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/projects/{project_id}',
-                'operation_id': 'update_project_projects_project_id_put',
+                'operation_id': 'update_project',
                 'http_method': 'PUT',
                 'servers': None,
             },
@@ -855,7 +855,7 @@ class ProjectsApi(object):
             api_client=api_client
         )
 
-    def create_project_projects_create_post(
+    def create_project(
         self,
         create_project_req,
         **kwargs
@@ -866,7 +866,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_project_projects_create_post(create_project_req, async_req=True)
+        >>> thread = api.create_project(create_project_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -919,9 +919,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['create_project_req'] = \
             create_project_req
-        return self.create_project_projects_create_post_endpoint.call_with_http_info(**kwargs)
+        return self.create_project_endpoint.call_with_http_info(**kwargs)
 
-    def erase_project_projects_project_id_delete(
+    def erase_project(
         self,
         project_id,
         **kwargs
@@ -932,7 +932,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_project_projects_project_id_delete(project_id, async_req=True)
+        >>> thread = api.erase_project(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -986,9 +986,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.erase_project_projects_project_id_delete_endpoint.call_with_http_info(**kwargs)
+        return self.erase_project_endpoint.call_with_http_info(**kwargs)
 
-    def import_file_file_import_project_id_post(
+    def import_file(
         self,
         project_id,
         import_req,
@@ -1000,7 +1000,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.import_file_file_import_project_id_post(project_id, import_req, async_req=True)
+        >>> thread = api.import_file(project_id, import_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1056,9 +1056,9 @@ class ProjectsApi(object):
             project_id
         kwargs['import_req'] = \
             import_req
-        return self.import_file_file_import_project_id_post_endpoint.call_with_http_info(**kwargs)
+        return self.import_file_endpoint.call_with_http_info(**kwargs)
 
-    def project_check_projects_project_id_check_get(
+    def project_check(
         self,
         project_id,
         **kwargs
@@ -1069,7 +1069,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_check_projects_project_id_check_get(project_id, async_req=True)
+        >>> thread = api.project_check(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1122,9 +1122,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.project_check_projects_project_id_check_get_endpoint.call_with_http_info(**kwargs)
+        return self.project_check_endpoint.call_with_http_info(**kwargs)
 
-    def project_merge_projects_project_id_merge_post(
+    def project_merge(
         self,
         project_id,
         **kwargs
@@ -1135,7 +1135,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_merge_projects_project_id_merge_post(project_id, async_req=True)
+        >>> thread = api.project_merge(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1190,9 +1190,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.project_merge_projects_project_id_merge_post_endpoint.call_with_http_info(**kwargs)
+        return self.project_merge_endpoint.call_with_http_info(**kwargs)
 
-    def project_query_projects_project_id_get(
+    def project_query(
         self,
         project_id,
         **kwargs
@@ -1203,7 +1203,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_query_projects_project_id_get(project_id, async_req=True)
+        >>> thread = api.project_query(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1257,9 +1257,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.project_query_projects_project_id_get_endpoint.call_with_http_info(**kwargs)
+        return self.project_query_endpoint.call_with_http_info(**kwargs)
 
-    def project_recompute_geography_projects_project_id_recompute_geo_post(
+    def project_recompute_geography(
         self,
         project_id,
         **kwargs
@@ -1270,7 +1270,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_recompute_geography_projects_project_id_recompute_geo_post(project_id, async_req=True)
+        >>> thread = api.project_recompute_geography(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1323,9 +1323,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.project_recompute_geography_projects_project_id_recompute_geo_post_endpoint.call_with_http_info(**kwargs)
+        return self.project_recompute_geography_endpoint.call_with_http_info(**kwargs)
 
-    def project_set_get_stats_project_set_taxo_stats_get(
+    def project_set_get_stats(
         self,
         **kwargs
     ):
@@ -1335,7 +1335,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_set_get_stats_project_set_taxo_stats_get(async_req=True)
+        >>> thread = api.project_set_get_stats(async_req=True)
         >>> result = thread.get()
 
 
@@ -1386,9 +1386,9 @@ class ProjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.project_set_get_stats_project_set_taxo_stats_get_endpoint.call_with_http_info(**kwargs)
+        return self.project_set_get_stats_endpoint.call_with_http_info(**kwargs)
 
-    def project_set_get_user_stats_project_set_user_stats_get(
+    def project_set_get_user_stats(
         self,
         **kwargs
     ):
@@ -1398,7 +1398,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_set_get_user_stats_project_set_user_stats_get(async_req=True)
+        >>> thread = api.project_set_get_user_stats(async_req=True)
         >>> result = thread.get()
 
 
@@ -1448,9 +1448,9 @@ class ProjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.project_set_get_user_stats_project_set_user_stats_get_endpoint.call_with_http_info(**kwargs)
+        return self.project_set_get_user_stats_endpoint.call_with_http_info(**kwargs)
 
-    def project_stats_projects_project_id_stats_get(
+    def project_stats(
         self,
         project_id,
         **kwargs
@@ -1461,7 +1461,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_stats_projects_project_id_stats_get(project_id, async_req=True)
+        >>> thread = api.project_stats(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1514,9 +1514,9 @@ class ProjectsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.project_stats_projects_project_id_stats_get_endpoint.call_with_http_info(**kwargs)
+        return self.project_stats_endpoint.call_with_http_info(**kwargs)
 
-    def project_subset_projects_project_id_subset_post(
+    def project_subset(
         self,
         project_id,
         subset_req,
@@ -1528,7 +1528,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.project_subset_projects_project_id_subset_post(project_id, subset_req, async_req=True)
+        >>> thread = api.project_subset(project_id, subset_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1584,9 +1584,9 @@ class ProjectsApi(object):
             project_id
         kwargs['subset_req'] = \
             subset_req
-        return self.project_subset_projects_project_id_subset_post_endpoint.call_with_http_info(**kwargs)
+        return self.project_subset_endpoint.call_with_http_info(**kwargs)
 
-    def search_projects_projects_search_get(
+    def search_projects(
         self,
         **kwargs
     ):
@@ -1596,7 +1596,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_projects_projects_search_get(async_req=True)
+        >>> thread = api.search_projects(async_req=True)
         >>> result = thread.get()
 
 
@@ -1654,9 +1654,9 @@ class ProjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.search_projects_projects_search_get_endpoint.call_with_http_info(**kwargs)
+        return self.search_projects_endpoint.call_with_http_info(**kwargs)
 
-    def simple_import_simple_import_project_id_post(
+    def simple_import(
         self,
         project_id,
         dry_run,
@@ -1669,7 +1669,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.simple_import_simple_import_project_id_post(project_id, dry_run, simple_import_req, async_req=True)
+        >>> thread = api.simple_import(project_id, dry_run, simple_import_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1728,9 +1728,9 @@ class ProjectsApi(object):
             dry_run
         kwargs['simple_import_req'] = \
             simple_import_req
-        return self.simple_import_simple_import_project_id_post_endpoint.call_with_http_info(**kwargs)
+        return self.simple_import_endpoint.call_with_http_info(**kwargs)
 
-    def update_project_projects_project_id_put(
+    def update_project(
         self,
         project_id,
         project_model,
@@ -1742,7 +1742,7 @@ class ProjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_project_projects_project_id_put(project_id, project_model, async_req=True)
+        >>> thread = api.update_project(project_id, project_model, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1798,5 +1798,5 @@ class ProjectsApi(object):
             project_id
         kwargs['project_model'] = \
             project_model
-        return self.update_project_projects_project_id_put_endpoint.call_with_http_info(**kwargs)
+        return self.update_project_endpoint.call_with_http_info(**kwargs)
 

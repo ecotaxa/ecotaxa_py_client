@@ -4,22 +4,22 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_taxon_in_central_taxon_central_put**](TaxonomyTreeApi.md#add_taxon_in_central_taxon_central_put) | **PUT** /taxon/central | Add Taxon In Central
-[**get_taxon_in_central_taxon_central_taxon_id_get**](TaxonomyTreeApi.md#get_taxon_in_central_taxon_central_taxon_id_get) | **GET** /taxon/central/{taxon_id} | Get Taxon In Central
-[**pull_taxa_update_from_central_taxa_pull_from_central_get**](TaxonomyTreeApi.md#pull_taxa_update_from_central_taxa_pull_from_central_get) | **GET** /taxa/pull_from_central | Pull Taxa Update From Central
-[**push_taxa_stats_in_central_taxa_stats_push_to_central_get**](TaxonomyTreeApi.md#push_taxa_stats_in_central_taxa_stats_push_to_central_get) | **GET** /taxa/stats/push_to_central | Push Taxa Stats In Central
-[**query_root_taxa_taxa_get**](TaxonomyTreeApi.md#query_root_taxa_taxa_get) | **GET** /taxa | Query Root Taxa
-[**query_taxa_set_taxon_set_query_get**](TaxonomyTreeApi.md#query_taxa_set_taxon_set_query_get) | **GET** /taxon_set/query | Query Taxa Set
-[**query_taxa_taxon_taxon_id_get**](TaxonomyTreeApi.md#query_taxa_taxon_taxon_id_get) | **GET** /taxon/{taxon_id} | Query Taxa
-[**query_taxa_usage_taxon_taxon_id_usage_get**](TaxonomyTreeApi.md#query_taxa_usage_taxon_taxon_id_usage_get) | **GET** /taxon/{taxon_id}/usage | Query Taxa Usage
-[**reclassif_project_stats_taxa_reclassification_history_project_id_get**](TaxonomyTreeApi.md#reclassif_project_stats_taxa_reclassification_history_project_id_get) | **GET** /taxa/reclassification_history/{project_id} | Reclassif Project Stats
-[**reclassif_stats_taxa_reclassification_stats_get**](TaxonomyTreeApi.md#reclassif_stats_taxa_reclassification_stats_get) | **GET** /taxa/reclassification_stats | Reclassif Stats
-[**search_taxa_taxon_set_search_get**](TaxonomyTreeApi.md#search_taxa_taxon_set_search_get) | **GET** /taxon_set/search | Search Taxa
-[**taxa_tree_status_taxa_status_get**](TaxonomyTreeApi.md#taxa_tree_status_taxa_status_get) | **GET** /taxa/status | Taxa Tree Status
+[**add_taxon_in_central**](TaxonomyTreeApi.md#add_taxon_in_central) | **PUT** /taxon/central | Add Taxon In Central
+[**get_taxon_in_central**](TaxonomyTreeApi.md#get_taxon_in_central) | **GET** /taxon/central/{taxon_id} | Get Taxon In Central
+[**pull_taxa_update_from_central**](TaxonomyTreeApi.md#pull_taxa_update_from_central) | **GET** /taxa/pull_from_central | Pull Taxa Update From Central
+[**push_taxa_stats_in_central**](TaxonomyTreeApi.md#push_taxa_stats_in_central) | **GET** /taxa/stats/push_to_central | Push Taxa Stats In Central
+[**query_root_taxa**](TaxonomyTreeApi.md#query_root_taxa) | **GET** /taxa | Query Root Taxa
+[**query_taxa_set**](TaxonomyTreeApi.md#query_taxa_set) | **GET** /taxon_set/query | Query Taxa Set
+[**query_taxa**](TaxonomyTreeApi.md#query_taxa) | **GET** /taxon/{taxon_id} | Query Taxa
+[**query_taxa_usage**](TaxonomyTreeApi.md#query_taxa_usage) | **GET** /taxon/{taxon_id}/usage | Query Taxa Usage
+[**reclassif_project_stats**](TaxonomyTreeApi.md#reclassif_project_stats) | **GET** /taxa/reclassification_history/{project_id} | Reclassif Project Stats
+[**reclassif_stats**](TaxonomyTreeApi.md#reclassif_stats) | **GET** /taxa/reclassification_stats | Reclassif Stats
+[**search_taxa**](TaxonomyTreeApi.md#search_taxa) | **GET** /taxon_set/search | Search Taxa
+[**taxa_tree_status**](TaxonomyTreeApi.md#taxa_tree_status) | **GET** /taxa/status | Taxa Tree Status
 
 
-# **add_taxon_in_central_taxon_central_put**
-> bool, date, datetime, dict, float, int, list, str, none_type add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email)
+# **add_taxon_in_central**
+> bool, date, datetime, dict, float, int, list, str, none_type add_taxon_in_central(name, parent_id, taxotype, creator_email)
 
 Add Taxon In Central
 
@@ -66,19 +66,19 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Add Taxon In Central
-        api_response = api_instance.add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email)
+        api_response = api_instance.add_taxon_in_central(name, parent_id, taxotype, creator_email)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->add_taxon_in_central_taxon_central_put: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->add_taxon_in_central: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Add Taxon In Central
-        api_response = api_instance.add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email, source_desc=source_desc, source_url=source_url)
+        api_response = api_instance.add_taxon_in_central(name, parent_id, taxotype, creator_email, source_desc=source_desc, source_url=source_url)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->add_taxon_in_central_taxon_central_put: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->add_taxon_in_central: %s\n" % e)
 ```
 
 
@@ -116,8 +116,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_taxon_in_central_taxon_central_taxon_id_get**
-> bool, date, datetime, dict, float, int, list, str, none_type get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
+# **get_taxon_in_central**
+> bool, date, datetime, dict, float, int, list, str, none_type get_taxon_in_central(taxon_id)
 
 Get Taxon In Central
 
@@ -159,10 +159,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Taxon In Central
-        api_response = api_instance.get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
+        api_response = api_instance.get_taxon_in_central(taxon_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->get_taxon_in_central_taxon_central_taxon_id_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->get_taxon_in_central: %s\n" % e)
 ```
 
 
@@ -195,8 +195,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pull_taxa_update_from_central_taxa_pull_from_central_get**
-> bool, date, datetime, dict, float, int, list, str, none_type pull_taxa_update_from_central_taxa_pull_from_central_get()
+# **pull_taxa_update_from_central**
+> bool, date, datetime, dict, float, int, list, str, none_type pull_taxa_update_from_central()
 
 Pull Taxa Update From Central
 
@@ -236,10 +236,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Pull Taxa Update From Central
-        api_response = api_instance.pull_taxa_update_from_central_taxa_pull_from_central_get()
+        api_response = api_instance.pull_taxa_update_from_central()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->pull_taxa_update_from_central_taxa_pull_from_central_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->pull_taxa_update_from_central: %s\n" % e)
 ```
 
 
@@ -268,8 +268,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **push_taxa_stats_in_central_taxa_stats_push_to_central_get**
-> bool, date, datetime, dict, float, int, list, str, none_type push_taxa_stats_in_central_taxa_stats_push_to_central_get()
+# **push_taxa_stats_in_central**
+> bool, date, datetime, dict, float, int, list, str, none_type push_taxa_stats_in_central()
 
 Push Taxa Stats In Central
 
@@ -309,10 +309,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Push Taxa Stats In Central
-        api_response = api_instance.push_taxa_stats_in_central_taxa_stats_push_to_central_get()
+        api_response = api_instance.push_taxa_stats_in_central()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->push_taxa_stats_in_central_taxa_stats_push_to_central_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->push_taxa_stats_in_central: %s\n" % e)
 ```
 
 
@@ -341,8 +341,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **query_root_taxa_taxa_get**
-> [TaxonModel] query_root_taxa_taxa_get()
+# **query_root_taxa**
+> [TaxonModel] query_root_taxa()
 
 Query Root Taxa
 
@@ -372,10 +372,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Query Root Taxa
-        api_response = api_instance.query_root_taxa_taxa_get()
+        api_response = api_instance.query_root_taxa()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->query_root_taxa_taxa_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->query_root_taxa: %s\n" % e)
 ```
 
 
@@ -404,8 +404,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **query_taxa_set_taxon_set_query_get**
-> [TaxonModel] query_taxa_set_taxon_set_query_get(ids)
+# **query_taxa_set**
+> [TaxonModel] query_taxa_set(ids)
 
 Query Taxa Set
 
@@ -448,10 +448,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Query Taxa Set
-        api_response = api_instance.query_taxa_set_taxon_set_query_get(ids)
+        api_response = api_instance.query_taxa_set(ids)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->query_taxa_set_taxon_set_query_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->query_taxa_set: %s\n" % e)
 ```
 
 
@@ -484,8 +484,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **query_taxa_taxon_taxon_id_get**
-> TaxonModel query_taxa_taxon_taxon_id_get(taxon_id)
+# **query_taxa**
+> TaxonModel query_taxa(taxon_id)
 
 Query Taxa
 
@@ -528,10 +528,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Query Taxa
-        api_response = api_instance.query_taxa_taxon_taxon_id_get(taxon_id)
+        api_response = api_instance.query_taxa(taxon_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->query_taxa_taxon_taxon_id_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->query_taxa: %s\n" % e)
 ```
 
 
@@ -564,8 +564,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **query_taxa_usage_taxon_taxon_id_usage_get**
-> [TaxonUsageModel] query_taxa_usage_taxon_taxon_id_usage_get(taxon_id)
+# **query_taxa_usage**
+> [TaxonUsageModel] query_taxa_usage(taxon_id)
 
 Query Taxa Usage
 
@@ -608,10 +608,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Query Taxa Usage
-        api_response = api_instance.query_taxa_usage_taxon_taxon_id_usage_get(taxon_id)
+        api_response = api_instance.query_taxa_usage(taxon_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->query_taxa_usage_taxon_taxon_id_usage_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->query_taxa_usage: %s\n" % e)
 ```
 
 
@@ -644,8 +644,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reclassif_project_stats_taxa_reclassification_history_project_id_get**
-> bool, date, datetime, dict, float, int, list, str, none_type reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
+# **reclassif_project_stats**
+> bool, date, datetime, dict, float, int, list, str, none_type reclassif_project_stats(project_id)
 
 Reclassif Project Stats
 
@@ -687,10 +687,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Reclassif Project Stats
-        api_response = api_instance.reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
+        api_response = api_instance.reclassif_project_stats(project_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->reclassif_project_stats_taxa_reclassification_history_project_id_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->reclassif_project_stats: %s\n" % e)
 ```
 
 
@@ -723,8 +723,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reclassif_stats_taxa_reclassification_stats_get**
-> [TaxonModel] reclassif_stats_taxa_reclassification_stats_get(taxa_ids)
+# **reclassif_stats**
+> [TaxonModel] reclassif_stats(taxa_ids)
 
 Reclassif Stats
 
@@ -767,10 +767,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Reclassif Stats
-        api_response = api_instance.reclassif_stats_taxa_reclassification_stats_get(taxa_ids)
+        api_response = api_instance.reclassif_stats(taxa_ids)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->reclassif_stats_taxa_reclassification_stats_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->reclassif_stats: %s\n" % e)
 ```
 
 
@@ -803,8 +803,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_taxa_taxon_set_search_get**
-> [TaxaSearchRsp] search_taxa_taxon_set_search_get(query)
+# **search_taxa**
+> [TaxaSearchRsp] search_taxa(query)
 
 Search Taxa
 
@@ -848,19 +848,19 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Search Taxa
-        api_response = api_instance.search_taxa_taxon_set_search_get(query)
+        api_response = api_instance.search_taxa(query)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->search_taxa_taxon_set_search_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->search_taxa: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Search Taxa
-        api_response = api_instance.search_taxa_taxon_set_search_get(query, project_id=project_id)
+        api_response = api_instance.search_taxa(query, project_id=project_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->search_taxa_taxon_set_search_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->search_taxa: %s\n" % e)
 ```
 
 
@@ -894,8 +894,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **taxa_tree_status_taxa_status_get**
-> TaxonomyTreeStatus taxa_tree_status_taxa_status_get()
+# **taxa_tree_status**
+> TaxonomyTreeStatus taxa_tree_status()
 
 Taxa Tree Status
 
@@ -936,10 +936,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Taxa Tree Status
-        api_response = api_instance.taxa_tree_status_taxa_status_get()
+        api_response = api_instance.taxa_tree_status()
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling TaxonomyTreeApi->taxa_tree_status_taxa_status_get: %s\n" % e)
+        print("Exception when calling TaxonomyTreeApi->taxa_tree_status: %s\n" % e)
 ```
 
 

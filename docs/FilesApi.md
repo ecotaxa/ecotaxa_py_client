@@ -4,13 +4,13 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_common_files_common_files_get**](FilesApi.md#list_common_files_common_files_get) | **GET** /common_files/ | List Common Files
-[**list_user_files_my_files_sub_path_get**](FilesApi.md#list_user_files_my_files_sub_path_get) | **GET** /my_files/{sub_path} | List User Files
-[**put_user_file_my_files_post**](FilesApi.md#put_user_file_my_files_post) | **POST** /my_files/ | Put User File
+[**list_common_files**](FilesApi.md#list_common_files) | **GET** /common_files/ | List Common Files
+[**list_user_files**](FilesApi.md#list_user_files) | **GET** /my_files/{sub_path} | List User Files
+[**post_user_file**](FilesApi.md#post_user_file) | **POST** /my_files/ | Put User File
 
 
-# **list_common_files_common_files_get**
-> DirectoryModel list_common_files_common_files_get(path)
+# **list_common_files**
+> DirectoryModel list_common_files(path)
 
 List Common Files
 
@@ -53,10 +53,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List Common Files
-        api_response = api_instance.list_common_files_common_files_get(path)
+        api_response = api_instance.list_common_files(path)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling FilesApi->list_common_files_common_files_get: %s\n" % e)
+        print("Exception when calling FilesApi->list_common_files: %s\n" % e)
 ```
 
 
@@ -89,8 +89,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_user_files_my_files_sub_path_get**
-> DirectoryModel list_user_files_my_files_sub_path_get(sub_path)
+# **list_user_files**
+> DirectoryModel list_user_files(sub_path)
 
 List User Files
 
@@ -133,10 +133,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List User Files
-        api_response = api_instance.list_user_files_my_files_sub_path_get(sub_path)
+        api_response = api_instance.list_user_files(sub_path)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling FilesApi->list_user_files_my_files_sub_path_get: %s\n" % e)
+        print("Exception when calling FilesApi->list_user_files: %s\n" % e)
 ```
 
 
@@ -169,8 +169,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_user_file_my_files_post**
-> str put_user_file_my_files_post(file)
+# **post_user_file**
+> str post_user_file(file)
 
 Put User File
 
@@ -214,19 +214,19 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Put User File
-        api_response = api_instance.put_user_file_my_files_post(file)
+        api_response = api_instance.post_user_file(file)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling FilesApi->put_user_file_my_files_post: %s\n" % e)
+        print("Exception when calling FilesApi->post_user_file: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Put User File
-        api_response = api_instance.put_user_file_my_files_post(file, path=path, tag=tag)
+        api_response = api_instance.post_user_file(file, path=path, tag=tag)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling FilesApi->put_user_file_my_files_post: %s\n" % e)
+        print("Exception when calling FilesApi->post_user_file: %s\n" % e)
 ```
 
 

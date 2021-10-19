@@ -23,29 +23,29 @@ class TestSamplesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_sample_query_sample_sample_id_get(self):
-        """Test case for sample_query_sample_sample_id_get
+    def test_sample_query(self):
+        """Test case for sample_query
 
         Sample Query  # noqa: E501
         """
         pass
 
-    def test_sample_set_get_stats_sample_set_taxo_stats_get(self):
-        """Test case for sample_set_get_stats_sample_set_taxo_stats_get
+    def test_sample_set_get_stats(self):
+        """Test case for sample_set_get_stats
 
         Sample Set Get Stats  # noqa: E501
         """
         pass
 
-    def test_samples_search_samples_search_get(self):
-        """Test case for samples_search_samples_search_get
+    def test_samples_search(self):
+        """Test case for samples_search
 
         Samples Search  # noqa: E501
         """
         pass
 
-    def test_update_samples_sample_set_update_post(self):
-        """Test case for update_samples_sample_set_update_post
+    def test_update_samples(self):
+        """Test case for update_samples
 
         Update Samples  # noqa: E501
         """

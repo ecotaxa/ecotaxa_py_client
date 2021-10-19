@@ -4,17 +4,17 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**erase_job_jobs_job_id_delete**](JobsApi.md#erase_job_jobs_job_id_delete) | **DELETE** /jobs/{job_id} | Erase Job
-[**get_job_file_jobs_job_id_file_get**](JobsApi.md#get_job_file_jobs_job_id_file_get) | **GET** /jobs/{job_id}/file | Get Job File
-[**get_job_jobs_job_id_get**](JobsApi.md#get_job_jobs_job_id_get) | **GET** /jobs/{job_id}/ | Get Job
-[**get_job_log_file_jobs_job_id_log_get**](JobsApi.md#get_job_log_file_jobs_job_id_log_get) | **GET** /jobs/{job_id}/log | Get Job Log File
-[**list_jobs_jobs_get**](JobsApi.md#list_jobs_jobs_get) | **GET** /jobs/ | List Jobs
-[**reply_job_question_jobs_job_id_answer_post**](JobsApi.md#reply_job_question_jobs_job_id_answer_post) | **POST** /jobs/{job_id}/answer | Reply Job Question
-[**restart_job_jobs_job_id_restart_get**](JobsApi.md#restart_job_jobs_job_id_restart_get) | **GET** /jobs/{job_id}/restart | Restart Job
+[**erase_job**](JobsApi.md#erase_job) | **DELETE** /jobs/{job_id} | Erase Job
+[**get_job_file**](JobsApi.md#get_job_file) | **GET** /jobs/{job_id}/file | Get Job File
+[**get_job**](JobsApi.md#get_job) | **GET** /jobs/{job_id}/ | Get Job
+[**get_job_log_file**](JobsApi.md#get_job_log_file) | **GET** /jobs/{job_id}/log | Get Job Log File
+[**list_jobs**](JobsApi.md#list_jobs) | **GET** /jobs/ | List Jobs
+[**reply_job_question**](JobsApi.md#reply_job_question) | **POST** /jobs/{job_id}/answer | Reply Job Question
+[**restart_job**](JobsApi.md#restart_job) | **GET** /jobs/{job_id}/restart | Restart Job
 
 
-# **erase_job_jobs_job_id_delete**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_job_jobs_job_id_delete(job_id)
+# **erase_job**
+> bool, date, datetime, dict, float, int, list, str, none_type erase_job(job_id)
 
 Erase Job
 
@@ -56,10 +56,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Erase Job
-        api_response = api_instance.erase_job_jobs_job_id_delete(job_id)
+        api_response = api_instance.erase_job(job_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->erase_job_jobs_job_id_delete: %s\n" % e)
+        print("Exception when calling JobsApi->erase_job: %s\n" % e)
 ```
 
 
@@ -92,8 +92,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_job_file_jobs_job_id_file_get**
-> bool, date, datetime, dict, float, int, list, str, none_type get_job_file_jobs_job_id_file_get(job_id)
+# **get_job_file**
+> bool, date, datetime, dict, float, int, list, str, none_type get_job_file(job_id)
 
 Get Job File
 
@@ -135,10 +135,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Job File
-        api_response = api_instance.get_job_file_jobs_job_id_file_get(job_id)
+        api_response = api_instance.get_job_file(job_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->get_job_file_jobs_job_id_file_get: %s\n" % e)
+        print("Exception when calling JobsApi->get_job_file: %s\n" % e)
 ```
 
 
@@ -171,8 +171,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_job_jobs_job_id_get**
-> JobModel get_job_jobs_job_id_get(job_id)
+# **get_job**
+> JobModel get_job(job_id)
 
 Get Job
 
@@ -215,10 +215,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Job
-        api_response = api_instance.get_job_jobs_job_id_get(job_id)
+        api_response = api_instance.get_job(job_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->get_job_jobs_job_id_get: %s\n" % e)
+        print("Exception when calling JobsApi->get_job: %s\n" % e)
 ```
 
 
@@ -251,8 +251,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_job_log_file_jobs_job_id_log_get**
-> bool, date, datetime, dict, float, int, list, str, none_type get_job_log_file_jobs_job_id_log_get(job_id)
+# **get_job_log_file**
+> bool, date, datetime, dict, float, int, list, str, none_type get_job_log_file(job_id)
 
 Get Job Log File
 
@@ -294,10 +294,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Job Log File
-        api_response = api_instance.get_job_log_file_jobs_job_id_log_get(job_id)
+        api_response = api_instance.get_job_log_file(job_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->get_job_log_file_jobs_job_id_log_get: %s\n" % e)
+        print("Exception when calling JobsApi->get_job_log_file: %s\n" % e)
 ```
 
 
@@ -330,8 +330,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_jobs_jobs_get**
-> [JobModel] list_jobs_jobs_get(for_admin)
+# **list_jobs**
+> [JobModel] list_jobs(for_admin)
 
 List Jobs
 
@@ -374,10 +374,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List Jobs
-        api_response = api_instance.list_jobs_jobs_get(for_admin)
+        api_response = api_instance.list_jobs(for_admin)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->list_jobs_jobs_get: %s\n" % e)
+        print("Exception when calling JobsApi->list_jobs: %s\n" % e)
 ```
 
 
@@ -410,8 +410,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reply_job_question_jobs_job_id_answer_post**
-> bool, date, datetime, dict, float, int, list, str, none_type reply_job_question_jobs_job_id_answer_post(job_id, body)
+# **reply_job_question**
+> bool, date, datetime, dict, float, int, list, str, none_type reply_job_question(job_id, body)
 
 Reply Job Question
 
@@ -454,10 +454,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Reply Job Question
-        api_response = api_instance.reply_job_question_jobs_job_id_answer_post(job_id, body)
+        api_response = api_instance.reply_job_question(job_id, body)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->reply_job_question_jobs_job_id_answer_post: %s\n" % e)
+        print("Exception when calling JobsApi->reply_job_question: %s\n" % e)
 ```
 
 
@@ -491,8 +491,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **restart_job_jobs_job_id_restart_get**
-> bool, date, datetime, dict, float, int, list, str, none_type restart_job_jobs_job_id_restart_get(job_id)
+# **restart_job**
+> bool, date, datetime, dict, float, int, list, str, none_type restart_job(job_id)
 
 Restart Job
 
@@ -534,10 +534,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Restart Job
-        api_response = api_instance.restart_job_jobs_job_id_restart_get(job_id)
+        api_response = api_instance.restart_job(job_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling JobsApi->restart_job_jobs_job_id_restart_get: %s\n" % e)
+        print("Exception when calling JobsApi->restart_job: %s\n" % e)
 ```
 
 

@@ -23,8 +23,8 @@ class TestInstrumentApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_instrument_query_instruments_get(self):
-        """Test case for instrument_query_instruments_get
+    def test_instrument_query(self):
+        """Test case for instrument_query
 
         Instrument Query  # noqa: E501
         """
