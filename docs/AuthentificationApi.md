@@ -32,7 +32,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient() as api_client:
+with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = authentification_api.AuthentificationApi(api_client)
     login_req = LoginReq(

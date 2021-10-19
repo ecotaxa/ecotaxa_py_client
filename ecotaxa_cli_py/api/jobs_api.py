@@ -34,7 +34,7 @@ class JobsApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient()
+            api_client = ApiClient(configuration)
         self.api_client = api_client
         self.erase_job_jobs_job_id_delete_endpoint = _Endpoint(
             settings={

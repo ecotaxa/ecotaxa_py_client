@@ -39,7 +39,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient() as api_client:
+with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     q = "My coll" # str | Search by **exact** short title (optional)
@@ -109,7 +109,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient() as api_client:
+with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     q = "My collection" # str | Search by **exact** title (optional)

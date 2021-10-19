@@ -35,7 +35,7 @@ class UsersApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient()
+            api_client = ApiClient(configuration)
         self.api_client = api_client
         self.get_current_user_prefs_users_my_preferences_project_id_get_endpoint = _Endpoint(
             settings={

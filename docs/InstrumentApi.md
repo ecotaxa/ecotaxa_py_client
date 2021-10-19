@@ -31,7 +31,7 @@ configuration = ecotaxa_cli_py.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient() as api_client:
+with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = instrument_api.InstrumentApi(api_client)
     project_ids = "1,2,3" # str | String containing the list of one or more project id separated by non-num char. (optional)

@@ -35,7 +35,7 @@ class ObjectApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient()
+            api_client = ApiClient(configuration)
         self.api_client = api_client
         self.object_query_history_object_object_id_history_get_endpoint = _Endpoint(
             settings={

@@ -32,7 +32,7 @@ class WIPApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient()
+            api_client = ApiClient(configuration)
         self.api_client = api_client
         self.system_status_status_get_endpoint = _Endpoint(
             settings={
