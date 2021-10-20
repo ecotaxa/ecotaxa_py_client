@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,21 +10,18 @@
 """
 
 
-import re  # noqa: F401
-import sys  # noqa: F401
+from __future__ import absolute_import
 
-from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
-from ecotaxa_cli_py.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    none_type,
-    validate_and_convert_types
+import re  # noqa: F401
+
+# python 2 and python 3 compatibility library
+import six
+
+from ecotaxa_cli_py.api_client import ApiClient
+from ecotaxa_cli_py.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
 )
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.job_model import JobModel
 
 
 class JobsApi(object):
@@ -36,836 +35,970 @@ class JobsApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.erase_job_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}',
-                'operation_id': 'erase_job',
-                'http_method': 'DELETE',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                ],
-                'required': [
-                    'job_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.get_job_file_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}/file',
-                'operation_id': 'get_job_file',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                ],
-                'required': [
-                    'job_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json',
-                    'application/zip',
-                    'text/tab-separated-values'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.get_job_endpoint = _Endpoint(
-            settings={
-                'response_type': (JobModel,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}/',
-                'operation_id': 'get_job',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                ],
-                'required': [
-                    'job_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.get_job_log_file_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}/log',
-                'operation_id': 'get_job_log_file',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                ],
-                'required': [
-                    'job_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.list_jobs_endpoint = _Endpoint(
-            settings={
-                'response_type': ([JobModel],),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/',
-                'operation_id': 'list_jobs',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'for_admin',
-                ],
-                'required': [
-                    'for_admin',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'for_admin':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'for_admin': 'for_admin',
-                },
-                'location_map': {
-                    'for_admin': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.reply_job_question_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}/answer',
-                'operation_id': 'reply_job_question',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                    'body',
-                ],
-                'required': [
-                    'job_id',
-                    'body',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                    'body':
-                        ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                    'body': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.restart_job_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/jobs/{job_id}/restart',
-                'operation_id': 'restart_job',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'job_id',
-                ],
-                'required': [
-                    'job_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'job_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'job_id': 'job_id',
-                },
-                'location_map': {
-                    'job_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
 
-    def erase_job(
-        self,
-        job_id,
-        **kwargs
-    ):
+    def erase_job_jobs_job_id_delete(self, job_id, **kwargs):  # noqa: E501
         """Erase Job  # noqa: E501
 
         Delete the job, from DB and with associated storage. If the job is running then kill it.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_job(job_id, async_req=True)
+        >>> thread = api.erase_job_jobs_job_id_delete(job_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        return self.erase_job_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.erase_job_jobs_job_id_delete_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def get_job_file(
-        self,
-        job_id,
-        **kwargs
-    ):
+    def erase_job_jobs_job_id_delete_with_http_info(self, job_id, **kwargs):  # noqa: E501
+        """Erase Job  # noqa: E501
+
+        Delete the job, from DB and with associated storage. If the job is running then kill it.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.erase_job_jobs_job_id_delete_with_http_info(job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method erase_job_jobs_job_id_delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `erase_job_jobs_job_id_delete`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_job_file_jobs_job_id_file_get(self, job_id, **kwargs):  # noqa: E501
         """Get Job File  # noqa: E501
 
         Return the file produced by given task. The task must belong to requester.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job_file(job_id, async_req=True)
+        >>> thread = api.get_job_file_jobs_job_id_file_get(job_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        return self.get_job_file_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.get_job_file_jobs_job_id_file_get_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def get_job(
-        self,
-        job_id,
-        **kwargs
-    ):
+    def get_job_file_jobs_job_id_file_get_with_http_info(self, job_id, **kwargs):  # noqa: E501
+        """Get Job File  # noqa: E501
+
+        Return the file produced by given task. The task must belong to requester.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_file_jobs_job_id_file_get_with_http_info(job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_job_file_jobs_job_id_file_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `get_job_file_jobs_job_id_file_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/zip', 'text/tab-separated-values'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}/file', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_job_jobs_job_id_get(self, job_id, **kwargs):  # noqa: E501
         """Get Job  # noqa: E501
 
         Return the job by its id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job(job_id, async_req=True)
+        >>> thread = api.get_job_jobs_job_id_get(job_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            JobModel
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: JobModel
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        return self.get_job_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.get_job_jobs_job_id_get_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def get_job_log_file(
-        self,
-        job_id,
-        **kwargs
-    ):
+    def get_job_jobs_job_id_get_with_http_info(self, job_id, **kwargs):  # noqa: E501
+        """Get Job  # noqa: E501
+
+        Return the job by its id.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_jobs_job_id_get_with_http_info(job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(JobModel, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_job_jobs_job_id_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `get_job_jobs_job_id_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "JobModel",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_job_log_file_jobs_job_id_log_get(self, job_id, **kwargs):  # noqa: E501
         """Get Job Log File  # noqa: E501
 
         Return the log file produced by given task. The task must belong to requester.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job_log_file(job_id, async_req=True)
+        >>> thread = api.get_job_log_file_jobs_job_id_log_get(job_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        return self.get_job_log_file_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.get_job_log_file_jobs_job_id_log_get_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def list_jobs(
-        self,
-        for_admin,
-        **kwargs
-    ):
+    def get_job_log_file_jobs_job_id_log_get_with_http_info(self, job_id, **kwargs):  # noqa: E501
+        """Get Job Log File  # noqa: E501
+
+        Return the log file produced by given task. The task must belong to requester.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_log_file_jobs_job_id_log_get_with_http_info(job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_job_log_file_jobs_job_id_log_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `get_job_log_file_jobs_job_id_log_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}/log', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def list_jobs_jobs_get(self, for_admin, **kwargs):  # noqa: E501
         """List Jobs  # noqa: E501
 
         Return the jobs for current user, or all of them if admin and asked for.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_jobs(for_admin, async_req=True)
+        >>> thread = api.list_jobs_jobs_get(for_admin, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            for_admin (bool):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            [JobModel]
-                If the method is called asynchronously, returns the request
-                thread.
+        :param for_admin: (required)
+        :type for_admin: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: list[JobModel]
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['for_admin'] = \
-            for_admin
-        return self.list_jobs_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.list_jobs_jobs_get_with_http_info(for_admin, **kwargs)  # noqa: E501
 
-    def reply_job_question(
-        self,
-        job_id,
-        body,
-        **kwargs
-    ):
+    def list_jobs_jobs_get_with_http_info(self, for_admin, **kwargs):  # noqa: E501
+        """List Jobs  # noqa: E501
+
+        Return the jobs for current user, or all of them if admin and asked for.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_jobs_jobs_get_with_http_info(for_admin, async_req=True)
+        >>> result = thread.get()
+
+        :param for_admin: (required)
+        :type for_admin: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(list[JobModel], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'for_admin'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_jobs_jobs_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'for_admin' is set
+        if self.api_client.client_side_validation and ('for_admin' not in local_var_params or  # noqa: E501
+                                                        local_var_params['for_admin'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `for_admin` when calling `list_jobs_jobs_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'for_admin' in local_var_params and local_var_params['for_admin'] is not None:  # noqa: E501
+            query_params.append(('for_admin', local_var_params['for_admin']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "list[JobModel]",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def reply_job_question_jobs_job_id_answer_post(self, job_id, body, **kwargs):  # noqa: E501
         """Reply Job Question  # noqa: E501
 
         Send answers to last question. The job resumes after it receives the reply. Note: It's only about data storage here. If the data is technically NOK e.g. not a JS object, standard 422 error should be thrown. If the data is incorrect from consistency point of view, the job will return in Asking state.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reply_job_question(job_id, body, async_req=True)
+        >>> thread = api.reply_job_question_jobs_job_id_answer_post(job_id, body, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-            body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param body: (required)
+        :type body: object
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        kwargs['body'] = \
-            body
-        return self.reply_job_question_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.reply_job_question_jobs_job_id_answer_post_with_http_info(job_id, body, **kwargs)  # noqa: E501
 
-    def restart_job(
-        self,
-        job_id,
-        **kwargs
-    ):
+    def reply_job_question_jobs_job_id_answer_post_with_http_info(self, job_id, body, **kwargs):  # noqa: E501
+        """Reply Job Question  # noqa: E501
+
+        Send answers to last question. The job resumes after it receives the reply. Note: It's only about data storage here. If the data is technically NOK e.g. not a JS object, standard 422 error should be thrown. If the data is incorrect from consistency point of view, the job will return in Asking state.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reply_job_question_jobs_job_id_answer_post_with_http_info(job_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param body: (required)
+        :type body: object
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id',
+            'body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reply_job_question_jobs_job_id_answer_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `reply_job_question_jobs_job_id_answer_post`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
+                                                        local_var_params['body'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `reply_job_question_jobs_job_id_answer_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}/answer', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def restart_job_jobs_job_id_restart_get(self, job_id, **kwargs):  # noqa: E501
         """Restart Job  # noqa: E501
 
         Restart the job by its id. The job must be in a restartable state, and be accessible to current user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.restart_job(job_id, async_req=True)
+        >>> thread = api.restart_job_jobs_job_id_restart_get(job_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            job_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['job_id'] = \
-            job_id
-        return self.restart_job_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.restart_job_jobs_job_id_restart_get_with_http_info(job_id, **kwargs)  # noqa: E501
 
+    def restart_job_jobs_job_id_restart_get_with_http_info(self, job_id, **kwargs):  # noqa: E501
+        """Restart Job  # noqa: E501
+
+        Restart the job by its id. The job must be in a restartable state, and be accessible to current user.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.restart_job_jobs_job_id_restart_get_with_http_info(job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param job_id: (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method restart_job_jobs_job_id_restart_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `restart_job_jobs_job_id_restart_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'job_id' in local_var_params:
+            path_params['job_id'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/jobs/{job_id}/restart', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

@@ -16,7 +16,7 @@ import unittest
 import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.body_export_object_set import BodyExportObjectSetObjectSetExportPost  # noqa: E501
+from ecotaxa_cli_py.models.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost  # noqa: E501
 from ecotaxa_cli_py.rest import ApiException
 
 class TestBodyExportObjectSetObjectSetExportPost(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBodyExportObjectSetObjectSetExportPost(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = ecotaxa_cli_py.models.body_export_object_set.BodyExportObjectSetObjectSetExportPost()  # noqa: E501
+        # model = ecotaxa_cli_py.models.body_export_object_set_object_set_export_post.BodyExportObjectSetObjectSetExportPost()  # noqa: E501
         if include_optional :
             return BodyExportObjectSetObjectSetExportPost(
                 filters = ecotaxa_cli_py.models.project_filters.ProjectFilters(

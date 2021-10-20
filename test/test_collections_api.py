@@ -28,57 +28,57 @@ class TestCollectionsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_collection_by_short_title(self):
-        """Test case for collection_by_short_title
+    def test_collection_by_short_title_collections_by_short_title_get(self):
+        """Test case for collection_by_short_title_collections_by_short_title_get
 
         Collection By Short Title  # noqa: E501
         """
         pass
 
-    def test_collection_by_title(self):
-        """Test case for collection_by_title
+    def test_collection_by_title_collections_by_title_get(self):
+        """Test case for collection_by_title_collections_by_title_get
 
         Collection By Title  # noqa: E501
         """
         pass
 
-    def test_create_collection(self):
-        """Test case for create_collection
+    def test_create_collection_collections_create_post(self):
+        """Test case for create_collection_collections_create_post
 
         Create Collection  # noqa: E501
         """
         pass
 
-    def test_emodnet_format_export(self):
-        """Test case for emodnet_format_export
+    def test_emodnet_format_export_collections_collection_id_export_emodnet_get(self):
+        """Test case for emodnet_format_export_collections_collection_id_export_emodnet_get
 
         Emodnet Format Export  # noqa: E501
         """
         pass
 
-    def test_erase_collection(self):
-        """Test case for erase_collection
+    def test_erase_collection_collections_collection_id_delete(self):
+        """Test case for erase_collection_collections_collection_id_delete
 
         Erase Collection  # noqa: E501
         """
         pass
 
-    def test_get_collection(self):
-        """Test case for get_collection
+    def test_get_collection_collections_collection_id_get(self):
+        """Test case for get_collection_collections_collection_id_get
 
         Get Collection  # noqa: E501
         """
         pass
 
-    def test_search_collections(self):
-        """Test case for search_collections
+    def test_search_collections_collections_search_get(self):
+        """Test case for search_collections_collections_search_get
 
         Search Collections  # noqa: E501
         """
         pass
 
-    def test_update_collection(self):
-        """Test case for update_collection
+    def test_update_collection_collections_collection_id_put(self):
+        """Test case for update_collection_collections_collection_id_put
 
         Update Collection  # noqa: E501
         """

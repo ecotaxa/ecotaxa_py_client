@@ -4,12 +4,12 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**object_query_history**](ObjectApi.md#object_query_history) | **GET** /object/{object_id}/history | Object Query History
-[**object_query**](ObjectApi.md#object_query) | **GET** /object/{object_id} | Object Query
+[**object_query_history_object_object_id_history_get**](ObjectApi.md#object_query_history_object_object_id_history_get) | **GET** /object/{object_id}/history | Object Query History
+[**object_query_object_object_id_get**](ObjectApi.md#object_query_object_object_id_get) | **GET** /object/{object_id} | Object Query
 
 
-# **object_query_history**
-> [HistoricalClassification] object_query_history(object_id)
+# **object_query_history_object_object_id_history_get**
+> list[HistoricalClassification] object_query_history_object_object_id_history_get(object_id)
 
 Object Query History
 
@@ -18,13 +18,11 @@ Read a single object's history.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import object_api
-from ecotaxa_cli_py.model.historical_classification import HistoricalClassification
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -46,28 +44,26 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = object_api.ObjectApi(api_client)
-    object_id = 1 # int | 
+    api_instance = ecotaxa_cli_py.ObjectApi(api_client)
+    object_id = 56 # int | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Object Query History
-        api_response = api_instance.object_query_history(object_id)
+        api_response = api_instance.object_query_history_object_object_id_history_get(object_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling ObjectApi->object_query_history: %s\n" % e)
+    except ApiException as e:
+        print("Exception when calling ObjectApi->object_query_history_object_object_id_history_get: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_id** | **int**|  |
+ **object_id** | **int**|  | 
 
 ### Return type
 
-[**[HistoricalClassification]**](HistoricalClassification.md)
+[**list[HistoricalClassification]**](HistoricalClassification.md)
 
 ### Authorization
 
@@ -78,9 +74,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -88,8 +82,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **object_query**
-> ObjectModel object_query(object_id)
+# **object_query_object_object_id_get**
+> ObjectModel object_query_object_object_id_get(object_id)
 
 Object Query
 
@@ -98,13 +92,11 @@ Read a single object. Anonymous reader can do if the project has the right right
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import object_api
-from ecotaxa_cli_py.model.object_model import ObjectModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -126,24 +118,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = object_api.ObjectApi(api_client)
-    object_id = 1 # int | 
+    api_instance = ecotaxa_cli_py.ObjectApi(api_client)
+    object_id = 56 # int | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Object Query
-        api_response = api_instance.object_query(object_id)
+        api_response = api_instance.object_query_object_object_id_get(object_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling ObjectApi->object_query: %s\n" % e)
+    except ApiException as e:
+        print("Exception when calling ObjectApi->object_query_object_object_id_get: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_id** | **int**|  |
+ **object_id** | **int**|  | 
 
 ### Return type
 
@@ -158,9 +148,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |

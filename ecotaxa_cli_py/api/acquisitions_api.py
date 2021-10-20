@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,22 +10,18 @@
 """
 
 
-import re  # noqa: F401
-import sys  # noqa: F401
+from __future__ import absolute_import
 
-from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
-from ecotaxa_cli_py.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    none_type,
-    validate_and_convert_types
+import re  # noqa: F401
+
+# python 2 and python 3 compatibility library
+import six
+
+from ecotaxa_cli_py.api_client import ApiClient
+from ecotaxa_cli_py.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
 )
-from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
-from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 
 
 class AcquisitionsApi(object):
@@ -37,350 +35,411 @@ class AcquisitionsApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.acquisition_query_endpoint = _Endpoint(
-            settings={
-                'response_type': (AcquisitionModel,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/acquisition/{acquisition_id}',
-                'operation_id': 'acquisition_query',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'acquisition_id',
-                ],
-                'required': [
-                    'acquisition_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'acquisition_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'acquisition_id': 'acquisition_id',
-                },
-                'location_map': {
-                    'acquisition_id': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.acquisitions_search_endpoint = _Endpoint(
-            settings={
-                'response_type': ([AcquisitionModel],),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/acquisitions/search',
-                'operation_id': 'acquisitions_search',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                ],
-                'required': [],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                },
-                'location_map': {
-                    'project_id': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
-        self.update_acquisitions_endpoint = _Endpoint(
-            settings={
-                'response_type': (int,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/acquisition_set/update',
-                'operation_id': 'update_acquisitions',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'bulk_update_req',
-                ],
-                'required': [
-                    'bulk_update_req',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'bulk_update_req':
-                        (BulkUpdateReq,),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'bulk_update_req': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
 
-    def acquisition_query(
-        self,
-        acquisition_id,
-        **kwargs
-    ):
+    def acquisition_query_acquisition_acquisition_id_get(self, acquisition_id, **kwargs):  # noqa: E501
         """Acquisition Query  # noqa: E501
 
         Returns **information about the acquisition** corresponding to the given id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.acquisition_query(acquisition_id, async_req=True)
+        >>> thread = api.acquisition_query_acquisition_acquisition_id_get(acquisition_id, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            acquisition_id (int):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            AcquisitionModel
-                If the method is called asynchronously, returns the request
-                thread.
+        :param acquisition_id: (required)
+        :type acquisition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: AcquisitionModel
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['acquisition_id'] = \
-            acquisition_id
-        return self.acquisition_query_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.acquisition_query_acquisition_acquisition_id_get_with_http_info(acquisition_id, **kwargs)  # noqa: E501
 
-    def acquisitions_search(
-        self,
-        **kwargs
-    ):
+    def acquisition_query_acquisition_acquisition_id_get_with_http_info(self, acquisition_id, **kwargs):  # noqa: E501
+        """Acquisition Query  # noqa: E501
+
+        Returns **information about the acquisition** corresponding to the given id.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.acquisition_query_acquisition_acquisition_id_get_with_http_info(acquisition_id, async_req=True)
+        >>> result = thread.get()
+
+        :param acquisition_id: (required)
+        :type acquisition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(AcquisitionModel, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'acquisition_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method acquisition_query_acquisition_acquisition_id_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'acquisition_id' is set
+        if self.api_client.client_side_validation and ('acquisition_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['acquisition_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `acquisition_id` when calling `acquisition_query_acquisition_acquisition_id_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'acquisition_id' in local_var_params:
+            path_params['acquisition_id'] = local_var_params['acquisition_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "AcquisitionModel",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/acquisition/{acquisition_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def acquisitions_search_acquisitions_search_get(self, **kwargs):  # noqa: E501
         """Acquisitions Search  # noqa: E501
 
         Returns the **list of all acquisitions for a given project**.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.acquisitions_search(async_req=True)
+        >>> thread = api.acquisitions_search_acquisitions_search_get(async_req=True)
         >>> result = thread.get()
 
-
-        Keyword Args:
-            project_id (int): The project id. [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            [AcquisitionModel]
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: The project id
+        :type project_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: list[AcquisitionModel]
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.acquisitions_search_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.acquisitions_search_acquisitions_search_get_with_http_info(**kwargs)  # noqa: E501
 
-    def update_acquisitions(
-        self,
-        bulk_update_req,
-        **kwargs
-    ):
+    def acquisitions_search_acquisitions_search_get_with_http_info(self, **kwargs):  # noqa: E501
+        """Acquisitions Search  # noqa: E501
+
+        Returns the **list of all acquisitions for a given project**.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.acquisitions_search_acquisitions_search_get_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: The project id
+        :type project_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(list[AcquisitionModel], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method acquisitions_search_acquisitions_search_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'project_id' in local_var_params and local_var_params['project_id'] is not None:  # noqa: E501
+            query_params.append(('project_id', local_var_params['project_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "list[AcquisitionModel]",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/acquisitions/search', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def update_acquisitions_acquisition_set_update_post(self, bulk_update_req, **kwargs):  # noqa: E501
         """Update Acquisitions  # noqa: E501
 
         Do the required **update for each acquisition in the set**.  Return the number of updated entities.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_acquisitions(bulk_update_req, async_req=True)
+        >>> thread = api.update_acquisitions_acquisition_set_update_post(bulk_update_req, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            bulk_update_req (BulkUpdateReq):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            int
-                If the method is called asynchronously, returns the request
-                thread.
+        :param bulk_update_req: (required)
+        :type bulk_update_req: BulkUpdateReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: int
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['bulk_update_req'] = \
-            bulk_update_req
-        return self.update_acquisitions_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.update_acquisitions_acquisition_set_update_post_with_http_info(bulk_update_req, **kwargs)  # noqa: E501
 
+    def update_acquisitions_acquisition_set_update_post_with_http_info(self, bulk_update_req, **kwargs):  # noqa: E501
+        """Update Acquisitions  # noqa: E501
+
+        Do the required **update for each acquisition in the set**.  Return the number of updated entities.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_acquisitions_acquisition_set_update_post_with_http_info(bulk_update_req, async_req=True)
+        >>> result = thread.get()
+
+        :param bulk_update_req: (required)
+        :type bulk_update_req: BulkUpdateReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(int, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'bulk_update_req'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_acquisitions_acquisition_set_update_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'bulk_update_req' is set
+        if self.api_client.client_side_validation and ('bulk_update_req' not in local_var_params or  # noqa: E501
+                                                        local_var_params['bulk_update_req'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `bulk_update_req` when calling `update_acquisitions_acquisition_set_update_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'bulk_update_req' in local_var_params:
+            body_params = local_var_params['bulk_update_req']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "int",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/acquisition_set/update', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

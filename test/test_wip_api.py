@@ -28,8 +28,8 @@ class TestWIPApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_system_status(self):
-        """Test case for system_status
+    def test_system_status_status_get(self):
+        """Test case for system_status_status_get
 
         System Status  # noqa: E501
         """

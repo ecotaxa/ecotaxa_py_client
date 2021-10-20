@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,29 +10,18 @@
 """
 
 
-import re  # noqa: F401
-import sys  # noqa: F401
+from __future__ import absolute_import
 
-from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
-from ecotaxa_cli_py.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    none_type,
-    validate_and_convert_types
+import re  # noqa: F401
+
+# python 2 and python 3 compatibility library
+import six
+
+from ecotaxa_cli_py.api_client import ApiClient
+from ecotaxa_cli_py.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
 )
-from ecotaxa_cli_py.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
-from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
-from ecotaxa_cli_py.model.classify_auto_req import ClassifyAutoReq
-from ecotaxa_cli_py.model.classify_req import ClassifyReq
-from ecotaxa_cli_py.model.export_rsp import ExportRsp
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.object_set_query_rsp import ObjectSetQueryRsp
-from ecotaxa_cli_py.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
-from ecotaxa_cli_py.model.object_set_summary_rsp import ObjectSetSummaryRsp
-from ecotaxa_cli_py.model.project_filters import ProjectFilters
 
 
 class ObjectsApi(object):
@@ -44,1422 +35,1677 @@ class ObjectsApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
-        self.classify_auto_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/classify_auto',
-                'operation_id': 'classify_auto_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'classify_auto_req',
-                ],
-                'required': [
-                    'classify_auto_req',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'classify_auto_req':
-                        (ClassifyAutoReq,),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'classify_auto_req': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.classify_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/classify',
-                'operation_id': 'classify_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'classify_req',
-                ],
-                'required': [
-                    'classify_req',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'classify_req':
-                        (ClassifyReq,),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'classify_req': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.erase_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/',
-                'operation_id': 'erase_object_set',
-                'http_method': 'DELETE',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'request_body',
-                ],
-                'required': [
-                    'request_body',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'request_body':
-                        ([int],),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'request_body': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.export_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (ExportRsp,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/export',
-                'operation_id': 'export_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'body_export_object_set',
-                ],
-                'required': [
-                    'body_export_object_set',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'body_export_object_set':
-                        (BodyExportObjectSetObjectSetExportPost,),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'body_export_object_set': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.get_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (ObjectSetQueryRsp,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/{project_id}/query',
-                'operation_id': 'get_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                    'project_filters',
-                    'fields',
-                    'order_field',
-                    'window_start',
-                    'window_size',
-                ],
-                'required': [
-                    'project_id',
-                    'project_filters',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                    'project_filters':
-                        (ProjectFilters,),
-                    'fields':
-                        (str,),
-                    'order_field':
-                        (str,),
-                    'window_start':
-                        (int,),
-                    'window_size':
-                        (int,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                    'fields': 'fields',
-                    'order_field': 'order_field',
-                    'window_start': 'window_start',
-                    'window_size': 'window_size',
-                },
-                'location_map': {
-                    'project_id': 'path',
-                    'project_filters': 'body',
-                    'fields': 'query',
-                    'order_field': 'query',
-                    'window_start': 'query',
-                    'window_size': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.get_object_set_summary_endpoint = _Endpoint(
-            settings={
-                'response_type': (ObjectSetSummaryRsp,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/{project_id}/summary',
-                'operation_id': 'get_object_set_summary',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                    'only_total',
-                    'project_filters',
-                ],
-                'required': [
-                    'project_id',
-                    'only_total',
-                    'project_filters',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                    'only_total':
-                        (bool,),
-                    'project_filters':
-                        (ProjectFilters,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                    'only_total': 'only_total',
-                },
-                'location_map': {
-                    'project_id': 'path',
-                    'only_total': 'query',
-                    'project_filters': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.query_object_set_parents_endpoint = _Endpoint(
-            settings={
-                'response_type': (ObjectSetQueryRsp,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/parents',
-                'operation_id': 'query_object_set_parents',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'request_body',
-                ],
-                'required': [
-                    'request_body',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'request_body':
-                        ([int],),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'request_body': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.reclassify_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/{project_id}/reclassify',
-                'operation_id': 'reclassify_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                    'forced_id',
-                    'reason',
-                    'project_filters',
-                ],
-                'required': [
-                    'project_id',
-                    'forced_id',
-                    'reason',
-                    'project_filters',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                    'forced_id':
-                        (int,),
-                    'reason':
-                        (str,),
-                    'project_filters':
-                        (ProjectFilters,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                    'forced_id': 'forced_id',
-                    'reason': 'reason',
-                },
-                'location_map': {
-                    'project_id': 'path',
-                    'forced_id': 'query',
-                    'reason': 'query',
-                    'project_filters': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.reset_object_set_to_predicted_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/{project_id}/reset_to_predicted',
-                'operation_id': 'reset_object_set_to_predicted',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                    'project_filters',
-                ],
-                'required': [
-                    'project_id',
-                    'project_filters',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                    'project_filters':
-                        (ProjectFilters,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                },
-                'location_map': {
-                    'project_id': 'path',
-                    'project_filters': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.revert_object_set_to_history_endpoint = _Endpoint(
-            settings={
-                'response_type': (ObjectSetRevertToHistoryRsp,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/{project_id}/revert_to_history',
-                'operation_id': 'revert_object_set_to_history',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'project_id',
-                    'dry_run',
-                    'project_filters',
-                    'target',
-                ],
-                'required': [
-                    'project_id',
-                    'dry_run',
-                    'project_filters',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'project_id':
-                        (int,),
-                    'dry_run':
-                        (bool,),
-                    'project_filters':
-                        (ProjectFilters,),
-                    'target':
-                        (int,),
-                },
-                'attribute_map': {
-                    'project_id': 'project_id',
-                    'dry_run': 'dry_run',
-                    'target': 'target',
-                },
-                'location_map': {
-                    'project_id': 'path',
-                    'dry_run': 'query',
-                    'project_filters': 'body',
-                    'target': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.update_object_set_endpoint = _Endpoint(
-            settings={
-                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
-                'auth': [
-                    'BearerOrCookieAuth'
-                ],
-                'endpoint_path': '/object_set/update',
-                'operation_id': 'update_object_set',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'bulk_update_req',
-                ],
-                'required': [
-                    'bulk_update_req',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'bulk_update_req':
-                        (BulkUpdateReq,),
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                    'bulk_update_req': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
 
-    def classify_auto_object_set(
-        self,
-        classify_auto_req,
-        **kwargs
-    ):
+    def classify_auto_object_set_object_set_classify_auto_post(self, classify_auto_req, **kwargs):  # noqa: E501
         """Classify Auto Object Set  # noqa: E501
 
         Set automatic classification of a set of objects.  - `params`: None, all is in the Request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.classify_auto_object_set(classify_auto_req, async_req=True)
+        >>> thread = api.classify_auto_object_set_object_set_classify_auto_post(classify_auto_req, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            classify_auto_req (ClassifyAutoReq):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param classify_auto_req: (required)
+        :type classify_auto_req: ClassifyAutoReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['classify_auto_req'] = \
-            classify_auto_req
-        return self.classify_auto_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.classify_auto_object_set_object_set_classify_auto_post_with_http_info(classify_auto_req, **kwargs)  # noqa: E501
 
-    def classify_object_set(
-        self,
-        classify_req,
-        **kwargs
-    ):
+    def classify_auto_object_set_object_set_classify_auto_post_with_http_info(self, classify_auto_req, **kwargs):  # noqa: E501
+        """Classify Auto Object Set  # noqa: E501
+
+        Set automatic classification of a set of objects.  - `params`: None, all is in the Request body.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.classify_auto_object_set_object_set_classify_auto_post_with_http_info(classify_auto_req, async_req=True)
+        >>> result = thread.get()
+
+        :param classify_auto_req: (required)
+        :type classify_auto_req: ClassifyAutoReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'classify_auto_req'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method classify_auto_object_set_object_set_classify_auto_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'classify_auto_req' is set
+        if self.api_client.client_side_validation and ('classify_auto_req' not in local_var_params or  # noqa: E501
+                                                        local_var_params['classify_auto_req'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `classify_auto_req` when calling `classify_auto_object_set_object_set_classify_auto_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'classify_auto_req' in local_var_params:
+            body_params = local_var_params['classify_auto_req']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/classify_auto', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def classify_object_set_object_set_classify_post(self, classify_req, **kwargs):  # noqa: E501
         """Classify Object Set  # noqa: E501
 
         Change classification and/or qualification for a set of objects. Current user needs at least Annotate right on all projects of specified objects.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.classify_object_set(classify_req, async_req=True)
+        >>> thread = api.classify_object_set_object_set_classify_post(classify_req, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            classify_req (ClassifyReq):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param classify_req: (required)
+        :type classify_req: ClassifyReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['classify_req'] = \
-            classify_req
-        return self.classify_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.classify_object_set_object_set_classify_post_with_http_info(classify_req, **kwargs)  # noqa: E501
 
-    def erase_object_set(
-        self,
-        request_body,
-        **kwargs
-    ):
+    def classify_object_set_object_set_classify_post_with_http_info(self, classify_req, **kwargs):  # noqa: E501
+        """Classify Object Set  # noqa: E501
+
+        Change classification and/or qualification for a set of objects. Current user needs at least Annotate right on all projects of specified objects.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.classify_object_set_object_set_classify_post_with_http_info(classify_req, async_req=True)
+        >>> result = thread.get()
+
+        :param classify_req: (required)
+        :type classify_req: ClassifyReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'classify_req'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method classify_object_set_object_set_classify_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'classify_req' is set
+        if self.api_client.client_side_validation and ('classify_req' not in local_var_params or  # noqa: E501
+                                                        local_var_params['classify_req'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `classify_req` when calling `classify_object_set_object_set_classify_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'classify_req' in local_var_params:
+            body_params = local_var_params['classify_req']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/classify', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def erase_object_set_object_set_delete(self, request_body, **kwargs):  # noqa: E501
         """Erase Object Set  # noqa: E501
 
         Delete the objects with given object ids. Current user needs Manage right on all projects of specified objects.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_object_set(request_body, async_req=True)
+        >>> thread = api.erase_object_set_object_set_delete(request_body, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            request_body ([int]):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param request_body: (required)
+        :type request_body: list[int]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['request_body'] = \
-            request_body
-        return self.erase_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.erase_object_set_object_set_delete_with_http_info(request_body, **kwargs)  # noqa: E501
 
-    def export_object_set(
-        self,
-        body_export_object_set,
-        **kwargs
-    ):
+    def erase_object_set_object_set_delete_with_http_info(self, request_body, **kwargs):  # noqa: E501
+        """Erase Object Set  # noqa: E501
+
+        Delete the objects with given object ids. Current user needs Manage right on all projects of specified objects.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.erase_object_set_object_set_delete_with_http_info(request_body, async_req=True)
+        >>> result = thread.get()
+
+        :param request_body: (required)
+        :type request_body: list[int]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'request_body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method erase_object_set_object_set_delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'request_body' is set
+        if self.api_client.client_side_validation and ('request_body' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_body'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_body` when calling `erase_object_set_object_set_delete`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'request_body' in local_var_params:
+            body_params = local_var_params['request_body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def export_object_set_object_set_export_post(self, body_export_object_set_object_set_export_post, **kwargs):  # noqa: E501
         """Export Object Set  # noqa: E501
 
         Start an export job for the given object set and options.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.export_object_set(body_export_object_set, async_req=True)
+        >>> thread = api.export_object_set_object_set_export_post(body_export_object_set_object_set_export_post, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            body_export_object_set (BodyExportObjectSetObjectSetExportPost):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ExportRsp
-                If the method is called asynchronously, returns the request
-                thread.
+        :param body_export_object_set_object_set_export_post: (required)
+        :type body_export_object_set_object_set_export_post: BodyExportObjectSetObjectSetExportPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ExportRsp
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['body_export_object_set'] = \
-            body_export_object_set
-        return self.export_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.export_object_set_object_set_export_post_with_http_info(body_export_object_set_object_set_export_post, **kwargs)  # noqa: E501
 
-    def get_object_set(
-        self,
-        project_id,
-        project_filters,
-        **kwargs
-    ):
+    def export_object_set_object_set_export_post_with_http_info(self, body_export_object_set_object_set_export_post, **kwargs):  # noqa: E501
+        """Export Object Set  # noqa: E501
+
+        Start an export job for the given object set and options.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_object_set_object_set_export_post_with_http_info(body_export_object_set_object_set_export_post, async_req=True)
+        >>> result = thread.get()
+
+        :param body_export_object_set_object_set_export_post: (required)
+        :type body_export_object_set_object_set_export_post: BodyExportObjectSetObjectSetExportPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ExportRsp, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'body_export_object_set_object_set_export_post'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method export_object_set_object_set_export_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'body_export_object_set_object_set_export_post' is set
+        if self.api_client.client_side_validation and ('body_export_object_set_object_set_export_post' not in local_var_params or  # noqa: E501
+                                                        local_var_params['body_export_object_set_object_set_export_post'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body_export_object_set_object_set_export_post` when calling `export_object_set_object_set_export_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body_export_object_set_object_set_export_post' in local_var_params:
+            body_params = local_var_params['body_export_object_set_object_set_export_post']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "ExportRsp",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/export', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_object_set_object_set_project_id_query_post(self, project_id, project_filters, **kwargs):  # noqa: E501
         """Get Object Set  # noqa: E501
 
         Return object ids for the given project with the filters.  Optionally:      - fields will specify the needed object (and ancilliary entities) fields     - order_field will order the result using given field, If prefixed with \"-\" then it will be reversed.     - window_start & window_size allows to return only a slice of the result.  Fields follow the naming convention: `prefix.field`.     Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.     Use a comma to separate fields.     - Column obj.imgcount contains the total count of images for the object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_object_set(project_id, project_filters, async_req=True)
+        >>> thread = api.get_object_set_object_set_project_id_query_post(project_id, project_filters, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            project_id (int):
-            project_filters (ProjectFilters):
-
-        Keyword Args:
-            fields (str): [optional]
-            order_field (str): [optional]
-            window_start (int): [optional]
-            window_size (int): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ObjectSetQueryRsp
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: (required)
+        :type project_id: int
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param fields:
+        :type fields: str
+        :param order_field:
+        :type order_field: str
+        :param window_start:
+        :type window_start: int
+        :param window_size:
+        :type window_size: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ObjectSetQueryRsp
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['project_id'] = \
-            project_id
-        kwargs['project_filters'] = \
-            project_filters
-        return self.get_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.get_object_set_object_set_project_id_query_post_with_http_info(project_id, project_filters, **kwargs)  # noqa: E501
 
-    def get_object_set_summary(
-        self,
-        project_id,
-        only_total,
-        project_filters,
-        **kwargs
-    ):
+    def get_object_set_object_set_project_id_query_post_with_http_info(self, project_id, project_filters, **kwargs):  # noqa: E501
+        """Get Object Set  # noqa: E501
+
+        Return object ids for the given project with the filters.  Optionally:      - fields will specify the needed object (and ancilliary entities) fields     - order_field will order the result using given field, If prefixed with \"-\" then it will be reversed.     - window_start & window_size allows to return only a slice of the result.  Fields follow the naming convention: `prefix.field`.     Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.     Use a comma to separate fields.     - Column obj.imgcount contains the total count of images for the object.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_object_set_object_set_project_id_query_post_with_http_info(project_id, project_filters, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: (required)
+        :type project_id: int
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param fields:
+        :type fields: str
+        :param order_field:
+        :type order_field: str
+        :param window_start:
+        :type window_start: int
+        :param window_size:
+        :type window_size: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ObjectSetQueryRsp, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id',
+            'project_filters',
+            'fields',
+            'order_field',
+            'window_start',
+            'window_size'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_object_set_object_set_project_id_query_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_id' is set
+        if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `get_object_set_object_set_project_id_query_post`")  # noqa: E501
+        # verify the required parameter 'project_filters' is set
+        if self.api_client.client_side_validation and ('project_filters' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_filters'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_filters` when calling `get_object_set_object_set_project_id_query_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_id' in local_var_params:
+            path_params['project_id'] = local_var_params['project_id']  # noqa: E501
+
+        query_params = []
+        if 'fields' in local_var_params and local_var_params['fields'] is not None:  # noqa: E501
+            query_params.append(('fields', local_var_params['fields']))  # noqa: E501
+        if 'order_field' in local_var_params and local_var_params['order_field'] is not None:  # noqa: E501
+            query_params.append(('order_field', local_var_params['order_field']))  # noqa: E501
+        if 'window_start' in local_var_params and local_var_params['window_start'] is not None:  # noqa: E501
+            query_params.append(('window_start', local_var_params['window_start']))  # noqa: E501
+        if 'window_size' in local_var_params and local_var_params['window_size'] is not None:  # noqa: E501
+            query_params.append(('window_size', local_var_params['window_size']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'project_filters' in local_var_params:
+            body_params = local_var_params['project_filters']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "ObjectSetQueryRsp",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/{project_id}/query', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def get_object_set_summary_object_set_project_id_summary_post(self, project_id, only_total, project_filters, **kwargs):  # noqa: E501
         """Get Object Set Summary  # noqa: E501
 
         For the given project, with given filters, return the classification summary, i.e.:     - Total number of objects Also if 'only_total' is not set:     - Number of Validated ones     - Number of Dubious ones     - Number of Predicted ones  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_object_set_summary(project_id, only_total, project_filters, async_req=True)
+        >>> thread = api.get_object_set_summary_object_set_project_id_summary_post(project_id, only_total, project_filters, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            project_id (int):
-            only_total (bool):
-            project_filters (ProjectFilters):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ObjectSetSummaryRsp
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: (required)
+        :type project_id: int
+        :param only_total: (required)
+        :type only_total: bool
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ObjectSetSummaryRsp
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['project_id'] = \
-            project_id
-        kwargs['only_total'] = \
-            only_total
-        kwargs['project_filters'] = \
-            project_filters
-        return self.get_object_set_summary_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.get_object_set_summary_object_set_project_id_summary_post_with_http_info(project_id, only_total, project_filters, **kwargs)  # noqa: E501
 
-    def query_object_set_parents(
-        self,
-        request_body,
-        **kwargs
-    ):
+    def get_object_set_summary_object_set_project_id_summary_post_with_http_info(self, project_id, only_total, project_filters, **kwargs):  # noqa: E501
+        """Get Object Set Summary  # noqa: E501
+
+        For the given project, with given filters, return the classification summary, i.e.:     - Total number of objects Also if 'only_total' is not set:     - Number of Validated ones     - Number of Dubious ones     - Number of Predicted ones  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_object_set_summary_object_set_project_id_summary_post_with_http_info(project_id, only_total, project_filters, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: (required)
+        :type project_id: int
+        :param only_total: (required)
+        :type only_total: bool
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ObjectSetSummaryRsp, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id',
+            'only_total',
+            'project_filters'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_object_set_summary_object_set_project_id_summary_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_id' is set
+        if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `get_object_set_summary_object_set_project_id_summary_post`")  # noqa: E501
+        # verify the required parameter 'only_total' is set
+        if self.api_client.client_side_validation and ('only_total' not in local_var_params or  # noqa: E501
+                                                        local_var_params['only_total'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `only_total` when calling `get_object_set_summary_object_set_project_id_summary_post`")  # noqa: E501
+        # verify the required parameter 'project_filters' is set
+        if self.api_client.client_side_validation and ('project_filters' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_filters'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_filters` when calling `get_object_set_summary_object_set_project_id_summary_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_id' in local_var_params:
+            path_params['project_id'] = local_var_params['project_id']  # noqa: E501
+
+        query_params = []
+        if 'only_total' in local_var_params and local_var_params['only_total'] is not None:  # noqa: E501
+            query_params.append(('only_total', local_var_params['only_total']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'project_filters' in local_var_params:
+            body_params = local_var_params['project_filters']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "ObjectSetSummaryRsp",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/{project_id}/summary', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def query_object_set_parents_object_set_parents_post(self, request_body, **kwargs):  # noqa: E501
         """Query Object Set Parents  # noqa: E501
 
         Return object ids, with parent ones and projects for the objects in given list.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_object_set_parents(request_body, async_req=True)
+        >>> thread = api.query_object_set_parents_object_set_parents_post(request_body, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            request_body ([int]):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ObjectSetQueryRsp
-                If the method is called asynchronously, returns the request
-                thread.
+        :param request_body: (required)
+        :type request_body: list[int]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ObjectSetQueryRsp
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['request_body'] = \
-            request_body
-        return self.query_object_set_parents_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.query_object_set_parents_object_set_parents_post_with_http_info(request_body, **kwargs)  # noqa: E501
 
-    def reclassify_object_set(
-        self,
-        project_id,
-        forced_id,
-        reason,
-        project_filters,
-        **kwargs
-    ):
+    def query_object_set_parents_object_set_parents_post_with_http_info(self, request_body, **kwargs):  # noqa: E501
+        """Query Object Set Parents  # noqa: E501
+
+        Return object ids, with parent ones and projects for the objects in given list.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.query_object_set_parents_object_set_parents_post_with_http_info(request_body, async_req=True)
+        >>> result = thread.get()
+
+        :param request_body: (required)
+        :type request_body: list[int]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ObjectSetQueryRsp, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'request_body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method query_object_set_parents_object_set_parents_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'request_body' is set
+        if self.api_client.client_side_validation and ('request_body' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_body'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_body` when calling `query_object_set_parents_object_set_parents_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'request_body' in local_var_params:
+            body_params = local_var_params['request_body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "ObjectSetQueryRsp",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/parents', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def reclassify_object_set_object_set_project_id_reclassify_post(self, project_id, forced_id, reason, project_filters, **kwargs):  # noqa: E501
         """Reclassify Object Set  # noqa: E501
 
         Regardless of present classification or state, set the new classification for this object set. If the filter designates \"all with given classification\", add a TaxonomyChangeLog entry. :returns the number of affected objects.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reclassify_object_set(project_id, forced_id, reason, project_filters, async_req=True)
+        >>> thread = api.reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            project_id (int):
-            forced_id (int):
-            reason (str):
-            project_filters (ProjectFilters):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: (required)
+        :type project_id: int
+        :param forced_id: (required)
+        :type forced_id: int
+        :param reason: (required)
+        :type reason: str
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['project_id'] = \
-            project_id
-        kwargs['forced_id'] = \
-            forced_id
-        kwargs['reason'] = \
-            reason
-        kwargs['project_filters'] = \
-            project_filters
-        return self.reclassify_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.reclassify_object_set_object_set_project_id_reclassify_post_with_http_info(project_id, forced_id, reason, project_filters, **kwargs)  # noqa: E501
 
-    def reset_object_set_to_predicted(
-        self,
-        project_id,
-        project_filters,
-        **kwargs
-    ):
+    def reclassify_object_set_object_set_project_id_reclassify_post_with_http_info(self, project_id, forced_id, reason, project_filters, **kwargs):  # noqa: E501
+        """Reclassify Object Set  # noqa: E501
+
+        Regardless of present classification or state, set the new classification for this object set. If the filter designates \"all with given classification\", add a TaxonomyChangeLog entry. :returns the number of affected objects.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reclassify_object_set_object_set_project_id_reclassify_post_with_http_info(project_id, forced_id, reason, project_filters, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: (required)
+        :type project_id: int
+        :param forced_id: (required)
+        :type forced_id: int
+        :param reason: (required)
+        :type reason: str
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id',
+            'forced_id',
+            'reason',
+            'project_filters'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reclassify_object_set_object_set_project_id_reclassify_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_id' is set
+        if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `reclassify_object_set_object_set_project_id_reclassify_post`")  # noqa: E501
+        # verify the required parameter 'forced_id' is set
+        if self.api_client.client_side_validation and ('forced_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['forced_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `forced_id` when calling `reclassify_object_set_object_set_project_id_reclassify_post`")  # noqa: E501
+        # verify the required parameter 'reason' is set
+        if self.api_client.client_side_validation and ('reason' not in local_var_params or  # noqa: E501
+                                                        local_var_params['reason'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `reason` when calling `reclassify_object_set_object_set_project_id_reclassify_post`")  # noqa: E501
+        # verify the required parameter 'project_filters' is set
+        if self.api_client.client_side_validation and ('project_filters' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_filters'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_filters` when calling `reclassify_object_set_object_set_project_id_reclassify_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_id' in local_var_params:
+            path_params['project_id'] = local_var_params['project_id']  # noqa: E501
+
+        query_params = []
+        if 'forced_id' in local_var_params and local_var_params['forced_id'] is not None:  # noqa: E501
+            query_params.append(('forced_id', local_var_params['forced_id']))  # noqa: E501
+        if 'reason' in local_var_params and local_var_params['reason'] is not None:  # noqa: E501
+            query_params.append(('reason', local_var_params['reason']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'project_filters' in local_var_params:
+            body_params = local_var_params['project_filters']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/{project_id}/reclassify', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(self, project_id, project_filters, **kwargs):  # noqa: E501
         """Reset Object Set To Predicted  # noqa: E501
 
         Reset to Predicted all objects for the given project with the filters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reset_object_set_to_predicted(project_id, project_filters, async_req=True)
+        >>> thread = api.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(project_id, project_filters, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            project_id (int):
-            project_filters (ProjectFilters):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: (required)
+        :type project_id: int
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['project_id'] = \
-            project_id
-        kwargs['project_filters'] = \
-            project_filters
-        return self.reset_object_set_to_predicted_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post_with_http_info(project_id, project_filters, **kwargs)  # noqa: E501
 
-    def revert_object_set_to_history(
-        self,
-        project_id,
-        dry_run,
-        project_filters,
-        **kwargs
-    ):
+    def reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post_with_http_info(self, project_id, project_filters, **kwargs):  # noqa: E501
+        """Reset Object Set To Predicted  # noqa: E501
+
+        Reset to Predicted all objects for the given project with the filters.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post_with_http_info(project_id, project_filters, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: (required)
+        :type project_id: int
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id',
+            'project_filters'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_id' is set
+        if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post`")  # noqa: E501
+        # verify the required parameter 'project_filters' is set
+        if self.api_client.client_side_validation and ('project_filters' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_filters'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_filters` when calling `reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_id' in local_var_params:
+            path_params['project_id'] = local_var_params['project_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'project_filters' in local_var_params:
+            body_params = local_var_params['project_filters']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/{project_id}/reset_to_predicted', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def revert_object_set_to_history_object_set_project_id_revert_to_history_post(self, project_id, dry_run, project_filters, **kwargs):  # noqa: E501
         """Revert Object Set To History  # noqa: E501
 
         Revert all objects for the given project, with the filters, to the target. - param `filters`: The set of filters to apply to get the target objects. - param `dry_run`: If set, then no real write but consequences of the revert will be replied. - param `target`: Use null/None for reverting using the last annotation from anyone, or a user id     for the last annotation from this user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.revert_object_set_to_history(project_id, dry_run, project_filters, async_req=True)
+        >>> thread = api.revert_object_set_to_history_object_set_project_id_revert_to_history_post(project_id, dry_run, project_filters, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            project_id (int):
-            dry_run (bool):
-            project_filters (ProjectFilters):
-
-        Keyword Args:
-            target (int): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            ObjectSetRevertToHistoryRsp
-                If the method is called asynchronously, returns the request
-                thread.
+        :param project_id: (required)
+        :type project_id: int
+        :param dry_run: (required)
+        :type dry_run: bool
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param target:
+        :type target: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ObjectSetRevertToHistoryRsp
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['project_id'] = \
-            project_id
-        kwargs['dry_run'] = \
-            dry_run
-        kwargs['project_filters'] = \
-            project_filters
-        return self.revert_object_set_to_history_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.revert_object_set_to_history_object_set_project_id_revert_to_history_post_with_http_info(project_id, dry_run, project_filters, **kwargs)  # noqa: E501
 
-    def update_object_set(
-        self,
-        bulk_update_req,
-        **kwargs
-    ):
+    def revert_object_set_to_history_object_set_project_id_revert_to_history_post_with_http_info(self, project_id, dry_run, project_filters, **kwargs):  # noqa: E501
+        """Revert Object Set To History  # noqa: E501
+
+        Revert all objects for the given project, with the filters, to the target. - param `filters`: The set of filters to apply to get the target objects. - param `dry_run`: If set, then no real write but consequences of the revert will be replied. - param `target`: Use null/None for reverting using the last annotation from anyone, or a user id     for the last annotation from this user.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.revert_object_set_to_history_object_set_project_id_revert_to_history_post_with_http_info(project_id, dry_run, project_filters, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: (required)
+        :type project_id: int
+        :param dry_run: (required)
+        :type dry_run: bool
+        :param project_filters: (required)
+        :type project_filters: ProjectFilters
+        :param target:
+        :type target: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ObjectSetRevertToHistoryRsp, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'project_id',
+            'dry_run',
+            'project_filters',
+            'target'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revert_object_set_to_history_object_set_project_id_revert_to_history_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_id' is set
+        if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `revert_object_set_to_history_object_set_project_id_revert_to_history_post`")  # noqa: E501
+        # verify the required parameter 'dry_run' is set
+        if self.api_client.client_side_validation and ('dry_run' not in local_var_params or  # noqa: E501
+                                                        local_var_params['dry_run'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `dry_run` when calling `revert_object_set_to_history_object_set_project_id_revert_to_history_post`")  # noqa: E501
+        # verify the required parameter 'project_filters' is set
+        if self.api_client.client_side_validation and ('project_filters' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_filters'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_filters` when calling `revert_object_set_to_history_object_set_project_id_revert_to_history_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_id' in local_var_params:
+            path_params['project_id'] = local_var_params['project_id']  # noqa: E501
+
+        query_params = []
+        if 'dry_run' in local_var_params and local_var_params['dry_run'] is not None:  # noqa: E501
+            query_params.append(('dry_run', local_var_params['dry_run']))  # noqa: E501
+        if 'target' in local_var_params and local_var_params['target'] is not None:  # noqa: E501
+            query_params.append(('target', local_var_params['target']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'project_filters' in local_var_params:
+            body_params = local_var_params['project_filters']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "ObjectSetRevertToHistoryRsp",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/{project_id}/revert_to_history', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def update_object_set_object_set_update_post(self, bulk_update_req, **kwargs):  # noqa: E501
         """Update Object Set  # noqa: E501
 
         Update all the objects with given IDs and values Current user needs Manage right on all projects of specified objects.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_object_set(bulk_update_req, async_req=True)
+        >>> thread = api.update_object_set_object_set_update_post(bulk_update_req, async_req=True)
         >>> result = thread.get()
 
-        Args:
-            bulk_update_req (BulkUpdateReq):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            bool, date, datetime, dict, float, int, list, str, none_type
-                If the method is called asynchronously, returns the request
-                thread.
+        :param bulk_update_req: (required)
+        :type bulk_update_req: BulkUpdateReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['bulk_update_req'] = \
-            bulk_update_req
-        return self.update_object_set_endpoint.call_with_http_info(**kwargs)
+        kwargs['_return_http_data_only'] = True
+        return self.update_object_set_object_set_update_post_with_http_info(bulk_update_req, **kwargs)  # noqa: E501
 
+    def update_object_set_object_set_update_post_with_http_info(self, bulk_update_req, **kwargs):  # noqa: E501
+        """Update Object Set  # noqa: E501
+
+        Update all the objects with given IDs and values Current user needs Manage right on all projects of specified objects.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_object_set_object_set_update_post_with_http_info(bulk_update_req, async_req=True)
+        >>> result = thread.get()
+
+        :param bulk_update_req: (required)
+        :type bulk_update_req: BulkUpdateReq
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'bulk_update_req'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_object_set_object_set_update_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'bulk_update_req' is set
+        if self.api_client.client_side_validation and ('bulk_update_req' not in local_var_params or  # noqa: E501
+                                                        local_var_params['bulk_update_req'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `bulk_update_req` when calling `update_object_set_object_set_update_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'bulk_update_req' in local_var_params:
+            body_params = local_var_params['bulk_update_req']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
+
+        response_types_map = {
+            200: "object",
+            422: "HTTPValidationError",
+        }
+
+        return self.api_client.call_api(
+            '/object_set/update', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
