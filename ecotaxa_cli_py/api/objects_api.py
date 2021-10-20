@@ -33,7 +33,7 @@ class ObjectsApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def classify_auto_object_set_object_set_classify_auto_post(self, classify_auto_req, **kwargs):  # noqa: E501

@@ -33,7 +33,7 @@ class JobsApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def erase_job_jobs_job_id_delete(self, job_id, **kwargs):  # noqa: E501

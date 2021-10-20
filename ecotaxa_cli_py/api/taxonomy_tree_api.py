@@ -33,7 +33,7 @@ class TaxonomyTreeApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def add_taxon_in_central_taxon_central_put(self, name, parent_id, taxotype, creator_email, **kwargs):  # noqa: E501

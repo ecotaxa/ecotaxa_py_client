@@ -33,7 +33,7 @@ class ProcessesApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def process_query_process_process_id_get(self, process_id, **kwargs):  # noqa: E501

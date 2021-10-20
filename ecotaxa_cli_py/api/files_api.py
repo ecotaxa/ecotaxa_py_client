@@ -33,7 +33,7 @@ class FilesApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def list_common_files_common_files_get(self, path, **kwargs):  # noqa: E501

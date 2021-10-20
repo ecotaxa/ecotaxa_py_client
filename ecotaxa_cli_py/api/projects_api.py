@@ -33,7 +33,7 @@ class ProjectsApi(object):
 
     def __init__(self, api_client=None):
         if api_client is None:
-            api_client = ApiClient(configuration)
+            api_client = ApiClient()
         self.api_client = api_client
 
     def create_project_projects_create_post(self, create_project_req, **kwargs):  # noqa: E501
