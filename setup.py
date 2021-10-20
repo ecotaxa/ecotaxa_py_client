@@ -12,7 +12,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "ecotaxa-cli-py"
+NAME = "ecotaxa_cli_py"
 VERSION = "1.0.3"
 # To install the library, run the following
 #
