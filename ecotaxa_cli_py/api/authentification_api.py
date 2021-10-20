@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,18 +8,21 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from ecotaxa_cli_py.api_client import ApiClient
-from ecotaxa_cli_py.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
+from ecotaxa_cli_py.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.model.login_req import LoginReq
 
 
 class AuthentificationApi(object):
@@ -35,8 +36,62 @@ class AuthentificationApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
+        self.login_endpoint = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [],
+                'endpoint_path': '/login',
+                'operation_id': 'login',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'login_req',
+                ],
+                'required': [
+                    'login_req',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'login_req':
+                        (LoginReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'login_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
 
-    def login(self, login_req, **kwargs):  # noqa: E501
+    def login(
+        self,
+        login_req,
+        **kwargs
+    ):
         """Login  # noqa: E501
 
         **Login barrier,**   If successful, the login will returns a **JWT** which will have to be used in bearer authentication scheme for subsequent calls.  # noqa: E501
@@ -46,132 +101,55 @@ class AuthentificationApi(object):
         >>> thread = api.login(login_req, async_req=True)
         >>> result = thread.get()
 
-        :param login_req: (required)
-        :type login_req: LoginReq
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: str
+        Args:
+            login_req (LoginReq):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            str
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.login_with_http_info(login_req, **kwargs)  # noqa: E501
-
-    def login_with_http_info(self, login_req, **kwargs):  # noqa: E501
-        """Login  # noqa: E501
-
-        **Login barrier,**   If successful, the login will returns a **JWT** which will have to be used in bearer authentication scheme for subsequent calls.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.login_with_http_info(login_req, async_req=True)
-        >>> result = thread.get()
-
-        :param login_req: (required)
-        :type login_req: LoginReq
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'login_req'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['login_req'] = \
+            login_req
+        return self.login_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method login" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'login_req' is set
-        if self.api_client.client_side_validation and ('login_req' not in local_var_params or  # noqa: E501
-                                                        local_var_params['login_req'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `login_req` when calling `login`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'login_req' in local_var_params:
-            body_params = local_var_params['login_req']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        response_types_map = {
-            200: "str",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/login', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))

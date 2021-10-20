@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **add_taxon_in_central**
-> object add_taxon_in_central(name, parent_id, taxotype, creator_email, source_desc=source_desc, source_url=source_url)
+> bool, date, datetime, dict, float, int, list, str, none_type add_taxon_in_central(name, parent_id, taxotype, creator_email)
 
 Add Taxon In Central
 
@@ -28,11 +28,12 @@ Create a taxon on EcoTaxoServer. Logged user must be manager (on any project) or
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -54,36 +55,47 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    name = 'name_example' # str | 
-parent_id = 56 # int | 
-taxotype = 'taxotype_example' # str | 
-creator_email = 'creator_email_example' # str | 
-source_desc = 'source_desc_example' # str |  (optional)
-source_url = 'source_url_example' # str |  (optional)
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    name = "name_example" # str | 
+    parent_id = 1 # int | 
+    taxotype = "taxotype_example" # str | 
+    creator_email = "creator_email_example" # str | 
+    source_desc = "source_desc_example" # str |  (optional)
+    source_url = "source_url_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Add Taxon In Central
+        api_response = api_instance.add_taxon_in_central(name, parent_id, taxotype, creator_email)
+        pprint(api_response)
+    except ecotaxa_cli_py.ApiException as e:
+        print("Exception when calling TaxonomyTreeApi->add_taxon_in_central: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Add Taxon In Central
         api_response = api_instance.add_taxon_in_central(name, parent_id, taxotype, creator_email, source_desc=source_desc, source_url=source_url)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->add_taxon_in_central: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **parent_id** | **int**|  | 
- **taxotype** | **str**|  | 
- **creator_email** | **str**|  | 
- **source_desc** | **str**|  | [optional] 
- **source_url** | **str**|  | [optional] 
+ **name** | **str**|  |
+ **parent_id** | **int**|  |
+ **taxotype** | **str**|  |
+ **creator_email** | **str**|  |
+ **source_desc** | **str**|  | [optional]
+ **source_url** | **str**|  | [optional]
 
 ### Return type
 
-**object**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -94,7 +106,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -103,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_taxon_in_central**
-> object get_taxon_in_central(taxon_id)
+> bool, date, datetime, dict, float, int, list, str, none_type get_taxon_in_central(taxon_id)
 
 Get Taxon In Central
 
@@ -112,11 +126,12 @@ Get EcoTaxoServer full record for this taxon.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -138,26 +153,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    taxon_id = 56 # int | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    taxon_id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Taxon In Central
         api_response = api_instance.get_taxon_in_central(taxon_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->get_taxon_in_central: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  | 
+ **taxon_id** | **int**|  |
 
 ### Return type
 
-**object**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -168,7 +185,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -177,7 +196,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pull_taxa_update_from_central**
-> object pull_taxa_update_from_central()
+> bool, date, datetime, dict, float, int, list, str, none_type pull_taxa_update_from_central()
 
 Pull Taxa Update From Central
 
@@ -186,11 +205,11 @@ Get what changed in EcoTaxoServer managed tree and update local tree accordingly
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -212,22 +231,24 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Pull Taxa Update From Central
         api_response = api_instance.pull_taxa_update_from_central()
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->pull_taxa_update_from_central: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -238,7 +259,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -246,7 +269,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **push_taxa_stats_in_central**
-> object push_taxa_stats_in_central()
+> bool, date, datetime, dict, float, int, list, str, none_type push_taxa_stats_in_central()
 
 Push Taxa Stats In Central
 
@@ -255,11 +278,11 @@ Push present instance stats into EcoTaxoServer.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -281,22 +304,24 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Push Taxa Stats In Central
         api_response = api_instance.push_taxa_stats_in_central()
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->push_taxa_stats_in_central: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -307,7 +332,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -315,7 +342,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_root_taxa**
-> list[TaxonModel] query_root_taxa()
+> [TaxonModel] query_root_taxa()
 
 Query Root Taxa
 
@@ -323,11 +350,12 @@ Return all taxa with no parent.
 
 ### Example
 
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxon_model import TaxonModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -339,22 +367,24 @@ configuration = ecotaxa_cli_py.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Query Root Taxa
         api_response = api_instance.query_root_taxa()
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_root_taxa: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[TaxonModel]**](TaxonModel.md)
+[**[TaxonModel]**](TaxonModel.md)
 
 ### Authorization
 
@@ -365,7 +395,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -373,7 +405,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_taxa_set**
-> list[TaxonModel] query_taxa_set(ids)
+> [TaxonModel] query_taxa_set(ids)
 
 Query Taxa Set
 
@@ -382,11 +414,13 @@ Information about several taxa, including their lineage. The separator between n
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxon_model import TaxonModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -408,26 +442,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    ids = 'ids_example' # str | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    ids = "ids_example" # str | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Query Taxa Set
         api_response = api_instance.query_taxa_set(ids)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa_set: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**|  | 
+ **ids** | **str**|  |
 
 ### Return type
 
-[**list[TaxonModel]**](TaxonModel.md)
+[**[TaxonModel]**](TaxonModel.md)
 
 ### Authorization
 
@@ -438,7 +474,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -456,11 +494,13 @@ Information about a single taxon, including its lineage.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxon_model import TaxonModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -482,22 +522,24 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    taxon_id = 56 # int | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    taxon_id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Query Taxa
         api_response = api_instance.query_taxa(taxon_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  | 
+ **taxon_id** | **int**|  |
 
 ### Return type
 
@@ -512,7 +554,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -521,7 +565,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_taxa_usage**
-> list[TaxonUsageModel] query_taxa_usage(taxon_id)
+> [TaxonUsageModel] query_taxa_usage(taxon_id)
 
 Query Taxa Usage
 
@@ -530,11 +574,13 @@ Where a given taxon is used. Only validated uses are returned.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxon_usage_model import TaxonUsageModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -556,26 +602,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    taxon_id = 56 # int | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    taxon_id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Query Taxa Usage
         api_response = api_instance.query_taxa_usage(taxon_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa_usage: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  | 
+ **taxon_id** | **int**|  |
 
 ### Return type
 
-[**list[TaxonUsageModel]**](TaxonUsageModel.md)
+[**[TaxonUsageModel]**](TaxonUsageModel.md)
 
 ### Authorization
 
@@ -586,7 +634,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -595,7 +645,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassif_project_stats**
-> object reclassif_project_stats(project_id)
+> bool, date, datetime, dict, float, int, list, str, none_type reclassif_project_stats(project_id)
 
 Reclassif Project Stats
 
@@ -604,11 +654,12 @@ Dig into reclassification logs and return the associations source->target for pr
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -630,26 +681,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    project_id = 56 # int | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    project_id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Reclassif Project Stats
         api_response = api_instance.reclassif_project_stats(project_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->reclassif_project_stats: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  | 
+ **project_id** | **int**|  |
 
 ### Return type
 
-**object**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -660,7 +713,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -669,7 +724,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassif_stats**
-> list[TaxonModel] reclassif_stats(taxa_ids)
+> [TaxonModel] reclassif_stats(taxa_ids)
 
 Reclassif Stats
 
@@ -678,11 +733,13 @@ Dig into reclassification logs and, for each input category id, determine the mo
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxon_model import TaxonModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -704,26 +761,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    taxa_ids = 'taxa_ids_example' # str | 
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    taxa_ids = "taxa_ids_example" # str | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Reclassif Stats
         api_response = api_instance.reclassif_stats(taxa_ids)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->reclassif_stats: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxa_ids** | **str**|  | 
+ **taxa_ids** | **str**|  |
 
 ### Return type
 
-[**list[TaxonModel]**](TaxonModel.md)
+[**[TaxonModel]**](TaxonModel.md)
 
 ### Authorization
 
@@ -734,7 +793,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -743,7 +804,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_taxa**
-> list[TaxaSearchRsp] search_taxa(query, project_id=project_id)
+> [TaxaSearchRsp] search_taxa(query)
 
 Search Taxa
 
@@ -752,11 +813,13 @@ Search for taxa by name.  Queries can be 'small', i.e. of length < 3 and even ze
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.model.taxa_search_rsp import TaxaSearchRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -778,28 +841,39 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    query = 'query_example' # str | 
-project_id = 56 # int |  (optional)
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+    query = "query_example" # str | 
+    project_id = 1 # int |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Search Taxa
+        api_response = api_instance.search_taxa(query)
+        pprint(api_response)
+    except ecotaxa_cli_py.ApiException as e:
+        print("Exception when calling TaxonomyTreeApi->search_taxa: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Search Taxa
         api_response = api_instance.search_taxa(query, project_id=project_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->search_taxa: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **str**|  | 
- **project_id** | **int**|  | [optional] 
+ **query** | **str**|  |
+ **project_id** | **int**|  | [optional]
 
 ### Return type
 
-[**list[TaxaSearchRsp]**](TaxaSearchRsp.md)
+[**[TaxaSearchRsp]**](TaxaSearchRsp.md)
 
 ### Authorization
 
@@ -810,7 +884,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -828,11 +904,12 @@ Return the status of taxonomy tree w/r to freshness.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import taxonomy_tree_api
+from ecotaxa_cli_py.model.taxonomy_tree_status import TaxonomyTreeStatus
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -854,15 +931,17 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.TaxonomyTreeApi(api_client)
-    
+    api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Taxa Tree Status
         api_response = api_instance.taxa_tree_status()
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->taxa_tree_status: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -880,7 +959,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |

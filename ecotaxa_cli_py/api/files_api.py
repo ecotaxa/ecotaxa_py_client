@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,18 +8,21 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from ecotaxa_cli_py.api_client import ApiClient
-from ecotaxa_cli_py.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
+from ecotaxa_cli_py.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from ecotaxa_cli_py.model.directory_model import DirectoryModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 
 
 class FilesApi(object):
@@ -35,8 +36,177 @@ class FilesApi(object):
         if api_client is None:
             api_client = ApiClient(configuration)
         self.api_client = api_client
+        self.list_common_files_endpoint = _Endpoint(
+            settings={
+                'response_type': (DirectoryModel,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/common_files/',
+                'operation_id': 'list_common_files',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'path',
+                ],
+                'required': [
+                    'path',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'path':
+                        (str,),
+                },
+                'attribute_map': {
+                    'path': 'path',
+                },
+                'location_map': {
+                    'path': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_user_files_endpoint = _Endpoint(
+            settings={
+                'response_type': (DirectoryModel,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/my_files/{sub_path}',
+                'operation_id': 'list_user_files',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'sub_path',
+                ],
+                'required': [
+                    'sub_path',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'sub_path':
+                        (str,),
+                },
+                'attribute_map': {
+                    'sub_path': 'sub_path',
+                },
+                'location_map': {
+                    'sub_path': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.post_user_file_endpoint = _Endpoint(
+            settings={
+                'response_type': (str,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/my_files/',
+                'operation_id': 'post_user_file',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'file',
+                    'path',
+                    'tag',
+                ],
+                'required': [
+                    'file',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'file':
+                        (file_type,),
+                    'path':
+                        (str,),
+                    'tag':
+                        (str,),
+                },
+                'attribute_map': {
+                    'file': 'file',
+                    'path': 'path',
+                    'tag': 'tag',
+                },
+                'location_map': {
+                    'file': 'form',
+                    'path': 'form',
+                    'tag': 'form',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'multipart/form-data'
+                ]
+            },
+            api_client=api_client
+        )
 
-    def list_common_files(self, path, **kwargs):  # noqa: E501
+    def list_common_files(
+        self,
+        path,
+        **kwargs
+    ):
         """List Common Files  # noqa: E501
 
         List the common files which are usable for some file-related operations e.g. import.  # noqa: E501
@@ -46,133 +216,63 @@ class FilesApi(object):
         >>> thread = api.list_common_files(path, async_req=True)
         >>> result = thread.get()
 
-        :param path: (required)
-        :type path: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: DirectoryModel
+        Args:
+            path (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DirectoryModel
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.list_common_files_with_http_info(path, **kwargs)  # noqa: E501
-
-    def list_common_files_with_http_info(self, path, **kwargs):  # noqa: E501
-        """List Common Files  # noqa: E501
-
-        List the common files which are usable for some file-related operations e.g. import.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_common_files_with_http_info(path, async_req=True)
-        >>> result = thread.get()
-
-        :param path: (required)
-        :type path: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(DirectoryModel, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'path'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['path'] = \
+            path
+        return self.list_common_files_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_common_files" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ('path' not in local_var_params or  # noqa: E501
-                                                        local_var_params['path'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `path` when calling `list_common_files`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in local_var_params and local_var_params['path'] is not None:  # noqa: E501
-            query_params.append(('path', local_var_params['path']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "DirectoryModel",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/common_files/', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def list_user_files(self, sub_path, **kwargs):  # noqa: E501
+    def list_user_files(
+        self,
+        sub_path,
+        **kwargs
+    ):
         """List User Files  # noqa: E501
 
         List the private files which are usable for some file-related operations e.g. import.  # noqa: E501
@@ -182,133 +282,63 @@ class FilesApi(object):
         >>> thread = api.list_user_files(sub_path, async_req=True)
         >>> result = thread.get()
 
-        :param sub_path: (required)
-        :type sub_path: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: DirectoryModel
+        Args:
+            sub_path (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DirectoryModel
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.list_user_files_with_http_info(sub_path, **kwargs)  # noqa: E501
-
-    def list_user_files_with_http_info(self, sub_path, **kwargs):  # noqa: E501
-        """List User Files  # noqa: E501
-
-        List the private files which are usable for some file-related operations e.g. import.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_user_files_with_http_info(sub_path, async_req=True)
-        >>> result = thread.get()
-
-        :param sub_path: (required)
-        :type sub_path: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(DirectoryModel, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'sub_path'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['sub_path'] = \
+            sub_path
+        return self.list_user_files_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_user_files" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'sub_path' is set
-        if self.api_client.client_side_validation and ('sub_path' not in local_var_params or  # noqa: E501
-                                                        local_var_params['sub_path'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `sub_path` when calling `list_user_files`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'sub_path' in local_var_params:
-            path_params['sub_path'] = local_var_params['sub_path']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "DirectoryModel",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/my_files/{sub_path}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def post_user_file(self, file, **kwargs):  # noqa: E501
+    def post_user_file(
+        self,
+        file,
+        **kwargs
+    ):
         """Put User File  # noqa: E501
 
         Upload a file for the current user. The returned text will contain a serve-side path which is usable for some file-related operations e.g. import.  # noqa: E501
@@ -318,146 +348,57 @@ class FilesApi(object):
         >>> thread = api.post_user_file(file, async_req=True)
         >>> result = thread.get()
 
-        :param file: (required)
-        :type file: file
-        :param path:
-        :type path: str
-        :param tag:
-        :type tag: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: str
+        Args:
+            file (file_type):
+
+        Keyword Args:
+            path (str): [optional]
+            tag (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            str
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.post_user_file_with_http_info(file, **kwargs)  # noqa: E501
-
-    def post_user_file_with_http_info(self, file, **kwargs):  # noqa: E501
-        """Put User File  # noqa: E501
-
-        Upload a file for the current user. The returned text will contain a serve-side path which is usable for some file-related operations e.g. import.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.post_user_file_with_http_info(file, async_req=True)
-        >>> result = thread.get()
-
-        :param file: (required)
-        :type file: file
-        :param path:
-        :type path: str
-        :param tag:
-        :type tag: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'file',
-            'path',
-            'tag'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['file'] = \
+            file
+        return self.post_user_file_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_user_file" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'file' is set
-        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
-                                                        local_var_params['file'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `file` when calling `post_user_file`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in local_var_params:
-            local_var_files['file'] = local_var_params['file']  # noqa: E501
-        if 'path' in local_var_params:
-            form_params.append(('path', local_var_params['path']))  # noqa: E501
-        if 'tag' in local_var_params:
-            form_params.append(('tag', local_var_params['tag']))  # noqa: E501
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "str",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/my_files/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))

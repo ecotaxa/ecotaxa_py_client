@@ -19,11 +19,13 @@ Returns **information about the acquisition** corresponding to the given id.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import acquisitions_api
+from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,22 +47,24 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.AcquisitionsApi(api_client)
-    acquisition_id = 56 # int | 
+    api_instance = acquisitions_api.AcquisitionsApi(api_client)
+    acquisition_id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Acquisition Query
         api_response = api_instance.acquisition_query(acquisition_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisition_query: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acquisition_id** | **int**|  | 
+ **acquisition_id** | **int**|  |
 
 ### Return type
 
@@ -75,7 +79,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -84,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **acquisitions_search**
-> list[AcquisitionModel] acquisitions_search(project_id=project_id)
+> [AcquisitionModel] acquisitions_search()
 
 Acquisitions Search
 
@@ -93,11 +99,13 @@ Returns the **list of all acquisitions for a given project**.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import acquisitions_api
+from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -119,26 +127,29 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.AcquisitionsApi(api_client)
+    api_instance = acquisitions_api.AcquisitionsApi(api_client)
     project_id = 1 # int | The project id (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Acquisitions Search
         api_response = api_instance.acquisitions_search(project_id=project_id)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisitions_search: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| The project id | [optional] 
+ **project_id** | **int**| The project id | [optional]
 
 ### Return type
 
-[**list[AcquisitionModel]**](AcquisitionModel.md)
+[**[AcquisitionModel]**](AcquisitionModel.md)
 
 ### Authorization
 
@@ -149,7 +160,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -167,11 +180,13 @@ Do the required **update for each acquisition in the set**.  Return the number o
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
+
 ```python
-from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.api import acquisitions_api
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -193,22 +208,27 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = ecotaxa_cli_py.AcquisitionsApi(api_client)
-    bulk_update_req = ecotaxa_cli_py.BulkUpdateReq() # BulkUpdateReq | 
+    api_instance = acquisitions_api.AcquisitionsApi(api_client)
+    bulk_update_req = BulkUpdateReq(
+        target_ids=[1,5,290],
+        updates=[{"ucol":"sub_part","uval":"2"}],
+    ) # BulkUpdateReq | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Update Acquisitions
         api_response = api_instance.update_acquisitions(bulk_update_req)
         pprint(api_response)
-    except ApiException as e:
+    except ecotaxa_cli_py.ApiException as e:
         print("Exception when calling AcquisitionsApi->update_acquisitions: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  | 
+ **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
 
 ### Return type
 
@@ -223,7 +243,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
