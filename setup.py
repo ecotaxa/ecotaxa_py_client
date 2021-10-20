@@ -11,7 +11,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "ecotaxa-cli-py"
-VERSION = "1.0.8"
+VERSION = "1.0.10"
 # To install the library, run the following
 #
 # python setup.py install
@@ -30,7 +30,7 @@ setup(
     description="EcoTaxa",
     author="OpenAPI Generator community",
     author_email="team@openapitools.org",
-    url="",
+    url="https://github.com/juliecoust/ecotaxa-cli-py",
     keywords=["OpenAPI", "OpenAPI-Generator", "EcoTaxa"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
