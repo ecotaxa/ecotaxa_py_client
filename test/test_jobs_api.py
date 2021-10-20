@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,17 +10,20 @@
 """
 
 
+from __future__ import absolute_import
+
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.jobs_api import JobsApi  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 
 class TestJobsApi(unittest.TestCase):
     """JobsApi unit test stubs"""
 
     def setUp(self):
-        self.api = JobsApi()  # noqa: E501
+        self.api = ecotaxa_cli_py.api.jobs_api.JobsApi()  # noqa: E501
 
     def tearDown(self):
         pass

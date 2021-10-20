@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **objid** | **int** |  | 
 **acquisid** | **int** |  | 
 **orig_id** | **str** |  | 
-**sample_id** | **int** |  | 
-**project_id** | **int** |  | 
 **objdate** | **date** |  | [optional] 
 **objtime** | **str** |  | [optional] 
 **latitude** | **float** |  | [optional] 
@@ -28,9 +26,10 @@ Name | Type | Description | Notes
 **similarity** | **float** |  | [optional] 
 **random_value** | **int** |  | [optional] 
 **object_link** | **str** |  | [optional] 
-**images** | [**[ImageModel]**](ImageModel.md) |  | [optional]  if omitted the server will use the default value of []
-**free_columns** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional]  if omitted the server will use the default value of {}
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**sample_id** | **int** |  | 
+**project_id** | **int** |  | 
+**images** | [**list[ImageModel]**](ImageModel.md) |  | [optional] [default to []]
+**free_columns** | **object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,14 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.user_model import UserModel
-globals()['UserModel'] = UserModel
-from ecotaxa_cli_py.model.collection_model import CollectionModel
-
+from ecotaxa_cli_py.models.collection_model import CollectionModel  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestCollectionModel(unittest.TestCase):
     """CollectionModel unit test stubs"""
@@ -26,12 +28,68 @@ class TestCollectionModel(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CollectionModel
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.collection_model.CollectionModel()  # noqa: E501
+        if include_optional :
+            return CollectionModel(
+                project_ids = [1], 
+                provider_user = None, 
+                contact_user = None, 
+                creator_users = [
+                    ecotaxa_cli_py.models.user_model.UserModel(
+                        id = 1, 
+                        email = 'user@email.com', 
+                        name = 'userName', 
+                        organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
+                        active = True, 
+                        country = 'France', 
+                        usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        usercreationreason = 'Analysis of size and shapes of plastic particles', )
+                    ], 
+                creator_organisations = [
+                    ''
+                    ], 
+                associate_users = [
+                    ecotaxa_cli_py.models.user_model.UserModel(
+                        id = 1, 
+                        email = 'user@email.com', 
+                        name = 'userName', 
+                        organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
+                        active = True, 
+                        country = 'France', 
+                        usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        usercreationreason = 'Analysis of size and shapes of plastic particles', )
+                    ], 
+                associate_organisations = [
+                    ''
+                    ], 
+                id = 1, 
+                external_id = '', 
+                external_id_system = '', 
+                title = 'My collection', 
+                short_title = 'My coll', 
+                citation = '', 
+                license = 'CC BY 4.0', 
+                abstract = '', 
+                description = ''
+            )
+        else :
+            return CollectionModel(
+                project_ids = [1],
+                id = 1,
+                external_id = '',
+                external_id_system = '',
+                title = 'My collection',
+        )
+
     def testCollectionModel(self):
         """Test CollectionModel"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = CollectionModel()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

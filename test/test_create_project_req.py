@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.create_project_req import CreateProjectReq
-
+from ecotaxa_cli_py.models.create_project_req import CreateProjectReq  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestCreateProjectReq(unittest.TestCase):
     """CreateProjectReq unit test stubs"""
@@ -24,12 +28,27 @@ class TestCreateProjectReq(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CreateProjectReq
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.create_project_req.CreateProjectReq()  # noqa: E501
+        if include_optional :
+            return CreateProjectReq(
+                clone_of_id = 2, 
+                title = 'My new project title', 
+                visible = True
+            )
+        else :
+            return CreateProjectReq(
+                title = 'My new project title',
+        )
+
     def testCreateProjectReq(self):
         """Test CreateProjectReq"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = CreateProjectReq()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

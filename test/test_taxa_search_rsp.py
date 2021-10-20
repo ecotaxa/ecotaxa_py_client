@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.taxa_search_rsp import TaxaSearchRsp
-
+from ecotaxa_cli_py.models.taxa_search_rsp import TaxaSearchRsp  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestTaxaSearchRsp(unittest.TestCase):
     """TaxaSearchRsp unit test stubs"""
@@ -24,12 +28,30 @@ class TestTaxaSearchRsp(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TaxaSearchRsp
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.taxa_search_rsp.TaxaSearchRsp()  # noqa: E501
+        if include_optional :
+            return TaxaSearchRsp(
+                id = 56, 
+                renm_id = 56, 
+                text = '', 
+                pr = 56
+            )
+        else :
+            return TaxaSearchRsp(
+                id = 56,
+                text = '',
+                pr = 56,
+        )
+
     def testTaxaSearchRsp(self):
         """Test TaxaSearchRsp"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = TaxaSearchRsp()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

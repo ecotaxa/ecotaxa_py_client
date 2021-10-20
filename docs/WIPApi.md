@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **system_status**
-> bool, date, datetime, dict, float, int, list, str, none_type system_status()
+> object system_status()
 
 System Status
 
@@ -17,11 +17,11 @@ Report the status, mainly used for verifying that the server is up.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import wip_api
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,24 +43,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = wip_api.WIPApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
+    api_instance = ecotaxa_cli_py.WIPApi(api_client)
+    
     try:
         # System Status
         api_response = api_instance.system_status()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ApiException as e:
         print("Exception when calling WIPApi->system_status: %s\n" % e)
 ```
-
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -71,9 +69,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |

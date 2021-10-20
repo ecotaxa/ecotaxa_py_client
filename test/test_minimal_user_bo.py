@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.minimal_user_bo import MinimalUserBO
-
+from ecotaxa_cli_py.models.minimal_user_bo import MinimalUserBO  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestMinimalUserBO(unittest.TestCase):
     """MinimalUserBO unit test stubs"""
@@ -24,12 +28,25 @@ class TestMinimalUserBO(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test MinimalUserBO
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.minimal_user_bo.MinimalUserBO()  # noqa: E501
+        if include_optional :
+            return MinimalUserBO(
+                id = 56, 
+                name = ''
+            )
+        else :
+            return MinimalUserBO(
+        )
+
     def testMinimalUserBO(self):
         """Test MinimalUserBO"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = MinimalUserBO()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

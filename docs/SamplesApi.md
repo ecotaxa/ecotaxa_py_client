@@ -20,13 +20,11 @@ Returns **information about the sample** corresponding to the given id.
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import samples_api
-from ecotaxa_cli_py.model.sample_model import SampleModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -48,24 +46,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = samples_api.SamplesApi(api_client)
-    sample_id = 1 # int | 
+    api_instance = ecotaxa_cli_py.SamplesApi(api_client)
+    sample_id = 56 # int | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Sample Query
         api_response = api_instance.sample_query(sample_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ApiException as e:
         print("Exception when calling SamplesApi->sample_query: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_id** | **int**|  |
+ **sample_id** | **int**|  | 
 
 ### Return type
 
@@ -80,9 +76,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -91,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sample_set_get_stats**
-> [SampleTaxoStatsModel] sample_set_get_stats()
+> list[SampleTaxoStatsModel] sample_set_get_stats(sample_ids=sample_ids)
 
 Sample Set Get Stats
 
@@ -100,13 +94,11 @@ Returns **classification statistics** for the given set of samples.  EXPECT A SL
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import samples_api
-from ecotaxa_cli_py.model.sample_taxo_stats_model import SampleTaxoStatsModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -128,29 +120,26 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = samples_api.SamplesApi(api_client)
-    sample_ids = "15,5" # str | String containing the list of one or more sample ids separated by non-num char. (optional)
+    api_instance = ecotaxa_cli_py.SamplesApi(api_client)
+    sample_ids = '15,5' # str | String containing the list of one or more sample ids separated by non-num char. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Sample Set Get Stats
         api_response = api_instance.sample_set_get_stats(sample_ids=sample_ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ApiException as e:
         print("Exception when calling SamplesApi->sample_set_get_stats: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. | [optional]
+ **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. | [optional] 
 
 ### Return type
 
-[**[SampleTaxoStatsModel]**](SampleTaxoStatsModel.md)
+[**list[SampleTaxoStatsModel]**](SampleTaxoStatsModel.md)
 
 ### Authorization
 
@@ -161,9 +150,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -172,7 +159,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **samples_search**
-> [SampleModel] samples_search()
+> list[SampleModel] samples_search(project_ids=project_ids, id_pattern=id_pattern)
 
 Samples Search
 
@@ -181,13 +168,11 @@ Samples Search
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import samples_api
-from ecotaxa_cli_py.model.sample_model import SampleModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -209,31 +194,28 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = samples_api.SamplesApi(api_client)
-    project_ids = "1,55" # str | String containing the list of one or more project id separated by non-num char. (optional)
-    id_pattern = "*" # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive. (optional)
+    api_instance = ecotaxa_cli_py.SamplesApi(api_client)
+    project_ids = '1,55' # str | String containing the list of one or more project id separated by non-num char. (optional)
+id_pattern = '*' # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Samples Search
         api_response = api_instance.samples_search(project_ids=project_ids, id_pattern=id_pattern)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ApiException as e:
         print("Exception when calling SamplesApi->samples_search: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional]
- **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. | [optional]
+ **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional] 
+ **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. | [optional] 
 
 ### Return type
 
-[**[SampleModel]**](SampleModel.md)
+[**list[SampleModel]**](SampleModel.md)
 
 ### Authorization
 
@@ -244,9 +226,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -264,13 +244,11 @@ Do the required **update for each sample in the set.**   Any non-null field in t
 ### Example
 
 * OAuth Authentication (BearerOrCookieAuth):
-
 ```python
+from __future__ import print_function
 import time
 import ecotaxa_cli_py
-from ecotaxa_cli_py.api import samples_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
+from ecotaxa_cli_py.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -292,27 +270,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = samples_api.SamplesApi(api_client)
-    bulk_update_req = BulkUpdateReq(
-        target_ids=[1,5,290],
-        updates=[{"ucol":"sub_part","uval":"2"}],
-    ) # BulkUpdateReq | 
+    api_instance = ecotaxa_cli_py.SamplesApi(api_client)
+    bulk_update_req = ecotaxa_cli_py.BulkUpdateReq() # BulkUpdateReq | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update Samples
         api_response = api_instance.update_samples(bulk_update_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ApiException as e:
         print("Exception when calling SamplesApi->update_samples: %s\n" % e)
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
+ **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  | 
 
 ### Return type
 
@@ -327,9 +300,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |

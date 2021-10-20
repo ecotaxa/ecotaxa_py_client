@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.object_header_model import ObjectHeaderModel
-
+from ecotaxa_cli_py.models.object_header_model import ObjectHeaderModel  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestObjectHeaderModel(unittest.TestCase):
     """ObjectHeaderModel unit test stubs"""
@@ -24,12 +28,48 @@ class TestObjectHeaderModel(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ObjectHeaderModel
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.object_header_model.ObjectHeaderModel()  # noqa: E501
+        if include_optional :
+            return ObjectHeaderModel(
+                objid = 56, 
+                acquisid = 56, 
+                orig_id = '', 
+                objdate = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                objtime = '', 
+                latitude = 1.337, 
+                longitude = 1.337, 
+                depth_min = 1.337, 
+                depth_max = 1.337, 
+                sunpos = '', 
+                classif_id = 56, 
+                classif_qual = '', 
+                classif_who = 56, 
+                classif_when = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                classif_auto_id = 56, 
+                classif_auto_score = 1.337, 
+                classif_auto_when = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                classif_crossvalidation_id = 56, 
+                complement_info = '', 
+                similarity = 1.337, 
+                random_value = 56, 
+                object_link = ''
+            )
+        else :
+            return ObjectHeaderModel(
+                objid = 56,
+                acquisid = 56,
+                orig_id = '',
+        )
+
     def testObjectHeaderModel(self):
         """Test ObjectHeaderModel"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = ObjectHeaderModel()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

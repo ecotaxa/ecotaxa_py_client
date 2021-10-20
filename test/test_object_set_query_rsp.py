@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.object_set_query_rsp import ObjectSetQueryRsp
-
+from ecotaxa_cli_py.models.object_set_query_rsp import ObjectSetQueryRsp  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestObjectSetQueryRsp(unittest.TestCase):
     """ObjectSetQueryRsp unit test stubs"""
@@ -24,12 +28,41 @@ class TestObjectSetQueryRsp(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ObjectSetQueryRsp
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.object_set_query_rsp.ObjectSetQueryRsp()  # noqa: E501
+        if include_optional :
+            return ObjectSetQueryRsp(
+                object_ids = [
+                    56
+                    ], 
+                acquisition_ids = [
+                    56
+                    ], 
+                sample_ids = [
+                    56
+                    ], 
+                project_ids = [
+                    56
+                    ], 
+                details = [
+                    [
+                        null
+                        ]
+                    ], 
+                total_ids = 56
+            )
+        else :
+            return ObjectSetQueryRsp(
+        )
+
     def testObjectSetQueryRsp(self):
         """Test ObjectSetQueryRsp"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = ObjectSetQueryRsp()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

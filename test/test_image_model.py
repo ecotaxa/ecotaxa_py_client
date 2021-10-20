@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,12 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.image_model import ImageModel
-
+from ecotaxa_cli_py.models.image_model import ImageModel  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestImageModel(unittest.TestCase):
     """ImageModel unit test stubs"""
@@ -24,12 +28,39 @@ class TestImageModel(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ImageModel
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.image_model.ImageModel()  # noqa: E501
+        if include_optional :
+            return ImageModel(
+                imgid = 56, 
+                objid = 56, 
+                imgrank = 56, 
+                file_name = '', 
+                orig_file_name = '', 
+                width = 56, 
+                height = 56, 
+                thumb_file_name = '', 
+                thumb_width = 56, 
+                thumb_height = 56
+            )
+        else :
+            return ImageModel(
+                imgid = 56,
+                imgrank = 56,
+                file_name = '',
+                orig_file_name = '',
+                width = 56,
+                height = 56,
+        )
+
     def testImageModel(self):
         """Test ImageModel"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = ImageModel()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

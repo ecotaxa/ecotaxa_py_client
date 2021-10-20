@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # flake8: noqa
 
 """
@@ -10,18 +12,87 @@
 """
 
 
-__version__ = "1.0.1"
+from __future__ import absolute_import
+
+__version__ = "1.0.2"
+
+# import apis into sdk package
+from ecotaxa_cli_py.api.files_api import FilesApi
+from ecotaxa_cli_py.api.taxonomy_tree_api import TaxonomyTreeApi
+from ecotaxa_cli_py.api.wip_api import WIPApi
+from ecotaxa_cli_py.api.acquisitions_api import AcquisitionsApi
+from ecotaxa_cli_py.api.authentification_api import AuthentificationApi
+from ecotaxa_cli_py.api.collections_api import CollectionsApi
+from ecotaxa_cli_py.api.instrument_api import InstrumentApi
+from ecotaxa_cli_py.api.jobs_api import JobsApi
+from ecotaxa_cli_py.api.misc_api import MiscApi
+from ecotaxa_cli_py.api.object_api import ObjectApi
+from ecotaxa_cli_py.api.objects_api import ObjectsApi
+from ecotaxa_cli_py.api.processes_api import ProcessesApi
+from ecotaxa_cli_py.api.projects_api import ProjectsApi
+from ecotaxa_cli_py.api.samples_api import SamplesApi
+from ecotaxa_cli_py.api.users_api import UsersApi
 
 # import ApiClient
 from ecotaxa_cli_py.api_client import ApiClient
-
-# import Configuration
 from ecotaxa_cli_py.configuration import Configuration
-
-# import exceptions
 from ecotaxa_cli_py.exceptions import OpenApiException
-from ecotaxa_cli_py.exceptions import ApiAttributeError
 from ecotaxa_cli_py.exceptions import ApiTypeError
 from ecotaxa_cli_py.exceptions import ApiValueError
 from ecotaxa_cli_py.exceptions import ApiKeyError
+from ecotaxa_cli_py.exceptions import ApiAttributeError
 from ecotaxa_cli_py.exceptions import ApiException
+# import models into sdk package
+from ecotaxa_cli_py.models.acquisition_model import AcquisitionModel
+from ecotaxa_cli_py.models.body_export_object_set import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_cli_py.models.bulk_update_req import BulkUpdateReq
+from ecotaxa_cli_py.models.classify_auto_req import ClassifyAutoReq
+from ecotaxa_cli_py.models.classify_req import ClassifyReq
+from ecotaxa_cli_py.models.collection_model import CollectionModel
+from ecotaxa_cli_py.models.constants import Constants
+from ecotaxa_cli_py.models.create_collection_req import CreateCollectionReq
+from ecotaxa_cli_py.models.create_project_req import CreateProjectReq
+from ecotaxa_cli_py.models.directory_entry_model import DirectoryEntryModel
+from ecotaxa_cli_py.models.directory_model import DirectoryModel
+from ecotaxa_cli_py.models.emo_dnet_export_rsp import EMODnetExportRsp
+from ecotaxa_cli_py.models.export_req import ExportReq
+from ecotaxa_cli_py.models.export_rsp import ExportRsp
+from ecotaxa_cli_py.models.export_type_enum import ExportTypeEnum
+from ecotaxa_cli_py.models.group_definitions import GroupDefinitions
+from ecotaxa_cli_py.models.http_validation_error import HTTPValidationError
+from ecotaxa_cli_py.models.historical_classification import HistoricalClassification
+from ecotaxa_cli_py.models.historical_last_classif import HistoricalLastClassif
+from ecotaxa_cli_py.models.image_model import ImageModel
+from ecotaxa_cli_py.models.import_req import ImportReq
+from ecotaxa_cli_py.models.import_rsp import ImportRsp
+from ecotaxa_cli_py.models.job_model import JobModel
+from ecotaxa_cli_py.models.limit_methods import LimitMethods
+from ecotaxa_cli_py.models.login_req import LoginReq
+from ecotaxa_cli_py.models.merge_rsp import MergeRsp
+from ecotaxa_cli_py.models.minimal_user_bo import MinimalUserBO
+from ecotaxa_cli_py.models.object_header_model import ObjectHeaderModel
+from ecotaxa_cli_py.models.object_model import ObjectModel
+from ecotaxa_cli_py.models.object_set_query_rsp import ObjectSetQueryRsp
+from ecotaxa_cli_py.models.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
+from ecotaxa_cli_py.models.object_set_summary_rsp import ObjectSetSummaryRsp
+from ecotaxa_cli_py.models.process_model import ProcessModel
+from ecotaxa_cli_py.models.project_filters import ProjectFilters
+from ecotaxa_cli_py.models.project_model import ProjectModel
+from ecotaxa_cli_py.models.project_summary_model import ProjectSummaryModel
+from ecotaxa_cli_py.models.project_taxo_stats_model import ProjectTaxoStatsModel
+from ecotaxa_cli_py.models.project_user_stats_model import ProjectUserStatsModel
+from ecotaxa_cli_py.models.sample_model import SampleModel
+from ecotaxa_cli_py.models.sample_taxo_stats_model import SampleTaxoStatsModel
+from ecotaxa_cli_py.models.simple_import_req import SimpleImportReq
+from ecotaxa_cli_py.models.simple_import_rsp import SimpleImportRsp
+from ecotaxa_cli_py.models.subset_req import SubsetReq
+from ecotaxa_cli_py.models.subset_rsp import SubsetRsp
+from ecotaxa_cli_py.models.taxa_search_rsp import TaxaSearchRsp
+from ecotaxa_cli_py.models.taxon_model import TaxonModel
+from ecotaxa_cli_py.models.taxon_usage_model import TaxonUsageModel
+from ecotaxa_cli_py.models.taxonomy_tree_status import TaxonomyTreeStatus
+from ecotaxa_cli_py.models.user_activity import UserActivity
+from ecotaxa_cli_py.models.user_model import UserModel
+from ecotaxa_cli_py.models.user_model_with_rights import UserModelWithRights
+from ecotaxa_cli_py.models.validation_error import ValidationError
+

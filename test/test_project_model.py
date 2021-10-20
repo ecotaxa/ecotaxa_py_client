@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     EcoTaxa
 
@@ -8,14 +10,14 @@
 """
 
 
-import sys
+from __future__ import absolute_import
+
 import unittest
+import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.model.user_model import UserModel
-globals()['UserModel'] = UserModel
-from ecotaxa_cli_py.model.project_model import ProjectModel
-
+from ecotaxa_cli_py.models.project_model import ProjectModel  # noqa: E501
+from ecotaxa_cli_py.rest import ApiException
 
 class TestProjectModel(unittest.TestCase):
     """ProjectModel unit test stubs"""
@@ -26,12 +28,102 @@ class TestProjectModel(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ProjectModel
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = ecotaxa_cli_py.models.project_model.ProjectModel()  # noqa: E501
+        if include_optional :
+            return ProjectModel(
+                obj_free_cols = {"area":"n01","esd":"n02"}, 
+                sample_free_cols = {"barcode":"t01"}, 
+                acquisition_free_cols = {"flash_delay":"t01"}, 
+                process_free_cols = {"nb_images":"t01"}, 
+                init_classif_list = [5,11493,11498,11509], 
+                managers = [
+                    ecotaxa_cli_py.models.user_model.UserModel(
+                        id = 1, 
+                        email = 'user@email.com', 
+                        name = 'userName', 
+                        organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
+                        active = True, 
+                        country = 'France', 
+                        usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        usercreationreason = 'Analysis of size and shapes of plastic particles', )
+                    ], 
+                annotators = [
+                    ecotaxa_cli_py.models.user_model.UserModel(
+                        id = 1, 
+                        email = 'user@email.com', 
+                        name = 'userName', 
+                        organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
+                        active = True, 
+                        country = 'France', 
+                        usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        usercreationreason = 'Analysis of size and shapes of plastic particles', )
+                    ], 
+                viewers = [
+                    ecotaxa_cli_py.models.user_model.UserModel(
+                        id = 1, 
+                        email = 'user@email.com', 
+                        name = 'userName', 
+                        organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
+                        active = True, 
+                        country = 'France', 
+                        usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        usercreationreason = 'Analysis of size and shapes of plastic particles', )
+                    ], 
+                instrument = 'zooscan', 
+                contact = None, 
+                highest_right = '', 
+                license = '', 
+                projid = 4824, 
+                title = 'MyProject', 
+                visible = False, 
+                status = 'Annotate', 
+                objcount = 32292.0, 
+                pctvalidated = 0.015483711135885049, 
+                pctclassified = 100.0, 
+                classifsettings = 'baseproject=1602
+critvar=%area,angle,area,area_exc,bx,by,cdexc,centroids,circ.,circex,convarea,convperim,cv,elongation,esd,fcons,feret,feretareaexc,fractal,height,histcum1,histcum2,histcum3,intden,kurt,lat_end,lon_end,major,max,mean,meanpos,median,min,minor,mode,nb1,nb2,perim.,perimareaexc,perimferet,perimmajor,range,skelarea,skew,slope,sr,stddev,symetrieh,symetriehc,symetriev,symetrievc,thickr,width,x,xm,xstart,y,ym,ystart
+posttaxomapping=
+seltaxo=45074,84963,61990,13333,82399,61973,62005,25930,25932,61996,78426,81941,11514,85076,85061,30815,85185,92230,85079,84993,25824,85115,85004,26525,25944,11509,26524,92112,84976,25942,84980,85078,78418,84977,85060,61993,61991,85069,81871,74144,11758,72431,13381,11518,5,18758,85117,92042,84968,84997,87826,92236,92237,92039,84989,85193,83281,78412,92239,71617,81977,45071,12865,85044,81940,85067,12908,85116,56693,85008,92139,92068
+usemodel_foldername=testln1', 
+                classiffieldlist = 'depth_min=depth_min
+depth_max=depth_max
+area=area [pixel]
+mean=mean [0-255]
+fractal=fractal
+major=major [pixel]
+symetrieh=symetrieh
+circ.=circ
+feret = Feret [pixel]', 
+                popoverfieldlist = 'depth_min=depth_min
+depth_max=depth_max
+area=area [pixel]
+mean=mean [0-255]
+fractal=fractal
+major=major [pixel]
+symetrieh=symetrieh
+circ.=circ
+feret = Feret [pixel]', 
+                comments = '', 
+                projtype = '', 
+                rf_models_used = '', 
+                cnn_network_id = 'SCN_zooscan_group1'
+            )
+        else :
+            return ProjectModel(
+                license = '',
+                projid = 4824,
+                title = 'MyProject',
+        )
+
     def testProjectModel(self):
         """Test ProjectModel"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = ProjectModel()  # noqa: E501
-        pass
-
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()
