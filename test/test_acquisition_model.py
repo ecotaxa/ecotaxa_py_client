@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.acquisition_model import AcquisitionModel  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
+
 
 class TestAcquisitionModel(unittest.TestCase):
     """AcquisitionModel unit test stubs"""
@@ -28,31 +24,12 @@ class TestAcquisitionModel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AcquisitionModel
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.acquisition_model.AcquisitionModel()  # noqa: E501
-        if include_optional :
-            return AcquisitionModel(
-                acquisid = 144, 
-                acq_sample_id = 1039, 
-                orig_id = 'uvp5_station1_cast1b', 
-                instrument = 'uvp5', 
-                free_columns = {"bottomdepth":322,"ship":"suroit"}
-            )
-        else :
-            return AcquisitionModel(
-                acquisid = 144,
-                acq_sample_id = 1039,
-                orig_id = 'uvp5_station1_cast1b',
-        )
-
     def testAcquisitionModel(self):
         """Test AcquisitionModel"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AcquisitionModel()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

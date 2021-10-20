@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.object_model import ObjectModel  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.image_model import ImageModel
+globals()['ImageModel'] = ImageModel
+from ecotaxa_cli_py.model.object_model import ObjectModel
+
 
 class TestObjectModel(unittest.TestCase):
     """ObjectModel unit test stubs"""
@@ -28,66 +26,12 @@ class TestObjectModel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ObjectModel
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.object_model.ObjectModel()  # noqa: E501
-        if include_optional :
-            return ObjectModel(
-                objid = 56, 
-                acquisid = 56, 
-                orig_id = '', 
-                objdate = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
-                objtime = '', 
-                latitude = 1.337, 
-                longitude = 1.337, 
-                depth_min = 1.337, 
-                depth_max = 1.337, 
-                sunpos = '', 
-                classif_id = 56, 
-                classif_qual = '', 
-                classif_who = 56, 
-                classif_when = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                classif_auto_id = 56, 
-                classif_auto_score = 1.337, 
-                classif_auto_when = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                classif_crossvalidation_id = 56, 
-                complement_info = '', 
-                similarity = 1.337, 
-                random_value = 56, 
-                object_link = '', 
-                sample_id = 56, 
-                project_id = 56, 
-                images = [
-                    ecotaxa_cli_py.models.image_model.ImageModel(
-                        imgid = 56, 
-                        objid = 56, 
-                        imgrank = 56, 
-                        file_name = '', 
-                        orig_file_name = '', 
-                        width = 56, 
-                        height = 56, 
-                        thumb_file_name = '', 
-                        thumb_width = 56, 
-                        thumb_height = 56, )
-                    ], 
-                free_columns = ecotaxa_cli_py.models.free_columns_from_object_mapping_in_project.Free columns from object mapping in project()
-            )
-        else :
-            return ObjectModel(
-                objid = 56,
-                acquisid = 56,
-                orig_id = '',
-                sample_id = 56,
-                project_id = 56,
-        )
-
     def testObjectModel(self):
         """Test ObjectModel"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ObjectModel()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

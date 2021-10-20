@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.project_filters import ProjectFilters  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.project_filters import ProjectFilters
+
 
 class TestProjectFilters(unittest.TestCase):
     """ProjectFilters unit test stubs"""
@@ -28,50 +24,12 @@ class TestProjectFilters(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ProjectFilters
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.project_filters.ProjectFilters()  # noqa: E501
-        if include_optional :
-            return ProjectFilters(
-                taxo = '', 
-                taxochild = '', 
-                statusfilter = '', 
-                map_n = '', 
-                map_w = '', 
-                map_e = '', 
-                map_s = '', 
-                depthmin = '', 
-                depthmax = '', 
-                samples = '', 
-                instrum = '', 
-                daytime = '', 
-                month = '', 
-                fromdate = '', 
-                todate = '', 
-                fromtime = '', 
-                totime = '', 
-                inverttime = '', 
-                validfromdate = '', 
-                validtodate = '', 
-                freenum = '', 
-                freenumst = '', 
-                freenumend = '', 
-                freetxt = '', 
-                freetxtval = '', 
-                filt_annot = '', 
-                filt_last_annot = ''
-            )
-        else :
-            return ProjectFilters(
-        )
-
     def testProjectFilters(self):
         """Test ProjectFilters"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ProjectFilters()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

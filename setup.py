@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -13,7 +11,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "ecotaxa-cli-py"
-VERSION = "1.0.7"
+VERSION = "1.0.8"
 # To install the library, run the following
 #
 # python setup.py install
@@ -21,7 +19,10 @@ VERSION = "1.0.7"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.25.3", "six >= 1.10", "python-dateutil"]
+REQUIRES = [
+  "urllib3 >= 1.25.3",
+  "python-dateutil",
+]
 
 setup(
     name=NAME,
@@ -31,6 +32,7 @@ setup(
     author_email="team@openapitools.org",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "EcoTaxa"],
+    python_requires=">=3.6",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.export_req import ExportReq  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.export_req import ExportReq
+
 
 class TestExportReq(unittest.TestCase):
     """ExportReq unit test stubs"""
@@ -28,46 +24,12 @@ class TestExportReq(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ExportReq
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.export_req.ExportReq()  # noqa: E501
-        if include_optional :
-            return ExportReq(
-                project_id = 56, 
-                exp_type = None, 
-                use_latin1 = True, 
-                tsv_entities = '', 
-                split_by = '', 
-                coma_as_separator = True, 
-                format_dates_times = True, 
-                with_images = True, 
-                with_internal_ids = True, 
-                only_first_image = True, 
-                sum_subtotal = '', 
-                out_to_ftp = True
-            )
-        else :
-            return ExportReq(
-                project_id = 56,
-                exp_type = None,
-                tsv_entities = '',
-                split_by = '',
-                coma_as_separator = True,
-                format_dates_times = True,
-                with_images = True,
-                with_internal_ids = True,
-                only_first_image = True,
-                sum_subtotal = '',
-                out_to_ftp = True,
-        )
-
     def testExportReq(self):
         """Test ExportReq"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ExportReq()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

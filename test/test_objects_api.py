@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,96 +8,93 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.objects_api import ObjectsApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestObjectsApi(unittest.TestCase):
     """ObjectsApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.objects_api.ObjectsApi()  # noqa: E501
+        self.api = ObjectsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_classify_auto_object_set_object_set_classify_auto_post(self):
-        """Test case for classify_auto_object_set_object_set_classify_auto_post
+    def test_classify_auto_object_set(self):
+        """Test case for classify_auto_object_set
 
         Classify Auto Object Set  # noqa: E501
         """
         pass
 
-    def test_classify_object_set_object_set_classify_post(self):
-        """Test case for classify_object_set_object_set_classify_post
+    def test_classify_object_set(self):
+        """Test case for classify_object_set
 
         Classify Object Set  # noqa: E501
         """
         pass
 
-    def test_erase_object_set_object_set_delete(self):
-        """Test case for erase_object_set_object_set_delete
+    def test_erase_object_set(self):
+        """Test case for erase_object_set
 
         Erase Object Set  # noqa: E501
         """
         pass
 
-    def test_export_object_set_object_set_export_post(self):
-        """Test case for export_object_set_object_set_export_post
+    def test_export_object_set(self):
+        """Test case for export_object_set
 
         Export Object Set  # noqa: E501
         """
         pass
 
-    def test_get_object_set_object_set_project_id_query_post(self):
-        """Test case for get_object_set_object_set_project_id_query_post
+    def test_get_object_set(self):
+        """Test case for get_object_set
 
         Get Object Set  # noqa: E501
         """
         pass
 
-    def test_get_object_set_summary_object_set_project_id_summary_post(self):
-        """Test case for get_object_set_summary_object_set_project_id_summary_post
+    def test_get_object_set_summary(self):
+        """Test case for get_object_set_summary
 
         Get Object Set Summary  # noqa: E501
         """
         pass
 
-    def test_query_object_set_parents_object_set_parents_post(self):
-        """Test case for query_object_set_parents_object_set_parents_post
+    def test_query_object_set_parents(self):
+        """Test case for query_object_set_parents
 
         Query Object Set Parents  # noqa: E501
         """
         pass
 
-    def test_reclassify_object_set_object_set_project_id_reclassify_post(self):
-        """Test case for reclassify_object_set_object_set_project_id_reclassify_post
+    def test_reclassify_object_set(self):
+        """Test case for reclassify_object_set
 
         Reclassify Object Set  # noqa: E501
         """
         pass
 
-    def test_reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(self):
-        """Test case for reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post
+    def test_reset_object_set_to_predicted(self):
+        """Test case for reset_object_set_to_predicted
 
         Reset Object Set To Predicted  # noqa: E501
         """
         pass
 
-    def test_revert_object_set_to_history_object_set_project_id_revert_to_history_post(self):
-        """Test case for revert_object_set_to_history_object_set_project_id_revert_to_history_post
+    def test_revert_object_set_to_history(self):
+        """Test case for revert_object_set_to_history
 
         Revert Object Set To History  # noqa: E501
         """
         pass
 
-    def test_update_object_set_object_set_update_post(self):
-        """Test case for update_object_set_object_set_update_post
+    def test_update_object_set(self):
+        """Test case for update_object_set
 
         Update Object Set  # noqa: E501
         """

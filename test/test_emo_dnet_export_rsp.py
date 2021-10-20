@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.emo_dnet_export_rsp import EMODnetExportRsp  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.emo_dnet_export_rsp import EMODnetExportRsp
+
 
 class TestEMODnetExportRsp(unittest.TestCase):
     """EMODnetExportRsp unit test stubs"""
@@ -28,26 +24,12 @@ class TestEMODnetExportRsp(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test EMODnetExportRsp
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.emo_dnet_export_rsp.EMODnetExportRsp()  # noqa: E501
-        if include_optional :
-            return EMODnetExportRsp(
-                errors = [], 
-                warnings = [], 
-                job_id = 1
-            )
-        else :
-            return EMODnetExportRsp(
-        )
-
     def testEMODnetExportRsp(self):
         """Test EMODnetExportRsp"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = EMODnetExportRsp()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

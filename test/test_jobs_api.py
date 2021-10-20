@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,68 +8,65 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.jobs_api import JobsApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestJobsApi(unittest.TestCase):
     """JobsApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.jobs_api.JobsApi()  # noqa: E501
+        self.api = JobsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_erase_job_jobs_job_id_delete(self):
-        """Test case for erase_job_jobs_job_id_delete
+    def test_erase_job(self):
+        """Test case for erase_job
 
         Erase Job  # noqa: E501
         """
         pass
 
-    def test_get_job_file_jobs_job_id_file_get(self):
-        """Test case for get_job_file_jobs_job_id_file_get
+    def test_get_job_file(self):
+        """Test case for get_job_file
 
         Get Job File  # noqa: E501
         """
         pass
 
-    def test_get_job_jobs_job_id_get(self):
-        """Test case for get_job_jobs_job_id_get
+    def test_get_job(self):
+        """Test case for get_job
 
         Get Job  # noqa: E501
         """
         pass
 
-    def test_get_job_log_file_jobs_job_id_log_get(self):
-        """Test case for get_job_log_file_jobs_job_id_log_get
+    def test_get_job_log_file(self):
+        """Test case for get_job_log_file
 
         Get Job Log File  # noqa: E501
         """
         pass
 
-    def test_list_jobs_jobs_get(self):
-        """Test case for list_jobs_jobs_get
+    def test_list_jobs(self):
+        """Test case for list_jobs
 
         List Jobs  # noqa: E501
         """
         pass
 
-    def test_reply_job_question_jobs_job_id_answer_post(self):
-        """Test case for reply_job_question_jobs_job_id_answer_post
+    def test_reply_job_question(self):
+        """Test case for reply_job_question
 
         Reply Job Question  # noqa: E501
         """
         pass
 
-    def test_restart_job_jobs_job_id_restart_get(self):
-        """Test case for restart_job_jobs_job_id_restart_get
+    def test_restart_job(self):
+        """Test case for restart_job
 
         Restart Job  # noqa: E501
         """

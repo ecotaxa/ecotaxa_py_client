@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,40 +8,37 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.misc_api import MiscApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestMiscApi(unittest.TestCase):
     """MiscApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.misc_api.MiscApi()  # noqa: E501
+        self.api = MiscApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_do_nothing_noop_get(self):
-        """Test case for do_nothing_noop_get
+    def test_do_nothing(self):
+        """Test case for do_nothing
 
         Do Nothing  # noqa: E501
         """
         pass
 
-    def test_system_error_error_get(self):
-        """Test case for system_error_error_get
+    def test_system_error(self):
+        """Test case for system_error
 
         System Error  # noqa: E501
         """
         pass
 
-    def test_used_constants_constants_get(self):
-        """Test case for used_constants_constants_get
+    def test_used_constants(self):
+        """Test case for used_constants
 
         Used Constants  # noqa: E501
         """

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,26 +8,23 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.wip_api import WIPApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestWIPApi(unittest.TestCase):
     """WIPApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.wip_api.WIPApi()  # noqa: E501
+        self.api = WIPApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_system_status_status_get(self):
-        """Test case for system_status_status_get
+    def test_system_status(self):
+        """Test case for system_status
 
         System Status  # noqa: E501
         """

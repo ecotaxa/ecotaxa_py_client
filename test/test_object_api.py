@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,33 +8,30 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.object_api import ObjectApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestObjectApi(unittest.TestCase):
     """ObjectApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.object_api.ObjectApi()  # noqa: E501
+        self.api = ObjectApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_object_query_history_object_object_id_history_get(self):
-        """Test case for object_query_history_object_object_id_history_get
+    def test_object_query_history(self):
+        """Test case for object_query_history
 
         Object Query History  # noqa: E501
         """
         pass
 
-    def test_object_query_object_object_id_get(self):
-        """Test case for object_query_object_object_id_get
+    def test_object_query(self):
+        """Test case for object_query
 
         Object Query  # noqa: E501
         """

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,33 +8,30 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.processes_api import ProcessesApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestProcessesApi(unittest.TestCase):
     """ProcessesApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.processes_api.ProcessesApi()  # noqa: E501
+        self.api = ProcessesApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_process_query_process_process_id_get(self):
-        """Test case for process_query_process_process_id_get
+    def test_process_query(self):
+        """Test case for process_query
 
         Process Query  # noqa: E501
         """
         pass
 
-    def test_update_processes_process_set_update_post(self):
-        """Test case for update_processes_process_set_update_post
+    def test_update_processes(self):
+        """Test case for update_processes
 
         Update Processes  # noqa: E501
         """

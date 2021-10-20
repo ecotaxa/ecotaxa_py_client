@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,18 +8,23 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from ecotaxa_cli_py.api_client import ApiClient
-from ecotaxa_cli_py.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from ecotaxa_cli_py.api_client import ApiClient, Endpoint as _Endpoint
+from ecotaxa_cli_py.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from ecotaxa_cli_py.model.collection_model import CollectionModel
+from ecotaxa_cli_py.model.create_collection_req import CreateCollectionReq
+from ecotaxa_cli_py.model.emo_dnet_export_rsp import EMODnetExportRsp
+from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
 
 
 class CollectionsApi(object):
@@ -35,1126 +38,954 @@ class CollectionsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.collection_by_short_title_endpoint = _Endpoint(
+            settings={
+                'response_type': (CollectionModel,),
+                'auth': [],
+                'endpoint_path': '/collections/by_short_title',
+                'operation_id': 'collection_by_short_title',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                },
+                'location_map': {
+                    'q': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.collection_by_title_endpoint = _Endpoint(
+            settings={
+                'response_type': (CollectionModel,),
+                'auth': [],
+                'endpoint_path': '/collections/by_title',
+                'operation_id': 'collection_by_title',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                },
+                'location_map': {
+                    'q': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_collection_endpoint = _Endpoint(
+            settings={
+                'response_type': (int,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/create',
+                'operation_id': 'create_collection',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'create_collection_req',
+                ],
+                'required': [
+                    'create_collection_req',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'create_collection_req':
+                        (CreateCollectionReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'create_collection_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.emodnet_format_export_endpoint = _Endpoint(
+            settings={
+                'response_type': (EMODnetExportRsp,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/{collection_id}/export/emodnet',
+                'operation_id': 'emodnet_format_export',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'collection_id',
+                    'dry_run',
+                    'with_zeroes',
+                    'auto_morpho',
+                    'with_computations',
+                ],
+                'required': [
+                    'collection_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'collection_id':
+                        (int,),
+                    'dry_run':
+                        (bool,),
+                    'with_zeroes':
+                        (bool,),
+                    'auto_morpho':
+                        (bool,),
+                    'with_computations':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'collection_id': 'collection_id',
+                    'dry_run': 'dry_run',
+                    'with_zeroes': 'with_zeroes',
+                    'auto_morpho': 'auto_morpho',
+                    'with_computations': 'with_computations',
+                },
+                'location_map': {
+                    'collection_id': 'path',
+                    'dry_run': 'query',
+                    'with_zeroes': 'query',
+                    'auto_morpho': 'query',
+                    'with_computations': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.erase_collection_endpoint = _Endpoint(
+            settings={
+                'response_type': (int,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/{collection_id}',
+                'operation_id': 'erase_collection',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'collection_id',
+                ],
+                'required': [
+                    'collection_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'collection_id':
+                        (int,),
+                },
+                'attribute_map': {
+                    'collection_id': 'collection_id',
+                },
+                'location_map': {
+                    'collection_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_collection_endpoint = _Endpoint(
+            settings={
+                'response_type': (CollectionModel,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/{collection_id}',
+                'operation_id': 'get_collection',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'collection_id',
+                ],
+                'required': [
+                    'collection_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'collection_id':
+                        (int,),
+                },
+                'attribute_map': {
+                    'collection_id': 'collection_id',
+                },
+                'location_map': {
+                    'collection_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.search_collections_endpoint = _Endpoint(
+            settings={
+                'response_type': ([CollectionModel],),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/search',
+                'operation_id': 'search_collections',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'title',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'title':
+                        (str,),
+                },
+                'attribute_map': {
+                    'title': 'title',
+                },
+                'location_map': {
+                    'title': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.update_collection_endpoint = _Endpoint(
+            settings={
+                'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
+                'auth': [
+                    'BearerOrCookieAuth'
+                ],
+                'endpoint_path': '/collections/{collection_id}',
+                'operation_id': 'update_collection',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'collection_id',
+                    'collection_model',
+                ],
+                'required': [
+                    'collection_id',
+                    'collection_model',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'collection_id':
+                        (int,),
+                    'collection_model':
+                        (CollectionModel,),
+                },
+                'attribute_map': {
+                    'collection_id': 'collection_id',
+                },
+                'location_map': {
+                    'collection_id': 'path',
+                    'collection_model': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
 
-    def collection_by_short_title_collections_by_short_title_get(self, **kwargs):  # noqa: E501
+    def collection_by_short_title(
+        self,
+        **kwargs
+    ):
         """Collection By Short Title  # noqa: E501
 
         Return the **single collection with this short title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.collection_by_short_title_collections_by_short_title_get(async_req=True)
+        >>> thread = api.collection_by_short_title(async_req=True)
         >>> result = thread.get()
 
-        :param q: Search by **exact** short title
-        :type q: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: CollectionModel
+
+        Keyword Args:
+            q (str): Search by **exact** short title. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CollectionModel
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.collection_by_short_title_collections_by_short_title_get_with_http_info(**kwargs)  # noqa: E501
-
-    def collection_by_short_title_collections_by_short_title_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Collection By Short Title  # noqa: E501
-
-        Return the **single collection with this short title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.collection_by_short_title_collections_by_short_title_get_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param q: Search by **exact** short title
-        :type q: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(CollectionModel, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'q'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.collection_by_short_title_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method collection_by_short_title_collections_by_short_title_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        response_types_map = {
-            200: "CollectionModel",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/by_short_title', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def collection_by_title_collections_by_title_get(self, **kwargs):  # noqa: E501
+    def collection_by_title(
+        self,
+        **kwargs
+    ):
         """Collection By Title  # noqa: E501
 
         Return the **single collection with this title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.collection_by_title_collections_by_title_get(async_req=True)
+        >>> thread = api.collection_by_title(async_req=True)
         >>> result = thread.get()
 
-        :param q: Search by **exact** title
-        :type q: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: CollectionModel
+
+        Keyword Args:
+            q (str): Search by **exact** title. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CollectionModel
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.collection_by_title_collections_by_title_get_with_http_info(**kwargs)  # noqa: E501
-
-    def collection_by_title_collections_by_title_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Collection By Title  # noqa: E501
-
-        Return the **single collection with this title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.collection_by_title_collections_by_title_get_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param q: Search by **exact** title
-        :type q: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(CollectionModel, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'q'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.collection_by_title_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method collection_by_title_collections_by_title_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        response_types_map = {
-            200: "CollectionModel",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/by_title', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def create_collection_collections_create_post(self, create_collection_req, **kwargs):  # noqa: E501
+    def create_collection(
+        self,
+        create_collection_req,
+        **kwargs
+    ):
         """Create Collection  # noqa: E501
 
         **Create a collection** with at least one project inside.  Returns the created collection Id.  🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_collection_collections_create_post(create_collection_req, async_req=True)
+        >>> thread = api.create_collection(create_collection_req, async_req=True)
         >>> result = thread.get()
 
-        :param create_collection_req: (required)
-        :type create_collection_req: CreateCollectionReq
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: int
+        Args:
+            create_collection_req (CreateCollectionReq):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            int
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_collection_collections_create_post_with_http_info(create_collection_req, **kwargs)  # noqa: E501
-
-    def create_collection_collections_create_post_with_http_info(self, create_collection_req, **kwargs):  # noqa: E501
-        """Create Collection  # noqa: E501
-
-        **Create a collection** with at least one project inside.  Returns the created collection Id.  🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.create_collection_collections_create_post_with_http_info(create_collection_req, async_req=True)
-        >>> result = thread.get()
-
-        :param create_collection_req: (required)
-        :type create_collection_req: CreateCollectionReq
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(int, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'create_collection_req'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_collection_req'] = \
+            create_collection_req
+        return self.create_collection_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_collection_collections_create_post" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'create_collection_req' is set
-        if self.api_client.client_side_validation and ('create_collection_req' not in local_var_params or  # noqa: E501
-                                                        local_var_params['create_collection_req'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `create_collection_req` when calling `create_collection_collections_create_post`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'create_collection_req' in local_var_params:
-            body_params = local_var_params['create_collection_req']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "int",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/create', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def emodnet_format_export_collections_collection_id_export_emodnet_get(self, collection_id, **kwargs):  # noqa: E501
+    def emodnet_format_export(
+        self,
+        collection_id,
+        **kwargs
+    ):
         """Emodnet Format Export  # noqa: E501
 
         **Export the collection in EMODnet format**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, async_req=True)
+        >>> thread = api.emodnet_format_export(collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param collection_id: (required)
-        :type collection_id: int
-        :param dry_run: If set, then only a diagnostic of doability will be done.
-        :type dry_run: bool
-        :param with_zeroes: If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.
-        :type with_zeroes: bool
-        :param auto_morpho: If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.
-        :type auto_morpho: bool
-        :param with_computations: If set, then an attempt will be made to compute organisms concentrations and biovolumes.
-        :type with_computations: bool
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EMODnetExportRsp
+        Args:
+            collection_id (int):
+
+        Keyword Args:
+            dry_run (bool): If set, then only a diagnostic of doability will be done.. [optional]
+            with_zeroes (bool): If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.. [optional]
+            auto_morpho (bool): If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.. [optional]
+            with_computations (bool): If set, then an attempt will be made to compute organisms concentrations and biovolumes.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EMODnetExportRsp
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.emodnet_format_export_collections_collection_id_export_emodnet_get_with_http_info(collection_id, **kwargs)  # noqa: E501
-
-    def emodnet_format_export_collections_collection_id_export_emodnet_get_with_http_info(self, collection_id, **kwargs):  # noqa: E501
-        """Emodnet Format Export  # noqa: E501
-
-        **Export the collection in EMODnet format**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.emodnet_format_export_collections_collection_id_export_emodnet_get_with_http_info(collection_id, async_req=True)
-        >>> result = thread.get()
-
-        :param collection_id: (required)
-        :type collection_id: int
-        :param dry_run: If set, then only a diagnostic of doability will be done.
-        :type dry_run: bool
-        :param with_zeroes: If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.
-        :type with_zeroes: bool
-        :param auto_morpho: If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.
-        :type auto_morpho: bool
-        :param with_computations: If set, then an attempt will be made to compute organisms concentrations and biovolumes.
-        :type with_computations: bool
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EMODnetExportRsp, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'collection_id',
-            'dry_run',
-            'with_zeroes',
-            'auto_morpho',
-            'with_computations'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['collection_id'] = \
+            collection_id
+        return self.emodnet_format_export_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method emodnet_format_export_collections_collection_id_export_emodnet_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `emodnet_format_export_collections_collection_id_export_emodnet_get`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'collection_id' in local_var_params:
-            path_params['collection_id'] = local_var_params['collection_id']  # noqa: E501
-
-        query_params = []
-        if 'dry_run' in local_var_params and local_var_params['dry_run'] is not None:  # noqa: E501
-            query_params.append(('dry_run', local_var_params['dry_run']))  # noqa: E501
-        if 'with_zeroes' in local_var_params and local_var_params['with_zeroes'] is not None:  # noqa: E501
-            query_params.append(('with_zeroes', local_var_params['with_zeroes']))  # noqa: E501
-        if 'auto_morpho' in local_var_params and local_var_params['auto_morpho'] is not None:  # noqa: E501
-            query_params.append(('auto_morpho', local_var_params['auto_morpho']))  # noqa: E501
-        if 'with_computations' in local_var_params and local_var_params['with_computations'] is not None:  # noqa: E501
-            query_params.append(('with_computations', local_var_params['with_computations']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "EMODnetExportRsp",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/{collection_id}/export/emodnet', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def erase_collection_collections_collection_id_delete(self, collection_id, **kwargs):  # noqa: E501
+    def erase_collection(
+        self,
+        collection_id,
+        **kwargs
+    ):
         """Erase Collection  # noqa: E501
 
         **Delete the collection**,   i.e. the precious fields, as the projects are just linked-at from the collection.  🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_collection_collections_collection_id_delete(collection_id, async_req=True)
+        >>> thread = api.erase_collection(collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param collection_id: (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: int
+        Args:
+            collection_id (int):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            int
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.erase_collection_collections_collection_id_delete_with_http_info(collection_id, **kwargs)  # noqa: E501
-
-    def erase_collection_collections_collection_id_delete_with_http_info(self, collection_id, **kwargs):  # noqa: E501
-        """Erase Collection  # noqa: E501
-
-        **Delete the collection**,   i.e. the precious fields, as the projects are just linked-at from the collection.  🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.erase_collection_collections_collection_id_delete_with_http_info(collection_id, async_req=True)
-        >>> result = thread.get()
-
-        :param collection_id: (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(int, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'collection_id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['collection_id'] = \
+            collection_id
+        return self.erase_collection_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method erase_collection_collections_collection_id_delete" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `erase_collection_collections_collection_id_delete`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'collection_id' in local_var_params:
-            path_params['collection_id'] = local_var_params['collection_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "int",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/{collection_id}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def get_collection_collections_collection_id_get(self, collection_id, **kwargs):  # noqa: E501
+    def get_collection(
+        self,
+        collection_id,
+        **kwargs
+    ):
         """Get Collection  # noqa: E501
 
         Returns **information about the collection** corresponding to the given id.   🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_collection_collections_collection_id_get(collection_id, async_req=True)
+        >>> thread = api.get_collection(collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param collection_id: (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: CollectionModel
+        Args:
+            collection_id (int):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CollectionModel
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_collection_collections_collection_id_get_with_http_info(collection_id, **kwargs)  # noqa: E501
-
-    def get_collection_collections_collection_id_get_with_http_info(self, collection_id, **kwargs):  # noqa: E501
-        """Get Collection  # noqa: E501
-
-        Returns **information about the collection** corresponding to the given id.   🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_collection_collections_collection_id_get_with_http_info(collection_id, async_req=True)
-        >>> result = thread.get()
-
-        :param collection_id: (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(CollectionModel, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'collection_id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['collection_id'] = \
+            collection_id
+        return self.get_collection_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_collection_collections_collection_id_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `get_collection_collections_collection_id_get`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'collection_id' in local_var_params:
-            path_params['collection_id'] = local_var_params['collection_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "CollectionModel",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/{collection_id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def search_collections_collections_search_get(self, **kwargs):  # noqa: E501
+    def search_collections(
+        self,
+        **kwargs
+    ):
         """Search Collections  # noqa: E501
 
         **Search for collections.**  🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_collections_collections_search_get(async_req=True)
+        >>> thread = api.search_collections(async_req=True)
         >>> result = thread.get()
 
-        :param title: Search by title, use % for searching with 'any char'.
-        :type title: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: list[CollectionModel]
+
+        Keyword Args:
+            title (str): Search by title, use % for searching with 'any char'.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [CollectionModel]
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.search_collections_collections_search_get_with_http_info(**kwargs)  # noqa: E501
-
-    def search_collections_collections_search_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Search Collections  # noqa: E501
-
-        **Search for collections.**  🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.search_collections_collections_search_get_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param title: Search by title, use % for searching with 'any char'.
-        :type title: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(list[CollectionModel], status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'title'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.search_collections_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method search_collections_collections_search_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'title' in local_var_params and local_var_params['title'] is not None:  # noqa: E501
-            query_params.append(('title', local_var_params['title']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "list[CollectionModel]",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/search', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
-    def update_collection_collections_collection_id_put(self, collection_id, collection_model, **kwargs):  # noqa: E501
+    def update_collection(
+        self,
+        collection_id,
+        collection_model,
+        **kwargs
+    ):
         """Update Collection  # noqa: E501
 
         **Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   🔒 *For admins only.*  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_collection_collections_collection_id_put(collection_id, collection_model, async_req=True)
+        >>> thread = api.update_collection(collection_id, collection_model, async_req=True)
         >>> result = thread.get()
 
-        :param collection_id: (required)
-        :type collection_id: int
-        :param collection_model: (required)
-        :type collection_model: CollectionModel
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: object
+        Args:
+            collection_id (int):
+            collection_model (CollectionModel):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            bool, date, datetime, dict, float, int, list, str, none_type
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.update_collection_collections_collection_id_put_with_http_info(collection_id, collection_model, **kwargs)  # noqa: E501
-
-    def update_collection_collections_collection_id_put_with_http_info(self, collection_id, collection_model, **kwargs):  # noqa: E501
-        """Update Collection  # noqa: E501
-
-        **Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   🔒 *For admins only.*  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.update_collection_collections_collection_id_put_with_http_info(collection_id, collection_model, async_req=True)
-        >>> result = thread.get()
-
-        :param collection_id: (required)
-        :type collection_id: int
-        :param collection_model: (required)
-        :type collection_model: CollectionModel
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'collection_id',
-            'collection_model'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['collection_id'] = \
+            collection_id
+        kwargs['collection_model'] = \
+            collection_model
+        return self.update_collection_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_collection_collections_collection_id_put" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `update_collection_collections_collection_id_put`")  # noqa: E501
-        # verify the required parameter 'collection_model' is set
-        if self.api_client.client_side_validation and ('collection_model' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_model'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_model` when calling `update_collection_collections_collection_id_put`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'collection_id' in local_var_params:
-            path_params['collection_id'] = local_var_params['collection_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'collection_model' in local_var_params:
-            body_params = local_var_params['collection_model']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BearerOrCookieAuth']  # noqa: E501
-
-        response_types_map = {
-            200: "object",
-            422: "HTTPValidationError",
-        }
-
-        return self.api_client.call_api(
-            '/collections/{collection_id}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))

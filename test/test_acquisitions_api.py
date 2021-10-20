@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,40 +8,37 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.acquisitions_api import AcquisitionsApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestAcquisitionsApi(unittest.TestCase):
     """AcquisitionsApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.acquisitions_api.AcquisitionsApi()  # noqa: E501
+        self.api = AcquisitionsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_acquisition_query_acquisition_acquisition_id_get(self):
-        """Test case for acquisition_query_acquisition_acquisition_id_get
+    def test_acquisition_query(self):
+        """Test case for acquisition_query
 
         Acquisition Query  # noqa: E501
         """
         pass
 
-    def test_acquisitions_search_acquisitions_search_get(self):
-        """Test case for acquisitions_search_acquisitions_search_get
+    def test_acquisitions_search(self):
+        """Test case for acquisitions_search
 
         Acquisitions Search  # noqa: E501
         """
         pass
 
-    def test_update_acquisitions_acquisition_set_update_post(self):
-        """Test case for update_acquisitions_acquisition_set_update_post
+    def test_update_acquisitions(self):
+        """Test case for update_acquisitions
 
         Update Acquisitions  # noqa: E501
         """

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.user_model import UserModel  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.user_model import UserModel
+
 
 class TestUserModel(unittest.TestCase):
     """UserModel unit test stubs"""
@@ -28,34 +24,12 @@ class TestUserModel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test UserModel
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.user_model.UserModel()  # noqa: E501
-        if include_optional :
-            return UserModel(
-                id = 1, 
-                email = 'user@email.com', 
-                name = 'userName', 
-                organisation = 'Oceanographic Laboratory of Villefranche sur Mer - LOV', 
-                active = True, 
-                country = 'France', 
-                usercreationdate = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                usercreationreason = 'Analysis of size and shapes of plastic particles'
-            )
-        else :
-            return UserModel(
-                id = 1,
-                email = 'user@email.com',
-                name = 'userName',
-        )
-
     def testUserModel(self):
         """Test UserModel"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = UserModel()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

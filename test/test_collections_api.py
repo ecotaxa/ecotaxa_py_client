@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,75 +8,72 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import ecotaxa_cli_py
 from ecotaxa_cli_py.api.collections_api import CollectionsApi  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
 
 
 class TestCollectionsApi(unittest.TestCase):
     """CollectionsApi unit test stubs"""
 
     def setUp(self):
-        self.api = ecotaxa_cli_py.api.collections_api.CollectionsApi()  # noqa: E501
+        self.api = CollectionsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_collection_by_short_title_collections_by_short_title_get(self):
-        """Test case for collection_by_short_title_collections_by_short_title_get
+    def test_collection_by_short_title(self):
+        """Test case for collection_by_short_title
 
         Collection By Short Title  # noqa: E501
         """
         pass
 
-    def test_collection_by_title_collections_by_title_get(self):
-        """Test case for collection_by_title_collections_by_title_get
+    def test_collection_by_title(self):
+        """Test case for collection_by_title
 
         Collection By Title  # noqa: E501
         """
         pass
 
-    def test_create_collection_collections_create_post(self):
-        """Test case for create_collection_collections_create_post
+    def test_create_collection(self):
+        """Test case for create_collection
 
         Create Collection  # noqa: E501
         """
         pass
 
-    def test_emodnet_format_export_collections_collection_id_export_emodnet_get(self):
-        """Test case for emodnet_format_export_collections_collection_id_export_emodnet_get
+    def test_emodnet_format_export(self):
+        """Test case for emodnet_format_export
 
         Emodnet Format Export  # noqa: E501
         """
         pass
 
-    def test_erase_collection_collections_collection_id_delete(self):
-        """Test case for erase_collection_collections_collection_id_delete
+    def test_erase_collection(self):
+        """Test case for erase_collection
 
         Erase Collection  # noqa: E501
         """
         pass
 
-    def test_get_collection_collections_collection_id_get(self):
-        """Test case for get_collection_collections_collection_id_get
+    def test_get_collection(self):
+        """Test case for get_collection
 
         Get Collection  # noqa: E501
         """
         pass
 
-    def test_search_collections_collections_search_get(self):
-        """Test case for search_collections_collections_search_get
+    def test_search_collections(self):
+        """Test case for search_collections
 
         Search Collections  # noqa: E501
         """
         pass
 
-    def test_update_collection_collections_collection_id_put(self):
-        """Test case for update_collection_collections_collection_id_put
+    def test_update_collection(self):
+        """Test case for update_collection
 
         Update Collection  # noqa: E501
         """

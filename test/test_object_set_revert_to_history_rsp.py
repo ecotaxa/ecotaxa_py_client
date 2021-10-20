@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.historical_last_classif import HistoricalLastClassif
+globals()['HistoricalLastClassif'] = HistoricalLastClassif
+from ecotaxa_cli_py.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
+
 
 class TestObjectSetRevertToHistoryRsp(unittest.TestCase):
     """ObjectSetRevertToHistoryRsp unit test stubs"""
@@ -28,34 +26,12 @@ class TestObjectSetRevertToHistoryRsp(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ObjectSetRevertToHistoryRsp
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.object_set_revert_to_history_rsp.ObjectSetRevertToHistoryRsp()  # noqa: E501
-        if include_optional :
-            return ObjectSetRevertToHistoryRsp(
-                last_entries = [
-                    ecotaxa_cli_py.models.historical_last_classif.HistoricalLastClassif(
-                        objid = 56, 
-                        classif_id = 56, 
-                        histo_classif_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        histo_classif_type = '', 
-                        histo_classif_id = 56, 
-                        histo_classif_qual = '', 
-                        histo_classif_who = 56, )
-                    ], 
-                classif_info = ecotaxa_cli_py.models.classification_names_(self+parent)_for_involved_ids.Classification names (self+parent) for involved IDs()
-            )
-        else :
-            return ObjectSetRevertToHistoryRsp(
-        )
-
     def testObjectSetRevertToHistoryRsp(self):
         """Test ObjectSetRevertToHistoryRsp"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ObjectSetRevertToHistoryRsp()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

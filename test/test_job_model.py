@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     EcoTaxa
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import ecotaxa_cli_py
-from ecotaxa_cli_py.models.job_model import JobModel  # noqa: E501
-from ecotaxa_cli_py.rest import ApiException
+from ecotaxa_cli_py.model.job_model import JobModel
+
 
 class TestJobModel(unittest.TestCase):
     """JobModel unit test stubs"""
@@ -28,45 +24,12 @@ class TestJobModel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test JobModel
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = ecotaxa_cli_py.models.job_model.JobModel()  # noqa: E501
-        if include_optional :
-            return JobModel(
-                params = ecotaxa_cli_py.models.creation_parameters.Creation parameters(), 
-                result = ecotaxa_cli_py.models.final_result_of_the_run.Final result of the run(), 
-                errors = [
-                    ''
-                    ], 
-                question = ecotaxa_cli_py.models.the_data_provoking_job_move_to_asking_state.The data provoking job move to Asking state(), 
-                reply = ecotaxa_cli_py.models.the_data_provided_as_a_reply_to_the_question.The data provided as a reply to the question(), 
-                inside = ecotaxa_cli_py.models.internal_state_of_the_job.Internal state of the job(), 
-                id = 56, 
-                owner_id = 56, 
-                type = '', 
-                state = '', 
-                step = 56, 
-                progress_pct = 56, 
-                progress_msg = '', 
-                creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                updated_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
-            )
-        else :
-            return JobModel(
-                id = 56,
-                owner_id = 56,
-                type = '',
-                creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                updated_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-        )
-
     def testJobModel(self):
         """Test JobModel"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = JobModel()  # noqa: E501
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
