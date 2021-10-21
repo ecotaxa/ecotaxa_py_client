@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.taxon_usage_model import TaxonUsageModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.taxon_usage_model import TaxonUsageModel
 
 
 class TestTaxonUsageModel(unittest.TestCase):

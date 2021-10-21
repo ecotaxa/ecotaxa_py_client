@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.MiscApi
+# ecotaxa_py_client.MiscApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -22,12 +22,12 @@ This entry point will just do nothing.     It's also used for exporting models w
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import misc_api
+import ecotaxa_py_client
+from ecotaxa_py_client.api import misc_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -37,13 +37,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = misc_api.MiscApi(api_client)
 
@@ -52,7 +52,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Do Nothing
         api_response = api_instance.do_nothing_noop_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling MiscApi->do_nothing_noop_get: %s\n" % e)
 ```
 
@@ -95,12 +95,12 @@ This entry point will return a 500 internal error, on purpose so the stack trace
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import misc_api
+import ecotaxa_py_client
+from ecotaxa_py_client.api import misc_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -110,13 +110,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = misc_api.MiscApi(api_client)
 
@@ -125,7 +125,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # System Error
         api_response = api_instance.system_error_error_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling MiscApi->system_error_error_get: %s\n" % e)
 ```
 
@@ -167,19 +167,19 @@ This entry point will return useful strings for user dialog. Now also used for v
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import misc_api
-from ecotaxa_cli_py.model.constants import Constants
+import ecotaxa_py_client
+from ecotaxa_py_client.api import misc_api
+from ecotaxa_py_client.model.constants import Constants
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = misc_api.MiscApi(api_client)
 
@@ -188,7 +188,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Used Constants
         api_response = api_instance.used_constants_constants_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling MiscApi->used_constants_constants_get: %s\n" % e)
 ```
 

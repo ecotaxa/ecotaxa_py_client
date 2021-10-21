@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.taxa_search_rsp import TaxaSearchRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.model.taxa_search_rsp import TaxaSearchRsp
 
 
 class TestTaxaSearchRsp(unittest.TestCase):

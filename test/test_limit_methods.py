@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.limit_methods import LimitMethods
+import ecotaxa_py_client
+from ecotaxa_py_client.model.limit_methods import LimitMethods
 
 
 class TestLimitMethods(unittest.TestCase):

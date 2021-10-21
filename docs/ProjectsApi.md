@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.ProjectsApi
+# ecotaxa_py_client.ProjectsApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -33,14 +33,14 @@ Create Project
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.create_project_req import CreateProjectReq
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.create_project_req import CreateProjectReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -50,13 +50,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     create_project_req = CreateProjectReq(
@@ -70,7 +70,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Create Project
         api_response = api_instance.create_project_projects_create_post(create_project_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->create_project_projects_create_post: %s\n" % e)
 ```
 
@@ -117,13 +117,13 @@ Erase Project
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -133,13 +133,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -150,7 +150,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Erase Project
         api_response = api_instance.erase_project_projects_project_id_delete(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->erase_project_projects_project_id_delete: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -159,7 +159,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Erase Project
         api_response = api_instance.erase_project_projects_project_id_delete(project_id, only_objects=only_objects)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->erase_project_projects_project_id_delete: %s\n" % e)
 ```
 
@@ -207,15 +207,15 @@ Validate or do a real import of an EcoTaxa archive or directory.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.import_req import ImportReq
-from ecotaxa_cli_py.model.import_rsp import ImportRsp
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.import_rsp import ImportRsp
+from ecotaxa_py_client.model.import_req import ImportReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -225,13 +225,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -250,7 +250,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Import File
         api_response = api_instance.import_file_file_import_project_id_post(project_id, import_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->import_file_file_import_project_id_post: %s\n" % e)
 ```
 
@@ -298,13 +298,13 @@ Project Check
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -314,13 +314,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -330,7 +330,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Check
         api_response = api_instance.project_check_projects_project_id_check_get(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_check_projects_project_id_check_get: %s\n" % e)
 ```
 
@@ -377,14 +377,14 @@ Project Merge
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.merge_rsp import MergeRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.merge_rsp import MergeRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -394,13 +394,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -412,7 +412,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Merge
         api_response = api_instance.project_merge_projects_project_id_merge_post(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_merge_projects_project_id_merge_post: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -421,7 +421,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Merge
         api_response = api_instance.project_merge_projects_project_id_merge_post(project_id, source_project_id=source_project_id, dry_run=dry_run)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_merge_projects_project_id_merge_post: %s\n" % e)
 ```
 
@@ -470,14 +470,14 @@ Project Query
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.project_model import ProjectModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_model import ProjectModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -487,13 +487,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -504,7 +504,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Query
         api_response = api_instance.project_query_projects_project_id_get(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_query_projects_project_id_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -513,7 +513,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Query
         api_response = api_instance.project_query_projects_project_id_get(project_id, for_managing=for_managing)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_query_projects_project_id_get: %s\n" % e)
 ```
 
@@ -561,13 +561,13 @@ Project Recompute Geography
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -577,13 +577,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -593,7 +593,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Recompute Geography
         api_response = api_instance.project_recompute_geography_projects_project_id_recompute_geo_post(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_recompute_geography_projects_project_id_recompute_geo_post: %s\n" % e)
 ```
 
@@ -640,14 +640,14 @@ Project Set Get Stats
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.project_taxo_stats_model import ProjectTaxoStatsModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_taxo_stats_model import ProjectTaxoStatsModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -657,13 +657,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. (optional)
@@ -675,7 +675,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Set Get Stats
         api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids=ids, taxa_ids=taxa_ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_set_get_stats_project_set_taxo_stats_get: %s\n" % e)
 ```
 
@@ -723,14 +723,14 @@ Project Set Get User Stats
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.project_user_stats_model import ProjectUserStatsModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_user_stats_model import ProjectUserStatsModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -740,13 +740,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. (optional)
@@ -757,7 +757,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Set Get User Stats
         api_response = api_instance.project_set_get_user_stats_project_set_user_stats_get(ids=ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_set_get_user_stats_project_set_user_stats_get: %s\n" % e)
 ```
 
@@ -804,13 +804,13 @@ Check consistency of a project.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -820,13 +820,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -836,7 +836,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Stats
         api_response = api_instance.project_stats_projects_project_id_stats_get(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_stats_projects_project_id_stats_get: %s\n" % e)
 ```
 
@@ -883,15 +883,15 @@ Project Subset
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.subset_req import SubsetReq
-from ecotaxa_cli_py.model.subset_rsp import SubsetRsp
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.subset_req import SubsetReq
+from ecotaxa_py_client.model.subset_rsp import SubsetRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -901,13 +901,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -927,7 +927,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Project Subset
         api_response = api_instance.project_subset_projects_project_id_subset_post(project_id, subset_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_subset_projects_project_id_subset_post: %s\n" % e)
 ```
 
@@ -975,14 +975,14 @@ Returns **projects which the current user has explicit permission to access, wit
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.project_model import ProjectModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_model import ProjectModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -992,13 +992,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     also_others = False # bool |  (optional) if omitted the server will use the default value of False
@@ -1017,7 +1017,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Search Projects
         api_response = api_instance.search_projects_projects_search_get(also_others=also_others, not_granted=not_granted, for_managing=for_managing, title_filter=title_filter, instrument_filter=instrument_filter, filter_subset=filter_subset, order_field=order_field, window_start=window_start, window_size=window_size)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->search_projects_projects_search_get: %s\n" % e)
 ```
 
@@ -1072,15 +1072,15 @@ Import images only, with same metadata for all. - param `dry_run`: If set, then 
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.simple_import_rsp import SimpleImportRsp
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.simple_import_req import SimpleImportReq
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.simple_import_req import SimpleImportReq
+from ecotaxa_py_client.model.simple_import_rsp import SimpleImportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -1090,13 +1090,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -1114,7 +1114,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Simple Import
         api_response = api_instance.simple_import_simple_import_project_id_post(project_id, dry_run, simple_import_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->simple_import_simple_import_project_id_post: %s\n" % e)
 ```
 
@@ -1163,14 +1163,14 @@ Update Project
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import projects_api
-from ecotaxa_cli_py.model.project_model import ProjectModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_model import ProjectModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -1180,13 +1180,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | 
@@ -1285,7 +1285,7 @@ feret = Feret [pixel]''',
         # Update Project
         api_response = api_instance.update_project_projects_project_id_put(project_id, project_model)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->update_project_projects_project_id_put: %s\n" % e)
 ```
 

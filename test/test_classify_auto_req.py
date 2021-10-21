@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.classify_auto_req import ClassifyAutoReq
+import ecotaxa_py_client
+from ecotaxa_py_client.model.classify_auto_req import ClassifyAutoReq
 
 
 class TestClassifyAutoReq(unittest.TestCase):

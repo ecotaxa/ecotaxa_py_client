@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.InstrumentApi
+# ecotaxa_py_client.InstrumentApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -19,19 +19,19 @@ Returns the list of instruments, inside specific project(s).
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import instrument_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import instrument_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = instrument_api.InstrumentApi(api_client)
     project_ids = "1,2,3" # str | String containing the list of one or more project id separated by non-num char. (optional)
@@ -42,7 +42,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Instrument Query
         api_response = api_instance.instrument_query_instruments_get(project_ids=project_ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling InstrumentApi->instrument_query_instruments_get: %s\n" % e)
 ```
 

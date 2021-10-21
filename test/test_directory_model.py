@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.directory_entry_model import DirectoryEntryModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.directory_entry_model import DirectoryEntryModel
 globals()['DirectoryEntryModel'] = DirectoryEntryModel
-from ecotaxa_cli_py.model.directory_model import DirectoryModel
+from ecotaxa_py_client.model.directory_model import DirectoryModel
 
 
 class TestDirectoryModel(unittest.TestCase):

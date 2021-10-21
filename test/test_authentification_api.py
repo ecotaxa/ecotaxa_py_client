@@ -10,8 +10,8 @@
 
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api.authentification_api import AuthentificationApi  # noqa: E501
+import ecotaxa_py_client
+from ecotaxa_py_client.api.authentification_api import AuthentificationApi  # noqa: E501
 
 
 class TestAuthentificationApi(unittest.TestCase):

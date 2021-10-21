@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.taxonomy_tree_status import TaxonomyTreeStatus
+import ecotaxa_py_client
+from ecotaxa_py_client.model.taxonomy_tree_status import TaxonomyTreeStatus
 
 
 class TestTaxonomyTreeStatus(unittest.TestCase):

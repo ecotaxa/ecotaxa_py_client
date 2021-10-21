@@ -11,12 +11,12 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.export_req import ExportReq
-from ecotaxa_cli_py.model.project_filters import ProjectFilters
+import ecotaxa_py_client
+from ecotaxa_py_client.model.export_req import ExportReq
+from ecotaxa_py_client.model.project_filters import ProjectFilters
 globals()['ExportReq'] = ExportReq
 globals()['ProjectFilters'] = ProjectFilters
-from ecotaxa_cli_py.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
 
 
 class TestBodyExportObjectSetObjectSetExportPost(unittest.TestCase):

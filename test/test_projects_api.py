@@ -10,8 +10,8 @@
 
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api.projects_api import ProjectsApi  # noqa: E501
+import ecotaxa_py_client
+from ecotaxa_py_client.api.projects_api import ProjectsApi  # noqa: E501
 
 
 class TestProjectsApi(unittest.TestCase):

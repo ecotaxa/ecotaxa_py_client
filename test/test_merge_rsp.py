@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.merge_rsp import MergeRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.model.merge_rsp import MergeRsp
 
 
 class TestMergeRsp(unittest.TestCase):

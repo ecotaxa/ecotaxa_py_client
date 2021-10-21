@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.image_model import ImageModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.image_model import ImageModel
 
 
 class TestImageModel(unittest.TestCase):

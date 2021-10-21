@@ -10,8 +10,8 @@
 
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api.wip_api import WIPApi  # noqa: E501
+import ecotaxa_py_client
+from ecotaxa_py_client.api.wip_api import WIPApi  # noqa: E501
 
 
 class TestWIPApi(unittest.TestCase):

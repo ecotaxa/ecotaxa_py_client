@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.historical_classification import HistoricalClassification
+import ecotaxa_py_client
+from ecotaxa_py_client.model.historical_classification import HistoricalClassification
 
 
 class TestHistoricalClassification(unittest.TestCase):

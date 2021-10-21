@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.process_model import ProcessModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.process_model import ProcessModel
 
 
 class TestProcessModel(unittest.TestCase):

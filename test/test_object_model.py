@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.image_model import ImageModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.image_model import ImageModel
 globals()['ImageModel'] = ImageModel
-from ecotaxa_cli_py.model.object_model import ObjectModel
+from ecotaxa_py_client.model.object_model import ObjectModel
 
 
 class TestObjectModel(unittest.TestCase):

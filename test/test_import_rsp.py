@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.import_rsp import ImportRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.model.import_rsp import ImportRsp
 
 
 class TestImportRsp(unittest.TestCase):

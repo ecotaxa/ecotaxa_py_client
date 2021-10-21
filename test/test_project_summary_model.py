@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.project_summary_model import ProjectSummaryModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.project_summary_model import ProjectSummaryModel
 
 
 class TestProjectSummaryModel(unittest.TestCase):

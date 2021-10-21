@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.JobsApi
+# ecotaxa_py_client.JobsApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -26,13 +26,13 @@ Delete the job, from DB and with associated storage. If the job is running then 
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -42,13 +42,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -58,7 +58,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Erase Job
         api_response = api_instance.erase_job_jobs_job_id_delete(job_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->erase_job_jobs_job_id_delete: %s\n" % e)
 ```
 
@@ -105,13 +105,13 @@ Return the file produced by given task. The task must belong to requester.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -121,13 +121,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -137,7 +137,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Get Job File
         api_response = api_instance.get_job_file_jobs_job_id_file_get(job_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->get_job_file_jobs_job_id_file_get: %s\n" % e)
 ```
 
@@ -184,14 +184,14 @@ Return the job by its id.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.job_model import JobModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.job_model import JobModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -201,13 +201,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -217,7 +217,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Get Job
         api_response = api_instance.get_job_jobs_job_id_get(job_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->get_job_jobs_job_id_get: %s\n" % e)
 ```
 
@@ -264,13 +264,13 @@ Return the log file produced by given task. The task must belong to requester.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -280,13 +280,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -296,7 +296,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Get Job Log File
         api_response = api_instance.get_job_log_file_jobs_job_id_log_get(job_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->get_job_log_file_jobs_job_id_log_get: %s\n" % e)
 ```
 
@@ -343,14 +343,14 @@ Return the jobs for current user, or all of them if admin and asked for.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.job_model import JobModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.job_model import JobModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -360,13 +360,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     for_admin = True # bool | 
@@ -376,7 +376,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # List Jobs
         api_response = api_instance.list_jobs_jobs_get(for_admin)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->list_jobs_jobs_get: %s\n" % e)
 ```
 
@@ -423,13 +423,13 @@ Send answers to last question. The job resumes after it receives the reply. Note
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -439,13 +439,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -456,7 +456,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Reply Job Question
         api_response = api_instance.reply_job_question_jobs_job_id_answer_post(job_id, body)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->reply_job_question_jobs_job_id_answer_post: %s\n" % e)
 ```
 
@@ -504,13 +504,13 @@ Restart the job by its id. The job must be in a restartable state, and be access
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import jobs_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import jobs_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -520,13 +520,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 1 # int | 
@@ -536,7 +536,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Restart Job
         api_response = api_instance.restart_job_jobs_job_id_restart_get(job_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->restart_job_jobs_job_id_restart_get: %s\n" % e)
 ```
 

@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.subset_req import SubsetReq
+import ecotaxa_py_client
+from ecotaxa_py_client.model.subset_req import SubsetReq
 
 
 class TestSubsetReq(unittest.TestCase):

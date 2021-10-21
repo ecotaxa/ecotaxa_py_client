@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.simple_import_req import SimpleImportReq
+import ecotaxa_py_client
+from ecotaxa_py_client.model.simple_import_req import SimpleImportReq
 
 
 class TestSimpleImportReq(unittest.TestCase):

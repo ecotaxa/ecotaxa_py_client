@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.TaxonomyTreeApi
+# ecotaxa_py_client.TaxonomyTreeApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -31,13 +31,13 @@ Create a taxon on EcoTaxoServer. Logged user must be manager (on any project) or
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -47,13 +47,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     name = "name_example" # str | 
@@ -68,7 +68,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Add Taxon In Central
         api_response = api_instance.add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->add_taxon_in_central_taxon_central_put: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -77,7 +77,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Add Taxon In Central
         api_response = api_instance.add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email, source_desc=source_desc, source_url=source_url)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->add_taxon_in_central_taxon_central_put: %s\n" % e)
 ```
 
@@ -129,13 +129,13 @@ Get EcoTaxoServer full record for this taxon.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -145,13 +145,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     taxon_id = 1 # int | 
@@ -161,7 +161,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Get Taxon In Central
         api_response = api_instance.get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->get_taxon_in_central_taxon_central_taxon_id_get: %s\n" % e)
 ```
 
@@ -208,12 +208,12 @@ Get what changed in EcoTaxoServer managed tree and update local tree accordingly
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -223,13 +223,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
 
@@ -238,7 +238,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Pull Taxa Update From Central
         api_response = api_instance.pull_taxa_update_from_central_taxa_pull_from_central_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->pull_taxa_update_from_central_taxa_pull_from_central_get: %s\n" % e)
 ```
 
@@ -281,12 +281,12 @@ Push present instance stats into EcoTaxoServer.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -296,13 +296,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
 
@@ -311,7 +311,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Push Taxa Stats In Central
         api_response = api_instance.push_taxa_stats_in_central_taxa_stats_push_to_central_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->push_taxa_stats_in_central_taxa_stats_push_to_central_get: %s\n" % e)
 ```
 
@@ -353,19 +353,19 @@ Return all taxa with no parent.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_model import TaxonModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.taxon_model import TaxonModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
 
@@ -374,7 +374,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Query Root Taxa
         api_response = api_instance.query_root_taxa_taxa_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_root_taxa_taxa_get: %s\n" % e)
 ```
 
@@ -417,14 +417,14 @@ Information about several taxa, including their lineage. The separator between n
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_model import TaxonModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxon_model import TaxonModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -434,13 +434,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     ids = "ids_example" # str | 
@@ -450,7 +450,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Query Taxa Set
         api_response = api_instance.query_taxa_set_taxon_set_query_get(ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa_set_taxon_set_query_get: %s\n" % e)
 ```
 
@@ -497,14 +497,14 @@ Information about a single taxon, including its lineage.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_model import TaxonModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxon_model import TaxonModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -514,13 +514,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     taxon_id = 1 # int | 
@@ -530,7 +530,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Query Taxa
         api_response = api_instance.query_taxa_taxon_taxon_id_get(taxon_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa_taxon_taxon_id_get: %s\n" % e)
 ```
 
@@ -577,14 +577,14 @@ Where a given taxon is used. Only validated uses are returned.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_usage_model import TaxonUsageModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxon_usage_model import TaxonUsageModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -594,13 +594,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     taxon_id = 1 # int | 
@@ -610,7 +610,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Query Taxa Usage
         api_response = api_instance.query_taxa_usage_taxon_taxon_id_usage_get(taxon_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->query_taxa_usage_taxon_taxon_id_usage_get: %s\n" % e)
 ```
 
@@ -657,13 +657,13 @@ Dig into reclassification logs and return the associations source->target for pr
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -673,13 +673,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     project_id = 1 # int | 
@@ -689,7 +689,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Reclassif Project Stats
         api_response = api_instance.reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->reclassif_project_stats_taxa_reclassification_history_project_id_get: %s\n" % e)
 ```
 
@@ -736,14 +736,14 @@ Dig into reclassification logs and, for each input category id, determine the mo
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxon_model import TaxonModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxon_model import TaxonModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -753,13 +753,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     taxa_ids = "taxa_ids_example" # str | 
@@ -769,7 +769,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Reclassif Stats
         api_response = api_instance.reclassif_stats_taxa_reclassification_stats_get(taxa_ids)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->reclassif_stats_taxa_reclassification_stats_get: %s\n" % e)
 ```
 
@@ -816,14 +816,14 @@ Search for taxa by name.  Queries can be 'small', i.e. of length < 3 and even ze
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.taxa_search_rsp import TaxaSearchRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxa_search_rsp import TaxaSearchRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -833,13 +833,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
     query = "query_example" # str | 
@@ -850,7 +850,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Search Taxa
         api_response = api_instance.search_taxa_taxon_set_search_get(query)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->search_taxa_taxon_set_search_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -859,7 +859,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Search Taxa
         api_response = api_instance.search_taxa_taxon_set_search_get(query, project_id=project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->search_taxa_taxon_set_search_get: %s\n" % e)
 ```
 
@@ -907,13 +907,13 @@ Return the status of taxonomy tree w/r to freshness.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import taxonomy_tree_api
-from ecotaxa_cli_py.model.taxonomy_tree_status import TaxonomyTreeStatus
+import ecotaxa_py_client
+from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.taxonomy_tree_status import TaxonomyTreeStatus
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -923,13 +923,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
 
@@ -938,7 +938,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Taxa Tree Status
         api_response = api_instance.taxa_tree_status_taxa_status_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling TaxonomyTreeApi->taxa_tree_status_taxa_status_get: %s\n" % e)
 ```
 

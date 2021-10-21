@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.FilesApi
+# ecotaxa_py_client.FilesApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -22,14 +22,14 @@ List the common files which are usable for some file-related operations e.g. imp
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import files_api
-from ecotaxa_cli_py.model.directory_model import DirectoryModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import files_api
+from ecotaxa_py_client.model.directory_model import DirectoryModel
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -39,13 +39,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     path = "path_example" # str | 
@@ -55,7 +55,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # List Common Files
         api_response = api_instance.list_common_files_common_files_get(path)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling FilesApi->list_common_files_common_files_get: %s\n" % e)
 ```
 
@@ -102,14 +102,14 @@ List the private files which are usable for some file-related operations e.g. im
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import files_api
-from ecotaxa_cli_py.model.directory_model import DirectoryModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import files_api
+from ecotaxa_py_client.model.directory_model import DirectoryModel
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -119,13 +119,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     sub_path = "sub_path_example" # str | 
@@ -135,7 +135,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # List User Files
         api_response = api_instance.list_user_files_my_files_sub_path_get(sub_path)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling FilesApi->list_user_files_my_files_sub_path_get: %s\n" % e)
 ```
 
@@ -182,13 +182,13 @@ Upload a file for the current user. The returned text will contain a serve-side 
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import files_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import files_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -198,13 +198,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     file = open('/path/to/file', 'rb') # file_type | 
@@ -216,7 +216,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Put User File
         api_response = api_instance.put_user_file_my_files_post(file)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling FilesApi->put_user_file_my_files_post: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -225,7 +225,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Put User File
         api_response = api_instance.put_user_file_my_files_post(file, path=path, tag=tag)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling FilesApi->put_user_file_my_files_post: %s\n" % e)
 ```
 

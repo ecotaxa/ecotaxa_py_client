@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.ObjectApi
+# ecotaxa_py_client.ObjectApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -21,14 +21,14 @@ Read a single object's history.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import object_api
-from ecotaxa_cli_py.model.historical_classification import HistoricalClassification
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import object_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.historical_classification import HistoricalClassification
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -38,13 +38,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = object_api.ObjectApi(api_client)
     object_id = 1 # int | 
@@ -54,7 +54,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Object Query History
         api_response = api_instance.object_query_history_object_object_id_history_get(object_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ObjectApi->object_query_history_object_object_id_history_get: %s\n" % e)
 ```
 
@@ -101,14 +101,14 @@ Read a single object. Anonymous reader can do if the project has the right right
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import object_api
-from ecotaxa_cli_py.model.object_model import ObjectModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import object_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.object_model import ObjectModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -118,13 +118,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = object_api.ObjectApi(api_client)
     object_id = 1 # int | 
@@ -134,7 +134,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Object Query
         api_response = api_instance.object_query_object_object_id_get(object_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ObjectApi->object_query_object_object_id_get: %s\n" % e)
 ```
 

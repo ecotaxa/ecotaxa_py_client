@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.historical_last_classif import HistoricalLastClassif
+import ecotaxa_py_client
+from ecotaxa_py_client.model.historical_last_classif import HistoricalLastClassif
 
 
 class TestHistoricalLastClassif(unittest.TestCase):

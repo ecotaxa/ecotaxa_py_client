@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.object_header_model import ObjectHeaderModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.object_header_model import ObjectHeaderModel
 
 
 class TestObjectHeaderModel(unittest.TestCase):

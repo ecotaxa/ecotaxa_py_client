@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.constants import Constants
+import ecotaxa_py_client
+from ecotaxa_py_client.model.constants import Constants
 
 
 class TestConstants(unittest.TestCase):

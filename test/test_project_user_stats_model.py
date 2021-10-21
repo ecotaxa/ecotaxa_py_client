@@ -11,12 +11,12 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.minimal_user_bo import MinimalUserBO
-from ecotaxa_cli_py.model.user_activity import UserActivity
+import ecotaxa_py_client
+from ecotaxa_py_client.model.minimal_user_bo import MinimalUserBO
+from ecotaxa_py_client.model.user_activity import UserActivity
 globals()['MinimalUserBO'] = MinimalUserBO
 globals()['UserActivity'] = UserActivity
-from ecotaxa_cli_py.model.project_user_stats_model import ProjectUserStatsModel
+from ecotaxa_py_client.model.project_user_stats_model import ProjectUserStatsModel
 
 
 class TestProjectUserStatsModel(unittest.TestCase):

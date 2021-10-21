@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.job_model import JobModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.job_model import JobModel
 
 
 class TestJobModel(unittest.TestCase):

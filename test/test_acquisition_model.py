@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
 
 
 class TestAcquisitionModel(unittest.TestCase):

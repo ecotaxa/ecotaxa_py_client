@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.ProcessesApi
+# ecotaxa_py_client.ProcessesApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -21,14 +21,14 @@ Read a single object.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import processes_api
-from ecotaxa_cli_py.model.process_model import ProcessModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import processes_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.process_model import ProcessModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -38,13 +38,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = processes_api.ProcessesApi(api_client)
     process_id = 1 # int | 
@@ -54,7 +54,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Process Query
         api_response = api_instance.process_query_process_process_id_get(process_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProcessesApi->process_query_process_process_id_get: %s\n" % e)
 ```
 
@@ -101,14 +101,14 @@ Do the required update for each process in the set.     Return the number of upd
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import processes_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
+import ecotaxa_py_client
+from ecotaxa_py_client.api import processes_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -118,13 +118,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = processes_api.ProcessesApi(api_client)
     bulk_update_req = BulkUpdateReq(
@@ -137,7 +137,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Update Processes
         api_response = api_instance.update_processes_process_set_update_post(bulk_update_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProcessesApi->update_processes_process_set_update_post: %s\n" % e)
 ```
 

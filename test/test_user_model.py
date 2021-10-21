@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.user_model import UserModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.user_model import UserModel
 
 
 class TestUserModel(unittest.TestCase):

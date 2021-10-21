@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.AuthentificationApi
+# ecotaxa_py_client.AuthentificationApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -19,20 +19,20 @@ Login
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import authentification_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.login_req import LoginReq
+import ecotaxa_py_client
+from ecotaxa_py_client.api import authentification_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.login_req import LoginReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = authentification_api.AuthentificationApi(api_client)
     login_req = LoginReq(
@@ -45,7 +45,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Login
         api_response = api_instance.login_login_post(login_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling AuthentificationApi->login_login_post: %s\n" % e)
 ```
 

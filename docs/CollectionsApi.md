@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.CollectionsApi
+# ecotaxa_py_client.CollectionsApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -26,20 +26,20 @@ Return the **single collection with this short title**.  *For published datasets
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.collection_model import CollectionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.collection_model import CollectionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     q = "My coll" # str | Search by **exact** short title (optional)
@@ -50,7 +50,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Collection By Short Title
         api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q=q)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_short_title_collections_by_short_title_get: %s\n" % e)
 ```
 
@@ -96,20 +96,20 @@ Return the **single collection with this title**.  *For published datasets.*  âš
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.collection_model import CollectionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.collection_model import CollectionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     q = "My collection" # str | Search by **exact** title (optional)
@@ -120,7 +120,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Collection By Title
         api_response = api_instance.collection_by_title_collections_by_title_get(q=q)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_title_collections_by_title_get: %s\n" % e)
 ```
 
@@ -167,14 +167,14 @@ Create Collection
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.create_collection_req import CreateCollectionReq
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.create_collection_req import CreateCollectionReq
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -184,13 +184,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     create_collection_req = CreateCollectionReq(
@@ -203,7 +203,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Create Collection
         api_response = api_instance.create_collection_collections_create_post(create_collection_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->create_collection_collections_create_post: %s\n" % e)
 ```
 
@@ -250,14 +250,14 @@ Emodnet Format Export
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.emo_dnet_export_rsp import EMODnetExportRsp
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.emo_dnet_export_rsp import EMODnetExportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -267,13 +267,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     collection_id = 1 # int | 
@@ -287,7 +287,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Emodnet Format Export
         api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -296,7 +296,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Emodnet Format Export
         api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run=dry_run, with_zeroes=with_zeroes, auto_morpho=auto_morpho, with_computations=with_computations)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
 ```
 
@@ -347,13 +347,13 @@ Erase Collection
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -363,13 +363,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     collection_id = 1 # int | 
@@ -379,7 +379,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Erase Collection
         api_response = api_instance.erase_collection_collections_collection_id_delete(collection_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->erase_collection_collections_collection_id_delete: %s\n" % e)
 ```
 
@@ -426,14 +426,14 @@ Returns **information about the collection** corresponding to the given id.   ðŸ
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.collection_model import CollectionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.collection_model import CollectionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -443,13 +443,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     collection_id = 1 # int | 
@@ -459,7 +459,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Get Collection
         api_response = api_instance.get_collection_collections_collection_id_get(collection_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->get_collection_collections_collection_id_get: %s\n" % e)
 ```
 
@@ -506,14 +506,14 @@ Search Collections
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.collection_model import CollectionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.collection_model import CollectionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -523,13 +523,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     title = "%coll%" # str | Search by title, use % for searching with 'any char'. (optional)
@@ -540,7 +540,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Search Collections
         api_response = api_instance.search_collections_collections_search_get(title=title)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->search_collections_collections_search_get: %s\n" % e)
 ```
 
@@ -587,14 +587,14 @@ Update Collection
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import collections_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.collection_model import CollectionModel
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.collection_model import CollectionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -604,13 +604,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
     collection_id = 1 # int | 
@@ -660,7 +660,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Update Collection
         api_response = api_instance.update_collection_collections_collection_id_put(collection_id, collection_model)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->update_collection_collections_collection_id_put: %s\n" % e)
 ```
 

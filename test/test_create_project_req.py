@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.create_project_req import CreateProjectReq
+import ecotaxa_py_client
+from ecotaxa_py_client.model.create_project_req import CreateProjectReq
 
 
 class TestCreateProjectReq(unittest.TestCase):

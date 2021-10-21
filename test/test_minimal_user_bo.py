@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.minimal_user_bo import MinimalUserBO
+import ecotaxa_py_client
+from ecotaxa_py_client.model.minimal_user_bo import MinimalUserBO
 
 
 class TestMinimalUserBO(unittest.TestCase):

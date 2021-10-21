@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.project_summary_model import ProjectSummaryModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.project_summary_model import ProjectSummaryModel
 globals()['ProjectSummaryModel'] = ProjectSummaryModel
-from ecotaxa_cli_py.model.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
 
 
 class TestUserModelWithRights(unittest.TestCase):

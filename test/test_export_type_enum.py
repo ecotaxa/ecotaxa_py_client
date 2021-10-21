@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.export_type_enum import ExportTypeEnum
+import ecotaxa_py_client
+from ecotaxa_py_client.model.export_type_enum import ExportTypeEnum
 
 
 class TestExportTypeEnum(unittest.TestCase):

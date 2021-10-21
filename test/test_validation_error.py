@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.validation_error import ValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.model.validation_error import ValidationError
 
 
 class TestValidationError(unittest.TestCase):

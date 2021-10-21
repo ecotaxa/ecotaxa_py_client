@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.historical_last_classif import HistoricalLastClassif
+import ecotaxa_py_client
+from ecotaxa_py_client.model.historical_last_classif import HistoricalLastClassif
 globals()['HistoricalLastClassif'] = HistoricalLastClassif
-from ecotaxa_cli_py.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
+from ecotaxa_py_client.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
 
 
 class TestObjectSetRevertToHistoryRsp(unittest.TestCase):

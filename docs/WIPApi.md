@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.WIPApi
+# ecotaxa_py_client.WIPApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -20,12 +20,12 @@ Report the status, mainly used for verifying that the server is up.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import wip_api
+import ecotaxa_py_client
+from ecotaxa_py_client.api import wip_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -35,13 +35,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = wip_api.WIPApi(api_client)
 
@@ -50,7 +50,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # System Status
         api_response = api_instance.system_status_status_get()
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling WIPApi->system_status_status_get: %s\n" % e)
 ```
 

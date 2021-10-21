@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.emo_dnet_export_rsp import EMODnetExportRsp
+import ecotaxa_py_client
+from ecotaxa_py_client.model.emo_dnet_export_rsp import EMODnetExportRsp
 
 
 class TestEMODnetExportRsp(unittest.TestCase):

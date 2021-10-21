@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import ecotaxa_cli_py
-from ecotaxa_cli_py.model.project_taxo_stats_model import ProjectTaxoStatsModel
+import ecotaxa_py_client
+from ecotaxa_py_client.model.project_taxo_stats_model import ProjectTaxoStatsModel
 
 
 class TestProjectTaxoStatsModel(unittest.TestCase):

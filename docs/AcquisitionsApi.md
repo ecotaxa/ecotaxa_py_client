@@ -1,4 +1,4 @@
-# ecotaxa_cli_py.AcquisitionsApi
+# ecotaxa_py_client.AcquisitionsApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
@@ -22,14 +22,14 @@ Returns **information about the acquisition** corresponding to the given id.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import acquisitions_api
-from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import acquisitions_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -39,13 +39,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
     acquisition_id = 1 # int | 
@@ -55,7 +55,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Acquisition Query
         api_response = api_instance.acquisition_query_acquisition_acquisition_id_get(acquisition_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisition_query_acquisition_acquisition_id_get: %s\n" % e)
 ```
 
@@ -102,14 +102,14 @@ Returns the **list of all acquisitions for a given project**.
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import acquisitions_api
-from ecotaxa_cli_py.model.acquisition_model import AcquisitionModel
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
+import ecotaxa_py_client
+from ecotaxa_py_client.api import acquisitions_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -119,13 +119,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
     project_id = 1 # int | The project id (optional)
@@ -136,7 +136,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Acquisitions Search
         api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id=project_id)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisitions_search_acquisitions_search_get: %s\n" % e)
 ```
 
@@ -183,14 +183,14 @@ Do the required **update for each acquisition in the set**.  Return the number o
 
 ```python
 import time
-import ecotaxa_cli_py
-from ecotaxa_cli_py.api import acquisitions_api
-from ecotaxa_cli_py.model.http_validation_error import HTTPValidationError
-from ecotaxa_cli_py.model.bulk_update_req import BulkUpdateReq
+import ecotaxa_py_client
+from ecotaxa_py_client.api import acquisitions_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 
@@ -200,13 +200,13 @@ configuration = ecotaxa_cli_py.Configuration(
 # satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_cli_py.Configuration(
+configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
-with ecotaxa_cli_py.ApiClient(configuration) as api_client:
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
     bulk_update_req = BulkUpdateReq(
@@ -219,7 +219,7 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
         # Update Acquisitions
         api_response = api_instance.update_acquisitions_acquisition_set_update_post(bulk_update_req)
         pprint(api_response)
-    except ecotaxa_cli_py.ApiException as e:
+    except ecotaxa_py_client.ApiException as e:
         print("Exception when calling AcquisitionsApi->update_acquisitions_acquisition_set_update_post: %s\n" % e)
 ```
 
