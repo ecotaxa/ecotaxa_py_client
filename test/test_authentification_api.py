@@ -23,8 +23,8 @@ class TestAuthentificationApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_login(self):
-        """Test case for login
+    def test_login_login_post(self):
+        """Test case for login_login_post
 
         Login  # noqa: E501
         """

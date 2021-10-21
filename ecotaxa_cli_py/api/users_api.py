@@ -37,14 +37,14 @@ class UsersApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.get_current_user_prefs_endpoint = _Endpoint(
+        self.get_current_user_prefs_users_my_preferences_project_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (str,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users/my_preferences/{project_id}',
-                'operation_id': 'get_current_user_prefs',
+                'operation_id': 'get_current_user_prefs_users_my_preferences_project_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -93,14 +93,14 @@ class UsersApi(object):
             },
             api_client=api_client
         )
-        self.get_user_endpoint = _Endpoint(
+        self.get_user_users_user_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (UserModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users/{user_id}',
-                'operation_id': 'get_user',
+                'operation_id': 'get_user_users_user_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -144,14 +144,14 @@ class UsersApi(object):
             },
             api_client=api_client
         )
-        self.get_users_endpoint = _Endpoint(
+        self.get_users_users_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([UserModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users',
-                'operation_id': 'get_users',
+                'operation_id': 'get_users_users_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -188,14 +188,14 @@ class UsersApi(object):
             },
             api_client=api_client
         )
-        self.search_user_endpoint = _Endpoint(
+        self.search_user_users_search_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([UserModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users/search',
-                'operation_id': 'search_user',
+                'operation_id': 'search_user_users_search_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -237,14 +237,14 @@ class UsersApi(object):
             },
             api_client=api_client
         )
-        self.set_current_user_prefs_endpoint = _Endpoint(
+        self.set_current_user_prefs_users_my_preferences_project_id_put_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users/my_preferences/{project_id}',
-                'operation_id': 'set_current_user_prefs',
+                'operation_id': 'set_current_user_prefs_users_my_preferences_project_id_put',
                 'http_method': 'PUT',
                 'servers': None,
             },
@@ -298,14 +298,14 @@ class UsersApi(object):
             },
             api_client=api_client
         )
-        self.show_current_user_endpoint = _Endpoint(
+        self.show_current_user_users_me_get_endpoint = _Endpoint(
             settings={
                 'response_type': (UserModelWithRights,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/users/me',
-                'operation_id': 'show_current_user',
+                'operation_id': 'show_current_user_users_me_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -343,7 +343,7 @@ class UsersApi(object):
             api_client=api_client
         )
 
-    def get_current_user_prefs(
+    def get_current_user_prefs_users_my_preferences_project_id_get(
         self,
         project_id,
         **kwargs
@@ -354,7 +354,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_current_user_prefs(project_id, async_req=True)
+        >>> thread = api.get_current_user_prefs_users_my_preferences_project_id_get(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -408,9 +408,9 @@ class UsersApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.get_current_user_prefs_endpoint.call_with_http_info(**kwargs)
+        return self.get_current_user_prefs_users_my_preferences_project_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def get_user(
+    def get_user_users_user_id_get(
         self,
         user_id,
         **kwargs
@@ -421,7 +421,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_user(user_id, async_req=True)
+        >>> thread = api.get_user_users_user_id_get(user_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -474,9 +474,9 @@ class UsersApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['user_id'] = \
             user_id
-        return self.get_user_endpoint.call_with_http_info(**kwargs)
+        return self.get_user_users_user_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def get_users(
+    def get_users_users_get(
         self,
         **kwargs
     ):
@@ -486,7 +486,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_users(async_req=True)
+        >>> thread = api.get_users_users_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -535,9 +535,9 @@ class UsersApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.get_users_endpoint.call_with_http_info(**kwargs)
+        return self.get_users_users_get_endpoint.call_with_http_info(**kwargs)
 
-    def search_user(
+    def search_user_users_search_get(
         self,
         **kwargs
     ):
@@ -547,7 +547,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_user(async_req=True)
+        >>> thread = api.search_user_users_search_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -597,9 +597,9 @@ class UsersApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.search_user_endpoint.call_with_http_info(**kwargs)
+        return self.search_user_users_search_get_endpoint.call_with_http_info(**kwargs)
 
-    def set_current_user_prefs(
+    def set_current_user_prefs_users_my_preferences_project_id_put(
         self,
         project_id,
         **kwargs
@@ -610,7 +610,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_current_user_prefs(project_id, async_req=True)
+        >>> thread = api.set_current_user_prefs_users_my_preferences_project_id_put(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -665,9 +665,9 @@ class UsersApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.set_current_user_prefs_endpoint.call_with_http_info(**kwargs)
+        return self.set_current_user_prefs_users_my_preferences_project_id_put_endpoint.call_with_http_info(**kwargs)
 
-    def show_current_user(
+    def show_current_user_users_me_get(
         self,
         **kwargs
     ):
@@ -677,7 +677,7 @@ class UsersApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.show_current_user(async_req=True)
+        >>> thread = api.show_current_user_users_me_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -726,5 +726,5 @@ class UsersApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.show_current_user_endpoint.call_with_http_info(**kwargs)
+        return self.show_current_user_users_me_get_endpoint.call_with_http_info(**kwargs)
 

@@ -35,12 +35,12 @@ class InstrumentApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.instrument_query_endpoint = _Endpoint(
+        self.instrument_query_instruments_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([str],),
                 'auth': [],
                 'endpoint_path': '/instruments/',
-                'operation_id': 'instrument_query',
+                'operation_id': 'instrument_query_instruments_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -83,7 +83,7 @@ class InstrumentApi(object):
             api_client=api_client
         )
 
-    def instrument_query(
+    def instrument_query_instruments_get(
         self,
         **kwargs
     ):
@@ -93,7 +93,7 @@ class InstrumentApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.instrument_query(async_req=True)
+        >>> thread = api.instrument_query_instruments_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -143,5 +143,5 @@ class InstrumentApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.instrument_query_endpoint.call_with_http_info(**kwargs)
+        return self.instrument_query_instruments_get_endpoint.call_with_http_info(**kwargs)
 

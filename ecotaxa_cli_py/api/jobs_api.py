@@ -36,14 +36,14 @@ class JobsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.erase_job_endpoint = _Endpoint(
+        self.erase_job_jobs_job_id_delete_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}',
-                'operation_id': 'erase_job',
+                'operation_id': 'erase_job_jobs_job_id_delete',
                 'http_method': 'DELETE',
                 'servers': None,
             },
@@ -87,14 +87,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.get_job_file_endpoint = _Endpoint(
+        self.get_job_file_jobs_job_id_file_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}/file',
-                'operation_id': 'get_job_file',
+                'operation_id': 'get_job_file_jobs_job_id_file_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -140,14 +140,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.get_job_endpoint = _Endpoint(
+        self.get_job_jobs_job_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (JobModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}/',
-                'operation_id': 'get_job',
+                'operation_id': 'get_job_jobs_job_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -191,14 +191,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.get_job_log_file_endpoint = _Endpoint(
+        self.get_job_log_file_jobs_job_id_log_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}/log',
-                'operation_id': 'get_job_log_file',
+                'operation_id': 'get_job_log_file_jobs_job_id_log_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -242,14 +242,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.list_jobs_endpoint = _Endpoint(
+        self.list_jobs_jobs_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([JobModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/',
-                'operation_id': 'list_jobs',
+                'operation_id': 'list_jobs_jobs_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -293,14 +293,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.reply_job_question_endpoint = _Endpoint(
+        self.reply_job_question_jobs_job_id_answer_post_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}/answer',
-                'operation_id': 'reply_job_question',
+                'operation_id': 'reply_job_question_jobs_job_id_answer_post',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -351,14 +351,14 @@ class JobsApi(object):
             },
             api_client=api_client
         )
-        self.restart_job_endpoint = _Endpoint(
+        self.restart_job_jobs_job_id_restart_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/jobs/{job_id}/restart',
-                'operation_id': 'restart_job',
+                'operation_id': 'restart_job_jobs_job_id_restart_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -403,7 +403,7 @@ class JobsApi(object):
             api_client=api_client
         )
 
-    def erase_job(
+    def erase_job_jobs_job_id_delete(
         self,
         job_id,
         **kwargs
@@ -414,7 +414,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.erase_job(job_id, async_req=True)
+        >>> thread = api.erase_job_jobs_job_id_delete(job_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -467,9 +467,9 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['job_id'] = \
             job_id
-        return self.erase_job_endpoint.call_with_http_info(**kwargs)
+        return self.erase_job_jobs_job_id_delete_endpoint.call_with_http_info(**kwargs)
 
-    def get_job_file(
+    def get_job_file_jobs_job_id_file_get(
         self,
         job_id,
         **kwargs
@@ -480,7 +480,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job_file(job_id, async_req=True)
+        >>> thread = api.get_job_file_jobs_job_id_file_get(job_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -533,9 +533,9 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['job_id'] = \
             job_id
-        return self.get_job_file_endpoint.call_with_http_info(**kwargs)
+        return self.get_job_file_jobs_job_id_file_get_endpoint.call_with_http_info(**kwargs)
 
-    def get_job(
+    def get_job_jobs_job_id_get(
         self,
         job_id,
         **kwargs
@@ -546,7 +546,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job(job_id, async_req=True)
+        >>> thread = api.get_job_jobs_job_id_get(job_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -599,9 +599,9 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['job_id'] = \
             job_id
-        return self.get_job_endpoint.call_with_http_info(**kwargs)
+        return self.get_job_jobs_job_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def get_job_log_file(
+    def get_job_log_file_jobs_job_id_log_get(
         self,
         job_id,
         **kwargs
@@ -612,7 +612,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_job_log_file(job_id, async_req=True)
+        >>> thread = api.get_job_log_file_jobs_job_id_log_get(job_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -665,9 +665,9 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['job_id'] = \
             job_id
-        return self.get_job_log_file_endpoint.call_with_http_info(**kwargs)
+        return self.get_job_log_file_jobs_job_id_log_get_endpoint.call_with_http_info(**kwargs)
 
-    def list_jobs(
+    def list_jobs_jobs_get(
         self,
         for_admin,
         **kwargs
@@ -678,7 +678,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_jobs(for_admin, async_req=True)
+        >>> thread = api.list_jobs_jobs_get(for_admin, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -731,9 +731,9 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['for_admin'] = \
             for_admin
-        return self.list_jobs_endpoint.call_with_http_info(**kwargs)
+        return self.list_jobs_jobs_get_endpoint.call_with_http_info(**kwargs)
 
-    def reply_job_question(
+    def reply_job_question_jobs_job_id_answer_post(
         self,
         job_id,
         body,
@@ -745,7 +745,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reply_job_question(job_id, body, async_req=True)
+        >>> thread = api.reply_job_question_jobs_job_id_answer_post(job_id, body, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -801,9 +801,9 @@ class JobsApi(object):
             job_id
         kwargs['body'] = \
             body
-        return self.reply_job_question_endpoint.call_with_http_info(**kwargs)
+        return self.reply_job_question_jobs_job_id_answer_post_endpoint.call_with_http_info(**kwargs)
 
-    def restart_job(
+    def restart_job_jobs_job_id_restart_get(
         self,
         job_id,
         **kwargs
@@ -814,7 +814,7 @@ class JobsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.restart_job(job_id, async_req=True)
+        >>> thread = api.restart_job_jobs_job_id_restart_get(job_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -867,5 +867,5 @@ class JobsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['job_id'] = \
             job_id
-        return self.restart_job_endpoint.call_with_http_info(**kwargs)
+        return self.restart_job_jobs_job_id_restart_get_endpoint.call_with_http_info(**kwargs)
 

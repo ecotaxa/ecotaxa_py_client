@@ -23,22 +23,22 @@ class TestAcquisitionsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_acquisition_query(self):
-        """Test case for acquisition_query
+    def test_acquisition_query_acquisition_acquisition_id_get(self):
+        """Test case for acquisition_query_acquisition_acquisition_id_get
 
         Acquisition Query  # noqa: E501
         """
         pass
 
-    def test_acquisitions_search(self):
-        """Test case for acquisitions_search
+    def test_acquisitions_search_acquisitions_search_get(self):
+        """Test case for acquisitions_search_acquisitions_search_get
 
         Acquisitions Search  # noqa: E501
         """
         pass
 
-    def test_update_acquisitions(self):
-        """Test case for update_acquisitions
+    def test_update_acquisitions_acquisition_set_update_post(self):
+        """Test case for update_acquisitions_acquisition_set_update_post
 
         Update Acquisitions  # noqa: E501
         """

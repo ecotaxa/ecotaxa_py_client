@@ -37,14 +37,14 @@ class AcquisitionsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.acquisition_query_endpoint = _Endpoint(
+        self.acquisition_query_acquisition_acquisition_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (AcquisitionModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/acquisition/{acquisition_id}',
-                'operation_id': 'acquisition_query',
+                'operation_id': 'acquisition_query_acquisition_acquisition_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -88,14 +88,14 @@ class AcquisitionsApi(object):
             },
             api_client=api_client
         )
-        self.acquisitions_search_endpoint = _Endpoint(
+        self.acquisitions_search_acquisitions_search_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([AcquisitionModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/acquisitions/search',
-                'operation_id': 'acquisitions_search',
+                'operation_id': 'acquisitions_search_acquisitions_search_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -137,14 +137,14 @@ class AcquisitionsApi(object):
             },
             api_client=api_client
         )
-        self.update_acquisitions_endpoint = _Endpoint(
+        self.update_acquisitions_acquisition_set_update_post_endpoint = _Endpoint(
             settings={
                 'response_type': (int,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/acquisition_set/update',
-                'operation_id': 'update_acquisitions',
+                'operation_id': 'update_acquisitions_acquisition_set_update_post',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -190,7 +190,7 @@ class AcquisitionsApi(object):
             api_client=api_client
         )
 
-    def acquisition_query(
+    def acquisition_query_acquisition_acquisition_id_get(
         self,
         acquisition_id,
         **kwargs
@@ -201,7 +201,7 @@ class AcquisitionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.acquisition_query(acquisition_id, async_req=True)
+        >>> thread = api.acquisition_query_acquisition_acquisition_id_get(acquisition_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -254,9 +254,9 @@ class AcquisitionsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['acquisition_id'] = \
             acquisition_id
-        return self.acquisition_query_endpoint.call_with_http_info(**kwargs)
+        return self.acquisition_query_acquisition_acquisition_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def acquisitions_search(
+    def acquisitions_search_acquisitions_search_get(
         self,
         **kwargs
     ):
@@ -266,7 +266,7 @@ class AcquisitionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.acquisitions_search(async_req=True)
+        >>> thread = api.acquisitions_search_acquisitions_search_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -316,9 +316,9 @@ class AcquisitionsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.acquisitions_search_endpoint.call_with_http_info(**kwargs)
+        return self.acquisitions_search_acquisitions_search_get_endpoint.call_with_http_info(**kwargs)
 
-    def update_acquisitions(
+    def update_acquisitions_acquisition_set_update_post(
         self,
         bulk_update_req,
         **kwargs
@@ -329,7 +329,7 @@ class AcquisitionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_acquisitions(bulk_update_req, async_req=True)
+        >>> thread = api.update_acquisitions_acquisition_set_update_post(bulk_update_req, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -382,5 +382,5 @@ class AcquisitionsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['bulk_update_req'] = \
             bulk_update_req
-        return self.update_acquisitions_endpoint.call_with_http_info(**kwargs)
+        return self.update_acquisitions_acquisition_set_update_post_endpoint.call_with_http_info(**kwargs)
 

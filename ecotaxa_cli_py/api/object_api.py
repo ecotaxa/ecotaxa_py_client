@@ -37,14 +37,14 @@ class ObjectApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.object_query_history_endpoint = _Endpoint(
+        self.object_query_history_object_object_id_history_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([HistoricalClassification],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object/{object_id}/history',
-                'operation_id': 'object_query_history',
+                'operation_id': 'object_query_history_object_object_id_history_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -88,14 +88,14 @@ class ObjectApi(object):
             },
             api_client=api_client
         )
-        self.object_query_endpoint = _Endpoint(
+        self.object_query_object_object_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (ObjectModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/object/{object_id}',
-                'operation_id': 'object_query',
+                'operation_id': 'object_query_object_object_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -140,7 +140,7 @@ class ObjectApi(object):
             api_client=api_client
         )
 
-    def object_query_history(
+    def object_query_history_object_object_id_history_get(
         self,
         object_id,
         **kwargs
@@ -151,7 +151,7 @@ class ObjectApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.object_query_history(object_id, async_req=True)
+        >>> thread = api.object_query_history_object_object_id_history_get(object_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -204,9 +204,9 @@ class ObjectApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['object_id'] = \
             object_id
-        return self.object_query_history_endpoint.call_with_http_info(**kwargs)
+        return self.object_query_history_object_object_id_history_get_endpoint.call_with_http_info(**kwargs)
 
-    def object_query(
+    def object_query_object_object_id_get(
         self,
         object_id,
         **kwargs
@@ -217,7 +217,7 @@ class ObjectApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.object_query(object_id, async_req=True)
+        >>> thread = api.object_query_object_object_id_get(object_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -270,5 +270,5 @@ class ObjectApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['object_id'] = \
             object_id
-        return self.object_query_endpoint.call_with_http_info(**kwargs)
+        return self.object_query_object_object_id_get_endpoint.call_with_http_info(**kwargs)
 

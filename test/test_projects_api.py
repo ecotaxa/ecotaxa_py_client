@@ -23,99 +23,99 @@ class TestProjectsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create_project(self):
-        """Test case for create_project
+    def test_create_project_projects_create_post(self):
+        """Test case for create_project_projects_create_post
 
         Create Project  # noqa: E501
         """
         pass
 
-    def test_erase_project(self):
-        """Test case for erase_project
+    def test_erase_project_projects_project_id_delete(self):
+        """Test case for erase_project_projects_project_id_delete
 
         Erase Project  # noqa: E501
         """
         pass
 
-    def test_import_file(self):
-        """Test case for import_file
+    def test_import_file_file_import_project_id_post(self):
+        """Test case for import_file_file_import_project_id_post
 
         Import File  # noqa: E501
         """
         pass
 
-    def test_project_check(self):
-        """Test case for project_check
+    def test_project_check_projects_project_id_check_get(self):
+        """Test case for project_check_projects_project_id_check_get
 
         Project Check  # noqa: E501
         """
         pass
 
-    def test_project_merge(self):
-        """Test case for project_merge
+    def test_project_merge_projects_project_id_merge_post(self):
+        """Test case for project_merge_projects_project_id_merge_post
 
         Project Merge  # noqa: E501
         """
         pass
 
-    def test_project_query(self):
-        """Test case for project_query
+    def test_project_query_projects_project_id_get(self):
+        """Test case for project_query_projects_project_id_get
 
         Project Query  # noqa: E501
         """
         pass
 
-    def test_project_recompute_geography(self):
-        """Test case for project_recompute_geography
+    def test_project_recompute_geography_projects_project_id_recompute_geo_post(self):
+        """Test case for project_recompute_geography_projects_project_id_recompute_geo_post
 
         Project Recompute Geography  # noqa: E501
         """
         pass
 
-    def test_project_set_get_stats(self):
-        """Test case for project_set_get_stats
+    def test_project_set_get_stats_project_set_taxo_stats_get(self):
+        """Test case for project_set_get_stats_project_set_taxo_stats_get
 
         Project Set Get Stats  # noqa: E501
         """
         pass
 
-    def test_project_set_get_user_stats(self):
-        """Test case for project_set_get_user_stats
+    def test_project_set_get_user_stats_project_set_user_stats_get(self):
+        """Test case for project_set_get_user_stats_project_set_user_stats_get
 
         Project Set Get User Stats  # noqa: E501
         """
         pass
 
-    def test_project_stats(self):
-        """Test case for project_stats
+    def test_project_stats_projects_project_id_stats_get(self):
+        """Test case for project_stats_projects_project_id_stats_get
 
         Project Stats  # noqa: E501
         """
         pass
 
-    def test_project_subset(self):
-        """Test case for project_subset
+    def test_project_subset_projects_project_id_subset_post(self):
+        """Test case for project_subset_projects_project_id_subset_post
 
         Project Subset  # noqa: E501
         """
         pass
 
-    def test_search_projects(self):
-        """Test case for search_projects
+    def test_search_projects_projects_search_get(self):
+        """Test case for search_projects_projects_search_get
 
         Search Projects  # noqa: E501
         """
         pass
 
-    def test_simple_import(self):
-        """Test case for simple_import
+    def test_simple_import_simple_import_project_id_post(self):
+        """Test case for simple_import_simple_import_project_id_post
 
         Simple Import  # noqa: E501
         """
         pass
 
-    def test_update_project(self):
-        """Test case for update_project
+    def test_update_project_projects_project_id_put(self):
+        """Test case for update_project_projects_project_id_put
 
         Update Project  # noqa: E501
         """

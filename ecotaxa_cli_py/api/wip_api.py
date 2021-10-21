@@ -34,14 +34,14 @@ class WIPApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.system_status_endpoint = _Endpoint(
+        self.system_status_status_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/status',
-                'operation_id': 'system_status',
+                'operation_id': 'system_status_status_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -79,7 +79,7 @@ class WIPApi(object):
             api_client=api_client
         )
 
-    def system_status(
+    def system_status_status_get(
         self,
         **kwargs
     ):
@@ -89,7 +89,7 @@ class WIPApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.system_status(async_req=True)
+        >>> thread = api.system_status_status_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -138,5 +138,5 @@ class WIPApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.system_status_endpoint.call_with_http_info(**kwargs)
+        return self.system_status_status_get_endpoint.call_with_http_info(**kwargs)
 

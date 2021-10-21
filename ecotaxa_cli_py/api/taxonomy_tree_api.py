@@ -39,14 +39,14 @@ class TaxonomyTreeApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.add_taxon_in_central_endpoint = _Endpoint(
+        self.add_taxon_in_central_taxon_central_put_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon/central',
-                'operation_id': 'add_taxon_in_central',
+                'operation_id': 'add_taxon_in_central_taxon_central_put',
                 'http_method': 'PUT',
                 'servers': None,
             },
@@ -118,14 +118,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.get_taxon_in_central_endpoint = _Endpoint(
+        self.get_taxon_in_central_taxon_central_taxon_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon/central/{taxon_id}',
-                'operation_id': 'get_taxon_in_central',
+                'operation_id': 'get_taxon_in_central_taxon_central_taxon_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -169,14 +169,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.pull_taxa_update_from_central_endpoint = _Endpoint(
+        self.pull_taxa_update_from_central_taxa_pull_from_central_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxa/pull_from_central',
-                'operation_id': 'pull_taxa_update_from_central',
+                'operation_id': 'pull_taxa_update_from_central_taxa_pull_from_central_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -213,14 +213,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.push_taxa_stats_in_central_endpoint = _Endpoint(
+        self.push_taxa_stats_in_central_taxa_stats_push_to_central_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxa/stats/push_to_central',
-                'operation_id': 'push_taxa_stats_in_central',
+                'operation_id': 'push_taxa_stats_in_central_taxa_stats_push_to_central_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -257,12 +257,12 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.query_root_taxa_endpoint = _Endpoint(
+        self.query_root_taxa_taxa_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([TaxonModel],),
                 'auth': [],
                 'endpoint_path': '/taxa',
-                'operation_id': 'query_root_taxa',
+                'operation_id': 'query_root_taxa_taxa_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -299,14 +299,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.query_taxa_set_endpoint = _Endpoint(
+        self.query_taxa_set_taxon_set_query_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([TaxonModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon_set/query',
-                'operation_id': 'query_taxa_set',
+                'operation_id': 'query_taxa_set_taxon_set_query_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -350,14 +350,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.query_taxa_endpoint = _Endpoint(
+        self.query_taxa_taxon_taxon_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (TaxonModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon/{taxon_id}',
-                'operation_id': 'query_taxa',
+                'operation_id': 'query_taxa_taxon_taxon_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -401,14 +401,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.query_taxa_usage_endpoint = _Endpoint(
+        self.query_taxa_usage_taxon_taxon_id_usage_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([TaxonUsageModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon/{taxon_id}/usage',
-                'operation_id': 'query_taxa_usage',
+                'operation_id': 'query_taxa_usage_taxon_taxon_id_usage_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -452,14 +452,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.reclassif_project_stats_endpoint = _Endpoint(
+        self.reclassif_project_stats_taxa_reclassification_history_project_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (bool, date, datetime, dict, float, int, list, str, none_type,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxa/reclassification_history/{project_id}',
-                'operation_id': 'reclassif_project_stats',
+                'operation_id': 'reclassif_project_stats_taxa_reclassification_history_project_id_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -503,14 +503,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.reclassif_stats_endpoint = _Endpoint(
+        self.reclassif_stats_taxa_reclassification_stats_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([TaxonModel],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxa/reclassification_stats',
-                'operation_id': 'reclassif_stats',
+                'operation_id': 'reclassif_stats_taxa_reclassification_stats_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -554,14 +554,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.search_taxa_endpoint = _Endpoint(
+        self.search_taxa_taxon_set_search_get_endpoint = _Endpoint(
             settings={
                 'response_type': ([TaxaSearchRsp],),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxon_set/search',
-                'operation_id': 'search_taxa',
+                'operation_id': 'search_taxa_taxon_set_search_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -610,14 +610,14 @@ class TaxonomyTreeApi(object):
             },
             api_client=api_client
         )
-        self.taxa_tree_status_endpoint = _Endpoint(
+        self.taxa_tree_status_taxa_status_get_endpoint = _Endpoint(
             settings={
                 'response_type': (TaxonomyTreeStatus,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/taxa/status',
-                'operation_id': 'taxa_tree_status',
+                'operation_id': 'taxa_tree_status_taxa_status_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -655,7 +655,7 @@ class TaxonomyTreeApi(object):
             api_client=api_client
         )
 
-    def add_taxon_in_central(
+    def add_taxon_in_central_taxon_central_put(
         self,
         name,
         parent_id,
@@ -669,7 +669,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.add_taxon_in_central(name, parent_id, taxotype, creator_email, async_req=True)
+        >>> thread = api.add_taxon_in_central_taxon_central_put(name, parent_id, taxotype, creator_email, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -733,9 +733,9 @@ class TaxonomyTreeApi(object):
             taxotype
         kwargs['creator_email'] = \
             creator_email
-        return self.add_taxon_in_central_endpoint.call_with_http_info(**kwargs)
+        return self.add_taxon_in_central_taxon_central_put_endpoint.call_with_http_info(**kwargs)
 
-    def get_taxon_in_central(
+    def get_taxon_in_central_taxon_central_taxon_id_get(
         self,
         taxon_id,
         **kwargs
@@ -746,7 +746,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_taxon_in_central(taxon_id, async_req=True)
+        >>> thread = api.get_taxon_in_central_taxon_central_taxon_id_get(taxon_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -799,9 +799,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['taxon_id'] = \
             taxon_id
-        return self.get_taxon_in_central_endpoint.call_with_http_info(**kwargs)
+        return self.get_taxon_in_central_taxon_central_taxon_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def pull_taxa_update_from_central(
+    def pull_taxa_update_from_central_taxa_pull_from_central_get(
         self,
         **kwargs
     ):
@@ -811,7 +811,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.pull_taxa_update_from_central(async_req=True)
+        >>> thread = api.pull_taxa_update_from_central_taxa_pull_from_central_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -860,9 +860,9 @@ class TaxonomyTreeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.pull_taxa_update_from_central_endpoint.call_with_http_info(**kwargs)
+        return self.pull_taxa_update_from_central_taxa_pull_from_central_get_endpoint.call_with_http_info(**kwargs)
 
-    def push_taxa_stats_in_central(
+    def push_taxa_stats_in_central_taxa_stats_push_to_central_get(
         self,
         **kwargs
     ):
@@ -872,7 +872,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.push_taxa_stats_in_central(async_req=True)
+        >>> thread = api.push_taxa_stats_in_central_taxa_stats_push_to_central_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -921,9 +921,9 @@ class TaxonomyTreeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.push_taxa_stats_in_central_endpoint.call_with_http_info(**kwargs)
+        return self.push_taxa_stats_in_central_taxa_stats_push_to_central_get_endpoint.call_with_http_info(**kwargs)
 
-    def query_root_taxa(
+    def query_root_taxa_taxa_get(
         self,
         **kwargs
     ):
@@ -933,7 +933,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_root_taxa(async_req=True)
+        >>> thread = api.query_root_taxa_taxa_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -982,9 +982,9 @@ class TaxonomyTreeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.query_root_taxa_endpoint.call_with_http_info(**kwargs)
+        return self.query_root_taxa_taxa_get_endpoint.call_with_http_info(**kwargs)
 
-    def query_taxa_set(
+    def query_taxa_set_taxon_set_query_get(
         self,
         ids,
         **kwargs
@@ -995,7 +995,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_taxa_set(ids, async_req=True)
+        >>> thread = api.query_taxa_set_taxon_set_query_get(ids, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1048,9 +1048,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['ids'] = \
             ids
-        return self.query_taxa_set_endpoint.call_with_http_info(**kwargs)
+        return self.query_taxa_set_taxon_set_query_get_endpoint.call_with_http_info(**kwargs)
 
-    def query_taxa(
+    def query_taxa_taxon_taxon_id_get(
         self,
         taxon_id,
         **kwargs
@@ -1061,7 +1061,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_taxa(taxon_id, async_req=True)
+        >>> thread = api.query_taxa_taxon_taxon_id_get(taxon_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1114,9 +1114,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['taxon_id'] = \
             taxon_id
-        return self.query_taxa_endpoint.call_with_http_info(**kwargs)
+        return self.query_taxa_taxon_taxon_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def query_taxa_usage(
+    def query_taxa_usage_taxon_taxon_id_usage_get(
         self,
         taxon_id,
         **kwargs
@@ -1127,7 +1127,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_taxa_usage(taxon_id, async_req=True)
+        >>> thread = api.query_taxa_usage_taxon_taxon_id_usage_get(taxon_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1180,9 +1180,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['taxon_id'] = \
             taxon_id
-        return self.query_taxa_usage_endpoint.call_with_http_info(**kwargs)
+        return self.query_taxa_usage_taxon_taxon_id_usage_get_endpoint.call_with_http_info(**kwargs)
 
-    def reclassif_project_stats(
+    def reclassif_project_stats_taxa_reclassification_history_project_id_get(
         self,
         project_id,
         **kwargs
@@ -1193,7 +1193,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reclassif_project_stats(project_id, async_req=True)
+        >>> thread = api.reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1246,9 +1246,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['project_id'] = \
             project_id
-        return self.reclassif_project_stats_endpoint.call_with_http_info(**kwargs)
+        return self.reclassif_project_stats_taxa_reclassification_history_project_id_get_endpoint.call_with_http_info(**kwargs)
 
-    def reclassif_stats(
+    def reclassif_stats_taxa_reclassification_stats_get(
         self,
         taxa_ids,
         **kwargs
@@ -1259,7 +1259,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.reclassif_stats(taxa_ids, async_req=True)
+        >>> thread = api.reclassif_stats_taxa_reclassification_stats_get(taxa_ids, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1312,9 +1312,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['taxa_ids'] = \
             taxa_ids
-        return self.reclassif_stats_endpoint.call_with_http_info(**kwargs)
+        return self.reclassif_stats_taxa_reclassification_stats_get_endpoint.call_with_http_info(**kwargs)
 
-    def search_taxa(
+    def search_taxa_taxon_set_search_get(
         self,
         query,
         **kwargs
@@ -1325,7 +1325,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.search_taxa(query, async_req=True)
+        >>> thread = api.search_taxa_taxon_set_search_get(query, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -1379,9 +1379,9 @@ class TaxonomyTreeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['query'] = \
             query
-        return self.search_taxa_endpoint.call_with_http_info(**kwargs)
+        return self.search_taxa_taxon_set_search_get_endpoint.call_with_http_info(**kwargs)
 
-    def taxa_tree_status(
+    def taxa_tree_status_taxa_status_get(
         self,
         **kwargs
     ):
@@ -1391,7 +1391,7 @@ class TaxonomyTreeApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.taxa_tree_status(async_req=True)
+        >>> thread = api.taxa_tree_status_taxa_status_get(async_req=True)
         >>> result = thread.get()
 
 
@@ -1440,5 +1440,5 @@ class TaxonomyTreeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        return self.taxa_tree_status_endpoint.call_with_http_info(**kwargs)
+        return self.taxa_tree_status_taxa_status_get_endpoint.call_with_http_info(**kwargs)
 

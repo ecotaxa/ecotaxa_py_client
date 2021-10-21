@@ -4,11 +4,11 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instrument_query**](InstrumentApi.md#instrument_query) | **GET** /instruments/ | Instrument Query
+[**instrument_query_instruments_get**](InstrumentApi.md#instrument_query_instruments_get) | **GET** /instruments/ | Instrument Query
 
 
-# **instrument_query**
-> [str] instrument_query()
+# **instrument_query_instruments_get**
+> [str] instrument_query_instruments_get()
 
 Instrument Query
 
@@ -40,10 +40,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Instrument Query
-        api_response = api_instance.instrument_query(project_ids=project_ids)
+        api_response = api_instance.instrument_query_instruments_get(project_ids=project_ids)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling InstrumentApi->instrument_query: %s\n" % e)
+        print("Exception when calling InstrumentApi->instrument_query_instruments_get: %s\n" % e)
 ```
 
 

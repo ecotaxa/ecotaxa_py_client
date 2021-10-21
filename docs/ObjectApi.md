@@ -4,12 +4,12 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**object_query_history**](ObjectApi.md#object_query_history) | **GET** /object/{object_id}/history | Object Query History
-[**object_query**](ObjectApi.md#object_query) | **GET** /object/{object_id} | Object Query
+[**object_query_history_object_object_id_history_get**](ObjectApi.md#object_query_history_object_object_id_history_get) | **GET** /object/{object_id}/history | Object Query History
+[**object_query_object_object_id_get**](ObjectApi.md#object_query_object_object_id_get) | **GET** /object/{object_id} | Object Query
 
 
-# **object_query_history**
-> [HistoricalClassification] object_query_history(object_id)
+# **object_query_history_object_object_id_history_get**
+> [HistoricalClassification] object_query_history_object_object_id_history_get(object_id)
 
 Object Query History
 
@@ -52,10 +52,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Object Query History
-        api_response = api_instance.object_query_history(object_id)
+        api_response = api_instance.object_query_history_object_object_id_history_get(object_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling ObjectApi->object_query_history: %s\n" % e)
+        print("Exception when calling ObjectApi->object_query_history_object_object_id_history_get: %s\n" % e)
 ```
 
 
@@ -88,8 +88,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **object_query**
-> ObjectModel object_query(object_id)
+# **object_query_object_object_id_get**
+> ObjectModel object_query_object_object_id_get(object_id)
 
 Object Query
 
@@ -132,10 +132,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Object Query
-        api_response = api_instance.object_query(object_id)
+        api_response = api_instance.object_query_object_object_id_get(object_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling ObjectApi->object_query: %s\n" % e)
+        print("Exception when calling ObjectApi->object_query_object_object_id_get: %s\n" % e)
 ```
 
 

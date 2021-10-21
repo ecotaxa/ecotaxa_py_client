@@ -4,13 +4,13 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**acquisition_query**](AcquisitionsApi.md#acquisition_query) | **GET** /acquisition/{acquisition_id} | Acquisition Query
-[**acquisitions_search**](AcquisitionsApi.md#acquisitions_search) | **GET** /acquisitions/search | Acquisitions Search
-[**update_acquisitions**](AcquisitionsApi.md#update_acquisitions) | **POST** /acquisition_set/update | Update Acquisitions
+[**acquisition_query_acquisition_acquisition_id_get**](AcquisitionsApi.md#acquisition_query_acquisition_acquisition_id_get) | **GET** /acquisition/{acquisition_id} | Acquisition Query
+[**acquisitions_search_acquisitions_search_get**](AcquisitionsApi.md#acquisitions_search_acquisitions_search_get) | **GET** /acquisitions/search | Acquisitions Search
+[**update_acquisitions_acquisition_set_update_post**](AcquisitionsApi.md#update_acquisitions_acquisition_set_update_post) | **POST** /acquisition_set/update | Update Acquisitions
 
 
-# **acquisition_query**
-> AcquisitionModel acquisition_query(acquisition_id)
+# **acquisition_query_acquisition_acquisition_id_get**
+> AcquisitionModel acquisition_query_acquisition_acquisition_id_get(acquisition_id)
 
 Acquisition Query
 
@@ -53,10 +53,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Acquisition Query
-        api_response = api_instance.acquisition_query(acquisition_id)
+        api_response = api_instance.acquisition_query_acquisition_acquisition_id_get(acquisition_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling AcquisitionsApi->acquisition_query: %s\n" % e)
+        print("Exception when calling AcquisitionsApi->acquisition_query_acquisition_acquisition_id_get: %s\n" % e)
 ```
 
 
@@ -89,8 +89,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **acquisitions_search**
-> [AcquisitionModel] acquisitions_search()
+# **acquisitions_search_acquisitions_search_get**
+> [AcquisitionModel] acquisitions_search_acquisitions_search_get()
 
 Acquisitions Search
 
@@ -134,10 +134,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Acquisitions Search
-        api_response = api_instance.acquisitions_search(project_id=project_id)
+        api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id=project_id)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling AcquisitionsApi->acquisitions_search: %s\n" % e)
+        print("Exception when calling AcquisitionsApi->acquisitions_search_acquisitions_search_get: %s\n" % e)
 ```
 
 
@@ -170,8 +170,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_acquisitions**
-> int update_acquisitions(bulk_update_req)
+# **update_acquisitions_acquisition_set_update_post**
+> int update_acquisitions_acquisition_set_update_post(bulk_update_req)
 
 Update Acquisitions
 
@@ -217,10 +217,10 @@ with ecotaxa_cli_py.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update Acquisitions
-        api_response = api_instance.update_acquisitions(bulk_update_req)
+        api_response = api_instance.update_acquisitions_acquisition_set_update_post(bulk_update_req)
         pprint(api_response)
     except ecotaxa_cli_py.ApiException as e:
-        print("Exception when calling AcquisitionsApi->update_acquisitions: %s\n" % e)
+        print("Exception when calling AcquisitionsApi->update_acquisitions_acquisition_set_update_post: %s\n" % e)
 ```
 
 

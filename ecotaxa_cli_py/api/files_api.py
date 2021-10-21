@@ -36,14 +36,14 @@ class FilesApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.list_common_files_endpoint = _Endpoint(
+        self.list_common_files_common_files_get_endpoint = _Endpoint(
             settings={
                 'response_type': (DirectoryModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/common_files/',
-                'operation_id': 'list_common_files',
+                'operation_id': 'list_common_files_common_files_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -87,14 +87,14 @@ class FilesApi(object):
             },
             api_client=api_client
         )
-        self.list_user_files_endpoint = _Endpoint(
+        self.list_user_files_my_files_sub_path_get_endpoint = _Endpoint(
             settings={
                 'response_type': (DirectoryModel,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/my_files/{sub_path}',
-                'operation_id': 'list_user_files',
+                'operation_id': 'list_user_files_my_files_sub_path_get',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -138,14 +138,14 @@ class FilesApi(object):
             },
             api_client=api_client
         )
-        self.post_user_file_endpoint = _Endpoint(
+        self.put_user_file_my_files_post_endpoint = _Endpoint(
             settings={
                 'response_type': (str,),
                 'auth': [
                     'BearerOrCookieAuth'
                 ],
                 'endpoint_path': '/my_files/',
-                'operation_id': 'post_user_file',
+                'operation_id': 'put_user_file_my_files_post',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -202,7 +202,7 @@ class FilesApi(object):
             api_client=api_client
         )
 
-    def list_common_files(
+    def list_common_files_common_files_get(
         self,
         path,
         **kwargs
@@ -213,7 +213,7 @@ class FilesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_common_files(path, async_req=True)
+        >>> thread = api.list_common_files_common_files_get(path, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -266,9 +266,9 @@ class FilesApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['path'] = \
             path
-        return self.list_common_files_endpoint.call_with_http_info(**kwargs)
+        return self.list_common_files_common_files_get_endpoint.call_with_http_info(**kwargs)
 
-    def list_user_files(
+    def list_user_files_my_files_sub_path_get(
         self,
         sub_path,
         **kwargs
@@ -279,7 +279,7 @@ class FilesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_user_files(sub_path, async_req=True)
+        >>> thread = api.list_user_files_my_files_sub_path_get(sub_path, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -332,9 +332,9 @@ class FilesApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['sub_path'] = \
             sub_path
-        return self.list_user_files_endpoint.call_with_http_info(**kwargs)
+        return self.list_user_files_my_files_sub_path_get_endpoint.call_with_http_info(**kwargs)
 
-    def post_user_file(
+    def put_user_file_my_files_post(
         self,
         file,
         **kwargs
@@ -345,7 +345,7 @@ class FilesApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.post_user_file(file, async_req=True)
+        >>> thread = api.put_user_file_my_files_post(file, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -400,5 +400,5 @@ class FilesApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['file'] = \
             file
-        return self.post_user_file_endpoint.call_with_http_info(**kwargs)
+        return self.put_user_file_my_files_post_endpoint.call_with_http_info(**kwargs)
 

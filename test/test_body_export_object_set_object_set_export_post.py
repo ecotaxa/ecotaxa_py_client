@@ -16,7 +16,7 @@ from ecotaxa_cli_py.model.export_req import ExportReq
 from ecotaxa_cli_py.model.project_filters import ProjectFilters
 globals()['ExportReq'] = ExportReq
 globals()['ProjectFilters'] = ProjectFilters
-from ecotaxa_cli_py.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_cli_py.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
 
 
 class TestBodyExportObjectSetObjectSetExportPost(unittest.TestCase):

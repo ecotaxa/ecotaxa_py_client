@@ -23,50 +23,50 @@ class TestJobsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_erase_job(self):
-        """Test case for erase_job
+    def test_erase_job_jobs_job_id_delete(self):
+        """Test case for erase_job_jobs_job_id_delete
 
         Erase Job  # noqa: E501
         """
         pass
 
-    def test_get_job_file(self):
-        """Test case for get_job_file
+    def test_get_job_file_jobs_job_id_file_get(self):
+        """Test case for get_job_file_jobs_job_id_file_get
 
         Get Job File  # noqa: E501
         """
         pass
 
-    def test_get_job(self):
-        """Test case for get_job
+    def test_get_job_jobs_job_id_get(self):
+        """Test case for get_job_jobs_job_id_get
 
         Get Job  # noqa: E501
         """
         pass
 
-    def test_get_job_log_file(self):
-        """Test case for get_job_log_file
+    def test_get_job_log_file_jobs_job_id_log_get(self):
+        """Test case for get_job_log_file_jobs_job_id_log_get
 
         Get Job Log File  # noqa: E501
         """
         pass
 
-    def test_list_jobs(self):
-        """Test case for list_jobs
+    def test_list_jobs_jobs_get(self):
+        """Test case for list_jobs_jobs_get
 
         List Jobs  # noqa: E501
         """
         pass
 
-    def test_reply_job_question(self):
-        """Test case for reply_job_question
+    def test_reply_job_question_jobs_job_id_answer_post(self):
+        """Test case for reply_job_question_jobs_job_id_answer_post
 
         Reply Job Question  # noqa: E501
         """
         pass
 
-    def test_restart_job(self):
-        """Test case for restart_job
+    def test_restart_job_jobs_job_id_restart_get(self):
+        """Test case for restart_job_jobs_job_id_restart_get
 
         Restart Job  # noqa: E501
         """
