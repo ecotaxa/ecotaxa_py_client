@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Do Nothing
 
-This entry point will just do nothing.     It's also used for exporting models we need on client side.
+**This entry point will just do nothing.**  It's also used for exporting models we need on client side.
 
 ### Example
 
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 System Error
 
-This entry point will return a 500 internal error, on purpose so the stack trace is visible and client can see what it gives.
+**Return a 500 internal error**, on purpose so the stack trace is visible and client can see what it gives.
 
 ### Example
 
@@ -160,7 +160,7 @@ This endpoint does not need any parameter.
 
 Used Constants
 
-This entry point will return useful strings for user dialog. Now also used for values extracted from Config.
+**Return useful strings for user dialog.**  Now also used for values extracted from Config.
 
 ### Example
 

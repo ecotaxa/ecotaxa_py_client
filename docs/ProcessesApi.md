@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Process Query
 
-Read a single object.
+Returns **information about the process** corresponding to the given id.
 
 ### Example
 
@@ -47,7 +47,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = processes_api.ProcessesApi(api_client)
-    process_id = 1 # int | 
+    process_id = 1 # int | Internal, the unique numeric id of this process.
 
     # example passing only required values which don't have defaults set
     try:
@@ -63,7 +63,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **process_id** | **int**|  |
+ **process_id** | **int**| Internal, the unique numeric id of this process. |
 
 ### Return type
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 Update Processes
 
-Do the required update for each process in the set.     Return the number of updated entities.
+Do the required **update for each process in the set.**  **Returns the number of updated entities.**
 
 ### Example
 

@@ -11,6 +11,7 @@
 
 from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
 from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
 from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
 from ecotaxa_py_client.model.classify_auto_req import ClassifyAutoReq
 from ecotaxa_py_client.model.classify_req import ClassifyReq
@@ -41,9 +42,12 @@ from ecotaxa_py_client.model.object_model import ObjectModel
 from ecotaxa_py_client.model.object_set_query_rsp import ObjectSetQueryRsp
 from ecotaxa_py_client.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
 from ecotaxa_py_client.model.object_set_summary_rsp import ObjectSetSummaryRsp
+from ecotaxa_py_client.model.prediction_req import PredictionReq
+from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
 from ecotaxa_py_client.model.process_model import ProcessModel
 from ecotaxa_py_client.model.project_filters import ProjectFilters
 from ecotaxa_py_client.model.project_model import ProjectModel
+from ecotaxa_py_client.model.project_set_column_stats_model import ProjectSetColumnStatsModel
 from ecotaxa_py_client.model.project_summary_model import ProjectSummaryModel
 from ecotaxa_py_client.model.project_taxo_stats_model import ProjectTaxoStatsModel
 from ecotaxa_py_client.model.project_user_stats_model import ProjectUserStatsModel
@@ -54,6 +58,7 @@ from ecotaxa_py_client.model.simple_import_rsp import SimpleImportRsp
 from ecotaxa_py_client.model.subset_req import SubsetReq
 from ecotaxa_py_client.model.subset_rsp import SubsetRsp
 from ecotaxa_py_client.model.taxa_search_rsp import TaxaSearchRsp
+from ecotaxa_py_client.model.taxon_central import TaxonCentral
 from ecotaxa_py_client.model.taxon_model import TaxonModel
 from ecotaxa_py_client.model.taxon_usage_model import TaxonUsageModel
 from ecotaxa_py_client.model.taxonomy_tree_status import TaxonomyTreeStatus

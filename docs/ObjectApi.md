@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Object Query History
 
-Read a single object's history.
+Returns **information about the object's history** corresponding to the given id.
 
 ### Example
 
@@ -47,7 +47,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = object_api.ObjectApi(api_client)
-    object_id = 1 # int | 
+    object_id = 1 # int | Internal, the unique numeric id of this object.
 
     # example passing only required values which don't have defaults set
     try:
@@ -63,7 +63,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_id** | **int**|  |
+ **object_id** | **int**| Internal, the unique numeric id of this object. |
 
 ### Return type
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 Object Query
 
-Read a single object. Anonymous reader can do if the project has the right rights :)
+Returns **information about the object** corresponding to the given id.   🔒 Anonymous reader can do if the project has the right rights :)
 
 ### Example
 
@@ -127,7 +127,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = object_api.ObjectApi(api_client)
-    object_id = 1 # int | 
+    object_id = 1 # int | Internal, the unique numeric id of this object.
 
     # example passing only required values which don't have defaults set
     try:
@@ -143,7 +143,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_id** | **int**|  |
+ **object_id** | **int**| Internal, the unique numeric id of this object. |
 
 ### Return type
 

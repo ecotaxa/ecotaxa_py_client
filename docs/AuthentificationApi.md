@@ -36,8 +36,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = authentification_api.AuthentificationApi(api_client)
     login_req = LoginReq(
-        password="UserPassword!",
-        username="user@email.com",
+        password="test!",
+        username="ecotaxa.api.user@gmail.com",
     ) # LoginReq | 
 
     # example passing only required values which don't have defaults set

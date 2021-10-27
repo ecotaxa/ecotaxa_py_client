@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Add Taxon In Central
 
-Create a taxon on EcoTaxoServer. Logged user must be manager (on any project) or application admin.
+**Create a taxon** on EcoTaxoServer.  🔒 Logged user must be manager (on any project) or application admin.
 
 ### Example
 
@@ -56,12 +56,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    name = "name_example" # str | 
-    parent_id = 1 # int | 
-    taxotype = "taxotype_example" # str | 
-    creator_email = "creator_email_example" # str | 
-    source_desc = "source_desc_example" # str |  (optional)
-    source_url = "source_url_example" # str |  (optional)
+    name = "Echinodermata" # str | The taxon/category verbatim name.
+    parent_id = 2367 # int | It's not possible to create a root taxon.
+    taxotype = "P" # str | The taxon type, 'M' for Morpho or 'P' for Phylo.
+    creator_email = "user.creator@email.com" # str | The email of the taxo creator.
+    source_desc = "null" # str | The source description. (optional)
+    source_url = "http://www.google.fr/" # str | The source url. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -86,12 +86,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  |
- **parent_id** | **int**|  |
- **taxotype** | **str**|  |
- **creator_email** | **str**|  |
- **source_desc** | **str**|  | [optional]
- **source_url** | **str**|  | [optional]
+ **name** | **str**| The taxon/category verbatim name. |
+ **parent_id** | **int**| It&#39;s not possible to create a root taxon. |
+ **taxotype** | **str**| The taxon type, &#39;M&#39; for Morpho or &#39;P&#39; for Phylo. |
+ **creator_email** | **str**| The email of the taxo creator. |
+ **source_desc** | **str**| The source description. | [optional]
+ **source_url** | **str**| The source url. | [optional]
 
 ### Return type
 
@@ -117,11 +117,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_taxon_in_central_taxon_central_taxon_id_get**
-> bool, date, datetime, dict, float, int, list, str, none_type get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
+> [TaxonCentral] get_taxon_in_central_taxon_central_taxon_id_get(taxon_id)
 
 Get Taxon In Central
 
-Get EcoTaxoServer full record for this taxon.
+Return **EcoTaxoServer full record for this taxon**.
 
 ### Example
 
@@ -131,6 +131,7 @@ Get EcoTaxoServer full record for this taxon.
 import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import taxonomy_tree_api
+from ecotaxa_py_client.model.taxon_central import TaxonCentral
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -154,7 +155,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 1 # int | 
+    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
 
     # example passing only required values which don't have defaults set
     try:
@@ -170,11 +171,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  |
+ **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+[**[TaxonCentral]**](TaxonCentral.md)
 
 ### Authorization
 
@@ -200,7 +201,7 @@ Name | Type | Description  | Notes
 
 Pull Taxa Update From Central
 
-Get what changed in EcoTaxoServer managed tree and update local tree accordingly.
+**Returns what changed in EcoTaxoServer managed tree** and update local tree accordingly.  i.e. : the number of inserts as nbr_inserts, updates as nbr_updates and errors as errors.
 
 ### Example
 
@@ -273,7 +274,7 @@ This endpoint does not need any parameter.
 
 Push Taxa Stats In Central
 
-Push present instance stats into EcoTaxoServer.
+**Push present instance stats**, into EcoTaxoServer.
 
 ### Example
 
@@ -346,7 +347,7 @@ This endpoint does not need any parameter.
 
 Query Root Taxa
 
-Return all taxa with no parent.
+**Return all taxa with no parent.**
 
 ### Example
 
@@ -409,7 +410,7 @@ No authorization required
 
 Query Taxa Set
 
-Information about several taxa, including their lineage. The separator between numbers is arbitrary non-digit, e.g. \":\", \"|\" or \",\"
+Returns **information about several taxa**, including their lineage.
 
 ### Example
 
@@ -443,7 +444,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    ids = "ids_example" # str | 
+    ids = "1:2:3" # str | The separator between numbers is arbitrary non-digit, e.g. ':', '|' or ','.
 
     # example passing only required values which don't have defaults set
     try:
@@ -459,7 +460,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**|  |
+ **ids** | **str**| The separator between numbers is arbitrary non-digit, e.g. &#39;:&#39;, &#39;|&#39; or &#39;,&#39;. |
 
 ### Return type
 
@@ -489,7 +490,7 @@ Name | Type | Description  | Notes
 
 Query Taxa
 
-Information about a single taxon, including its lineage.
+Returns **information about the taxon** corresponding to the given id, including its lineage.
 
 ### Example
 
@@ -523,7 +524,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 1 # int | 
+    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
 
     # example passing only required values which don't have defaults set
     try:
@@ -539,7 +540,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  |
+ **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
@@ -569,7 +570,7 @@ Name | Type | Description  | Notes
 
 Query Taxa Usage
 
-Where a given taxon is used. Only validated uses are returned.
+**Where a given taxon is used.**  Only validated uses are returned.
 
 ### Example
 
@@ -603,7 +604,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxon_id = 1 # int | 
+    taxon_id = 12876 # int | Internal, the unique numeric id of this taxon.
 
     # example passing only required values which don't have defaults set
     try:
@@ -619,7 +620,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**|  |
+ **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
@@ -645,11 +646,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassif_project_stats_taxa_reclassification_history_project_id_get**
-> bool, date, datetime, dict, float, int, list, str, none_type reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
+> [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] reclassif_project_stats_taxa_reclassification_history_project_id_get(project_id)
 
 Reclassif Project Stats
 
-Dig into reclassification logs and return the associations source->target for previous reclassifications.
+Dig into reclassification logs and **return the associations (source → target) for previous reclassifications.**
 
 ### Example
 
@@ -682,7 +683,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
 
     # example passing only required values which don't have defaults set
     try:
@@ -698,11 +699,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]**
 
 ### Authorization
 
@@ -728,7 +729,7 @@ Name | Type | Description  | Notes
 
 Reclassif Stats
 
-Dig into reclassification logs and, for each input category id, determine the most chosen target category, excluding the advised one. By convention, if nothing relevant is found, the input category itself is returned. So one can expect that the returned list has the same size as the required one.
+Dig into reclassification logs and, for each input category id, **determine the most chosen target category, excluding the advised one.**  By convention, if nothing relevant is found, the input category itself is returned. So one can expect that the returned list has the same size as the required one.
 
 ### Example
 
@@ -762,7 +763,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    taxa_ids = "taxa_ids_example" # str | 
+    taxa_ids = "12876" # str | String containing the list of one or more taxa id separated by non-num char.
 
     # example passing only required values which don't have defaults set
     try:
@@ -778,7 +779,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taxa_ids** | **str**|  |
+ **taxa_ids** | **str**| String containing the list of one or more taxa id separated by non-num char. |
 
 ### Return type
 
@@ -808,7 +809,7 @@ Name | Type | Description  | Notes
 
 Search Taxa
 
-Search for taxa by name.  Queries can be 'small', i.e. of length < 3 and even zero-length. For a public, unauthenticated call: - zero-length and small queries always return nothing. - otherwise, a full search is done and results are returned in alphabetical order.  Behavior for an authenticated call: - zero-length queries: return the MRU list in full. - small queries: the MRU list is searched, so that taxa in the recent list are returned, if matching. - otherwise, a full search is done. Results are ordered so that taxa in the project list are in first,     and are signalled as such in the response.
+**Search for taxa by name.**  Queries can be 'small', i.e. of length ﹤3 and even zero-length.  🔓 For a public, unauthenticated call : - zero-length and small queries always return nothing. - otherwise, a full search is done and results are returned in alphabetical order.  🔒 For an authenticated call : - zero-length queries: return the MRU list in full. - small queries: the MRU list is searched, so that taxa in the recent list are returned, if matching. - otherwise, a full search is done. Results are ordered so that taxa in the project list are in first,     and are signalled as such in the response.
 
 ### Example
 
@@ -842,8 +843,8 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = taxonomy_tree_api.TaxonomyTreeApi(api_client)
-    query = "query_example" # str | 
-    project_id = 1 # int |  (optional)
+    query = "Ban" # str | Use this query for matching returned taxa names.
+    project_id = 1 # int | Internal, numeric id of the project. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -868,8 +869,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **str**|  |
- **project_id** | **int**|  | [optional]
+ **query** | **str**| Use this query for matching returned taxa names. |
+ **project_id** | **int**| Internal, numeric id of the project. | [optional]
 
 ### Return type
 
@@ -899,7 +900,7 @@ Name | Type | Description  | Notes
 
 Taxa Tree Status
 
-Return the status of taxonomy tree w/r to freshness.
+**Return the status of taxonomy tree** w/r to freshness.
 
 ### Example
 

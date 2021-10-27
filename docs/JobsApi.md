@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Erase Job
 
-Delete the job, from DB and with associated storage. If the job is running then kill it.
+**Delete the job** from DB, with associated storage.  Return **NULL upon success.**  If the job is running then kill it.  🔒 The job must be accessible to current user.
 
 ### Example
 
@@ -51,7 +51,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
 
     # example passing only required values which don't have defaults set
     try:
@@ -67,7 +67,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 Get Job File
 
-Return the file produced by given task. The task must belong to requester.
+**Return the file produced by given job.**  🔒 The job must be accessible to current user.
 
 ### Example
 
@@ -130,7 +130,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
 
     # example passing only required values which don't have defaults set
     try:
@@ -146,7 +146,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 Get Job
 
-Return the job by its id.
+Returns **information about the job** corresponding to the given id.
 
 ### Example
 
@@ -210,7 +210,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
 
     # example passing only required values which don't have defaults set
     try:
@@ -226,7 +226,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 Get Job Log File
 
-Return the log file produced by given task. The task must belong to requester.
+**Return the log file produced by given job.**  🔒 The job must be accessible to current user.
 
 ### Example
 
@@ -289,7 +289,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
 
     # example passing only required values which don't have defaults set
     try:
@@ -305,7 +305,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 List Jobs
 
-Return the jobs for current user, or all of them if admin and asked for.
+**Return the jobs** for current user, or all of them if admin is asked for.
 
 ### Example
 
@@ -369,7 +369,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    for_admin = True # bool | 
+    for_admin = False # bool | If FALSE return the jobs for current user, else return all of them.
 
     # example passing only required values which don't have defaults set
     try:
@@ -385,7 +385,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **for_admin** | **bool**|  |
+ **for_admin** | **bool**| If FALSE return the jobs for current user, else return all of them. |
 
 ### Return type
 
@@ -411,11 +411,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reply_job_question_jobs_job_id_answer_post**
-> bool, date, datetime, dict, float, int, list, str, none_type reply_job_question_jobs_job_id_answer_post(job_id, body)
+> bool, date, datetime, dict, float, int, list, str, none_type reply_job_question_jobs_job_id_answer_post(job_id)
 
 Reply Job Question
 
-Send answers to last question. The job resumes after it receives the reply. Note: It's only about data storage here. If the data is technically NOK e.g. not a JS object, standard 422 error should be thrown. If the data is incorrect from consistency point of view, the job will return in Asking state.
+**Send answers to last question.** The job resumes after it receives the reply.  Return **NULL upon success.**  *Note: It's only about data storage here.*   If the data is technically NOK e.g. not a JS object, standard 422 error should be thrown.  If the data is incorrect from consistency point of view, the job will return in Asking state.
 
 ### Example
 
@@ -448,13 +448,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
-    body = {} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
+    body = {} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Reply Job Question
-        api_response = api_instance.reply_job_question_jobs_job_id_answer_post(job_id, body)
+        api_response = api_instance.reply_job_question_jobs_job_id_answer_post(job_id)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling JobsApi->reply_job_question_jobs_job_id_answer_post: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Reply Job Question
+        api_response = api_instance.reply_job_question_jobs_job_id_answer_post(job_id, body=body)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->reply_job_question_jobs_job_id_answer_post: %s\n" % e)
@@ -465,8 +474,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
- **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**|  | [optional]
 
 ### Return type
 
@@ -496,7 +505,7 @@ Name | Type | Description  | Notes
 
 Restart Job
 
-Restart the job by its id. The job must be in a restartable state, and be accessible to current user.
+**Restart the job related to the given id.**  Return **NULL upon success.**  🔒 The job must be in a restartable state, and be accessible to current user.
 
 ### Example
 
@@ -529,7 +538,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
-    job_id = 1 # int | 
+    job_id = 47445 # int | Internal, the unique numeric id of this job.
 
     # example passing only required values which don't have defaults set
     try:
@@ -545,7 +554,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**|  |
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 

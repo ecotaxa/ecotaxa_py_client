@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
-    acquisition_id = 1 # int | 
+    acquisition_id = 1 # int | Internal, the unique numeric id of this acquisition.
 
     # example passing only required values which don't have defaults set
     try:
@@ -64,7 +64,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acquisition_id** | **int**|  |
+ **acquisition_id** | **int**| Internal, the unique numeric id of this acquisition. |
 
 ### Return type
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **acquisitions_search_acquisitions_search_get**
-> [AcquisitionModel] acquisitions_search_acquisitions_search_get()
+> [AcquisitionModel] acquisitions_search_acquisitions_search_get(project_id)
 
 Acquisitions Search
 
@@ -128,13 +128,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acquisitions_api.AcquisitionsApi(api_client)
-    project_id = 1 # int | The project id (optional)
+    project_id = 1 # int | The project id.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Acquisitions Search
-        api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id=project_id)
+        api_response = api_instance.acquisitions_search_acquisitions_search_get(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling AcquisitionsApi->acquisitions_search_acquisitions_search_get: %s\n" % e)
@@ -145,7 +144,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| The project id | [optional]
+ **project_id** | **int**| The project id. |
 
 ### Return type
 
@@ -175,7 +174,7 @@ Name | Type | Description  | Notes
 
 Update Acquisitions
 
-Do the required **update for each acquisition in the set**.  Return the number of updated entities.
+Do the required **update for each acquisition in the set**.  **Return the number of updated entities.**
 
 ### Example
 

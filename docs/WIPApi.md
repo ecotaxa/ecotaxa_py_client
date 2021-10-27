@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 System Status
 
-Report the status, mainly used for verifying that the server is up.
+**Report the status**, mainly used for verifying that the server is up.
 
 ### Example
 

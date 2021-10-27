@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 List Common Files
 
-List the common files which are usable for some file-related operations e.g. import.
+**List the common files** which are usable for some file-related operations.  *e.g. import.*
 
 ### Example
 
@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
-    path = "path_example" # str | 
+    path = "/ftp_plankton/Ecotaxa_Exported_data" # str | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 List User Files
 
-List the private files which are usable for some file-related operations e.g. import.
+**List the private files** which are usable for some file-related operations.  *e.g. import.*
 
 ### Example
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 Put User File
 
-Upload a file for the current user. The returned text will contain a serve-side path which is usable for some file-related operations e.g. import.
+**Upload a file for the current user.**  The returned text will contain a serve-side path which is usable for some file-related operations.  *e.g. import.*
 
 ### Example
 
@@ -208,8 +208,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     file = open('/path/to/file', 'rb') # file_type | 
-    path = "path_example" # str |  (optional)
-    tag = "tag_example" # str |  (optional)
+    path = "path_example" # str | The client-side full path of the file. (optional)
+    tag = "tag_example" # str | If a tag is provided, then all files with the same tag are grouped (in a sub-directory). Otherwise, a temp directory with only this file will be created. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -235,8 +235,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **file_type**|  |
- **path** | **str**|  | [optional]
- **tag** | **str**|  | [optional]
+ **path** | **str**| The client-side full path of the file. | [optional]
+ **tag** | **str**| If a tag is provided, then all files with the same tag are grouped (in a sub-directory). Otherwise, a temp directory with only this file will be created. | [optional]
 
 ### Return type
 

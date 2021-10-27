@@ -1,14 +1,14 @@
-# ecotaxa_py_client.InstrumentApi
+# ecotaxa_py_client.InstrumentsApi
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instrument_query_instruments_get**](InstrumentApi.md#instrument_query_instruments_get) | **GET** /instruments/ | Instrument Query
+[**instrument_query_instruments_get**](InstrumentsApi.md#instrument_query_instruments_get) | **GET** /instruments/ | Instrument Query
 
 
 # **instrument_query_instruments_get**
-> [str] instrument_query_instruments_get()
+> [str] instrument_query_instruments_get(project_ids)
 
 Instrument Query
 
@@ -20,7 +20,7 @@ Returns the list of instruments, inside specific project(s).
 ```python
 import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import instrument_api
+from ecotaxa_py_client.api import instruments_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -33,17 +33,16 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = instrument_api.InstrumentApi(api_client)
-    project_ids = "1,2,3" # str | String containing the list of one or more project id separated by non-num char. (optional)
+    api_instance = instruments_api.InstrumentsApi(api_client)
+    project_ids = "1,2,3" # str | String containing the list of one or more project id separated by non-num char.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Instrument Query
-        api_response = api_instance.instrument_query_instruments_get(project_ids=project_ids)
+        api_response = api_instance.instrument_query_instruments_get(project_ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling InstrumentApi->instrument_query_instruments_get: %s\n" % e)
+        print("Exception when calling InstrumentsApi->instrument_query_instruments_get: %s\n" % e)
 ```
 
 
@@ -51,7 +50,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional]
+ **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. |
 
 ### Return type
 

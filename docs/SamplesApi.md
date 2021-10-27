@@ -49,7 +49,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    sample_id = 1 # int | 
+    sample_id = 1 # int | Internal, the unique numeric id of this sample.
 
     # example passing only required values which don't have defaults set
     try:
@@ -65,7 +65,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_id** | **int**|  |
+ **sample_id** | **int**| Internal, the unique numeric id of this sample. |
 
 ### Return type
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sample_set_get_stats_sample_set_taxo_stats_get**
-> [SampleTaxoStatsModel] sample_set_get_stats_sample_set_taxo_stats_get()
+> [SampleTaxoStatsModel] sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
 
 Sample Set Get Stats
 
@@ -129,13 +129,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    sample_ids = "15,5" # str | String containing the list of one or more sample ids separated by non-num char. (optional)
+    sample_ids = "15,5" # str | String containing the list of one or more sample ids separated by non-num char.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Sample Set Get Stats
-        api_response = api_instance.sample_set_get_stats_sample_set_taxo_stats_get(sample_ids=sample_ids)
+        api_response = api_instance.sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling SamplesApi->sample_set_get_stats_sample_set_taxo_stats_get: %s\n" % e)
@@ -146,7 +145,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. | [optional]
+ **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. |
 
 ### Return type
 
@@ -172,11 +171,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **samples_search_samples_search_get**
-> [SampleModel] samples_search_samples_search_get()
+> [SampleModel] samples_search_samples_search_get(project_ids, id_pattern)
 
 Samples Search
 
-**Search for samples**
+**Search for samples.**
 
 ### Example
 
@@ -210,14 +209,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = samples_api.SamplesApi(api_client)
-    project_ids = "1,55" # str | String containing the list of one or more project id separated by non-num char. (optional)
-    id_pattern = "*" # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive. (optional)
+    project_ids = "1,55" # str | String containing the list of one or more project id separated by non-num char.
+    id_pattern = "*" # str | Sample id textual pattern. Use * or '' for 'any matches'. Match is case-insensitive.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Samples Search
-        api_response = api_instance.samples_search_samples_search_get(project_ids=project_ids, id_pattern=id_pattern)
+        api_response = api_instance.samples_search_samples_search_get(project_ids, id_pattern)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling SamplesApi->samples_search_samples_search_get: %s\n" % e)
@@ -228,8 +226,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. | [optional]
- **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. | [optional]
+ **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. |
+ **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. |
 
 ### Return type
 

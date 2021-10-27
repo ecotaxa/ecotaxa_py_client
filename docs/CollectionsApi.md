@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **collection_by_short_title_collections_by_short_title_get**
-> CollectionModel collection_by_short_title_collections_by_short_title_get()
+> CollectionModel collection_by_short_title_collections_by_short_title_get(q)
 
 Collection By Short Title
 
@@ -42,13 +42,12 @@ configuration = ecotaxa_py_client.Configuration(
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    q = "My coll" # str | Search by **exact** short title (optional)
+    q = "My coll" # str | Search by **exact** short title.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Collection By Short Title
-        api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q=q)
+        api_response = api_instance.collection_by_short_title_collections_by_short_title_get(q)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_short_title_collections_by_short_title_get: %s\n" % e)
@@ -59,7 +58,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** short title | [optional]
+ **q** | **str**| Search by **exact** short title. |
 
 ### Return type
 
@@ -85,7 +84,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collection_by_title_collections_by_title_get**
-> CollectionModel collection_by_title_collections_by_title_get()
+> CollectionModel collection_by_title_collections_by_title_get(q)
 
 Collection By Title
 
@@ -112,13 +111,12 @@ configuration = ecotaxa_py_client.Configuration(
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    q = "My collection" # str | Search by **exact** title (optional)
+    q = "My collection" # str | Search by **exact** title.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Collection By Title
-        api_response = api_instance.collection_by_title_collections_by_title_get(q=q)
+        api_response = api_instance.collection_by_title_collections_by_title_get(q)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->collection_by_title_collections_by_title_get: %s\n" % e)
@@ -129,7 +127,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** title | [optional]
+ **q** | **str**| Search by **exact** title. |
 
 ### Return type
 
@@ -238,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **emodnet_format_export_collections_collection_id_export_emodnet_get**
-> EMODnetExportRsp emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
+> EMODnetExportRsp emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
 
 Emodnet Format Export
 
@@ -276,25 +274,16 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | 
-    dry_run = False # bool | If set, then only a diagnostic of doability will be done. (optional)
-    with_zeroes = False # bool | If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. (optional)
-    auto_morpho = False # bool | If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. (optional)
-    with_computations = False # bool | If set, then an attempt will be made to compute organisms concentrations and biovolumes. (optional)
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+    dry_run = False # bool | If set, then only a diagnostic of doability will be done.
+    with_zeroes = False # bool | If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.
+    auto_morpho = False # bool | If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.
+    with_computations = False # bool | If set, then an attempt will be made to compute organisms concentrations and biovolumes.
 
     # example passing only required values which don't have defaults set
     try:
         # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run=dry_run, with_zeroes=with_zeroes, auto_morpho=auto_morpho, with_computations=with_computations)
+        api_response = api_instance.emodnet_format_export_collections_collection_id_export_emodnet_get(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->emodnet_format_export_collections_collection_id_export_emodnet_get: %s\n" % e)
@@ -305,11 +294,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**|  |
- **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. | [optional]
- **with_zeroes** | **bool**| If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. | [optional]
- **auto_morpho** | **bool**| If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. | [optional]
- **with_computations** | **bool**| If set, then an attempt will be made to compute organisms concentrations and biovolumes. | [optional]
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. |
+ **with_zeroes** | **bool**| If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. |
+ **auto_morpho** | **bool**| If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. |
+ **with_computations** | **bool**| If set, then an attempt will be made to compute organisms concentrations and biovolumes. |
 
 ### Return type
 
@@ -372,7 +361,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | 
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
 
     # example passing only required values which don't have defaults set
     try:
@@ -388,7 +377,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**|  |
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -452,7 +441,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | 
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
 
     # example passing only required values which don't have defaults set
     try:
@@ -468,7 +457,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**|  |
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -494,7 +483,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_collections_collections_search_get**
-> [CollectionModel] search_collections_collections_search_get()
+> [CollectionModel] search_collections_collections_search_get(title)
 
 Search Collections
 
@@ -532,13 +521,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    title = "%coll%" # str | Search by title, use % for searching with 'any char'. (optional)
+    title = "%coll%" # str | Search by title, use % for searching with 'any char'.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Search Collections
-        api_response = api_instance.search_collections_collections_search_get(title=title)
+        api_response = api_instance.search_collections_collections_search_get(title)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->search_collections_collections_search_get: %s\n" % e)
@@ -549,7 +537,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. | [optional]
+ **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. |
 
 ### Return type
 
@@ -579,7 +567,7 @@ Name | Type | Description  | Notes
 
 Update Collection
 
-**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   🔒 *For admins only.*
+**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   **Returns NULL upon success.**   🔒 *For admins only.*
 
 ### Example
 
@@ -613,7 +601,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | 
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
     collection_model = CollectionModel(
         project_ids=[1],
         provider_user=,
@@ -621,7 +609,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         creator_users=[
             UserModel(
                 id=1,
-                email="user@email.com",
+                email="ecotaxa.api.user@gmail.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -634,7 +622,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         associate_users=[
             UserModel(
                 id=1,
-                email="user@email.com",
+                email="ecotaxa.api.user@gmail.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -669,7 +657,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_id** | **int**|  |
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
  **collection_model** | [**CollectionModel**](CollectionModel.md)|  |
 
 ### Return type

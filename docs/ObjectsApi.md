@@ -6,10 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**classify_auto_object_set_object_set_classify_auto_post**](ObjectsApi.md#classify_auto_object_set_object_set_classify_auto_post) | **POST** /object_set/classify_auto | Classify Auto Object Set
 [**classify_object_set_object_set_classify_post**](ObjectsApi.md#classify_object_set_object_set_classify_post) | **POST** /object_set/classify | Classify Object Set
+[**compute_project_cnn_project_do_cnn_get**](ObjectsApi.md#compute_project_cnn_project_do_cnn_get) | **GET** /project/do_cnn | Compute Project Cnn
 [**erase_object_set_object_set_delete**](ObjectsApi.md#erase_object_set_object_set_delete) | **DELETE** /object_set/ | Erase Object Set
 [**export_object_set_object_set_export_post**](ObjectsApi.md#export_object_set_object_set_export_post) | **POST** /object_set/export | Export Object Set
 [**get_object_set_object_set_project_id_query_post**](ObjectsApi.md#get_object_set_object_set_project_id_query_post) | **POST** /object_set/{project_id}/query | Get Object Set
 [**get_object_set_summary_object_set_project_id_summary_post**](ObjectsApi.md#get_object_set_summary_object_set_project_id_summary_post) | **POST** /object_set/{project_id}/summary | Get Object Set Summary
+[**predict_object_set_object_set_predict_post**](ObjectsApi.md#predict_object_set_object_set_predict_post) | **POST** /object_set/predict | Predict Object Set
 [**query_object_set_parents_object_set_parents_post**](ObjectsApi.md#query_object_set_parents_object_set_parents_post) | **POST** /object_set/parents | Query Object Set Parents
 [**reclassify_object_set_object_set_project_id_reclassify_post**](ObjectsApi.md#reclassify_object_set_object_set_project_id_reclassify_post) | **POST** /object_set/{project_id}/reclassify | Reclassify Object Set
 [**reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post**](ObjectsApi.md#reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post) | **POST** /object_set/{project_id}/reset_to_predicted | Reset Object Set To Predicted
@@ -18,11 +20,11 @@ Method | HTTP request | Description
 
 
 # **classify_auto_object_set_object_set_classify_auto_post**
-> bool, date, datetime, dict, float, int, list, str, none_type classify_auto_object_set_object_set_classify_auto_post(classify_auto_req)
+> int classify_auto_object_set_object_set_classify_auto_post(classify_auto_req)
 
 Classify Auto Object Set
 
-Set automatic classification of a set of objects.  - `params`: None, all is in the Request body.
+**Set automatic classification** of a set of objects.  **Returns the number of updated entities.**
 
 ### Example
 
@@ -87,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**int**
 
 ### Authorization
 
@@ -109,11 +111,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classify_object_set_object_set_classify_post**
-> bool, date, datetime, dict, float, int, list, str, none_type classify_object_set_object_set_classify_post(classify_req)
+> int classify_object_set_object_set_classify_post(classify_req)
 
 Classify Object Set
 
-Change classification and/or qualification for a set of objects. Current user needs at least Annotate right on all projects of specified objects.
+**Change classification and/or qualification for a set of objects.**  **Returns the number of updated entities.**  🔒 Current user needs at *least Annotate* right on all projects of specified objects.
 
 ### Example
 
@@ -148,13 +150,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
     classify_req = ClassifyReq(
-        target_ids=[
-            1,
-        ],
-        classifications=[
-            1,
-        ],
-        wanted_qualification="wanted_qualification_example",
+        target_ids=[634509,6234516,976544],
+        classifications=[7546,3421,788],
+        wanted_qualification="V",
     ) # ClassifyReq | 
 
     # example passing only required values which don't have defaults set
@@ -175,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**int**
 
 ### Authorization
 
@@ -196,12 +194,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **erase_object_set_object_set_delete**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_object_set_object_set_delete(request_body)
+# **compute_project_cnn_project_do_cnn_get**
+> str compute_project_cnn_project_do_cnn_get(proj_id)
 
-Erase Object Set
+Compute Project Cnn
 
-Delete the objects with given object ids. Current user needs Manage right on all projects of specified objects.
+**Generate CNN features** for the requested project.  **Returns a string containing the number of generated features.**
 
 ### Example
 
@@ -234,9 +232,86 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    request_body = [
-        1,
-    ] # [int] | 
+    proj_id = 1 # int | Internal, numeric id of the project.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Compute Project Cnn
+        api_response = api_instance.compute_project_cnn_project_do_cnn_get(proj_id)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ObjectsApi->compute_project_cnn_project_do_cnn_get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **proj_id** | **int**| Internal, numeric id of the project. |
+
+### Return type
+
+**str**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **erase_object_set_object_set_delete**
+> bool, date, datetime, dict, float, int, list, str, none_type erase_object_set_object_set_delete(request_body)
+
+Erase Object Set
+
+**Delete the objects with given object ids.**   **Returns** the number of  : **deleted objects**, 0, **deleated image rows** and **deleated image files**.  🔒 Current user needs *Manage* right on all projects of specified objects.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import objects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = objects_api.ObjectsApi(api_client)
+    request_body = [634509,6234516,976544] # [int] | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -282,7 +357,7 @@ Name | Type | Description  | Notes
 
 Export Object Set
 
-Start an export job for the given object set and options.
+**Start an export job for the given object set and options.**
 
 ### Example
 
@@ -319,47 +394,47 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     api_instance = objects_api.ObjectsApi(api_client)
     body_export_object_set_object_set_export_post = BodyExportObjectSetObjectSetExportPost(
         filters=ProjectFilters(
-            taxo="taxo_example",
-            taxochild="taxochild_example",
-            statusfilter="statusfilter_example",
-            map_n="map_n_example",
-            map_w="map_w_example",
-            map_e="map_e_example",
-            map_s="map_s_example",
-            depthmin="depthmin_example",
-            depthmax="depthmax_example",
-            samples="samples_example",
-            instrum="instrum_example",
-            daytime="daytime_example",
-            month="month_example",
-            fromdate="fromdate_example",
-            todate="todate_example",
-            fromtime="fromtime_example",
-            totime="totime_example",
-            inverttime="inverttime_example",
-            validfromdate="validfromdate_example",
-            validtodate="validtodate_example",
-            freenum="freenum_example",
-            freenumst="freenumst_example",
-            freenumend="freenumend_example",
-            freetxt="freetxt_example",
-            freetxtval="freetxtval_example",
-            filt_annot="filt_annot_example",
-            filt_last_annot="filt_last_annot_example",
+            taxo="12,7654,5409",
+            taxochild="Y",
+            statusfilter="NV",
+            map_n="44.34",
+            map_w="3.88",
+            map_e="7.94",
+            map_s="42.42",
+            depthmin="10",
+            depthmax="110",
+            samples="10987,3456,987,38",
+            instrum="uvp5",
+            daytime="N,A",
+            month="11,12",
+            fromdate="2020-10-09",
+            todate="2021-10-09",
+            fromtime="1:17:00",
+            totime="23:32:00",
+            inverttime="0",
+            validfromdate="2020-10-09 10:00:00",
+            validtodate="2021-10-09 10:00:00",
+            freenum="n01",
+            freenumst="0",
+            freenumend="999999",
+            freetxt="p01",
+            freetxtval="zooprocess",
+            filt_annot="34,67,67",
+            filt_last_annot="34,67",
         ),
         request=ExportReq(
             project_id=1,
             exp_type=,
             use_latin1=False,
-            tsv_entities="tsv_entities_example",
-            split_by="split_by_example",
-            coma_as_separator=True,
-            format_dates_times=True,
-            with_images=True,
-            with_internal_ids=True,
-            only_first_image=True,
-            sum_subtotal="sum_subtotal_example",
-            out_to_ftp=True,
+            tsv_entities="OPAS",
+            split_by="S",
+            coma_as_separator=False,
+            format_dates_times=False,
+            with_images=False,
+            with_internal_ids=False,
+            only_first_image=False,
+            sum_subtotal="A",
+            out_to_ftp=False,
         ),
     ) # BodyExportObjectSetObjectSetExportPost | 
 
@@ -407,7 +482,7 @@ Name | Type | Description  | Notes
 
 Get Object Set
 
-Return object ids for the given project with the filters.  Optionally:      - fields will specify the needed object (and ancilliary entities) fields     - order_field will order the result using given field, If prefixed with \"-\" then it will be reversed.     - window_start & window_size allows to return only a slice of the result.  Fields follow the naming convention: `prefix.field`.     Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.     Use a comma to separate fields.     - Column obj.imgcount contains the total count of images for the object.
+Returns **filtred object Ids** for the given project.
 
 ### Example
 
@@ -442,40 +517,40 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     project_filters = ProjectFilters(
-        taxo="taxo_example",
-        taxochild="taxochild_example",
-        statusfilter="statusfilter_example",
-        map_n="map_n_example",
-        map_w="map_w_example",
-        map_e="map_e_example",
-        map_s="map_s_example",
-        depthmin="depthmin_example",
-        depthmax="depthmax_example",
-        samples="samples_example",
-        instrum="instrum_example",
-        daytime="daytime_example",
-        month="month_example",
-        fromdate="fromdate_example",
-        todate="todate_example",
-        fromtime="fromtime_example",
-        totime="totime_example",
-        inverttime="inverttime_example",
-        validfromdate="validfromdate_example",
-        validtodate="validtodate_example",
-        freenum="freenum_example",
-        freenumst="freenumst_example",
-        freenumend="freenumend_example",
-        freetxt="freetxt_example",
-        freetxtval="freetxtval_example",
-        filt_annot="filt_annot_example",
-        filt_last_annot="filt_last_annot_example",
+        taxo="12,7654,5409",
+        taxochild="Y",
+        statusfilter="NV",
+        map_n="44.34",
+        map_w="3.88",
+        map_e="7.94",
+        map_s="42.42",
+        depthmin="10",
+        depthmax="110",
+        samples="10987,3456,987,38",
+        instrum="uvp5",
+        daytime="N,A",
+        month="11,12",
+        fromdate="2020-10-09",
+        todate="2021-10-09",
+        fromtime="1:17:00",
+        totime="23:32:00",
+        inverttime="0",
+        validfromdate="2020-10-09 10:00:00",
+        validtodate="2021-10-09 10:00:00",
+        freenum="n01",
+        freenumst="0",
+        freenumend="999999",
+        freetxt="p01",
+        freetxtval="zooprocess",
+        filt_annot="34,67,67",
+        filt_last_annot="34,67",
     ) # ProjectFilters | 
-    fields = "fields_example" # str |  (optional)
-    order_field = "order_field_example" # str |  (optional)
-    window_start = 1 # int |  (optional)
-    window_size = 1 # int |  (optional)
+    fields = "obj.longitude,fre.feret" # str |   Specify the needed object (and ancilliary entities) fields.                     It follows the naming convention 'prefix.field' : Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.        💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \"obj.\"** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \"img.\"** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \"txo.\"** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \"fre.\"** (for example → fre.circ.).                     (optional)
+    order_field = "obj.longitude" # str | Order the result using given field. If prefixed with \"-\" then it will be reversed. (optional)
+    window_start = 10 # int | Allows to return only a slice of the result. Skip window_start before returning data. (optional)
+    window_size = 100 # int | Allows to return only a slice of the result. Return only window_size lines. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -500,12 +575,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **fields** | **str**|  | [optional]
- **order_field** | **str**|  | [optional]
- **window_start** | **int**|  | [optional]
- **window_size** | **int**|  | [optional]
+ **fields** | **str**|   Specify the needed object (and ancilliary entities) fields.                     It follows the naming convention &#39;prefix.field&#39; : Prefix is either &#39;obj&#39; for main object, &#39;fre&#39; for free fields, &#39;img&#39; for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.        💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \&quot;obj.\&quot;** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \&quot;img.\&quot;** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \&quot;txo.\&quot;** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \&quot;fre.\&quot;** (for example → fre.circ.).                     | [optional]
+ **order_field** | **str**| Order the result using given field. If prefixed with \&quot;-\&quot; then it will be reversed. | [optional]
+ **window_start** | **int**| Allows to return only a slice of the result. Skip window_start before returning data. | [optional]
+ **window_size** | **int**| Allows to return only a slice of the result. Return only window_size lines. | [optional]
 
 ### Return type
 
@@ -535,7 +610,7 @@ Name | Type | Description  | Notes
 
 Get Object Set Summary
 
-For the given project, with given filters, return the classification summary, i.e.:     - Total number of objects Also if 'only_total' is not set:     - Number of Validated ones     - Number of Dubious ones     - Number of Predicted ones
+For the given project, with given filters, **return the classification summary**.          i.e.:              - Total number of objects  And optionnaly  - Number of Validated ones - Number of Dubious ones - Number of Predicted ones     
 
 ### Example
 
@@ -570,36 +645,36 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    project_id = 1 # int | 
-    only_total = True # bool | 
+    project_id = 1 # int | Internal, numeric id of the project.
+    only_total = True # bool | If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**.
     project_filters = ProjectFilters(
-        taxo="taxo_example",
-        taxochild="taxochild_example",
-        statusfilter="statusfilter_example",
-        map_n="map_n_example",
-        map_w="map_w_example",
-        map_e="map_e_example",
-        map_s="map_s_example",
-        depthmin="depthmin_example",
-        depthmax="depthmax_example",
-        samples="samples_example",
-        instrum="instrum_example",
-        daytime="daytime_example",
-        month="month_example",
-        fromdate="fromdate_example",
-        todate="todate_example",
-        fromtime="fromtime_example",
-        totime="totime_example",
-        inverttime="inverttime_example",
-        validfromdate="validfromdate_example",
-        validtodate="validtodate_example",
-        freenum="freenum_example",
-        freenumst="freenumst_example",
-        freenumend="freenumend_example",
-        freetxt="freetxt_example",
-        freetxtval="freetxtval_example",
-        filt_annot="filt_annot_example",
-        filt_last_annot="filt_last_annot_example",
+        taxo="12,7654,5409",
+        taxochild="Y",
+        statusfilter="NV",
+        map_n="44.34",
+        map_w="3.88",
+        map_e="7.94",
+        map_s="42.42",
+        depthmin="10",
+        depthmax="110",
+        samples="10987,3456,987,38",
+        instrum="uvp5",
+        daytime="N,A",
+        month="11,12",
+        fromdate="2020-10-09",
+        todate="2021-10-09",
+        fromtime="1:17:00",
+        totime="23:32:00",
+        inverttime="0",
+        validfromdate="2020-10-09 10:00:00",
+        validtodate="2021-10-09 10:00:00",
+        freenum="n01",
+        freenumst="0",
+        freenumend="999999",
+        freetxt="p01",
+        freetxtval="zooprocess",
+        filt_annot="34,67,67",
+        filt_last_annot="34,67",
     ) # ProjectFilters | 
 
     # example passing only required values which don't have defaults set
@@ -616,8 +691,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **only_total** | **bool**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **only_total** | **bool**| If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**. |
  **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
 
 ### Return type
@@ -643,12 +718,140 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **predict_object_set_object_set_predict_post**
+> PredictionRsp predict_object_set_object_set_predict_post(body_predict_object_set_object_set_predict_post)
+
+Predict Object Set
+
+**Start a prediction** AKA automatic classification for the given object set and options.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import objects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
+from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = objects_api.ObjectsApi(api_client)
+    body_predict_object_set_object_set_predict_post = BodyPredictObjectSetObjectSetPredictPost(
+        filters=ProjectFilters(
+            taxo="12,7654,5409",
+            taxochild="Y",
+            statusfilter="NV",
+            map_n="44.34",
+            map_w="3.88",
+            map_e="7.94",
+            map_s="42.42",
+            depthmin="10",
+            depthmax="110",
+            samples="10987,3456,987,38",
+            instrum="uvp5",
+            daytime="N,A",
+            month="11,12",
+            fromdate="2020-10-09",
+            todate="2021-10-09",
+            fromtime="1:17:00",
+            totime="23:32:00",
+            inverttime="0",
+            validfromdate="2020-10-09 10:00:00",
+            validtodate="2021-10-09 10:00:00",
+            freenum="n01",
+            freenumst="0",
+            freenumend="999999",
+            freetxt="p01",
+            freetxtval="zooprocess",
+            filt_annot="34,67,67",
+            filt_last_annot="34,67",
+        ),
+        request=PredictionReq(
+            project_id=1,
+            source_project_ids=[
+                1,
+            ],
+            learning_limit=1,
+            features=[
+                "features_example",
+            ],
+            categories=[
+                1,
+            ],
+            use_scn=False,
+            pre_mapping={
+                "key": 1,
+            },
+        ),
+    ) # BodyPredictObjectSetObjectSetPredictPost | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Predict Object Set
+        api_response = api_instance.predict_object_set_object_set_predict_post(body_predict_object_set_object_set_predict_post)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ObjectsApi->predict_object_set_object_set_predict_post: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
+
+### Return type
+
+[**PredictionRsp**](PredictionRsp.md)
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **query_object_set_parents_object_set_parents_post**
 > ObjectSetQueryRsp query_object_set_parents_object_set_parents_post(request_body)
 
 Query Object Set Parents
 
-Return object ids, with parent ones and projects for the objects in given list.
+**Return object ids, with parent ones and projects** for the objects in given list.
 
 ### Example
 
@@ -682,9 +885,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    request_body = [
-        1,
-    ] # [int] | 
+    request_body = [634509,6234516,976544] # [int] | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -726,11 +927,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassify_object_set_object_set_project_id_reclassify_post**
-> bool, date, datetime, dict, float, int, list, str, none_type reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters)
+> int reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters)
 
 Reclassify Object Set
 
-Regardless of present classification or state, set the new classification for this object set. If the filter designates \"all with given classification\", add a TaxonomyChangeLog entry. :returns the number of affected objects.
+Regardless of present classification or state, **set the new classification for this object set.**  If the filter designates \"all with given classification\", add a TaxonomyChangeLog entry.  **Returns the number of affected objects.**
 
 ### Example
 
@@ -764,37 +965,37 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    project_id = 1 # int | 
-    forced_id = 1 # int | 
-    reason = "reason_example" # str | 
+    project_id = 1 # int | Internal, numeric id of the project.
+    forced_id = 23025 # int | The new classification Id.
+    reason = "W" # str | The reason of this new classification.
     project_filters = ProjectFilters(
-        taxo="taxo_example",
-        taxochild="taxochild_example",
-        statusfilter="statusfilter_example",
-        map_n="map_n_example",
-        map_w="map_w_example",
-        map_e="map_e_example",
-        map_s="map_s_example",
-        depthmin="depthmin_example",
-        depthmax="depthmax_example",
-        samples="samples_example",
-        instrum="instrum_example",
-        daytime="daytime_example",
-        month="month_example",
-        fromdate="fromdate_example",
-        todate="todate_example",
-        fromtime="fromtime_example",
-        totime="totime_example",
-        inverttime="inverttime_example",
-        validfromdate="validfromdate_example",
-        validtodate="validtodate_example",
-        freenum="freenum_example",
-        freenumst="freenumst_example",
-        freenumend="freenumend_example",
-        freetxt="freetxt_example",
-        freetxtval="freetxtval_example",
-        filt_annot="filt_annot_example",
-        filt_last_annot="filt_last_annot_example",
+        taxo="12,7654,5409",
+        taxochild="Y",
+        statusfilter="NV",
+        map_n="44.34",
+        map_w="3.88",
+        map_e="7.94",
+        map_s="42.42",
+        depthmin="10",
+        depthmax="110",
+        samples="10987,3456,987,38",
+        instrum="uvp5",
+        daytime="N,A",
+        month="11,12",
+        fromdate="2020-10-09",
+        todate="2021-10-09",
+        fromtime="1:17:00",
+        totime="23:32:00",
+        inverttime="0",
+        validfromdate="2020-10-09 10:00:00",
+        validtodate="2021-10-09 10:00:00",
+        freenum="n01",
+        freenumst="0",
+        freenumend="999999",
+        freetxt="p01",
+        freetxtval="zooprocess",
+        filt_annot="34,67,67",
+        filt_last_annot="34,67",
     ) # ProjectFilters | 
 
     # example passing only required values which don't have defaults set
@@ -811,14 +1012,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **forced_id** | **int**|  |
- **reason** | **str**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **forced_id** | **int**| The new classification Id. |
+ **reason** | **str**| The reason of this new classification. |
  **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**int**
 
 ### Authorization
 
@@ -844,7 +1045,7 @@ Name | Type | Description  | Notes
 
 Reset Object Set To Predicted
 
-Reset to Predicted all objects for the given project with the filters.
+**Reset to Predicted** all objects for the given project with the filters.  Return **NULL upon success.**
 
 ### Example
 
@@ -878,35 +1079,35 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     project_filters = ProjectFilters(
-        taxo="taxo_example",
-        taxochild="taxochild_example",
-        statusfilter="statusfilter_example",
-        map_n="map_n_example",
-        map_w="map_w_example",
-        map_e="map_e_example",
-        map_s="map_s_example",
-        depthmin="depthmin_example",
-        depthmax="depthmax_example",
-        samples="samples_example",
-        instrum="instrum_example",
-        daytime="daytime_example",
-        month="month_example",
-        fromdate="fromdate_example",
-        todate="todate_example",
-        fromtime="fromtime_example",
-        totime="totime_example",
-        inverttime="inverttime_example",
-        validfromdate="validfromdate_example",
-        validtodate="validtodate_example",
-        freenum="freenum_example",
-        freenumst="freenumst_example",
-        freenumend="freenumend_example",
-        freetxt="freetxt_example",
-        freetxtval="freetxtval_example",
-        filt_annot="filt_annot_example",
-        filt_last_annot="filt_last_annot_example",
+        taxo="12,7654,5409",
+        taxochild="Y",
+        statusfilter="NV",
+        map_n="44.34",
+        map_w="3.88",
+        map_e="7.94",
+        map_s="42.42",
+        depthmin="10",
+        depthmax="110",
+        samples="10987,3456,987,38",
+        instrum="uvp5",
+        daytime="N,A",
+        month="11,12",
+        fromdate="2020-10-09",
+        todate="2021-10-09",
+        fromtime="1:17:00",
+        totime="23:32:00",
+        inverttime="0",
+        validfromdate="2020-10-09 10:00:00",
+        validtodate="2021-10-09 10:00:00",
+        freenum="n01",
+        freenumst="0",
+        freenumend="999999",
+        freetxt="p01",
+        freetxtval="zooprocess",
+        filt_annot="34,67,67",
+        filt_last_annot="34,67",
     ) # ProjectFilters | 
 
     # example passing only required values which don't have defaults set
@@ -923,7 +1124,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
 
 ### Return type
@@ -954,7 +1155,7 @@ Name | Type | Description  | Notes
 
 Revert Object Set To History
 
-Revert all objects for the given project, with the filters, to the target. - param `filters`: The set of filters to apply to get the target objects. - param `dry_run`: If set, then no real write but consequences of the revert will be replied. - param `target`: Use null/None for reverting using the last annotation from anyone, or a user id     for the last annotation from this user.
+**Revert all objects for the given project**, with the filters, to the target.
 
 ### Example
 
@@ -989,38 +1190,38 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    project_id = 1 # int | 
-    dry_run = True # bool | 
+    project_id = 1 # int | Internal, numeric id of the project.
+    dry_run = False # bool | If set, then no real write but consequences of the revert will be replied.
     project_filters = ProjectFilters(
-        taxo="taxo_example",
-        taxochild="taxochild_example",
-        statusfilter="statusfilter_example",
-        map_n="map_n_example",
-        map_w="map_w_example",
-        map_e="map_e_example",
-        map_s="map_s_example",
-        depthmin="depthmin_example",
-        depthmax="depthmax_example",
-        samples="samples_example",
-        instrum="instrum_example",
-        daytime="daytime_example",
-        month="month_example",
-        fromdate="fromdate_example",
-        todate="todate_example",
-        fromtime="fromtime_example",
-        totime="totime_example",
-        inverttime="inverttime_example",
-        validfromdate="validfromdate_example",
-        validtodate="validtodate_example",
-        freenum="freenum_example",
-        freenumst="freenumst_example",
-        freenumend="freenumend_example",
-        freetxt="freetxt_example",
-        freetxtval="freetxtval_example",
-        filt_annot="filt_annot_example",
-        filt_last_annot="filt_last_annot_example",
+        taxo="12,7654,5409",
+        taxochild="Y",
+        statusfilter="NV",
+        map_n="44.34",
+        map_w="3.88",
+        map_e="7.94",
+        map_s="42.42",
+        depthmin="10",
+        depthmax="110",
+        samples="10987,3456,987,38",
+        instrum="uvp5",
+        daytime="N,A",
+        month="11,12",
+        fromdate="2020-10-09",
+        todate="2021-10-09",
+        fromtime="1:17:00",
+        totime="23:32:00",
+        inverttime="0",
+        validfromdate="2020-10-09 10:00:00",
+        validtodate="2021-10-09 10:00:00",
+        freenum="n01",
+        freenumst="0",
+        freenumend="999999",
+        freetxt="p01",
+        freetxtval="zooprocess",
+        filt_annot="34,67,67",
+        filt_last_annot="34,67",
     ) # ProjectFilters | 
-    target = 1 # int |  (optional)
+    target = 465 # int | Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -1045,10 +1246,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **dry_run** | **bool**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **dry_run** | **bool**| If set, then no real write but consequences of the revert will be replied. |
  **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **target** | **int**|  | [optional]
+ **target** | **int**| Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. | [optional]
 
 ### Return type
 
@@ -1074,11 +1275,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_object_set_object_set_update_post**
-> bool, date, datetime, dict, float, int, list, str, none_type update_object_set_object_set_update_post(bulk_update_req)
+> int update_object_set_object_set_update_post(bulk_update_req)
 
 Update Object Set
 
-Update all the objects with given IDs and values Current user needs Manage right on all projects of specified objects.
+Do the required **update for each objects in the set.**   **Returns the number of updated entities.**  🔒 Current user needs *Manage* right on all projects of specified objects.
 
 ### Example
 
@@ -1135,7 +1336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**int**
 
 ### Authorization
 

@@ -11,11 +11,13 @@ Method | HTTP request | Description
 [**project_merge_projects_project_id_merge_post**](ProjectsApi.md#project_merge_projects_project_id_merge_post) | **POST** /projects/{project_id}/merge | Project Merge
 [**project_query_projects_project_id_get**](ProjectsApi.md#project_query_projects_project_id_get) | **GET** /projects/{project_id} | Project Query
 [**project_recompute_geography_projects_project_id_recompute_geo_post**](ProjectsApi.md#project_recompute_geography_projects_project_id_recompute_geo_post) | **POST** /projects/{project_id}/recompute_geo | Project Recompute Geography
+[**project_set_get_column_stats_project_set_column_stats_get**](ProjectsApi.md#project_set_get_column_stats_project_set_column_stats_get) | **GET** /project_set/column_stats | Project Set Get Column Stats
 [**project_set_get_stats_project_set_taxo_stats_get**](ProjectsApi.md#project_set_get_stats_project_set_taxo_stats_get) | **GET** /project_set/taxo_stats | Project Set Get Stats
 [**project_set_get_user_stats_project_set_user_stats_get**](ProjectsApi.md#project_set_get_user_stats_project_set_user_stats_get) | **GET** /project_set/user_stats | Project Set Get User Stats
 [**project_stats_projects_project_id_stats_get**](ProjectsApi.md#project_stats_projects_project_id_stats_get) | **GET** /projects/{project_id}/stats | Project Stats
 [**project_subset_projects_project_id_subset_post**](ProjectsApi.md#project_subset_projects_project_id_subset_post) | **POST** /projects/{project_id}/subset | Project Subset
 [**search_projects_projects_search_get**](ProjectsApi.md#search_projects_projects_search_get) | **GET** /projects/search | Search Projects
+[**set_project_predict_settings_projects_project_id_prediction_settings_put**](ProjectsApi.md#set_project_predict_settings_projects_project_id_prediction_settings_put) | **PUT** /projects/{project_id}/prediction_settings | Set Project Predict Settings
 [**simple_import_simple_import_project_id_post**](ProjectsApi.md#simple_import_simple_import_project_id_post) | **POST** /simple_import/{project_id} | Simple Import
 [**update_project_projects_project_id_put**](ProjectsApi.md#update_project_projects_project_id_put) | **PUT** /projects/{project_id} | Update Project
 
@@ -25,7 +27,7 @@ Method | HTTP request | Description
 
 Create Project
 
-**Create an empty project with only a title,** and **return its id**.  The project will be managed by current user.  🔒 The user has to be *app administrator* or *project creator*.
+**Create an empty project with only a title,** and **return the numeric id of this newly created project**.  The project will be managed by current user.  🔒 The user has to be *app administrator* or *project creator*.
 
 ### Example
 
@@ -142,7 +144,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     only_objects = False # bool | If set, the project structure is kept, but emptied from any object, sample, acquisition and process. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
@@ -168,7 +170,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **only_objects** | **bool**| If set, the project structure is kept, but emptied from any object, sample, acquisition and process. | [optional] if omitted the server will use the default value of False
 
 ### Return type
@@ -199,7 +201,7 @@ Name | Type | Description  | Notes
 
 Import File
 
-Validate or do a real import of an EcoTaxa archive or directory.
+**Validate or do a real import** of an EcoTaxa archive or directory.
 
 ### Example
 
@@ -234,15 +236,15 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     import_req = ImportReq(
-        source_path="source_path_example",
+        source_path="/import_test.zip",
         taxo_mappings={
             "key": "key_example",
         },
         skip_loaded_files=False,
         skip_existing_objects=False,
-        update_mode="",
+        update_mode="Yes",
     ) # ImportReq | 
 
     # example passing only required values which don't have defaults set
@@ -259,7 +261,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **import_req** | [**ImportReq**](ImportReq.md)|  |
 
 ### Return type
@@ -323,7 +325,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
 
     # example passing only required values which don't have defaults set
     try:
@@ -339,7 +341,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -365,11 +367,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_merge_projects_project_id_merge_post**
-> MergeRsp project_merge_projects_project_id_merge_post(project_id)
+> MergeRsp project_merge_projects_project_id_merge_post(project_id, source_project_id, dry_run)
 
 Project Merge
 
-**Merge another project into this one.**  It's more a phagocytosis than a merge, as the source will see all its objects gone and will be erased.
+**Merge another project into this one.**  It's more a phagocytosis than a merge, as all objects from this source project will be moved to the project_id above and the source project itself will be deleted.  TODO: Explain a bit with it might fail (too many free columns, unique orig_ids collision)
 
 ### Example
 
@@ -403,23 +405,14 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
-    source_project_id = 2 # int | Id of the other project. This source project will see all its objects gone and will be erased. (optional)
-    dry_run = True # bool | If set, then only a diagnostic of doability will be done. (optional)
+    project_id = 1 # int | Internal, numeric id of the project.
+    source_project_id = 2 # int | Id of the other project. All objects from this source project will be moved to the project_id above and the source project itself will be deleted.
+    dry_run = True # bool | If set, then only a diagnostic of doability will be done.
 
     # example passing only required values which don't have defaults set
     try:
         # Project Merge
-        api_response = api_instance.project_merge_projects_project_id_merge_post(project_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_merge_projects_project_id_merge_post: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Project Merge
-        api_response = api_instance.project_merge_projects_project_id_merge_post(project_id, source_project_id=source_project_id, dry_run=dry_run)
+        api_response = api_instance.project_merge_projects_project_id_merge_post(project_id, source_project_id, dry_run)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_merge_projects_project_id_merge_post: %s\n" % e)
@@ -430,9 +423,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **source_project_id** | **int**| Id of the other project. This source project will see all its objects gone and will be erased. | [optional]
- **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. | [optional]
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **source_project_id** | **int**| Id of the other project. All objects from this source project will be moved to the project_id above and the source project itself will be deleted. |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. |
 
 ### Return type
 
@@ -496,7 +489,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     for_managing = False # bool | For managing this project. (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
@@ -522,7 +515,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **for_managing** | **bool**| For managing this project. | [optional] if omitted the server will use the default value of False
 
 ### Return type
@@ -553,7 +546,7 @@ Name | Type | Description  | Notes
 
 Project Recompute Geography
 
-**Recompute geography information** for all samples in project.  🔒 The user has to be *project manager*.
+**Recompute geography information** for all samples in project.  **Returns NULL upon success.**  🔒 The user has to be *project manager*.
 
 ### Example
 
@@ -586,7 +579,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
 
     # example passing only required values which don't have defaults set
     try:
@@ -602,7 +595,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -627,8 +620,103 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **project_set_get_column_stats_project_set_column_stats_get**
+> ProjectSetColumnStatsModel project_set_get_column_stats_project_set_column_stats_get(ids, names)
+
+Project Set Get Column Stats
+
+**Returns projects validated data statistics**, for all named columns, in all given projects.  The free columns here are named by the alias e.g. 'area', not technical name e.g. 'n43'.  This allows getting stats on projects with different mappings, but common names.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.project_set_column_stats_model import ProjectSetColumnStatsModel
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = projects_api.ProjectsApi(api_client)
+    ids = "1400+1453" # str | String containing the Project list, one or more id separated by non-num char.
+    names = "fre.area,obj.depth_min,fre.nb2" # str | Coma-separated prefixed columns, on which stats are needed.
+    limit = 5000 # int | Only compute stats on this number of objects per category. (optional)
+    categories = "493,567" # str | String containing the Categories, one or more id separated by non-num char. (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Project Set Get Column Stats
+        api_response = api_instance.project_set_get_column_stats_project_set_column_stats_get(ids, names)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ProjectsApi->project_set_get_column_stats_project_set_column_stats_get: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Project Set Get Column Stats
+        api_response = api_instance.project_set_get_column_stats_project_set_column_stats_get(ids, names, limit=limit, categories=categories)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ProjectsApi->project_set_get_column_stats_project_set_column_stats_get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | **str**| String containing the Project list, one or more id separated by non-num char. |
+ **names** | **str**| Coma-separated prefixed columns, on which stats are needed. |
+ **limit** | **int**| Only compute stats on this number of objects per category. | [optional]
+ **categories** | **str**| String containing the Categories, one or more id separated by non-num char. | [optional]
+
+### Return type
+
+[**ProjectSetColumnStatsModel**](ProjectSetColumnStatsModel.md)
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **project_set_get_stats_project_set_taxo_stats_get**
-> [ProjectTaxoStatsModel] project_set_get_stats_project_set_taxo_stats_get()
+> [ProjectTaxoStatsModel] project_set_get_stats_project_set_taxo_stats_get(ids)
 
 Project Set Get Stats
 
@@ -666,14 +754,22 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. (optional)
+    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project.
     taxa_ids = "all" # str | **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. (optional) if omitted the server will use the default value of ""
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Project Set Get Stats
+        api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ProjectsApi->project_set_get_stats_project_set_taxo_stats_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Project Set Get Stats
-        api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids=ids, taxa_ids=taxa_ids)
+        api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids, taxa_ids=taxa_ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_set_get_stats_project_set_taxo_stats_get: %s\n" % e)
@@ -684,7 +780,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. | [optional]
+ **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
  **taxa_ids** | **str**| **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. | [optional] if omitted the server will use the default value of ""
 
 ### Return type
@@ -711,7 +807,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_set_get_user_stats_project_set_user_stats_get**
-> [ProjectUserStatsModel] project_set_get_user_stats_project_set_user_stats_get()
+> [ProjectUserStatsModel] project_set_get_user_stats_project_set_user_stats_get(ids)
 
 Project Set Get User Stats
 
@@ -749,13 +845,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. (optional)
+    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Project Set Get User Stats
-        api_response = api_instance.project_set_get_user_stats_project_set_user_stats_get(ids=ids)
+        api_response = api_instance.project_set_get_user_stats_project_set_user_stats_get(ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ProjectsApi->project_set_get_user_stats_project_set_user_stats_get: %s\n" % e)
@@ -766,7 +861,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. | [optional]
+ **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
 
 ### Return type
 
@@ -792,11 +887,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_stats_projects_project_id_stats_get**
-> bool, date, datetime, dict, float, int, list, str, none_type project_stats_projects_project_id_stats_get(project_id)
+> [str] project_stats_projects_project_id_stats_get(project_id)
 
 Project Stats
 
-Check consistency of a project.
+**Returns stats** for a project.  These stats will be returned as a list containing at index : - 0 : The **title** of the project,  - 1 : A string containing all **freecols name and related column number**,  - 2 : **\"(0):\"** - 3 :  **\"Total: 0 values, dup 0 values\"**  Then for each acquisition a pair of strings will be added to the list : -  A string containing the **acquisition origin id** (the **number of objects for this acquisition**) : and then **small stats for an acquisition of a free column values inside** : [ min of values ; max of values ; distribution of the different values ; mode, i.e. freq of most frequent value] -  A string containing the **number of total values** and the **number of duplicates values** \"Total: ... values, dup ... values\"      
 
 ### Example
 
@@ -829,7 +924,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
 
     # example passing only required values which don't have defaults set
     try:
@@ -845,11 +940,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**[str]**
 
 ### Authorization
 
@@ -910,7 +1005,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     subset_req = SubsetReq(
         filters={
             "key": "key_example",
@@ -919,7 +1014,6 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         group_type=,
         limit_type=,
         limit_value=10.0,
-        do_images=True,
     ) # SubsetReq | 
 
     # example passing only required values which don't have defaults set
@@ -936,7 +1030,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **subset_req** | [**SubsetReq**](SubsetReq.md)|  |
 
 ### Return type
@@ -1002,14 +1096,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
     also_others = False # bool |  (optional) if omitted the server will use the default value of False
-    not_granted = False # bool | Return projects on which the current user has _no permission_, but visible to him/her (optional) if omitted the server will use the default value of False
-    for_managing = False # bool | Return projects that can be written to (including erased) by the current user (optional) if omitted the server will use the default value of False
-    title_filter = "Tara" # str | Use this pattern for matching returned projects names (optional) if omitted the server will use the default value of ""
-    instrument_filter = "uvp5" # str | Only return projects where this instrument was used (optional) if omitted the server will use the default value of ""
-    filter_subset = True # bool | Only return projects having 'subset' in their names (optional) if omitted the server will use the default value of False
-    order_field = "instrument" # str | One of ['instrument', 'highest_right', 'license', 'projid', 'title', 'visible', 'status', 'objcount', 'pctvalidated', 'pctclassified', 'classifsettings', 'classiffieldlist', 'popoverfieldlist', 'comments', 'projtype', 'rf_models_used', 'cnn_network_id'] (optional)
-    window_start = 0 # int | Skip `window_start` before returning data (optional)
-    window_size = 100 # int | Return only `window_size` lines (optional)
+    not_granted = False # bool | Return projects on which the current user has _no permission_, but visible to him/her. (optional) if omitted the server will use the default value of False
+    for_managing = False # bool | Return projects that can be written to (including erased) by the current user. (optional) if omitted the server will use the default value of False
+    title_filter = "Tara" # str | Use this pattern for matching returned projects names. (optional) if omitted the server will use the default value of ""
+    instrument_filter = "uvp5" # str | Only return projects where this instrument was used. (optional) if omitted the server will use the default value of ""
+    filter_subset = True # bool | Only return projects having 'subset' in their names. (optional) if omitted the server will use the default value of False
+    order_field = "instrument" # str | One of ['instrument', 'highest_right', 'license', 'projid', 'title', 'visible', 'status', 'objcount', 'pctvalidated', 'pctclassified', 'classifsettings', 'classiffieldlist', 'popoverfieldlist', 'comments', 'description', 'rf_models_used', 'cnn_network_id'] (optional)
+    window_start = 0 # int | Skip `window_start` before returning data. (optional)
+    window_size = 100 # int | Return only `window_size` lines. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -1027,18 +1121,99 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **also_others** | **bool**|  | [optional] if omitted the server will use the default value of False
- **not_granted** | **bool**| Return projects on which the current user has _no permission_, but visible to him/her | [optional] if omitted the server will use the default value of False
- **for_managing** | **bool**| Return projects that can be written to (including erased) by the current user | [optional] if omitted the server will use the default value of False
- **title_filter** | **str**| Use this pattern for matching returned projects names | [optional] if omitted the server will use the default value of ""
- **instrument_filter** | **str**| Only return projects where this instrument was used | [optional] if omitted the server will use the default value of ""
- **filter_subset** | **bool**| Only return projects having &#39;subset&#39; in their names | [optional] if omitted the server will use the default value of False
- **order_field** | **str**| One of [&#39;instrument&#39;, &#39;highest_right&#39;, &#39;license&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;projtype&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]
- **window_start** | **int**| Skip &#x60;window_start&#x60; before returning data | [optional]
- **window_size** | **int**| Return only &#x60;window_size&#x60; lines | [optional]
+ **not_granted** | **bool**| Return projects on which the current user has _no permission_, but visible to him/her. | [optional] if omitted the server will use the default value of False
+ **for_managing** | **bool**| Return projects that can be written to (including erased) by the current user. | [optional] if omitted the server will use the default value of False
+ **title_filter** | **str**| Use this pattern for matching returned projects names. | [optional] if omitted the server will use the default value of ""
+ **instrument_filter** | **str**| Only return projects where this instrument was used. | [optional] if omitted the server will use the default value of ""
+ **filter_subset** | **bool**| Only return projects having &#39;subset&#39; in their names. | [optional] if omitted the server will use the default value of False
+ **order_field** | **str**| One of [&#39;instrument&#39;, &#39;highest_right&#39;, &#39;license&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;description&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]
+ **window_start** | **int**| Skip &#x60;window_start&#x60; before returning data. | [optional]
+ **window_size** | **int**| Return only &#x60;window_size&#x60; lines. | [optional]
 
 ### Return type
 
 [**[ProjectModel]**](ProjectModel.md)
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_project_predict_settings_projects_project_id_prediction_settings_put**
+> bool, date, datetime, dict, float, int, list, str, none_type set_project_predict_settings_projects_project_id_prediction_settings_put(project_id, settings)
+
+Set Project Predict Settings
+
+**Update the project's prediction settings**, return **NULL upon success.**  🔒 Unlike during full project update above, which needs high permissions, this entry point is accessible to **project annotators**, as it mirrors the prediction privileges.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = projects_api.ProjectsApi(api_client)
+    project_id = 4223 # int | Internal, numeric id of the project.
+    settings = "seltaxo=84963,59996,56545 baseproject=2562,2571" # str | The new prediction settings.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Set Project Predict Settings
+        api_response = api_instance.set_project_predict_settings_projects_project_id_prediction_settings_put(project_id, settings)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ProjectsApi->set_project_predict_settings_projects_project_id_prediction_settings_put: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **settings** | **str**| The new prediction settings. |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 
@@ -1064,7 +1239,7 @@ Name | Type | Description  | Notes
 
 Simple Import
 
-Import images only, with same metadata for all. - param `dry_run`: If set, then _only_ a diagnostic of do-ability will be done.     In this case, plain value check. If no dry_run, this call will create a background job.
+**Import images only**, with same metadata for all.
 
 ### Example
 
@@ -1099,10 +1274,10 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
-    dry_run = True # bool | 
+    project_id = 1 # int | Internal, numeric id of the project.
+    dry_run = True # bool | If set, then only a diagnostic of doability will be done. In this case, plain value check. If no dry_run, this call will create a background job.
     simple_import_req = SimpleImportReq(
-        source_path="source_path_example",
+        source_path="/import_test",
         values={
             "key": "key_example",
         },
@@ -1123,8 +1298,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **dry_run** | **bool**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. In this case, plain value check. If no dry_run, this call will create a background job. |
  **simple_import_req** | [**SimpleImportReq**](SimpleImportReq.md)|  |
 
 ### Return type
@@ -1155,7 +1330,7 @@ Name | Type | Description  | Notes
 
 Update Project
 
-**Update the project**.  Note that some fields will **NOT** be updated and simply ignored, e.g. *free_cols*.
+**Update the project**, return **NULL upon success.**  Note that some fields will **NOT** be updated and simply ignored, e.g. *free_cols*.
 
 ### Example
 
@@ -1189,7 +1364,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    project_id = 1 # int | 
+    project_id = 1 # int | Internal, numeric id of the project.
     project_model = ProjectModel(
         obj_free_cols={
             "key": "key_example",
@@ -1207,7 +1382,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         managers=[
             UserModel(
                 id=1,
-                email="user@email.com",
+                email="ecotaxa.api.user@gmail.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -1219,7 +1394,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         annotators=[
             UserModel(
                 id=1,
-                email="user@email.com",
+                email="ecotaxa.api.user@gmail.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -1231,7 +1406,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         viewers=[
             UserModel(
                 id=1,
-                email="user@email.com",
+                email="ecotaxa.api.user@gmail.com",
                 name="userName",
                 organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
                 active=True,
@@ -1275,7 +1450,7 @@ symetrieh=symetrieh
 circ.=circ
 feret = Feret [pixel]''',
         comments="",
-        projtype="",
+        description="",
         rf_models_used="",
         cnn_network_id="SCN_zooscan_group1",
     ) # ProjectModel | 
@@ -1294,7 +1469,7 @@ feret = Feret [pixel]''',
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
+ **project_id** | **int**| Internal, numeric id of the project. |
  **project_model** | [**ProjectModel**](ProjectModel.md)|  |
 
 ### Return type

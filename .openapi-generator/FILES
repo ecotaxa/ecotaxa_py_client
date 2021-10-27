@@ -1,12 +1,12 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/AcquisitionModel.md
 docs/AcquisitionsApi.md
 docs/AuthentificationApi.md
 docs/BodyExportObjectSetObjectSetExportPost.md
+docs/BodyPredictObjectSetObjectSetPredictPost.md
 docs/BulkUpdateReq.md
 docs/ClassifyAutoReq.md
 docs/ClassifyReq.md
@@ -29,7 +29,7 @@ docs/HistoricalLastClassif.md
 docs/ImageModel.md
 docs/ImportReq.md
 docs/ImportRsp.md
-docs/InstrumentApi.md
+docs/InstrumentsApi.md
 docs/JobModel.md
 docs/JobsApi.md
 docs/LimitMethods.md
@@ -44,10 +44,13 @@ docs/ObjectSetQueryRsp.md
 docs/ObjectSetRevertToHistoryRsp.md
 docs/ObjectSetSummaryRsp.md
 docs/ObjectsApi.md
+docs/PredictionReq.md
+docs/PredictionRsp.md
 docs/ProcessModel.md
 docs/ProcessesApi.md
 docs/ProjectFilters.md
 docs/ProjectModel.md
+docs/ProjectSetColumnStatsModel.md
 docs/ProjectSummaryModel.md
 docs/ProjectTaxoStatsModel.md
 docs/ProjectUserStatsModel.md
@@ -60,6 +63,7 @@ docs/SimpleImportRsp.md
 docs/SubsetReq.md
 docs/SubsetRsp.md
 docs/TaxaSearchRsp.md
+docs/TaxonCentral.md
 docs/TaxonModel.md
 docs/TaxonUsageModel.md
 docs/TaxonomyTreeApi.md
@@ -76,7 +80,7 @@ ecotaxa_py_client/api/acquisitions_api.py
 ecotaxa_py_client/api/authentification_api.py
 ecotaxa_py_client/api/collections_api.py
 ecotaxa_py_client/api/files_api.py
-ecotaxa_py_client/api/instrument_api.py
+ecotaxa_py_client/api/instruments_api.py
 ecotaxa_py_client/api/jobs_api.py
 ecotaxa_py_client/api/misc_api.py
 ecotaxa_py_client/api/object_api.py
@@ -94,6 +98,7 @@ ecotaxa_py_client/exceptions.py
 ecotaxa_py_client/model/__init__.py
 ecotaxa_py_client/model/acquisition_model.py
 ecotaxa_py_client/model/body_export_object_set_object_set_export_post.py
+ecotaxa_py_client/model/body_predict_object_set_object_set_predict_post.py
 ecotaxa_py_client/model/bulk_update_req.py
 ecotaxa_py_client/model/classify_auto_req.py
 ecotaxa_py_client/model/classify_req.py
@@ -124,9 +129,12 @@ ecotaxa_py_client/model/object_model.py
 ecotaxa_py_client/model/object_set_query_rsp.py
 ecotaxa_py_client/model/object_set_revert_to_history_rsp.py
 ecotaxa_py_client/model/object_set_summary_rsp.py
+ecotaxa_py_client/model/prediction_req.py
+ecotaxa_py_client/model/prediction_rsp.py
 ecotaxa_py_client/model/process_model.py
 ecotaxa_py_client/model/project_filters.py
 ecotaxa_py_client/model/project_model.py
+ecotaxa_py_client/model/project_set_column_stats_model.py
 ecotaxa_py_client/model/project_summary_model.py
 ecotaxa_py_client/model/project_taxo_stats_model.py
 ecotaxa_py_client/model/project_user_stats_model.py
@@ -137,6 +145,7 @@ ecotaxa_py_client/model/simple_import_rsp.py
 ecotaxa_py_client/model/subset_req.py
 ecotaxa_py_client/model/subset_rsp.py
 ecotaxa_py_client/model/taxa_search_rsp.py
+ecotaxa_py_client/model/taxon_central.py
 ecotaxa_py_client/model/taxon_model.py
 ecotaxa_py_client/model/taxon_usage_model.py
 ecotaxa_py_client/model/taxonomy_tree_status.py

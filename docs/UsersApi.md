@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **get_current_user_prefs_users_my_preferences_project_id_get**
-> str get_current_user_prefs_users_my_preferences_project_id_get(project_id)
+> str get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
 
 Get Current User Prefs
 
@@ -50,22 +50,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    project_id = 1 # int | 
-    key = "filters" # str | The preference key. (optional)
+    project_id = 1 # int | Internal, numeric id of the project.
+    key = "filters" # str | The preference key, as text.
 
     # example passing only required values which don't have defaults set
     try:
         # Get Current User Prefs
-        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->get_current_user_prefs_users_my_preferences_project_id_get: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get Current User Prefs
-        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id, key=key)
+        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling UsersApi->get_current_user_prefs_users_my_preferences_project_id_get: %s\n" % e)
@@ -76,8 +67,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **key** | **str**| The preference key. | [optional]
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **key** | **str**| The preference key, as text. |
 
 ### Return type
 
@@ -141,7 +132,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    user_id = 1 # int | 
+    user_id = 1 # int | Internal, the unique numeric id of this user.
 
     # example passing only required values which don't have defaults set
     try:
@@ -157,7 +148,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**|  |
+ **user_id** | **int**| Internal, the unique numeric id of this user. |
 
 ### Return type
 
@@ -338,11 +329,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_current_user_prefs_users_my_preferences_project_id_put**
-> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs_users_my_preferences_project_id_put(project_id)
+> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
 
 Set Current User Prefs
 
-**Sets one preference**, for a project and for the currently authenticated user.  Available keys are **cwd**, **img_import** and **filters**.  The key disappears if set to empty string.
+**Sets one preference**, for a project and for the currently authenticated user.  Available keys are **cwd**, **img_import** and **filters**.  The key disappears if set to empty string.  **Returns NULL upon success.**
 
 ### Example
 
@@ -375,23 +366,14 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
-    project_id = 1 # int | 
-    key = "filters" # str | The preference key. (optional)
-    value = "{"dispfield": " dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value", "ipp": "500", "magenabled": "1", "popupenabled": "1", "sortby": "orig_id", "sortorder": "asc", "statusfilter": "", "zoom": "90"}" # str | The value to set this preference to. (optional)
+    project_id = 1 # int | Internal, numeric id of the project.
+    key = "filters" # str | The preference key, as text.
+    value = "{"dispfield": " dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value", "ipp": "500", "magenabled": "1", "popupenabled": "1", "sortby": "orig_id", "sortorder": "asc", "statusfilter": "", "zoom": "90"}" # str | The value to set this preference to, as text.
 
     # example passing only required values which don't have defaults set
     try:
         # Set Current User Prefs
-        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->set_current_user_prefs_users_my_preferences_project_id_put: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Set Current User Prefs
-        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id, key=key, value=value)
+        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling UsersApi->set_current_user_prefs_users_my_preferences_project_id_put: %s\n" % e)
@@ -402,9 +384,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**|  |
- **key** | **str**| The preference key. | [optional]
- **value** | **str**| The value to set this preference to. | [optional]
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **key** | **str**| The preference key, as text. |
+ **value** | **str**| The value to set this preference to, as text. |
 
 ### Return type
 
@@ -434,7 +416,7 @@ Name | Type | Description  | Notes
 
 Show Current User
 
-Returns **currently authenticated user's** information, permissions and last used projects.
+Returns **currently authenticated user's** (i.e. you) information, permissions and last used projects.
 
 ### Example
 
