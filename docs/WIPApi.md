@@ -4,11 +4,11 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**system_status_status_get**](WIPApi.md#system_status_status_get) | **GET** /status | System Status
+[**system_status**](WIPApi.md#system_status) | **GET** /status | System Status
 
 
-# **system_status_status_get**
-> bool, date, datetime, dict, float, int, list, str, none_type system_status_status_get()
+# **system_status**
+> bool, date, datetime, dict, float, int, list, str, none_type system_status()
 
 System Status
 
@@ -48,10 +48,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # System Status
-        api_response = api_instance.system_status_status_get()
+        api_response = api_instance.system_status()
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling WIPApi->system_status_status_get: %s\n" % e)
+        print("Exception when calling WIPApi->system_status: %s\n" % e)
 ```
 
 

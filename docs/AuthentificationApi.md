@@ -4,11 +4,11 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**login_login_post**](AuthentificationApi.md#login_login_post) | **POST** /login | Login
+[**login**](AuthentificationApi.md#login) | **POST** /login | Login
 
 
-# **login_login_post**
-> str login_login_post(login_req)
+# **login**
+> str login(login_req)
 
 Login
 
@@ -43,10 +43,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Login
-        api_response = api_instance.login_login_post(login_req)
+        api_response = api_instance.login(login_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling AuthentificationApi->login_login_post: %s\n" % e)
+        print("Exception when calling AuthentificationApi->login: %s\n" % e)
 ```
 
 

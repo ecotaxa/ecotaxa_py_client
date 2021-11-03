@@ -4,12 +4,12 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**process_query_process_process_id_get**](ProcessesApi.md#process_query_process_process_id_get) | **GET** /process/{process_id} | Process Query
-[**update_processes_process_set_update_post**](ProcessesApi.md#update_processes_process_set_update_post) | **POST** /process_set/update | Update Processes
+[**process_query**](ProcessesApi.md#process_query) | **GET** /process/{process_id} | Process Query
+[**update_processes**](ProcessesApi.md#update_processes) | **POST** /process_set/update | Update Processes
 
 
-# **process_query_process_process_id_get**
-> ProcessModel process_query_process_process_id_get(process_id)
+# **process_query**
+> ProcessModel process_query(process_id)
 
 Process Query
 
@@ -52,10 +52,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Process Query
-        api_response = api_instance.process_query_process_process_id_get(process_id)
+        api_response = api_instance.process_query(process_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProcessesApi->process_query_process_process_id_get: %s\n" % e)
+        print("Exception when calling ProcessesApi->process_query: %s\n" % e)
 ```
 
 
@@ -88,8 +88,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_processes_process_set_update_post**
-> int update_processes_process_set_update_post(bulk_update_req)
+# **update_processes**
+> int update_processes(bulk_update_req)
 
 Update Processes
 
@@ -135,10 +135,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update Processes
-        api_response = api_instance.update_processes_process_set_update_post(bulk_update_req)
+        api_response = api_instance.update_processes(bulk_update_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProcessesApi->update_processes_process_set_update_post: %s\n" % e)
+        print("Exception when calling ProcessesApi->update_processes: %s\n" % e)
 ```
 
 

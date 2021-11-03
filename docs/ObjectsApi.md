@@ -4,23 +4,22 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify_auto_object_set_object_set_classify_auto_post**](ObjectsApi.md#classify_auto_object_set_object_set_classify_auto_post) | **POST** /object_set/classify_auto | Classify Auto Object Set
-[**classify_object_set_object_set_classify_post**](ObjectsApi.md#classify_object_set_object_set_classify_post) | **POST** /object_set/classify | Classify Object Set
-[**compute_project_cnn_project_do_cnn_get**](ObjectsApi.md#compute_project_cnn_project_do_cnn_get) | **GET** /project/do_cnn | Compute Project Cnn
-[**erase_object_set_object_set_delete**](ObjectsApi.md#erase_object_set_object_set_delete) | **DELETE** /object_set/ | Erase Object Set
-[**export_object_set_object_set_export_post**](ObjectsApi.md#export_object_set_object_set_export_post) | **POST** /object_set/export | Export Object Set
-[**get_object_set_object_set_project_id_query_post**](ObjectsApi.md#get_object_set_object_set_project_id_query_post) | **POST** /object_set/{project_id}/query | Get Object Set
-[**get_object_set_summary_object_set_project_id_summary_post**](ObjectsApi.md#get_object_set_summary_object_set_project_id_summary_post) | **POST** /object_set/{project_id}/summary | Get Object Set Summary
-[**predict_object_set_object_set_predict_post**](ObjectsApi.md#predict_object_set_object_set_predict_post) | **POST** /object_set/predict | Predict Object Set
-[**query_object_set_parents_object_set_parents_post**](ObjectsApi.md#query_object_set_parents_object_set_parents_post) | **POST** /object_set/parents | Query Object Set Parents
-[**reclassify_object_set_object_set_project_id_reclassify_post**](ObjectsApi.md#reclassify_object_set_object_set_project_id_reclassify_post) | **POST** /object_set/{project_id}/reclassify | Reclassify Object Set
-[**reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post**](ObjectsApi.md#reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post) | **POST** /object_set/{project_id}/reset_to_predicted | Reset Object Set To Predicted
-[**revert_object_set_to_history_object_set_project_id_revert_to_history_post**](ObjectsApi.md#revert_object_set_to_history_object_set_project_id_revert_to_history_post) | **POST** /object_set/{project_id}/revert_to_history | Revert Object Set To History
-[**update_object_set_object_set_update_post**](ObjectsApi.md#update_object_set_object_set_update_post) | **POST** /object_set/update | Update Object Set
+[**classify_auto_object_set**](ObjectsApi.md#classify_auto_object_set) | **POST** /object_set/classify_auto | Classify Auto Object Set
+[**classify_object_set**](ObjectsApi.md#classify_object_set) | **POST** /object_set/classify | Classify Object Set
+[**erase_object_set**](ObjectsApi.md#erase_object_set) | **DELETE** /object_set/ | Erase Object Set
+[**export_object_set**](ObjectsApi.md#export_object_set) | **POST** /object_set/export | Export Object Set
+[**get_object_set**](ObjectsApi.md#get_object_set) | **POST** /object_set/{project_id}/query | Get Object Set
+[**get_object_set_summary**](ObjectsApi.md#get_object_set_summary) | **POST** /object_set/{project_id}/summary | Get Object Set Summary
+[**predict_object_set**](ObjectsApi.md#predict_object_set) | **POST** /object_set/predict | Predict Object Set
+[**query_object_set_parents**](ObjectsApi.md#query_object_set_parents) | **POST** /object_set/parents | Query Object Set Parents
+[**reclassify_object_set**](ObjectsApi.md#reclassify_object_set) | **POST** /object_set/{project_id}/reclassify | Reclassify Object Set
+[**reset_object_set_to_predicted**](ObjectsApi.md#reset_object_set_to_predicted) | **POST** /object_set/{project_id}/reset_to_predicted | Reset Object Set To Predicted
+[**revert_object_set_to_history**](ObjectsApi.md#revert_object_set_to_history) | **POST** /object_set/{project_id}/revert_to_history | Revert Object Set To History
+[**update_object_set**](ObjectsApi.md#update_object_set) | **POST** /object_set/update | Update Object Set
 
 
-# **classify_auto_object_set_object_set_classify_auto_post**
-> int classify_auto_object_set_object_set_classify_auto_post(classify_auto_req)
+# **classify_auto_object_set**
+> int classify_auto_object_set(classify_auto_req)
 
 Classify Auto Object Set
 
@@ -74,10 +73,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Classify Auto Object Set
-        api_response = api_instance.classify_auto_object_set_object_set_classify_auto_post(classify_auto_req)
+        api_response = api_instance.classify_auto_object_set(classify_auto_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->classify_auto_object_set_object_set_classify_auto_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->classify_auto_object_set: %s\n" % e)
 ```
 
 
@@ -110,8 +109,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **classify_object_set_object_set_classify_post**
-> int classify_object_set_object_set_classify_post(classify_req)
+# **classify_object_set**
+> int classify_object_set(classify_req)
 
 Classify Object Set
 
@@ -158,10 +157,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Classify Object Set
-        api_response = api_instance.classify_object_set_object_set_classify_post(classify_req)
+        api_response = api_instance.classify_object_set(classify_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->classify_object_set_object_set_classify_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->classify_object_set: %s\n" % e)
 ```
 
 
@@ -194,87 +193,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **compute_project_cnn_project_do_cnn_get**
-> str compute_project_cnn_project_do_cnn_get(proj_id)
-
-Compute Project Cnn
-
-**Generate CNN features** for the requested project.  **Returns a string containing the number of generated features.**
-
-### Example
-
-* OAuth Authentication (BearerOrCookieAuth):
-
-```python
-import time
-import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from pprint import pprint
-# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
-# See configuration.py for a list of all supported configuration parameters.
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with ecotaxa_py_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    proj_id = 1 # int | Internal, numeric id of the project.
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Compute Project Cnn
-        api_response = api_instance.compute_project_cnn_project_do_cnn_get(proj_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->compute_project_cnn_project_do_cnn_get: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **proj_id** | **int**| Internal, numeric id of the project. |
-
-### Return type
-
-**str**
-
-### Authorization
-
-[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **erase_object_set_object_set_delete**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_object_set_object_set_delete(request_body)
+# **erase_object_set**
+> bool, date, datetime, dict, float, int, list, str, none_type erase_object_set(request_body)
 
 Erase Object Set
 
@@ -316,10 +236,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Erase Object Set
-        api_response = api_instance.erase_object_set_object_set_delete(request_body)
+        api_response = api_instance.erase_object_set(request_body)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->erase_object_set_object_set_delete: %s\n" % e)
+        print("Exception when calling ObjectsApi->erase_object_set: %s\n" % e)
 ```
 
 
@@ -352,8 +272,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **export_object_set_object_set_export_post**
-> ExportRsp export_object_set_object_set_export_post(body_export_object_set_object_set_export_post)
+# **export_object_set**
+> ExportRsp export_object_set(body_export_object_set)
 
 Export Object Set
 
@@ -368,7 +288,7 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import objects_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
 from ecotaxa_py_client.model.export_rsp import ExportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -392,7 +312,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set_object_set_export_post = BodyExportObjectSetObjectSetExportPost(
+    body_export_object_set = BodyExportObjectSetObjectSetExportPost(
         filters=ProjectFilters(
             taxo="12,7654,5409",
             taxochild="Y",
@@ -441,10 +361,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Export Object Set
-        api_response = api_instance.export_object_set_object_set_export_post(body_export_object_set_object_set_export_post)
+        api_response = api_instance.export_object_set(body_export_object_set)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->export_object_set_object_set_export_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->export_object_set: %s\n" % e)
 ```
 
 
@@ -452,7 +372,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
+ **body_export_object_set** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
 
 ### Return type
 
@@ -477,8 +397,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_object_set_object_set_project_id_query_post**
-> ObjectSetQueryRsp get_object_set_object_set_project_id_query_post(project_id, project_filters)
+# **get_object_set**
+> ObjectSetQueryRsp get_object_set(project_id, project_filters)
 
 Get Object Set
 
@@ -555,19 +475,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Object Set
-        api_response = api_instance.get_object_set_object_set_project_id_query_post(project_id, project_filters)
+        api_response = api_instance.get_object_set(project_id, project_filters)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->get_object_set_object_set_project_id_query_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->get_object_set: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Get Object Set
-        api_response = api_instance.get_object_set_object_set_project_id_query_post(project_id, project_filters, fields=fields, order_field=order_field, window_start=window_start, window_size=window_size)
+        api_response = api_instance.get_object_set(project_id, project_filters, fields=fields, order_field=order_field, window_start=window_start, window_size=window_size)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->get_object_set_object_set_project_id_query_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->get_object_set: %s\n" % e)
 ```
 
 
@@ -605,8 +525,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_object_set_summary_object_set_project_id_summary_post**
-> ObjectSetSummaryRsp get_object_set_summary_object_set_project_id_summary_post(project_id, only_total, project_filters)
+# **get_object_set_summary**
+> ObjectSetSummaryRsp get_object_set_summary(project_id, only_total, project_filters)
 
 Get Object Set Summary
 
@@ -680,10 +600,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Object Set Summary
-        api_response = api_instance.get_object_set_summary_object_set_project_id_summary_post(project_id, only_total, project_filters)
+        api_response = api_instance.get_object_set_summary(project_id, only_total, project_filters)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->get_object_set_summary_object_set_project_id_summary_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->get_object_set_summary: %s\n" % e)
 ```
 
 
@@ -718,8 +638,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **predict_object_set_object_set_predict_post**
-> PredictionRsp predict_object_set_object_set_predict_post(body_predict_object_set_object_set_predict_post)
+# **predict_object_set**
+> PredictionRsp predict_object_set(body_predict_object_set)
 
 Predict Object Set
 
@@ -734,7 +654,7 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import objects_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
+from ecotaxa_py_client.model.body_predict_object_set import BodyPredictObjectSetObjectSetPredictPost
 from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -758,7 +678,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    body_predict_object_set_object_set_predict_post = BodyPredictObjectSetObjectSetPredictPost(
+    body_predict_object_set = BodyPredictObjectSetObjectSetPredictPost(
         filters=ProjectFilters(
             taxo="12,7654,5409",
             taxochild="Y",
@@ -810,10 +730,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Predict Object Set
-        api_response = api_instance.predict_object_set_object_set_predict_post(body_predict_object_set_object_set_predict_post)
+        api_response = api_instance.predict_object_set(body_predict_object_set)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->predict_object_set_object_set_predict_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->predict_object_set: %s\n" % e)
 ```
 
 
@@ -821,7 +741,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
+ **body_predict_object_set** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
 
 ### Return type
 
@@ -846,8 +766,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **query_object_set_parents_object_set_parents_post**
-> ObjectSetQueryRsp query_object_set_parents_object_set_parents_post(request_body)
+# **query_object_set_parents**
+> ObjectSetQueryRsp query_object_set_parents(request_body)
 
 Query Object Set Parents
 
@@ -890,10 +810,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Query Object Set Parents
-        api_response = api_instance.query_object_set_parents_object_set_parents_post(request_body)
+        api_response = api_instance.query_object_set_parents(request_body)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->query_object_set_parents_object_set_parents_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->query_object_set_parents: %s\n" % e)
 ```
 
 
@@ -926,8 +846,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reclassify_object_set_object_set_project_id_reclassify_post**
-> int reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters)
+# **reclassify_object_set**
+> int reclassify_object_set(project_id, forced_id, reason, project_filters)
 
 Reclassify Object Set
 
@@ -1001,10 +921,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Reclassify Object Set
-        api_response = api_instance.reclassify_object_set_object_set_project_id_reclassify_post(project_id, forced_id, reason, project_filters)
+        api_response = api_instance.reclassify_object_set(project_id, forced_id, reason, project_filters)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->reclassify_object_set_object_set_project_id_reclassify_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->reclassify_object_set: %s\n" % e)
 ```
 
 
@@ -1040,8 +960,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post**
-> bool, date, datetime, dict, float, int, list, str, none_type reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(project_id, project_filters)
+# **reset_object_set_to_predicted**
+> bool, date, datetime, dict, float, int, list, str, none_type reset_object_set_to_predicted(project_id, project_filters)
 
 Reset Object Set To Predicted
 
@@ -1113,10 +1033,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Reset Object Set To Predicted
-        api_response = api_instance.reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post(project_id, project_filters)
+        api_response = api_instance.reset_object_set_to_predicted(project_id, project_filters)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->reset_object_set_to_predicted_object_set_project_id_reset_to_predicted_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->reset_object_set_to_predicted: %s\n" % e)
 ```
 
 
@@ -1150,8 +1070,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **revert_object_set_to_history_object_set_project_id_revert_to_history_post**
-> ObjectSetRevertToHistoryRsp revert_object_set_to_history_object_set_project_id_revert_to_history_post(project_id, dry_run, project_filters)
+# **revert_object_set_to_history**
+> ObjectSetRevertToHistoryRsp revert_object_set_to_history(project_id, dry_run, project_filters)
 
 Revert Object Set To History
 
@@ -1226,19 +1146,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Revert Object Set To History
-        api_response = api_instance.revert_object_set_to_history_object_set_project_id_revert_to_history_post(project_id, dry_run, project_filters)
+        api_response = api_instance.revert_object_set_to_history(project_id, dry_run, project_filters)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->revert_object_set_to_history_object_set_project_id_revert_to_history_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->revert_object_set_to_history: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Revert Object Set To History
-        api_response = api_instance.revert_object_set_to_history_object_set_project_id_revert_to_history_post(project_id, dry_run, project_filters, target=target)
+        api_response = api_instance.revert_object_set_to_history(project_id, dry_run, project_filters, target=target)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->revert_object_set_to_history_object_set_project_id_revert_to_history_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->revert_object_set_to_history: %s\n" % e)
 ```
 
 
@@ -1274,8 +1194,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_object_set_object_set_update_post**
-> int update_object_set_object_set_update_post(bulk_update_req)
+# **update_object_set**
+> int update_object_set(bulk_update_req)
 
 Update Object Set
 
@@ -1321,10 +1241,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update Object Set
-        api_response = api_instance.update_object_set_object_set_update_post(bulk_update_req)
+        api_response = api_instance.update_object_set(bulk_update_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->update_object_set_object_set_update_post: %s\n" % e)
+        print("Exception when calling ObjectsApi->update_object_set: %s\n" % e)
 ```
 
 

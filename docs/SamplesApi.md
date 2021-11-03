@@ -4,14 +4,14 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**sample_query_sample_sample_id_get**](SamplesApi.md#sample_query_sample_sample_id_get) | **GET** /sample/{sample_id} | Sample Query
-[**sample_set_get_stats_sample_set_taxo_stats_get**](SamplesApi.md#sample_set_get_stats_sample_set_taxo_stats_get) | **GET** /sample_set/taxo_stats | Sample Set Get Stats
-[**samples_search_samples_search_get**](SamplesApi.md#samples_search_samples_search_get) | **GET** /samples/search | Samples Search
-[**update_samples_sample_set_update_post**](SamplesApi.md#update_samples_sample_set_update_post) | **POST** /sample_set/update | Update Samples
+[**sample_query**](SamplesApi.md#sample_query) | **GET** /sample/{sample_id} | Sample Query
+[**sample_set_get_stats**](SamplesApi.md#sample_set_get_stats) | **GET** /sample_set/taxo_stats | Sample Set Get Stats
+[**samples_search**](SamplesApi.md#samples_search) | **GET** /samples/search | Samples Search
+[**update_samples**](SamplesApi.md#update_samples) | **POST** /sample_set/update | Update Samples
 
 
-# **sample_query_sample_sample_id_get**
-> SampleModel sample_query_sample_sample_id_get(sample_id)
+# **sample_query**
+> SampleModel sample_query(sample_id)
 
 Sample Query
 
@@ -54,10 +54,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Sample Query
-        api_response = api_instance.sample_query_sample_sample_id_get(sample_id)
+        api_response = api_instance.sample_query(sample_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling SamplesApi->sample_query_sample_sample_id_get: %s\n" % e)
+        print("Exception when calling SamplesApi->sample_query: %s\n" % e)
 ```
 
 
@@ -90,8 +90,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sample_set_get_stats_sample_set_taxo_stats_get**
-> [SampleTaxoStatsModel] sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
+# **sample_set_get_stats**
+> [SampleTaxoStatsModel] sample_set_get_stats(sample_ids)
 
 Sample Set Get Stats
 
@@ -134,10 +134,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Sample Set Get Stats
-        api_response = api_instance.sample_set_get_stats_sample_set_taxo_stats_get(sample_ids)
+        api_response = api_instance.sample_set_get_stats(sample_ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling SamplesApi->sample_set_get_stats_sample_set_taxo_stats_get: %s\n" % e)
+        print("Exception when calling SamplesApi->sample_set_get_stats: %s\n" % e)
 ```
 
 
@@ -170,8 +170,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **samples_search_samples_search_get**
-> [SampleModel] samples_search_samples_search_get(project_ids, id_pattern)
+# **samples_search**
+> [SampleModel] samples_search(project_ids, id_pattern)
 
 Samples Search
 
@@ -215,10 +215,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Samples Search
-        api_response = api_instance.samples_search_samples_search_get(project_ids, id_pattern)
+        api_response = api_instance.samples_search(project_ids, id_pattern)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling SamplesApi->samples_search_samples_search_get: %s\n" % e)
+        print("Exception when calling SamplesApi->samples_search: %s\n" % e)
 ```
 
 
@@ -252,8 +252,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_samples_sample_set_update_post**
-> int update_samples_sample_set_update_post(bulk_update_req)
+# **update_samples**
+> int update_samples(bulk_update_req)
 
 Update Samples
 
@@ -299,10 +299,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update Samples
-        api_response = api_instance.update_samples_sample_set_update_post(bulk_update_req)
+        api_response = api_instance.update_samples(bulk_update_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling SamplesApi->update_samples_sample_set_update_post: %s\n" % e)
+        print("Exception when calling SamplesApi->update_samples: %s\n" % e)
 ```
 
 

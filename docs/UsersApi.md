@@ -4,16 +4,16 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_current_user_prefs_users_my_preferences_project_id_get**](UsersApi.md#get_current_user_prefs_users_my_preferences_project_id_get) | **GET** /users/my_preferences/{project_id} | Get Current User Prefs
-[**get_user_users_user_id_get**](UsersApi.md#get_user_users_user_id_get) | **GET** /users/{user_id} | Get User
-[**get_users_users_get**](UsersApi.md#get_users_users_get) | **GET** /users | Get Users
-[**search_user_users_search_get**](UsersApi.md#search_user_users_search_get) | **GET** /users/search | Search User
-[**set_current_user_prefs_users_my_preferences_project_id_put**](UsersApi.md#set_current_user_prefs_users_my_preferences_project_id_put) | **PUT** /users/my_preferences/{project_id} | Set Current User Prefs
-[**show_current_user_users_me_get**](UsersApi.md#show_current_user_users_me_get) | **GET** /users/me | Show Current User
+[**get_current_user_prefs**](UsersApi.md#get_current_user_prefs) | **GET** /users/my_preferences/{project_id} | Get Current User Prefs
+[**get_user**](UsersApi.md#get_user) | **GET** /users/{user_id} | Get User
+[**get_users**](UsersApi.md#get_users) | **GET** /users | Get Users
+[**search_user**](UsersApi.md#search_user) | **GET** /users/search | Search User
+[**set_current_user_prefs**](UsersApi.md#set_current_user_prefs) | **PUT** /users/my_preferences/{project_id} | Set Current User Prefs
+[**show_current_user**](UsersApi.md#show_current_user) | **GET** /users/me | Show Current User
 
 
-# **get_current_user_prefs_users_my_preferences_project_id_get**
-> str get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
+# **get_current_user_prefs**
+> str get_current_user_prefs(project_id, key)
 
 Get Current User Prefs
 
@@ -56,10 +56,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get Current User Prefs
-        api_response = api_instance.get_current_user_prefs_users_my_preferences_project_id_get(project_id, key)
+        api_response = api_instance.get_current_user_prefs(project_id, key)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->get_current_user_prefs_users_my_preferences_project_id_get: %s\n" % e)
+        print("Exception when calling UsersApi->get_current_user_prefs: %s\n" % e)
 ```
 
 
@@ -93,8 +93,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_user_users_user_id_get**
-> UserModel get_user_users_user_id_get(user_id)
+# **get_user**
+> UserModel get_user(user_id)
 
 Get User
 
@@ -137,10 +137,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get User
-        api_response = api_instance.get_user_users_user_id_get(user_id)
+        api_response = api_instance.get_user(user_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->get_user_users_user_id_get: %s\n" % e)
+        print("Exception when calling UsersApi->get_user: %s\n" % e)
 ```
 
 
@@ -173,8 +173,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_users_users_get**
-> [UserModel] get_users_users_get()
+# **get_users**
+> [UserModel] get_users()
 
 Get Users
 
@@ -215,10 +215,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Get Users
-        api_response = api_instance.get_users_users_get()
+        api_response = api_instance.get_users()
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->get_users_users_get: %s\n" % e)
+        print("Exception when calling UsersApi->get_users: %s\n" % e)
 ```
 
 
@@ -247,8 +247,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_user_users_search_get**
-> [UserModel] search_user_users_search_get()
+# **search_user**
+> [UserModel] search_user()
 
 Search User
 
@@ -292,10 +292,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Search User
-        api_response = api_instance.search_user_users_search_get(by_name=by_name)
+        api_response = api_instance.search_user(by_name=by_name)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->search_user_users_search_get: %s\n" % e)
+        print("Exception when calling UsersApi->search_user: %s\n" % e)
 ```
 
 
@@ -328,8 +328,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_current_user_prefs_users_my_preferences_project_id_put**
-> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
+# **set_current_user_prefs**
+> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs(project_id, key, value)
 
 Set Current User Prefs
 
@@ -373,10 +373,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Set Current User Prefs
-        api_response = api_instance.set_current_user_prefs_users_my_preferences_project_id_put(project_id, key, value)
+        api_response = api_instance.set_current_user_prefs(project_id, key, value)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->set_current_user_prefs_users_my_preferences_project_id_put: %s\n" % e)
+        print("Exception when calling UsersApi->set_current_user_prefs: %s\n" % e)
 ```
 
 
@@ -411,8 +411,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **show_current_user_users_me_get**
-> UserModelWithRights show_current_user_users_me_get()
+# **show_current_user**
+> UserModelWithRights show_current_user()
 
 Show Current User
 
@@ -453,10 +453,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example, this endpoint has no required or optional parameters
     try:
         # Show Current User
-        api_response = api_instance.show_current_user_users_me_get()
+        api_response = api_instance.show_current_user()
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->show_current_user_users_me_get: %s\n" % e)
+        print("Exception when calling UsersApi->show_current_user: %s\n" % e)
 ```
 
 

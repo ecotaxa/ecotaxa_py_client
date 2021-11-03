@@ -1,5 +1,6 @@
 .gitignore
 .gitlab-ci.yml
+.openapi-generator-ignore
 .travis.yml
 README.md
 docs/AcquisitionModel.md
@@ -97,8 +98,8 @@ ecotaxa_py_client/configuration.py
 ecotaxa_py_client/exceptions.py
 ecotaxa_py_client/model/__init__.py
 ecotaxa_py_client/model/acquisition_model.py
-ecotaxa_py_client/model/body_export_object_set_object_set_export_post.py
-ecotaxa_py_client/model/body_predict_object_set_object_set_predict_post.py
+ecotaxa_py_client/model/body_export_object_set.py
+ecotaxa_py_client/model/body_predict_object_set.py
 ecotaxa_py_client/model/bulk_update_req.py
 ecotaxa_py_client/model/classify_auto_req.py
 ecotaxa_py_client/model/classify_req.py

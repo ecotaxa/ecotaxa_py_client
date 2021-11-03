@@ -4,26 +4,26 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_project_projects_create_post**](ProjectsApi.md#create_project_projects_create_post) | **POST** /projects/create | Create Project
-[**erase_project_projects_project_id_delete**](ProjectsApi.md#erase_project_projects_project_id_delete) | **DELETE** /projects/{project_id} | Erase Project
-[**import_file_file_import_project_id_post**](ProjectsApi.md#import_file_file_import_project_id_post) | **POST** /file_import/{project_id} | Import File
-[**project_check_projects_project_id_check_get**](ProjectsApi.md#project_check_projects_project_id_check_get) | **GET** /projects/{project_id}/check | Project Check
-[**project_merge_projects_project_id_merge_post**](ProjectsApi.md#project_merge_projects_project_id_merge_post) | **POST** /projects/{project_id}/merge | Project Merge
-[**project_query_projects_project_id_get**](ProjectsApi.md#project_query_projects_project_id_get) | **GET** /projects/{project_id} | Project Query
-[**project_recompute_geography_projects_project_id_recompute_geo_post**](ProjectsApi.md#project_recompute_geography_projects_project_id_recompute_geo_post) | **POST** /projects/{project_id}/recompute_geo | Project Recompute Geography
-[**project_set_get_column_stats_project_set_column_stats_get**](ProjectsApi.md#project_set_get_column_stats_project_set_column_stats_get) | **GET** /project_set/column_stats | Project Set Get Column Stats
-[**project_set_get_stats_project_set_taxo_stats_get**](ProjectsApi.md#project_set_get_stats_project_set_taxo_stats_get) | **GET** /project_set/taxo_stats | Project Set Get Stats
-[**project_set_get_user_stats_project_set_user_stats_get**](ProjectsApi.md#project_set_get_user_stats_project_set_user_stats_get) | **GET** /project_set/user_stats | Project Set Get User Stats
-[**project_stats_projects_project_id_stats_get**](ProjectsApi.md#project_stats_projects_project_id_stats_get) | **GET** /projects/{project_id}/stats | Project Stats
-[**project_subset_projects_project_id_subset_post**](ProjectsApi.md#project_subset_projects_project_id_subset_post) | **POST** /projects/{project_id}/subset | Project Subset
-[**search_projects_projects_search_get**](ProjectsApi.md#search_projects_projects_search_get) | **GET** /projects/search | Search Projects
-[**set_project_predict_settings_projects_project_id_prediction_settings_put**](ProjectsApi.md#set_project_predict_settings_projects_project_id_prediction_settings_put) | **PUT** /projects/{project_id}/prediction_settings | Set Project Predict Settings
-[**simple_import_simple_import_project_id_post**](ProjectsApi.md#simple_import_simple_import_project_id_post) | **POST** /simple_import/{project_id} | Simple Import
-[**update_project_projects_project_id_put**](ProjectsApi.md#update_project_projects_project_id_put) | **PUT** /projects/{project_id} | Update Project
+[**create_project**](ProjectsApi.md#create_project) | **POST** /projects/create | Create Project
+[**erase_project**](ProjectsApi.md#erase_project) | **DELETE** /projects/{project_id} | Erase Project
+[**import_file**](ProjectsApi.md#import_file) | **POST** /file_import/{project_id} | Import File
+[**project_check**](ProjectsApi.md#project_check) | **GET** /projects/{project_id}/check | Project Check
+[**project_merge**](ProjectsApi.md#project_merge) | **POST** /projects/{project_id}/merge | Project Merge
+[**project_query**](ProjectsApi.md#project_query) | **GET** /projects/{project_id} | Project Query
+[**project_recompute_geography**](ProjectsApi.md#project_recompute_geography) | **POST** /projects/{project_id}/recompute_geo | Project Recompute Geography
+[**project_set_get_column_stats**](ProjectsApi.md#project_set_get_column_stats) | **GET** /project_set/column_stats | Project Set Get Column Stats
+[**project_set_get_stats**](ProjectsApi.md#project_set_get_stats) | **GET** /project_set/taxo_stats | Project Set Get Stats
+[**project_set_get_user_stats**](ProjectsApi.md#project_set_get_user_stats) | **GET** /project_set/user_stats | Project Set Get User Stats
+[**project_stats**](ProjectsApi.md#project_stats) | **GET** /projects/{project_id}/stats | Project Stats
+[**project_subset**](ProjectsApi.md#project_subset) | **POST** /projects/{project_id}/subset | Project Subset
+[**search_projects**](ProjectsApi.md#search_projects) | **GET** /projects/search | Search Projects
+[**set_project_predict_settings**](ProjectsApi.md#set_project_predict_settings) | **PUT** /projects/{project_id}/prediction_settings | Set Project Predict Settings
+[**simple_import**](ProjectsApi.md#simple_import) | **POST** /simple_import/{project_id} | Simple Import
+[**update_project**](ProjectsApi.md#update_project) | **PUT** /projects/{project_id} | Update Project
 
 
-# **create_project_projects_create_post**
-> int create_project_projects_create_post(create_project_req)
+# **create_project**
+> int create_project(create_project_req)
 
 Create Project
 
@@ -70,10 +70,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Create Project
-        api_response = api_instance.create_project_projects_create_post(create_project_req)
+        api_response = api_instance.create_project(create_project_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->create_project_projects_create_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->create_project: %s\n" % e)
 ```
 
 
@@ -106,8 +106,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **erase_project_projects_project_id_delete**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_project_projects_project_id_delete(project_id)
+# **erase_project**
+> bool, date, datetime, dict, float, int, list, str, none_type erase_project(project_id)
 
 Erase Project
 
@@ -150,19 +150,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Erase Project
-        api_response = api_instance.erase_project_projects_project_id_delete(project_id)
+        api_response = api_instance.erase_project(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->erase_project_projects_project_id_delete: %s\n" % e)
+        print("Exception when calling ProjectsApi->erase_project: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Erase Project
-        api_response = api_instance.erase_project_projects_project_id_delete(project_id, only_objects=only_objects)
+        api_response = api_instance.erase_project(project_id, only_objects=only_objects)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->erase_project_projects_project_id_delete: %s\n" % e)
+        print("Exception when calling ProjectsApi->erase_project: %s\n" % e)
 ```
 
 
@@ -196,8 +196,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_file_file_import_project_id_post**
-> ImportRsp import_file_file_import_project_id_post(project_id, import_req)
+# **import_file**
+> ImportRsp import_file(project_id, import_req)
 
 Import File
 
@@ -250,10 +250,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Import File
-        api_response = api_instance.import_file_file_import_project_id_post(project_id, import_req)
+        api_response = api_instance.import_file(project_id, import_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->import_file_file_import_project_id_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->import_file: %s\n" % e)
 ```
 
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_check_projects_project_id_check_get**
-> [str] project_check_projects_project_id_check_get(project_id)
+# **project_check**
+> [str] project_check(project_id)
 
 Project Check
 
@@ -330,10 +330,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Check
-        api_response = api_instance.project_check_projects_project_id_check_get(project_id)
+        api_response = api_instance.project_check(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_check_projects_project_id_check_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_check: %s\n" % e)
 ```
 
 
@@ -366,8 +366,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_merge_projects_project_id_merge_post**
-> MergeRsp project_merge_projects_project_id_merge_post(project_id, source_project_id, dry_run)
+# **project_merge**
+> MergeRsp project_merge(project_id, source_project_id, dry_run)
 
 Project Merge
 
@@ -412,10 +412,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Merge
-        api_response = api_instance.project_merge_projects_project_id_merge_post(project_id, source_project_id, dry_run)
+        api_response = api_instance.project_merge(project_id, source_project_id, dry_run)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_merge_projects_project_id_merge_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_merge: %s\n" % e)
 ```
 
 
@@ -450,8 +450,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_query_projects_project_id_get**
-> ProjectModel project_query_projects_project_id_get(project_id)
+# **project_query**
+> ProjectModel project_query(project_id)
 
 Project Query
 
@@ -495,19 +495,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Query
-        api_response = api_instance.project_query_projects_project_id_get(project_id)
+        api_response = api_instance.project_query(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_query_projects_project_id_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_query: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Project Query
-        api_response = api_instance.project_query_projects_project_id_get(project_id, for_managing=for_managing)
+        api_response = api_instance.project_query(project_id, for_managing=for_managing)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_query_projects_project_id_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_query: %s\n" % e)
 ```
 
 
@@ -541,8 +541,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_recompute_geography_projects_project_id_recompute_geo_post**
-> bool, date, datetime, dict, float, int, list, str, none_type project_recompute_geography_projects_project_id_recompute_geo_post(project_id)
+# **project_recompute_geography**
+> bool, date, datetime, dict, float, int, list, str, none_type project_recompute_geography(project_id)
 
 Project Recompute Geography
 
@@ -584,10 +584,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Recompute Geography
-        api_response = api_instance.project_recompute_geography_projects_project_id_recompute_geo_post(project_id)
+        api_response = api_instance.project_recompute_geography(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_recompute_geography_projects_project_id_recompute_geo_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_recompute_geography: %s\n" % e)
 ```
 
 
@@ -620,8 +620,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_set_get_column_stats_project_set_column_stats_get**
-> ProjectSetColumnStatsModel project_set_get_column_stats_project_set_column_stats_get(ids, names)
+# **project_set_get_column_stats**
+> ProjectSetColumnStatsModel project_set_get_column_stats(ids, names)
 
 Project Set Get Column Stats
 
@@ -659,7 +659,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    ids = "1400+1453" # str | String containing the Project list, one or more id separated by non-num char.
+    ids = "1400+1453" # str | String containing the list of one or more id separated by non-num char.
     names = "fre.area,obj.depth_min,fre.nb2" # str | Coma-separated prefixed columns, on which stats are needed.
     limit = 5000 # int | Only compute stats on this number of objects per category. (optional)
     categories = "493,567" # str | String containing the Categories, one or more id separated by non-num char. (optional)
@@ -667,19 +667,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Set Get Column Stats
-        api_response = api_instance.project_set_get_column_stats_project_set_column_stats_get(ids, names)
+        api_response = api_instance.project_set_get_column_stats(ids, names)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_set_get_column_stats_project_set_column_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_set_get_column_stats: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Project Set Get Column Stats
-        api_response = api_instance.project_set_get_column_stats_project_set_column_stats_get(ids, names, limit=limit, categories=categories)
+        api_response = api_instance.project_set_get_column_stats(ids, names, limit=limit, categories=categories)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_set_get_column_stats_project_set_column_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_set_get_column_stats: %s\n" % e)
 ```
 
 
@@ -687,7 +687,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the Project list, one or more id separated by non-num char. |
+ **ids** | **str**| String containing the list of one or more id separated by non-num char. |
  **names** | **str**| Coma-separated prefixed columns, on which stats are needed. |
  **limit** | **int**| Only compute stats on this number of objects per category. | [optional]
  **categories** | **str**| String containing the Categories, one or more id separated by non-num char. | [optional]
@@ -715,8 +715,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_set_get_stats_project_set_taxo_stats_get**
-> [ProjectTaxoStatsModel] project_set_get_stats_project_set_taxo_stats_get(ids)
+# **project_set_get_stats**
+> [ProjectTaxoStatsModel] project_set_get_stats(ids)
 
 Project Set Get Stats
 
@@ -760,19 +760,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Set Get Stats
-        api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids)
+        api_response = api_instance.project_set_get_stats(ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_set_get_stats_project_set_taxo_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_set_get_stats: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Project Set Get Stats
-        api_response = api_instance.project_set_get_stats_project_set_taxo_stats_get(ids, taxa_ids=taxa_ids)
+        api_response = api_instance.project_set_get_stats(ids, taxa_ids=taxa_ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_set_get_stats_project_set_taxo_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_set_get_stats: %s\n" % e)
 ```
 
 
@@ -806,8 +806,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_set_get_user_stats_project_set_user_stats_get**
-> [ProjectUserStatsModel] project_set_get_user_stats_project_set_user_stats_get(ids)
+# **project_set_get_user_stats**
+> [ProjectUserStatsModel] project_set_get_user_stats(ids)
 
 Project Set Get User Stats
 
@@ -850,10 +850,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Set Get User Stats
-        api_response = api_instance.project_set_get_user_stats_project_set_user_stats_get(ids)
+        api_response = api_instance.project_set_get_user_stats(ids)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_set_get_user_stats_project_set_user_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_set_get_user_stats: %s\n" % e)
 ```
 
 
@@ -886,8 +886,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_stats_projects_project_id_stats_get**
-> [str] project_stats_projects_project_id_stats_get(project_id)
+# **project_stats**
+> [str] project_stats(project_id)
 
 Project Stats
 
@@ -929,10 +929,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Stats
-        api_response = api_instance.project_stats_projects_project_id_stats_get(project_id)
+        api_response = api_instance.project_stats(project_id)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_stats_projects_project_id_stats_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_stats: %s\n" % e)
 ```
 
 
@@ -965,8 +965,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **project_subset_projects_project_id_subset_post**
-> SubsetRsp project_subset_projects_project_id_subset_post(project_id, subset_req)
+# **project_subset**
+> SubsetRsp project_subset(project_id, subset_req)
 
 Project Subset
 
@@ -1019,10 +1019,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Project Subset
-        api_response = api_instance.project_subset_projects_project_id_subset_post(project_id, subset_req)
+        api_response = api_instance.project_subset(project_id, subset_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->project_subset_projects_project_id_subset_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->project_subset: %s\n" % e)
 ```
 
 
@@ -1056,8 +1056,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_projects_projects_search_get**
-> [ProjectModel] search_projects_projects_search_get()
+# **search_projects**
+> [ProjectModel] search_projects()
 
 Search Projects
 
@@ -1109,10 +1109,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Search Projects
-        api_response = api_instance.search_projects_projects_search_get(also_others=also_others, not_granted=not_granted, for_managing=for_managing, title_filter=title_filter, instrument_filter=instrument_filter, filter_subset=filter_subset, order_field=order_field, window_start=window_start, window_size=window_size)
+        api_response = api_instance.search_projects(also_others=also_others, not_granted=not_granted, for_managing=for_managing, title_filter=title_filter, instrument_filter=instrument_filter, filter_subset=filter_subset, order_field=order_field, window_start=window_start, window_size=window_size)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->search_projects_projects_search_get: %s\n" % e)
+        print("Exception when calling ProjectsApi->search_projects: %s\n" % e)
 ```
 
 
@@ -1153,8 +1153,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_project_predict_settings_projects_project_id_prediction_settings_put**
-> bool, date, datetime, dict, float, int, list, str, none_type set_project_predict_settings_projects_project_id_prediction_settings_put(project_id, settings)
+# **set_project_predict_settings**
+> bool, date, datetime, dict, float, int, list, str, none_type set_project_predict_settings(project_id, settings)
 
 Set Project Predict Settings
 
@@ -1197,10 +1197,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Set Project Predict Settings
-        api_response = api_instance.set_project_predict_settings_projects_project_id_prediction_settings_put(project_id, settings)
+        api_response = api_instance.set_project_predict_settings(project_id, settings)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->set_project_predict_settings_projects_project_id_prediction_settings_put: %s\n" % e)
+        print("Exception when calling ProjectsApi->set_project_predict_settings: %s\n" % e)
 ```
 
 
@@ -1234,8 +1234,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **simple_import_simple_import_project_id_post**
-> SimpleImportRsp simple_import_simple_import_project_id_post(project_id, dry_run, simple_import_req)
+# **simple_import**
+> SimpleImportRsp simple_import(project_id, dry_run, simple_import_req)
 
 Simple Import
 
@@ -1287,10 +1287,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Simple Import
-        api_response = api_instance.simple_import_simple_import_project_id_post(project_id, dry_run, simple_import_req)
+        api_response = api_instance.simple_import(project_id, dry_run, simple_import_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->simple_import_simple_import_project_id_post: %s\n" % e)
+        print("Exception when calling ProjectsApi->simple_import: %s\n" % e)
 ```
 
 
@@ -1325,8 +1325,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_project_projects_project_id_put**
-> bool, date, datetime, dict, float, int, list, str, none_type update_project_projects_project_id_put(project_id, project_model)
+# **update_project**
+> bool, date, datetime, dict, float, int, list, str, none_type update_project(project_id, project_model)
 
 Update Project
 
@@ -1458,10 +1458,10 @@ feret = Feret [pixel]''',
     # example passing only required values which don't have defaults set
     try:
         # Update Project
-        api_response = api_instance.update_project_projects_project_id_put(project_id, project_model)
+        api_response = api_instance.update_project(project_id, project_model)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ProjectsApi->update_project_projects_project_id_put: %s\n" % e)
+        print("Exception when calling ProjectsApi->update_project: %s\n" % e)
 ```
 
 
