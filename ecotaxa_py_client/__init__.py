@@ -10,7 +10,7 @@
 """
 
 
-__version__ = "1.0.15"
+__version__ = "1.0.16"
 
 # import ApiClient
 from ecotaxa_py_client.api_client import ApiClient

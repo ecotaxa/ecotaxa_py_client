@@ -21,8 +21,8 @@ from ecotaxa_py_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from ecotaxa_py_client.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
-from ecotaxa_py_client.model.body_predict_object_set import BodyPredictObjectSetObjectSetPredictPost
+from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
 from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
 from ecotaxa_py_client.model.classify_auto_req import ClassifyAutoReq
 from ecotaxa_py_client.model.classify_req import ClassifyReq
@@ -215,10 +215,10 @@ class ObjectsApi(object):
             },
             params_map={
                 'all': [
-                    'body_export_object_set',
+                    'body_export_object_set_object_set_export_post',
                 ],
                 'required': [
-                    'body_export_object_set',
+                    'body_export_object_set_object_set_export_post',
                 ],
                 'nullable': [
                 ],
@@ -233,13 +233,13 @@ class ObjectsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'body_export_object_set':
+                    'body_export_object_set_object_set_export_post':
                         (BodyExportObjectSetObjectSetExportPost,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'body_export_object_set': 'body',
+                    'body_export_object_set_object_set_export_post': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -409,10 +409,10 @@ class ObjectsApi(object):
             },
             params_map={
                 'all': [
-                    'body_predict_object_set',
+                    'body_predict_object_set_object_set_predict_post',
                 ],
                 'required': [
-                    'body_predict_object_set',
+                    'body_predict_object_set_object_set_predict_post',
                 ],
                 'nullable': [
                 ],
@@ -427,13 +427,13 @@ class ObjectsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'body_predict_object_set':
+                    'body_predict_object_set_object_set_predict_post':
                         (BodyPredictObjectSetObjectSetPredictPost,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'body_predict_object_set': 'body',
+                    'body_predict_object_set_object_set_predict_post': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -950,7 +950,7 @@ class ObjectsApi(object):
 
     def export_object_set(
         self,
-        body_export_object_set,
+        body_export_object_set_object_set_export_post,
         **kwargs
     ):
         """Export Object Set  # noqa: E501
@@ -959,11 +959,11 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.export_object_set(body_export_object_set, async_req=True)
+        >>> thread = api.export_object_set(body_export_object_set_object_set_export_post, async_req=True)
         >>> result = thread.get()
 
         Args:
-            body_export_object_set (BodyExportObjectSetObjectSetExportPost):
+            body_export_object_set_object_set_export_post (BodyExportObjectSetObjectSetExportPost):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -1010,8 +1010,8 @@ class ObjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['body_export_object_set'] = \
-            body_export_object_set
+        kwargs['body_export_object_set_object_set_export_post'] = \
+            body_export_object_set_object_set_export_post
         return self.export_object_set_endpoint.call_with_http_info(**kwargs)
 
     def get_object_set(
@@ -1164,7 +1164,7 @@ class ObjectsApi(object):
 
     def predict_object_set(
         self,
-        body_predict_object_set,
+        body_predict_object_set_object_set_predict_post,
         **kwargs
     ):
         """Predict Object Set  # noqa: E501
@@ -1173,11 +1173,11 @@ class ObjectsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.predict_object_set(body_predict_object_set, async_req=True)
+        >>> thread = api.predict_object_set(body_predict_object_set_object_set_predict_post, async_req=True)
         >>> result = thread.get()
 
         Args:
-            body_predict_object_set (BodyPredictObjectSetObjectSetPredictPost):
+            body_predict_object_set_object_set_predict_post (BodyPredictObjectSetObjectSetPredictPost):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -1224,8 +1224,8 @@ class ObjectsApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['body_predict_object_set'] = \
-            body_predict_object_set
+        kwargs['body_predict_object_set_object_set_predict_post'] = \
+            body_predict_object_set_object_set_predict_post
         return self.predict_object_set_endpoint.call_with_http_info(**kwargs)
 
     def query_object_set_parents(

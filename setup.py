@@ -11,7 +11,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "ecotaxa_py_client"
-VERSION = "1.0.15"
+VERSION = "1.0.16"
 # To install the library, run the following
 #
 # python setup.py install

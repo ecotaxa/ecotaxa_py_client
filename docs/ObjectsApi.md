@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **export_object_set**
-> ExportRsp export_object_set(body_export_object_set)
+> ExportRsp export_object_set(body_export_object_set_object_set_export_post)
 
 Export Object Set
 
@@ -288,7 +288,7 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import objects_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_export_object_set import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
 from ecotaxa_py_client.model.export_rsp import ExportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -312,7 +312,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set = BodyExportObjectSetObjectSetExportPost(
+    body_export_object_set_object_set_export_post = BodyExportObjectSetObjectSetExportPost(
         filters=ProjectFilters(
             taxo="12,7654,5409",
             taxochild="Y",
@@ -361,7 +361,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Export Object Set
-        api_response = api_instance.export_object_set(body_export_object_set)
+        api_response = api_instance.export_object_set(body_export_object_set_object_set_export_post)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ObjectsApi->export_object_set: %s\n" % e)
@@ -372,7 +372,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
+ **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
 
 ### Return type
 
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict_object_set**
-> PredictionRsp predict_object_set(body_predict_object_set)
+> PredictionRsp predict_object_set(body_predict_object_set_object_set_predict_post)
 
 Predict Object Set
 
@@ -654,7 +654,7 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import objects_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_predict_object_set import BodyPredictObjectSetObjectSetPredictPost
+from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
 from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
@@ -678,7 +678,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = objects_api.ObjectsApi(api_client)
-    body_predict_object_set = BodyPredictObjectSetObjectSetPredictPost(
+    body_predict_object_set_object_set_predict_post = BodyPredictObjectSetObjectSetPredictPost(
         filters=ProjectFilters(
             taxo="12,7654,5409",
             taxochild="Y",
@@ -730,7 +730,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Predict Object Set
-        api_response = api_instance.predict_object_set(body_predict_object_set)
+        api_response = api_instance.predict_object_set(body_predict_object_set_object_set_predict_post)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling ObjectsApi->predict_object_set: %s\n" % e)
@@ -741,7 +741,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_predict_object_set** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
+ **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
 
 ### Return type
 
