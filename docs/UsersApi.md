@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_current_user_prefs**](UsersApi.md#get_current_user_prefs) | **GET** /users/my_preferences/{project_id} | Get Current User Prefs
 [**get_user**](UsersApi.md#get_user) | **GET** /users/{user_id} | Get User
 [**get_users**](UsersApi.md#get_users) | **GET** /users | Get Users
+[**get_users_admins**](UsersApi.md#get_users_admins) | **GET** /users/admins | Get Users Admins
 [**search_user**](UsersApi.md#search_user) | **GET** /users/search | Search User
 [**set_current_user_prefs**](UsersApi.md#set_current_user_prefs) | **PUT** /users/my_preferences/{project_id} | Set Current User Prefs
 [**show_current_user**](UsersApi.md#show_current_user) | **GET** /users/me | Show Current User
@@ -219,6 +220,80 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling UsersApi->get_users: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[UserModel]**](UserModel.md)
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_users_admins**
+> [UserModel] get_users_admins()
+
+Get Users Admins
+
+**List users administrators**, themselves being users.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import users_api
+from ecotaxa_py_client.model.user_model import UserModel
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = users_api.UsersApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Get Users Admins
+        api_response = api_instance.get_users_admins()
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling UsersApi->get_users_admins: %s\n" % e)
 ```
 
 

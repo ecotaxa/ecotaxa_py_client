@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **external_id** | **str** | The external Id. | 
 **external_id_system** | **str** | The external Id system. | 
 **title** | **str** | The collection title. | 
-**provider_user** | **dict** | Is the person who          is responsible for the content of this metadata record. Writer of the title and abstract. | [optional] 
-**contact_user** | **dict** | Is the person who          should be contacted in cases of questions regarding the content of the dataset or any data restrictions.          This is also the person who is most likely to stay involved in the dataset the longest. | [optional] 
+**provider_user** | **bool, date, datetime, dict, float, int, list, str, none_type** | Is the person who          is responsible for the content of this metadata record. Writer of the title and abstract. | [optional] 
+**contact_user** | **bool, date, datetime, dict, float, int, list, str, none_type** | Is the person who          should be contacted in cases of questions regarding the content of the dataset or any data restrictions.          This is also the person who is most likely to stay involved in the dataset the longest. | [optional] 
 **creator_users** | [**[UserModel]**](UserModel.md) | All people who          are responsible for the creation of the collection. Data creators should receive credit          for their work and should therefore be included in the citation. | [optional]  if omitted the server will use the default value of []
 **creator_organisations** | **[str]** | All          organisations who are responsible for the creation of the collection. Data creators should          receive credit for their work and should therefore be included in the citation. | [optional]  if omitted the server will use the default value of []
 **associate_users** | [**[UserModel]**](UserModel.md) | Other person(s)          associated with the collection. | [optional]  if omitted the server will use the default value of []

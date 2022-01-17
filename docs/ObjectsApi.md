@@ -344,7 +344,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         ),
         request=ExportReq(
             project_id=1,
-            exp_type=,
+            exp_type=None,
             use_latin1=False,
             tsv_entities="OPAS",
             split_by="S",

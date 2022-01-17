@@ -6,8 +6,8 @@ Subset request.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dest_prj_id** | **int** | The destination project ID. | 
-**group_type** | **dict** | Define the groups in which to apply limits. C for categories, S for samples, A for acquisitions. | 
-**limit_type** | **dict** | The type of limit_value: P for %, V for constant, both per group. | 
+**group_type** | **bool, date, datetime, dict, float, int, list, str, none_type** | Define the groups in which to apply limits. C for categories, S for samples, A for acquisitions. | 
+**limit_type** | **bool, date, datetime, dict, float, int, list, str, none_type** | The type of limit_value: P for %, V for constant, both per group. | 
 **limit_value** | **float** | Limit value, e.g. 20% or 5 per copepoda or 5% per sample. | 
 **filters** | **{str: (str,)}** | The filters to apply to project. | [optional]  if omitted the server will use the default value of {}
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

@@ -604,8 +604,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     collection_id = 1 # int | Internal, the unique numeric id of this collection.
     collection_model = CollectionModel(
         project_ids=[1],
-        provider_user=,
-        contact_user=,
+        provider_user=None,
+        contact_user=None,
         creator_users=[
             UserModel(
                 id=1,

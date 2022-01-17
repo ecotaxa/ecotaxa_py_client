@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **do_nothing**
-> dict do_nothing()
+> bool, date, datetime, dict, float, int, list, str, none_type do_nothing()
 
 Do Nothing
 
@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**dict**
+**bool, date, datetime, dict, float, int, list, str, none_type**
 
 ### Authorization
 

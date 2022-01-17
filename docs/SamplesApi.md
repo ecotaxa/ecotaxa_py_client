@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 Sample Set Get Stats
 
-Returns **classification statistics** for the given set of samples.  EXPECT A SLOW RESPONSE : No cache of such information anywhere.
+Returns **classification statistics** for each sample of the given list. One block of stats is returned for each input ID.  EXPECT A SLOW RESPONSE : No cache of such information anywhere.
 
 ### Example
 

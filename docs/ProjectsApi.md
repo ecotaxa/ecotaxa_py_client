@@ -1011,8 +1011,8 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
             "key": "key_example",
         },
         dest_prj_id=22,
-        group_type=,
-        limit_type=,
+        group_type=None,
+        limit_type=None,
         limit_value=10.0,
     ) # SubsetReq | 
 
@@ -1416,7 +1416,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
             ),
         ],
         instrument="zooscan",
-        contact=,
+        contact=None,
         highest_right="View",
         license="license_example",
         projid=4824,

@@ -6,7 +6,7 @@ Export request.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | **int** | The project to export. | 
-**exp_type** | **dict** | The export type: &#39;TSV&#39;, &#39;BAK&#39;, &#39;DOI&#39; or &#39;SUM&#39;. | 
+**exp_type** | **bool, date, datetime, dict, float, int, list, str, none_type** | The export type: &#39;TSV&#39;, &#39;BAK&#39;, &#39;DOI&#39; or &#39;SUM&#39;. | 
 **tsv_entities** | **str** | For &#39;TSV&#39; type, the entities to export, one letter for each of O(bject), P(rocess), A(cquisition), S(ample), classification H(istory), C(omments). | 
 **split_by** | **str** | For &#39;TSV&#39; type, inside archives, split in one directory per... &#39;sample&#39;, &#39;taxo&#39; or &#39;&#39; (no split). | 
 **coma_as_separator** | **bool** | For &#39;TSV&#39; type, use a , instead of . for decimal separator. | 
