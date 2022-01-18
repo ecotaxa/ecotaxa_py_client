@@ -52,6 +52,9 @@ from pprint import pprint
 from ecotaxa_py_client.api import files_api
 from ecotaxa_py_client.model.directory_model import DirectoryModel
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+ 
+from ecotaxa_py_client.api import authentification_api
+from ecotaxa_py_client.model.login_req import LoginReq
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -63,19 +66,38 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Configure OAuth2 access token for authorization :
+# You need to call the login api, [ https://github.com/ecotaxa/ecotaxa_py_client/blob/main/docs/AuthentificationApi.md#login | doc here ] .
+# You should use your login and password from the ecotaxa webapp (if you are not registrated please sing up through [ https://ecotaxa.obs-vlfr.fr/login | this page ] ).
+# This api call will return you a JWT token, you will use it as : YOUR_ACCESS_TOKEN for the following calls.
 
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = authentification_api.AuthentificationApi(api_client)
+    #setup your credentials
+    login_req = LoginReq(
+        password="yourPassword",
+        username="your@email.com",
+    ) # LoginReq | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Login
+        api_response_token = api_instance.login(login_req)
+        pprint(api_response)
+        #set YOUR_ACCESS_TOKEN configuration
+        configuration.access_token = api_response_token
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling AuthentificationApi->login: %s\n" % e)
+
+    
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = files_api.FilesApi(api_client)
     path = "/ftp_plankton/Ecotaxa_Exported_data" # str | 
-
     try:
         # List Common Files
         api_response = api_instance.list_common_files(path)
