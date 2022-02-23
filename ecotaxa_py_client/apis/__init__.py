@@ -18,6 +18,7 @@ from ecotaxa_py_client.api.files_api import FilesApi
 from ecotaxa_py_client.api.taxonomy_tree_api import TaxonomyTreeApi
 from ecotaxa_py_client.api.wip_api import WIPApi
 from ecotaxa_py_client.api.acquisitions_api import AcquisitionsApi
+from ecotaxa_py_client.api.admin_api import AdminApi
 from ecotaxa_py_client.api.authentification_api import AuthentificationApi
 from ecotaxa_py_client.api.collections_api import CollectionsApi
 from ecotaxa_py_client.api.instruments_api import InstrumentsApi

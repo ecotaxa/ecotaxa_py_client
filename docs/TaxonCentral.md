@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **source_desc** | **str** | The source description. | [optional] 
 **creator_email** | **str** | Email of the creator of the taxon. | [optional] 
 **creation_datetime** | **datetime** | Taxon creation date. Date, with format YYYY-MM-DD hh:mm:ss. | [optional] 
-**nbrobj** | **int** |  | [optional] 
-**nbrobjcum** | **int** |  | [optional] 
+**nbrobj** | **int** | Number of objects in this category exactly. | [optional] 
+**nbrobjcum** | **int** | Number of objects in this category and descendant ones. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

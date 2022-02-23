@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 Update Samples
 
-Do the required **update for each sample in the set.**   Any non-null field in the model is written to every impacted sample.  **Returns the number of updated entities.**
+Do the required **update for each sample in the set.**  Any non-null field in the model is written to every impacted sample.  **Returns the number of updated entities.**
 
 ### Example
 

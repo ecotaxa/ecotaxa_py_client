@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Object Query
 
-Returns **information about the object** corresponding to the given id.   🔒 Anonymous reader can do if the project has the right rights :)
+Returns **information about the object** corresponding to the given id.  🔒 Anonymous reader can do if the project has the right rights :)
 
 ### Example
 

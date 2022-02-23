@@ -5,6 +5,7 @@
 README.md
 docs/AcquisitionModel.md
 docs/AcquisitionsApi.md
+docs/AdminApi.md
 docs/AuthentificationApi.md
 docs/BodyExportObjectSetObjectSetExportPost.md
 docs/BodyPredictObjectSetObjectSetPredictPost.md
@@ -33,9 +34,11 @@ docs/ImportRsp.md
 docs/InstrumentsApi.md
 docs/JobModel.md
 docs/JobsApi.md
+docs/LicenseEnum.md
 docs/LimitMethods.md
 docs/LoginReq.md
 docs/MergeRsp.md
+docs/MinUserModel.md
 docs/MinimalUserBO.md
 docs/MiscApi.md
 docs/ObjectApi.md
@@ -70,7 +73,6 @@ docs/TaxonUsageModel.md
 docs/TaxonomyTreeApi.md
 docs/TaxonomyTreeStatus.md
 docs/UserActivity.md
-docs/UserModel.md
 docs/UserModelWithRights.md
 docs/UsersApi.md
 docs/ValidationError.md
@@ -78,6 +80,7 @@ docs/WIPApi.md
 ecotaxa_py_client/__init__.py
 ecotaxa_py_client/api/__init__.py
 ecotaxa_py_client/api/acquisitions_api.py
+ecotaxa_py_client/api/admin_api.py
 ecotaxa_py_client/api/authentification_api.py
 ecotaxa_py_client/api/collections_api.py
 ecotaxa_py_client/api/files_api.py
@@ -121,9 +124,11 @@ ecotaxa_py_client/model/image_model.py
 ecotaxa_py_client/model/import_req.py
 ecotaxa_py_client/model/import_rsp.py
 ecotaxa_py_client/model/job_model.py
+ecotaxa_py_client/model/license_enum.py
 ecotaxa_py_client/model/limit_methods.py
 ecotaxa_py_client/model/login_req.py
 ecotaxa_py_client/model/merge_rsp.py
+ecotaxa_py_client/model/min_user_model.py
 ecotaxa_py_client/model/minimal_user_bo.py
 ecotaxa_py_client/model/object_header_model.py
 ecotaxa_py_client/model/object_model.py
@@ -151,7 +156,6 @@ ecotaxa_py_client/model/taxon_model.py
 ecotaxa_py_client/model/taxon_usage_model.py
 ecotaxa_py_client/model/taxonomy_tree_status.py
 ecotaxa_py_client/model/user_activity.py
-ecotaxa_py_client/model/user_model.py
 ecotaxa_py_client/model/user_model_with_rights.py
 ecotaxa_py_client/model/validation_error.py
 ecotaxa_py_client/model_utils.py

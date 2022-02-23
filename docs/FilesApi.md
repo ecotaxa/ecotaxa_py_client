@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 Put User File
 
-**Upload a file for the current user.**  The returned text will contain a serve-side path which is usable for some file-related operations.  *e.g. import.*
+**Upload a file for the current user.**  The returned text will contain a server-side path which is usable for some file-related operations.  *e.g. import.*
 
 ### Example
 

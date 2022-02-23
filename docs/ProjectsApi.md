@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**project_merge**](ProjectsApi.md#project_merge) | **POST** /projects/{project_id}/merge | Project Merge
 [**project_query**](ProjectsApi.md#project_query) | **GET** /projects/{project_id} | Project Query
 [**project_recompute_geography**](ProjectsApi.md#project_recompute_geography) | **POST** /projects/{project_id}/recompute_geo | Project Recompute Geography
+[**project_recompute_sunpos**](ProjectsApi.md#project_recompute_sunpos) | **POST** /projects/{project_id}/recompute_sunpos | Project Recompute Sunpos
 [**project_set_get_column_stats**](ProjectsApi.md#project_set_get_column_stats) | **GET** /project_set/column_stats | Project Set Get Column Stats
 [**project_set_get_stats**](ProjectsApi.md#project_set_get_stats) | **GET** /project_set/taxo_stats | Project Set Get Stats
 [**project_set_get_user_stats**](ProjectsApi.md#project_set_get_user_stats) | **GET** /project_set/user_stats | Project Set Get User Stats
@@ -111,7 +112,7 @@ Name | Type | Description  | Notes
 
 Erase Project
 
-**Delete the project.**      Optionally, if \"only_objects\" is set, the project structure is kept, but emptied from any object, sample, acquisition and process.  Otherwise, no trace of the project will remain in the database.  **Returns** the number of  : **deleted objects**, 0, **deleated image rows** and **deleated image files**.
+**Delete the project.**  Optionally, if \"only_objects\" is set, the project structure is kept, but emptied from any object, sample, acquisition and process.  Otherwise, no trace of the project will remain in the database.  **Returns** the number of  : **deleted objects**, 0, **deleated image rows** and **deleated image files**.
 
 ### Example
 
@@ -620,6 +621,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **project_recompute_sunpos**
+> bool, date, datetime, dict, float, int, list, str, none_type project_recompute_sunpos(project_id)
+
+Project Recompute Sunpos
+
+**Recompute sun position field** for all objects in project.  **Returns NULL upon success.**  🔒 The user has to be *project manager* on the referenced project.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import projects_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = projects_api.ProjectsApi(api_client)
+    project_id = 1 # int | Internal, numeric id of the project.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Project Recompute Sunpos
+        api_response = api_instance.project_recompute_sunpos(project_id)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling ProjectsApi->project_recompute_sunpos: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **project_set_get_column_stats**
 > ProjectSetColumnStatsModel project_set_get_column_stats(ids, names)
 
@@ -811,7 +891,7 @@ Name | Type | Description  | Notes
 
 Project Set Get User Stats
 
-**Returns projects user statistics**, i.e. a summary of the work done by users in the required projects.   The returned values are a detail per project, so size of input list equals size of output list.
+**Returns projects user statistics**, i.e. a summary of the work done by users in the required projects.  The returned values are a detail per project, so size of input list equals size of output list.
 
 ### Example
 
@@ -891,7 +971,7 @@ Name | Type | Description  | Notes
 
 Project Stats
 
-**Returns stats** for a project.  These stats will be returned as a list containing at index : - 0 : The **title** of the project,  - 1 : A string containing all **freecols name and related column number**,  - 2 : **\"(0):\"** - 3 :  **\"Total: 0 values, dup 0 values\"**  Then for each acquisition a pair of strings will be added to the list : -  A string containing the **acquisition origin id** (the **number of objects for this acquisition**) : and then **small stats for an acquisition of a free column values inside** : [ min of values ; max of values ; distribution of the different values ; mode, i.e. freq of most frequent value] -  A string containing the **number of total values** and the **number of duplicates values** \"Total: ... values, dup ... values\"      
+**Returns stats** for a project.  These stats will be returned as a list containing at index : - 0 : The **title** of the project, - 1 : A string containing all **freecols name and related column number**,  - 2 : **\"(0):\"** - 3 :  **\"Total: 0 values, dup 0 values\"**  Then for each acquisition a pair of strings will be added to the list : -  A string containing the **acquisition origin id** (the **number of objects for this acquisition**) : and then **small stats for an acquisition of a free column values inside** : [ min of values ; max of values ; distribution of the different values ; mode, i.e. freq of most frequent value] -  A string containing the **number of total values** and the **number of duplicates values** \"Total: ... values, dup ... values\"      
 
 ### Example
 
@@ -1101,7 +1181,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     title_filter = "Tara" # str | Use this pattern for matching returned projects names. (optional) if omitted the server will use the default value of ""
     instrument_filter = "uvp5" # str | Only return projects where this instrument was used. (optional) if omitted the server will use the default value of ""
     filter_subset = True # bool | Only return projects having 'subset' in their names. (optional) if omitted the server will use the default value of False
-    order_field = "instrument" # str | One of ['instrument', 'highest_right', 'license', 'projid', 'title', 'visible', 'status', 'objcount', 'pctvalidated', 'pctclassified', 'classifsettings', 'classiffieldlist', 'popoverfieldlist', 'comments', 'description', 'rf_models_used', 'cnn_network_id'] (optional)
+    order_field = "instrument" # str | One of ['instrument', 'highest_right', 'projid', 'title', 'visible', 'status', 'objcount', 'pctvalidated', 'pctclassified', 'classifsettings', 'classiffieldlist', 'popoverfieldlist', 'comments', 'description', 'rf_models_used', 'cnn_network_id'] (optional)
     window_start = 0 # int | Skip `window_start` before returning data. (optional)
     window_size = 100 # int | Return only `window_size` lines. (optional)
 
@@ -1126,7 +1206,7 @@ Name | Type | Description  | Notes
  **title_filter** | **str**| Use this pattern for matching returned projects names. | [optional] if omitted the server will use the default value of ""
  **instrument_filter** | **str**| Only return projects where this instrument was used. | [optional] if omitted the server will use the default value of ""
  **filter_subset** | **bool**| Only return projects having &#39;subset&#39; in their names. | [optional] if omitted the server will use the default value of False
- **order_field** | **str**| One of [&#39;instrument&#39;, &#39;highest_right&#39;, &#39;license&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;description&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]
+ **order_field** | **str**| One of [&#39;instrument&#39;, &#39;highest_right&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;description&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]
  **window_start** | **int**| Skip &#x60;window_start&#x60; before returning data. | [optional]
  **window_size** | **int**| Return only &#x60;window_size&#x60; lines. | [optional]
 
@@ -1380,45 +1460,30 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         },
         init_classif_list=[5,11493,11498,11509],
         managers=[
-            UserModel(
+            MinUserModel(
                 id=1,
                 email="ecotaxa.api.user@gmail.com",
                 name="userName",
-                organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-                active=True,
-                country="France",
-                usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                usercreationreason="Analysis of size and shapes of plastic particles",
             ),
         ],
         annotators=[
-            UserModel(
+            MinUserModel(
                 id=1,
                 email="ecotaxa.api.user@gmail.com",
                 name="userName",
-                organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-                active=True,
-                country="France",
-                usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                usercreationreason="Analysis of size and shapes of plastic particles",
             ),
         ],
         viewers=[
-            UserModel(
+            MinUserModel(
                 id=1,
                 email="ecotaxa.api.user@gmail.com",
                 name="userName",
-                organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-                active=True,
-                country="France",
-                usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                usercreationreason="Analysis of size and shapes of plastic particles",
             ),
         ],
         instrument="zooscan",
         contact=None,
         highest_right="View",
-        license="license_example",
+        license=None,
         projid=4824,
         title="MyProject",
         visible=False,

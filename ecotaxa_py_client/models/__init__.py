@@ -33,9 +33,11 @@ from ecotaxa_py_client.model.image_model import ImageModel
 from ecotaxa_py_client.model.import_req import ImportReq
 from ecotaxa_py_client.model.import_rsp import ImportRsp
 from ecotaxa_py_client.model.job_model import JobModel
+from ecotaxa_py_client.model.license_enum import LicenseEnum
 from ecotaxa_py_client.model.limit_methods import LimitMethods
 from ecotaxa_py_client.model.login_req import LoginReq
 from ecotaxa_py_client.model.merge_rsp import MergeRsp
+from ecotaxa_py_client.model.min_user_model import MinUserModel
 from ecotaxa_py_client.model.minimal_user_bo import MinimalUserBO
 from ecotaxa_py_client.model.object_header_model import ObjectHeaderModel
 from ecotaxa_py_client.model.object_model import ObjectModel
@@ -63,6 +65,5 @@ from ecotaxa_py_client.model.taxon_model import TaxonModel
 from ecotaxa_py_client.model.taxon_usage_model import TaxonUsageModel
 from ecotaxa_py_client.model.taxonomy_tree_status import TaxonomyTreeStatus
 from ecotaxa_py_client.model.user_activity import UserActivity
-from ecotaxa_py_client.model.user_model import UserModel
 from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
 from ecotaxa_py_client.model.validation_error import ValidationError

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Collection By Short Title
 
-Return the **single collection with this short title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️ 
+Return the **single collection with this short title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️
 
 ### Example
 
@@ -88,7 +88,7 @@ No authorization required
 
 Collection By Title
 
-Return the **single collection with this title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️ 
+Return the **single collection with this title**.  *For published datasets.*  ⚠️ DO NOT MODIFY BEHAVIOR ⚠️
 
 ### Example
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 Erase Collection
 
-**Delete the collection**,   i.e. the precious fields, as the projects are just linked-at from the collection.  🔒 *For admins only.*
+**Delete the collection**,  i.e. the precious fields, as the projects are just linked-at from the collection.  🔒 *For admins only.*
 
 ### Example
 
@@ -607,28 +607,18 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         provider_user=None,
         contact_user=None,
         creator_users=[
-            UserModel(
+            MinUserModel(
                 id=1,
                 email="ecotaxa.api.user@gmail.com",
                 name="userName",
-                organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-                active=True,
-                country="France",
-                usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                usercreationreason="Analysis of size and shapes of plastic particles",
             ),
         ],
         creator_organisations=[],
         associate_users=[
-            UserModel(
+            MinUserModel(
                 id=1,
                 email="ecotaxa.api.user@gmail.com",
                 name="userName",
-                organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-                active=True,
-                country="France",
-                usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                usercreationreason="Analysis of size and shapes of plastic particles",
             ),
         ],
         associate_organisations=[],

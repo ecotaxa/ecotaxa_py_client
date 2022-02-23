@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 Erase Object Set
 
-**Delete the objects with given object ids.**   **Returns** the number of  : **deleted objects**, 0, **deleated image rows** and **deleated image files**.  🔒 Current user needs *Manage* right on all projects of specified objects.
+**Delete the objects with given object ids.**  **Returns** the number of  : **deleted objects**, 0, **deleated image rows** and **deleated image files**.  🔒 Current user needs *Manage* right on all projects of specified objects.
 
 ### Example
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 Get Object Set
 
-Returns **filtred object Ids** for the given project.
+Returns **filtered object Ids** for the given project.
 
 ### Example
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 Get Object Set Summary
 
-For the given project, with given filters, **return the classification summary**.          i.e.:              - Total number of objects  And optionnaly  - Number of Validated ones - Number of Dubious ones - Number of Predicted ones     
+For the given project, with given filters, **return the classification summary**.  i.e.:  - Total number of objects  And optionally  - Number of Validated ones - Number of Dubious ones - Number of Predicted ones     
 
 ### Example
 
@@ -1199,7 +1199,7 @@ Name | Type | Description  | Notes
 
 Update Object Set
 
-Do the required **update for each objects in the set.**   **Returns the number of updated entities.**  🔒 Current user needs *Manage* right on all projects of specified objects.
+Do the required **update for each objects in the set.**  **Returns the number of updated entities.**  🔒 Current user needs *Manage* right on all projects of specified objects.
 
 ### Example
 

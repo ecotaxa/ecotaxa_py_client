@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sampleid** | **int** | The sample Id. | 
+**projid** | **int** | The project Id. | 
 **orig_id** | **str** | Original sample ID from initial TSV load. | 
-**projid** | **int** | The project Id. | [optional] 
 **latitude** | **float** | The latitude. | [optional] 
 **longitude** | **float** | The longitude. | [optional] 
 **dataportal_descriptor** | **str** |  | [optional] 
