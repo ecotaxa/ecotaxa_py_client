@@ -1,6 +1,5 @@
 # ObjectSetQueryRsp
 
-Tuned model for faster serialization out. TODO: A bit useless in the context as FastAPI does _not_ use ser/deser from the model.       Instead, it produces what needs to be sent over the wire and calls a JSON encoder onto it.       So 1) It calls def jsonable_encoder (in FastAPI encoders.py)          2) It calls an encoder (presently ORJSONEncoder in main.py)
 
 ## Properties
 Name | Type | Description | Notes

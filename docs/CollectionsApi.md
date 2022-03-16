@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**collection_by_short_title**](CollectionsApi.md#collection_by_short_title) | **GET** /collections/by_short_title | Collection By Short Title
 [**collection_by_title**](CollectionsApi.md#collection_by_title) | **GET** /collections/by_title | Collection By Title
 [**create_collection**](CollectionsApi.md#create_collection) | **POST** /collections/create | Create Collection
-[**emodnet_format_export**](CollectionsApi.md#emodnet_format_export) | **GET** /collections/{collection_id}/export/emodnet | Emodnet Format Export
+[**darwin_core_format_export**](CollectionsApi.md#darwin_core_format_export) | **GET** /collections/{collection_id}/export/darwin_core | Emodnet Format Export
 [**erase_collection**](CollectionsApi.md#erase_collection) | **DELETE** /collections/{collection_id} | Erase Collection
 [**get_collection**](CollectionsApi.md#get_collection) | **GET** /collections/{collection_id} | Get Collection
 [**search_collections**](CollectionsApi.md#search_collections) | **GET** /collections/search | Search Collections
@@ -235,12 +235,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **emodnet_format_export**
-> EMODnetExportRsp emodnet_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+# **darwin_core_format_export**
+> DarwinCoreExportRsp darwin_core_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
 
 Emodnet Format Export
 
-**Export the collection in EMODnet format**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  🔒 *For admins only.*
+**Export the collection in Darwin Core format, e.g. for EMODnet portal**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A (https://dwc.tdwg.org/) archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  🔒 *For admins only.*
 
 ### Example
 
@@ -251,7 +251,7 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import collections_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.emo_dnet_export_rsp import EMODnetExportRsp
+from ecotaxa_py_client.model.darwin_core_export_rsp import DarwinCoreExportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -283,10 +283,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Emodnet Format Export
-        api_response = api_instance.emodnet_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+        api_response = api_instance.darwin_core_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling CollectionsApi->emodnet_format_export: %s\n" % e)
+        print("Exception when calling CollectionsApi->darwin_core_format_export: %s\n" % e)
 ```
 
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EMODnetExportRsp**](EMODnetExportRsp.md)
+[**DarwinCoreExportRsp**](DarwinCoreExportRsp.md)
 
 ### Authorization
 

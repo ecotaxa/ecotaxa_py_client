@@ -65,6 +65,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     create_project_req = CreateProjectReq(
         clone_of_id=2,
         title="My new project title",
+        instrument="UVP5",
         visible=True,
     ) # CreateProjectReq | 
 
@@ -834,7 +835,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = projects_api.ProjectsApi(api_client)
-    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project.
+    ids = "1" # str | String containing the list of one or more project id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project.
     taxa_ids = "all" # str | **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. (optional) if omitted the server will use the default value of ""
 
     # example passing only required values which don't have defaults set
@@ -860,7 +861,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
+ **ids** | **str**| String containing the list of one or more project id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
  **taxa_ids** | **str**| **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. | [optional] if omitted the server will use the default value of ""
 
 ### Return type
@@ -1087,9 +1088,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     api_instance = projects_api.ProjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
     subset_req = SubsetReq(
-        filters={
-            "key": "key_example",
-        },
+        filters=None,
         dest_prj_id=22,
         group_type=None,
         limit_type=None,

@@ -1,6 +1,6 @@
-# EMODnetExportRsp
+# DarwinCoreExportRsp
 
-EMODNet format export response.
+Darwin Core format export response.
 
 ## Properties
 Name | Type | Description | Notes

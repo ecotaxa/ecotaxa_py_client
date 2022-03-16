@@ -15,13 +15,14 @@ from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post imp
 from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
 from ecotaxa_py_client.model.classify_auto_req import ClassifyAutoReq
 from ecotaxa_py_client.model.classify_req import ClassifyReq
+from ecotaxa_py_client.model.col_update import ColUpdate
 from ecotaxa_py_client.model.collection_model import CollectionModel
 from ecotaxa_py_client.model.constants import Constants
 from ecotaxa_py_client.model.create_collection_req import CreateCollectionReq
 from ecotaxa_py_client.model.create_project_req import CreateProjectReq
+from ecotaxa_py_client.model.darwin_core_export_rsp import DarwinCoreExportRsp
 from ecotaxa_py_client.model.directory_entry_model import DirectoryEntryModel
 from ecotaxa_py_client.model.directory_model import DirectoryModel
-from ecotaxa_py_client.model.emo_dnet_export_rsp import EMODnetExportRsp
 from ecotaxa_py_client.model.export_req import ExportReq
 from ecotaxa_py_client.model.export_rsp import ExportRsp
 from ecotaxa_py_client.model.export_type_enum import ExportTypeEnum
@@ -48,6 +49,7 @@ from ecotaxa_py_client.model.prediction_req import PredictionReq
 from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
 from ecotaxa_py_client.model.process_model import ProcessModel
 from ecotaxa_py_client.model.project_filters import ProjectFilters
+from ecotaxa_py_client.model.project_filters_dict import ProjectFiltersDict
 from ecotaxa_py_client.model.project_model import ProjectModel
 from ecotaxa_py_client.model.project_set_column_stats_model import ProjectSetColumnStatsModel
 from ecotaxa_py_client.model.project_summary_model import ProjectSummaryModel

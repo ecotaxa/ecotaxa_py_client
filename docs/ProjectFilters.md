@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **freenumend** | **str** | End of included range for the column defined by freenum, in which objects are included. | [optional] 
 **freetxt** | **str** |  Textual DB column number as basis for following criteria (freetxtval)             If starts with &#39;s&#39; then it&#39;s a text column in Sample             If starts with &#39;a&#39; then it&#39;s a text column in Acquisition              If starts with &#39;p&#39; then it&#39;s a text column in Process              If starts with &#39;o&#39; then it&#39;s a text column in Object .          | [optional] 
 **freetxtval** | **str** | Text to match in the column defined by freetxt, for an object to be include. | [optional] 
-**filt_annot** | **str** | Coma-separated list of annotator, i.e. person who validated the classification at any point in time. | [optional] 
-**filt_last_annot** | **str** | Coma-separated list of annotator, i.e. person who validated the classification in last. | [optional] 
+**filt_annot** | **str** | Coma-separated list of annotators, i.e. persons who validated the classification at any point in time. | [optional] 
+**filt_last_annot** | **str** | Coma-separated list of annotators, i.e. persons who validated the classification in last. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

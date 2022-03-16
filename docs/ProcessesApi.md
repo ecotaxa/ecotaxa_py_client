@@ -129,7 +129,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     api_instance = processes_api.ProcessesApi(api_client)
     bulk_update_req = BulkUpdateReq(
         target_ids=[1,5,290],
-        updates=[{"ucol":"sub_part","uval":"2"}],
+        updates=[
+            ColUpdate(
+                ucol="ucol_example",
+                uval="uval_example",
+            ),
+        ],
     ) # BulkUpdateReq | 
 
     # example passing only required values which don't have defaults set
