@@ -5,6 +5,7 @@ All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**do_nothing**](MiscApi.md#do_nothing) | **GET** /noop | Do Nothing
+[**query_ml_models**](MiscApi.md#query_ml_models) | **GET** /ml_models | Query Ml Models
 [**system_error**](MiscApi.md#system_error) | **GET** /error | System Error
 [**used_constants**](MiscApi.md#used_constants) | **GET** /constants | Used Constants
 
@@ -67,6 +68,69 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **query_ml_models**
+> [MLModel] query_ml_models()
+
+Query Ml Models
+
+**Return the list of machine learning models, which can be used for extracting image features.**
+
+### Example
+
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import misc_api
+from ecotaxa_py_client.model.ml_model import MLModel
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = misc_api.MiscApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Query Ml Models
+        api_response = api_instance.query_ml_models()
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling MiscApi->query_ml_models: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[MLModel]**](MLModel.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

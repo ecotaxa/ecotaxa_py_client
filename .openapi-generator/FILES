@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/AcquisitionModel.md
@@ -38,6 +37,7 @@ docs/JobsApi.md
 docs/LicenseEnum.md
 docs/LimitMethods.md
 docs/LoginReq.md
+docs/MLModel.md
 docs/MergeRsp.md
 docs/MinUserModel.md
 docs/MinimalUserBO.md
@@ -133,6 +133,7 @@ ecotaxa_py_client/model/login_req.py
 ecotaxa_py_client/model/merge_rsp.py
 ecotaxa_py_client/model/min_user_model.py
 ecotaxa_py_client/model/minimal_user_bo.py
+ecotaxa_py_client/model/ml_model.py
 ecotaxa_py_client/model/object_header_model.py
 ecotaxa_py_client/model/object_model.py
 ecotaxa_py_client/model/object_set_query_rsp.py

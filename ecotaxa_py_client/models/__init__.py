@@ -37,6 +37,7 @@ from ecotaxa_py_client.model.job_model import JobModel
 from ecotaxa_py_client.model.license_enum import LicenseEnum
 from ecotaxa_py_client.model.limit_methods import LimitMethods
 from ecotaxa_py_client.model.login_req import LoginReq
+from ecotaxa_py_client.model.ml_model import MLModel
 from ecotaxa_py_client.model.merge_rsp import MergeRsp
 from ecotaxa_py_client.model.min_user_model import MinUserModel
 from ecotaxa_py_client.model.minimal_user_bo import MinimalUserBO
