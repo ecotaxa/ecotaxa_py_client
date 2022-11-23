@@ -61,6 +61,8 @@ configuration = ecotaxa_py_client.Configuration(
     host = "https://ecotaxa.obs-vlfr.fr/api",
     discard_unknown_keys = True
 )
+# In case of ssl error
+configuration.verify_ssl=False
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
