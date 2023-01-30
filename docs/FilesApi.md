@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 List User Files
 
-**List the private files** which are usable for some file-related operations.  *e.g. import.*
+**List the private files** which are usable for some file-related operations. A sub_path starting with \"/\" is considered relative to user folder.  *e.g. import.*
 
 ### Example
 

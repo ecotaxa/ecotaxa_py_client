@@ -62,6 +62,7 @@ from ecotaxa_py_client.model.simple_import_req import SimpleImportReq
 from ecotaxa_py_client.model.simple_import_rsp import SimpleImportRsp
 from ecotaxa_py_client.model.subset_req import SubsetReq
 from ecotaxa_py_client.model.subset_rsp import SubsetRsp
+from ecotaxa_py_client.model.summary_export_grouping_enum import SummaryExportGroupingEnum
 from ecotaxa_py_client.model.taxa_search_rsp import TaxaSearchRsp
 from ecotaxa_py_client.model.taxon_central import TaxonCentral
 from ecotaxa_py_client.model.taxon_model import TaxonModel

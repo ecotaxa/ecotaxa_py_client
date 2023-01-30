@@ -68,6 +68,7 @@ docs/SimpleImportReq.md
 docs/SimpleImportRsp.md
 docs/SubsetReq.md
 docs/SubsetRsp.md
+docs/SummaryExportGroupingEnum.md
 docs/TaxaSearchRsp.md
 docs/TaxonCentral.md
 docs/TaxonModel.md
@@ -155,6 +156,7 @@ ecotaxa_py_client/model/simple_import_req.py
 ecotaxa_py_client/model/simple_import_rsp.py
 ecotaxa_py_client/model/subset_req.py
 ecotaxa_py_client/model/subset_rsp.py
+ecotaxa_py_client/model/summary_export_grouping_enum.py
 ecotaxa_py_client/model/taxa_search_rsp.py
 ecotaxa_py_client/model/taxon_central.py
 ecotaxa_py_client/model/taxon_model.py

@@ -347,13 +347,19 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
             exp_type=None,
             use_latin1=False,
             tsv_entities="OPAS",
-            split_by="S",
+            split_by="sample",
             coma_as_separator=False,
             format_dates_times=False,
             with_images=False,
             with_internal_ids=False,
             only_first_image=False,
-            sum_subtotal="A",
+            sum_subtotal=None,
+            pre_mapping={
+                "key": 1,
+            },
+            formulae={
+                "key": "key_example",
+            },
             out_to_ftp=False,
         ),
     ) # BodyExportObjectSetObjectSetExportPost | 

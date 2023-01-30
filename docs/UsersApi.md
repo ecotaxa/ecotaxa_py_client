@@ -817,7 +817,7 @@ This endpoint does not need any parameter.
 
 Update User
 
-**Update the user**, return **NULL upon success.**  🔒 Depending on logged user, different authorizations apply: - An administrator or user administrator can change any field with respect of consistency. - A user can update own password and mail. - An ordinary user cannot update anything for another user.
+**Update the user**, return **NULL upon success.**  🔒 Depending on logged user, different authorizations apply: - An administrator or user administrator can change any field with respect of consistency. - A user can update own password and name. - An ordinary user cannot update anything for another user.
 
 ### Example
 
