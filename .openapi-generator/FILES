@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/AcquisitionModel.md
@@ -18,7 +17,7 @@ docs/CollectionsApi.md
 docs/Constants.md
 docs/CreateCollectionReq.md
 docs/CreateProjectReq.md
-docs/DarwinCoreExportRsp.md
+docs/DarwinCoreExportReq.md
 docs/DirectoryEntryModel.md
 docs/DirectoryModel.md
 docs/ExportReq.md
@@ -62,9 +61,11 @@ docs/ProjectSummaryModel.md
 docs/ProjectTaxoStatsModel.md
 docs/ProjectUserStatsModel.md
 docs/ProjectsApi.md
+docs/ResetPasswordReq.md
 docs/SampleModel.md
 docs/SampleTaxoStatsModel.md
 docs/SamplesApi.md
+docs/SciExportTypeEnum.md
 docs/SimpleImportReq.md
 docs/SimpleImportRsp.md
 docs/SubsetReq.md
@@ -74,8 +75,10 @@ docs/TaxaSearchRsp.md
 docs/TaxonCentral.md
 docs/TaxonModel.md
 docs/TaxonUsageModel.md
+docs/TaxonomyRecast.md
 docs/TaxonomyTreeApi.md
 docs/TaxonomyTreeStatus.md
+docs/UserActivateReq.md
 docs/UserActivity.md
 docs/UserModelWithRights.md
 docs/UsersApi.md
@@ -115,7 +118,7 @@ ecotaxa_py_client/model/collection_model.py
 ecotaxa_py_client/model/constants.py
 ecotaxa_py_client/model/create_collection_req.py
 ecotaxa_py_client/model/create_project_req.py
-ecotaxa_py_client/model/darwin_core_export_rsp.py
+ecotaxa_py_client/model/darwin_core_export_req.py
 ecotaxa_py_client/model/directory_entry_model.py
 ecotaxa_py_client/model/directory_model.py
 ecotaxa_py_client/model/export_req.py
@@ -151,8 +154,10 @@ ecotaxa_py_client/model/project_set_column_stats_model.py
 ecotaxa_py_client/model/project_summary_model.py
 ecotaxa_py_client/model/project_taxo_stats_model.py
 ecotaxa_py_client/model/project_user_stats_model.py
+ecotaxa_py_client/model/reset_password_req.py
 ecotaxa_py_client/model/sample_model.py
 ecotaxa_py_client/model/sample_taxo_stats_model.py
+ecotaxa_py_client/model/sci_export_type_enum.py
 ecotaxa_py_client/model/simple_import_req.py
 ecotaxa_py_client/model/simple_import_rsp.py
 ecotaxa_py_client/model/subset_req.py
@@ -162,7 +167,9 @@ ecotaxa_py_client/model/taxa_search_rsp.py
 ecotaxa_py_client/model/taxon_central.py
 ecotaxa_py_client/model/taxon_model.py
 ecotaxa_py_client/model/taxon_usage_model.py
+ecotaxa_py_client/model/taxonomy_recast.py
 ecotaxa_py_client/model/taxonomy_tree_status.py
+ecotaxa_py_client/model/user_activate_req.py
 ecotaxa_py_client/model/user_activity.py
 ecotaxa_py_client/model/user_model_with_rights.py
 ecotaxa_py_client/model/validation_error.py

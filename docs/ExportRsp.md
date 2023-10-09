@@ -1,6 +1,6 @@
 # ExportRsp
 
-Export response.
+Export response, for all export jobs, either on Project or Collection
 
 ## Properties
 Name | Type | Description | Notes

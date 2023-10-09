@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**login**](AuthentificationApi.md#login) | **POST** /login | Login
+| Method                                    | HTTP request    | Description |
+| ----------------------------------------- | --------------- | ----------- |
+| [**login**](AuthentificationApi.md#login) | **POST** /login | Login       |
 
 
 # **login**
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Login
 
-**Login barrier,**   If successful, the login will returns a **JWT** which will have to be used in bearer authentication scheme for subsequent calls.
+**Login barrier,**  If successful, the login will returns a **JWT** which will have to be used in bearer authentication scheme for subsequent calls.
 
 ### Example
 
@@ -52,9 +52,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **login_req** | [**LoginReq**](LoginReq.md)|  |
+| Name          | Type                        | Description | Notes |
+| ------------- | --------------------------- | ----------- | ----- |
+| **login_req** | [**LoginReq**](LoginReq.md) |             |
 
 ### Return type
 
@@ -72,10 +72,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 # SubsetRsp
 
-Subset response. 
+Subset response.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,6 +1,6 @@
 # MergeRsp
 
-Merge response. 
+Merge response.
 
 ## Properties
 Name | Type | Description | Notes

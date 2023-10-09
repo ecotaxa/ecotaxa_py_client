@@ -1,6 +1,6 @@
 # SimpleImportReq
 
-Simple Import request. 
+Simple Import request.
 
 ## Properties
 Name | Type | Description | Notes

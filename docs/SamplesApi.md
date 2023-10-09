@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**sample_query**](SamplesApi.md#sample_query) | **GET** /sample/{sample_id} | Sample Query
-[**sample_set_get_stats**](SamplesApi.md#sample_set_get_stats) | **GET** /sample_set/taxo_stats | Sample Set Get Stats
-[**samples_search**](SamplesApi.md#samples_search) | **GET** /samples/search | Samples Search
-[**update_samples**](SamplesApi.md#update_samples) | **POST** /sample_set/update | Update Samples
+| Method                                                         | HTTP request                   | Description          |
+| -------------------------------------------------------------- | ------------------------------ | -------------------- |
+| [**sample_query**](SamplesApi.md#sample_query)                 | **GET** /sample/{sample_id}    | Sample Query         |
+| [**sample_set_get_stats**](SamplesApi.md#sample_set_get_stats) | **GET** /sample_set/taxo_stats | Sample Set Get Stats |
+| [**samples_search**](SamplesApi.md#samples_search)             | **GET** /samples/search        | Samples Search       |
+| [**update_samples**](SamplesApi.md#update_samples)             | **POST** /sample_set/update    | Update Samples       |
 
 
 # **sample_query**
@@ -63,9 +63,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sample_id** | **int**| Internal, the unique numeric id of this sample. |
+| Name          | Type    | Description                                     | Notes |
+| ------------- | ------- | ----------------------------------------------- | ----- |
+| **sample_id** | **int** | Internal, the unique numeric id of this sample. |
 
 ### Return type
 
@@ -83,10 +83,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -143,9 +143,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sample_ids** | **str**| String containing the list of one or more sample ids separated by non-num char. |
+| Name           | Type    | Description                                                                     | Notes |
+| -------------- | ------- | ------------------------------------------------------------------------------- | ----- |
+| **sample_ids** | **str** | String containing the list of one or more sample ids separated by non-num char. |
 
 ### Return type
 
@@ -163,10 +163,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -224,10 +224,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project id separated by non-num char. |
- **id_pattern** | **str**| Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. |
+| Name            | Type    | Description                                                                                          | Notes |
+| --------------- | ------- | ---------------------------------------------------------------------------------------------------- | ----- |
+| **project_ids** | **str** | String containing the list of one or more project id separated by non-num char.                      |
+| **id_pattern**  | **str** | Sample id textual pattern. Use * or &#39;&#39; for &#39;any matches&#39;. Match is case-insensitive. |
 
 ### Return type
 
@@ -245,10 +245,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -313,9 +313,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
+| Name                | Type                                  | Description | Notes |
+| ------------------- | ------------------------------------- | ----------- | ----- |
+| **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md) |             |
 
 ### Return type
 
@@ -333,10 +333,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

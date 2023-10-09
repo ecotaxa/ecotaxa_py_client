@@ -2,20 +2,20 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**classify_auto_object_set**](ObjectsApi.md#classify_auto_object_set) | **POST** /object_set/classify_auto | Classify Auto Object Set
-[**classify_object_set**](ObjectsApi.md#classify_object_set) | **POST** /object_set/classify | Classify Object Set
-[**erase_object_set**](ObjectsApi.md#erase_object_set) | **DELETE** /object_set/ | Erase Object Set
-[**export_object_set**](ObjectsApi.md#export_object_set) | **POST** /object_set/export | Export Object Set
-[**get_object_set**](ObjectsApi.md#get_object_set) | **POST** /object_set/{project_id}/query | Get Object Set
-[**get_object_set_summary**](ObjectsApi.md#get_object_set_summary) | **POST** /object_set/{project_id}/summary | Get Object Set Summary
-[**predict_object_set**](ObjectsApi.md#predict_object_set) | **POST** /object_set/predict | Predict Object Set
-[**query_object_set_parents**](ObjectsApi.md#query_object_set_parents) | **POST** /object_set/parents | Query Object Set Parents
-[**reclassify_object_set**](ObjectsApi.md#reclassify_object_set) | **POST** /object_set/{project_id}/reclassify | Reclassify Object Set
-[**reset_object_set_to_predicted**](ObjectsApi.md#reset_object_set_to_predicted) | **POST** /object_set/{project_id}/reset_to_predicted | Reset Object Set To Predicted
-[**revert_object_set_to_history**](ObjectsApi.md#revert_object_set_to_history) | **POST** /object_set/{project_id}/revert_to_history | Revert Object Set To History
-[**update_object_set**](ObjectsApi.md#update_object_set) | **POST** /object_set/update | Update Object Set
+| Method                                                                           | HTTP request                                         | Description                   |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------- |
+| [**classify_auto_object_set**](ObjectsApi.md#classify_auto_object_set)           | **POST** /object_set/classify_auto                   | Classify Auto Object Set      |
+| [**classify_object_set**](ObjectsApi.md#classify_object_set)                     | **POST** /object_set/classify                        | Classify Object Set           |
+| [**erase_object_set**](ObjectsApi.md#erase_object_set)                           | **DELETE** /object_set/                              | Erase Object Set              |
+| [**export_object_set**](ObjectsApi.md#export_object_set)                         | **POST** /object_set/export                          | Export Object Set             |
+| [**get_object_set**](ObjectsApi.md#get_object_set)                               | **POST** /object_set/{project_id}/query              | Get Object Set                |
+| [**get_object_set_summary**](ObjectsApi.md#get_object_set_summary)               | **POST** /object_set/{project_id}/summary            | Get Object Set Summary        |
+| [**predict_object_set**](ObjectsApi.md#predict_object_set)                       | **POST** /object_set/predict                         | Predict Object Set            |
+| [**query_object_set_parents**](ObjectsApi.md#query_object_set_parents)           | **POST** /object_set/parents                         | Query Object Set Parents      |
+| [**reclassify_object_set**](ObjectsApi.md#reclassify_object_set)                 | **POST** /object_set/{project_id}/reclassify         | Reclassify Object Set         |
+| [**reset_object_set_to_predicted**](ObjectsApi.md#reset_object_set_to_predicted) | **POST** /object_set/{project_id}/reset_to_predicted | Reset Object Set To Predicted |
+| [**revert_object_set_to_history**](ObjectsApi.md#revert_object_set_to_history)   | **POST** /object_set/{project_id}/revert_to_history  | Revert Object Set To History  |
+| [**update_object_set**](ObjectsApi.md#update_object_set)                         | **POST** /object_set/update                          | Update Object Set             |
 
 
 # **classify_auto_object_set**
@@ -82,9 +82,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **classify_auto_req** | [**ClassifyAutoReq**](ClassifyAutoReq.md)|  |
+| Name                  | Type                                      | Description | Notes |
+| --------------------- | ----------------------------------------- | ----------- | ----- |
+| **classify_auto_req** | [**ClassifyAutoReq**](ClassifyAutoReq.md) |             |
 
 ### Return type
 
@@ -102,10 +102,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -166,9 +166,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **classify_req** | [**ClassifyReq**](ClassifyReq.md)|  |
+| Name             | Type                              | Description | Notes |
+| ---------------- | --------------------------------- | ----------- | ----- |
+| **classify_req** | [**ClassifyReq**](ClassifyReq.md) |             |
 
 ### Return type
 
@@ -186,10 +186,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -245,9 +245,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **request_body** | **[int]**|  |
+| Name             | Type      | Description | Notes |
+| ---------------- | --------- | ----------- | ----- |
+| **request_body** | **[int]** |             |
 
 ### Return type
 
@@ -265,10 +265,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -376,9 +376,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
+| Name                                              | Type                                                                                    | Description | Notes |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md) |             |
 
 ### Return type
 
@@ -396,10 +396,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -473,7 +473,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         filt_annot="34,67,67",
         filt_last_annot="34,67",
     ) # ProjectFilters | 
-    fields = "obj.longitude,fre.feret" # str |   Specify the needed object (and ancillary entities) fields.                     It follows the naming convention 'prefix.field' : Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.        💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \"obj.\"** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \"img.\"** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \"txo.\"** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \"fre.\"** (for example → fre.circ.).                     (optional)
+    fields = "obj.longitude,fre.feret" # str |   Specify the needed object (and ancillary entities) fields.  It follows the naming convention 'prefix.field' : Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \"obj.\"** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \"img.\"** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \"txo.\"** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \"fre.\"** (for example → fre.circ.).                     (optional)
     order_field = "obj.longitude" # str | Order the result using given field. If prefixed with \"-\" then it will be reversed. (optional)
     window_start = 10 # int |  Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions. (optional)
     window_size = 100 # int |  Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions. (optional)
@@ -499,14 +499,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **fields** | **str**|   Specify the needed object (and ancillary entities) fields.                     It follows the naming convention &#39;prefix.field&#39; : Prefix is either &#39;obj&#39; for main object, &#39;fre&#39; for free fields, &#39;img&#39; for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.        💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \&quot;obj.\&quot;** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \&quot;img.\&quot;** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \&quot;txo.\&quot;** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \&quot;fre.\&quot;** (for example → fre.circ.).                     | [optional]
- **order_field** | **str**| Order the result using given field. If prefixed with \&quot;-\&quot; then it will be reversed. | [optional]
- **window_start** | **int**|  Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions. | [optional]
- **window_size** | **int**|  Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions. | [optional]
+| Name                | Type                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Notes      |
+| ------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **project_id**      | **int**                                 | Internal, numeric id of the project.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **project_filters** | [**ProjectFilters**](ProjectFilters.md) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **fields**          | **str**                                 | Specify the needed object (and ancillary entities) fields.  It follows the naming convention &#39;prefix.field&#39; : Prefix is either &#39;obj&#39; for main object, &#39;fre&#39; for free fields, &#39;img&#39; for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \&quot;obj.\&quot;** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \&quot;img.\&quot;** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \&quot;txo.\&quot;** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \&quot;fre.\&quot;** (for example → fre.circ.). | [optional] |
+| **order_field**     | **str**                                 | Order the result using given field. If prefixed with \&quot;-\&quot; then it will be reversed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | [optional] |
+| **window_start**    | **int**                                 | Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | [optional] |
+| **window_size**     | **int**                                 | Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | [optional] |
 
 ### Return type
 
@@ -524,10 +524,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 
 Get Object Set Summary
 
-For the given project, with given filters, **return the classification summary**.  i.e.:  - Total number of objects  And optionally  - Number of Validated ones - Number of Dubious ones - Number of Predicted ones     
+For the given project, with given filters, **return the classification summary**.  i.e.:  - Total number of objects  And optionally  - Number of Validated ones - Number of Dubious ones - Number of Predicted ones
 
 ### Example
 
@@ -615,11 +615,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **only_total** | **bool**| If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+| Name                | Type                                    | Description                                                                                                                                                                     | Notes |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **project_id**      | **int**                                 | Internal, numeric id of the project.                                                                                                                                            |
+| **only_total**      | **bool**                                | If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**. |
+| **project_filters** | [**ProjectFilters**](ProjectFilters.md) |                                                                                                                                                                                 |
 
 ### Return type
 
@@ -637,10 +637,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -745,9 +745,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
+| Name                                                | Type                                                                                        | Description | Notes |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md) |             |
 
 ### Return type
 
@@ -765,10 +765,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -825,9 +825,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **request_body** | **[int]**|  |
+| Name             | Type      | Description | Notes |
+| ---------------- | --------- | ----------- | ----- |
+| **request_body** | **[int]** |             |
 
 ### Return type
 
@@ -845,10 +845,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -936,12 +936,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **forced_id** | **int**| The new classification Id. |
- **reason** | **str**| The reason of this new classification. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+| Name                | Type                                    | Description                            | Notes |
+| ------------------- | --------------------------------------- | -------------------------------------- | ----- |
+| **project_id**      | **int**                                 | Internal, numeric id of the project.   |
+| **forced_id**       | **int**                                 | The new classification Id.             |
+| **reason**          | **str**                                 | The reason of this new classification. |
+| **project_filters** | [**ProjectFilters**](ProjectFilters.md) |                                        |
 
 ### Return type
 
@@ -959,10 +959,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1048,10 +1048,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+| Name                | Type                                    | Description                          | Notes |
+| ------------------- | --------------------------------------- | ------------------------------------ | ----- |
+| **project_id**      | **int**                                 | Internal, numeric id of the project. |
+| **project_filters** | [**ProjectFilters**](ProjectFilters.md) |                                      |
 
 ### Return type
 
@@ -1069,10 +1069,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1170,12 +1170,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **dry_run** | **bool**| If set, then no real write but consequences of the revert will be replied. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **target** | **int**| Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. | [optional]
+| Name                | Type                                    | Description                                                                                                             | Notes      |
+| ------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **project_id**      | **int**                                 | Internal, numeric id of the project.                                                                                    |
+| **dry_run**         | **bool**                                | If set, then no real write but consequences of the revert will be replied.                                              |
+| **project_filters** | [**ProjectFilters**](ProjectFilters.md) |                                                                                                                         |
+| **target**          | **int**                                 | Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. | [optional] |
 
 ### Return type
 
@@ -1193,10 +1193,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1261,9 +1261,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
+| Name                | Type                                  | Description | Notes |
+| ------------------- | ------------------------------------- | ----------- | ----- |
+| **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md) |             |
 
 ### Return type
 
@@ -1281,10 +1281,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

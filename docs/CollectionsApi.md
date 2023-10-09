@@ -2,16 +2,18 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**collection_by_short_title**](CollectionsApi.md#collection_by_short_title) | **GET** /collections/by_short_title | Collection By Short Title
-[**collection_by_title**](CollectionsApi.md#collection_by_title) | **GET** /collections/by_title | Collection By Title
-[**create_collection**](CollectionsApi.md#create_collection) | **POST** /collections/create | Create Collection
-[**darwin_core_format_export**](CollectionsApi.md#darwin_core_format_export) | **GET** /collections/{collection_id}/export/darwin_core | Emodnet Format Export
-[**erase_collection**](CollectionsApi.md#erase_collection) | **DELETE** /collections/{collection_id} | Erase Collection
-[**get_collection**](CollectionsApi.md#get_collection) | **GET** /collections/{collection_id} | Get Collection
-[**search_collections**](CollectionsApi.md#search_collections) | **GET** /collections/search | Search Collections
-[**update_collection**](CollectionsApi.md#update_collection) | **PUT** /collections/{collection_id} | Update Collection
+| Method                                                                                       | HTTP request                                     | Description                   |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------- |
+| [**collection_by_short_title**](CollectionsApi.md#collection_by_short_title)                 | **GET** /collections/by_short_title              | Collection By Short Title     |
+| [**collection_by_title**](CollectionsApi.md#collection_by_title)                             | **GET** /collections/by_title                    | Collection By Title           |
+| [**create_collection**](CollectionsApi.md#create_collection)                                 | **POST** /collections/create                     | Create Collection             |
+| [**darwin_core_format_export**](CollectionsApi.md#darwin_core_format_export)                 | **POST** /collections/export/darwin_core         | Darwin Core Format Export     |
+| [**erase_collection**](CollectionsApi.md#erase_collection)                                   | **DELETE** /collections/{collection_id}          | Erase Collection              |
+| [**get_collection**](CollectionsApi.md#get_collection)                                       | **GET** /collections/{collection_id}             | Get Collection                |
+| [**get_collection_taxonomy_recast**](CollectionsApi.md#get_collection_taxonomy_recast)       | **GET** /collections/{collection_id}/taxo_recast | Read Collection Taxo Recast   |
+| [**search_collections**](CollectionsApi.md#search_collections)                               | **GET** /collections/search                      | Search Collections            |
+| [**update_collection**](CollectionsApi.md#update_collection)                                 | **PUT** /collections/{collection_id}             | Update Collection             |
+| [**update_collection_taxonomy_recast**](CollectionsApi.md#update_collection_taxonomy_recast) | **PUT** /collections/{collection_id}/taxo_recast | Update Collection Taxo Recast |
 
 
 # **collection_by_short_title**
@@ -56,9 +58,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** short title. |
+| Name  | Type    | Description                      | Notes |
+| ----- | ------- | -------------------------------- | ----- |
+| **q** | **str** | Search by **exact** short title. |
 
 ### Return type
 
@@ -76,10 +78,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -125,9 +127,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **q** | **str**| Search by **exact** title. |
+| Name  | Type    | Description                | Notes |
+| ----- | ------- | -------------------------- | ----- |
+| **q** | **str** | Search by **exact** title. |
 
 ### Return type
 
@@ -145,10 +147,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -157,7 +159,7 @@ No authorization required
 
 Create Collection
 
-**Create a collection** with at least one project inside.  Returns the created collection Id.  🔒 *For admins only.*
+**Create a collection** with at least one project inside.  Returns the created collection Id.  Note: 'manage' right is required on all underlying projects.
 
 ### Example
 
@@ -208,9 +210,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_collection_req** | [**CreateCollectionReq**](CreateCollectionReq.md)|  |
+| Name                      | Type                                              | Description | Notes |
+| ------------------------- | ------------------------------------------------- | ----------- | ----- |
+| **create_collection_req** | [**CreateCollectionReq**](CreateCollectionReq.md) |             |
 
 ### Return type
 
@@ -228,19 +230,19 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **darwin_core_format_export**
-> DarwinCoreExportRsp darwin_core_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+> ExportRsp darwin_core_format_export(darwin_core_export_req)
 
-Emodnet Format Export
+Darwin Core Format Export
 
-**Export the collection in Darwin Core format, e.g. for EMODnet portal**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A (https://dwc.tdwg.org/) archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  🔒 *For admins only.*
+**Export the collection in Darwin Core format, e.g. for EMODnet portal**, @see https://www.emodnet-ingestion.eu  Produces a DwC-A (https://dwc.tdwg.org/) archive into a temporary directory, ready for download.  Maybe useful, a reader in Python: https://python-dwca-reader.readthedocs.io/en/latest/index.html  Note: Only manageable collections can be exported.
 
 ### Example
 
@@ -251,7 +253,8 @@ import time
 import ecotaxa_py_client
 from ecotaxa_py_client.api import collections_api
 from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.darwin_core_export_rsp import DarwinCoreExportRsp
+from ecotaxa_py_client.model.darwin_core_export_req import DarwinCoreExportReq
+from ecotaxa_py_client.model.export_rsp import ExportRsp
 from pprint import pprint
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -274,16 +277,26 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = collections_api.CollectionsApi(api_client)
-    collection_id = 1 # int | Internal, the unique numeric id of this collection.
-    dry_run = False # bool | If set, then only a diagnostic of doability will be done.
-    with_zeroes = False # bool | If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples.
-    auto_morpho = False # bool | If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree.
-    with_computations = False # bool | If set, then an attempt will be made to compute organisms concentrations and biovolumes.
+    darwin_core_export_req = DarwinCoreExportReq(
+        collection_id=1,
+        dry_run=False,
+        include_predicted=False,
+        with_absent=False,
+        with_computations=[
+            SciExportTypeEnum("["ABO"]"),
+        ],
+        computations_pre_mapping={
+            "key": 1,
+        },
+        formulae={
+            "key": "key_example",
+        },
+    ) # DarwinCoreExportReq | 
 
     # example passing only required values which don't have defaults set
     try:
-        # Emodnet Format Export
-        api_response = api_instance.darwin_core_format_export(collection_id, dry_run, with_zeroes, auto_morpho, with_computations)
+        # Darwin Core Format Export
+        api_response = api_instance.darwin_core_format_export(darwin_core_export_req)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling CollectionsApi->darwin_core_format_export: %s\n" % e)
@@ -292,17 +305,13 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
- **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. |
- **with_zeroes** | **bool**| If set, then *absent* records will be generated, in the relevant samples, for categories present in other samples. |
- **auto_morpho** | **bool**| If set, then any object classified on a Morpho category will be added to the count of the nearest Phylo parent, upward in the tree. |
- **with_computations** | **bool**| If set, then an attempt will be made to compute organisms concentrations and biovolumes. |
+| Name                       | Type                                              | Description | Notes |
+| -------------------------- | ------------------------------------------------- | ----------- | ----- |
+| **darwin_core_export_req** | [**DarwinCoreExportReq**](DarwinCoreExportReq.md) |             |
 
 ### Return type
 
-[**DarwinCoreExportRsp**](DarwinCoreExportRsp.md)
+[**ExportRsp**](ExportRsp.md)
 
 ### Authorization
 
@@ -310,16 +319,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -328,7 +337,7 @@ Name | Type | Description  | Notes
 
 Erase Collection
 
-**Delete the collection**,  i.e. the precious fields, as the projects are just linked-at from the collection.  🔒 *For admins only.*
+**Delete the collection**,  i.e. the precious fields, as the projects are just linked-at from the collection.  Note: Only manageable collections can be deleted.
 
 ### Example
 
@@ -375,9 +384,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+| Name              | Type    | Description                                         | Notes |
+| ----------------- | ------- | --------------------------------------------------- | ----- |
+| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -395,10 +404,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -407,7 +416,7 @@ Name | Type | Description  | Notes
 
 Get Collection
 
-Returns **information about the collection** corresponding to the given id.   🔒 *For admins only.*
+Returns **information about the collection** corresponding to the given id.  Note: The collection is returned only if manageable.
 
 ### Example
 
@@ -455,9 +464,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+| Name              | Type    | Description                                         | Notes |
+| ----------------- | ------- | --------------------------------------------------- | ----- |
+| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -475,10 +484,89 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_collection_taxonomy_recast**
+> bool, date, datetime, dict, float, int, list, str, none_type get_collection_taxonomy_recast(collection_id)
+
+Read Collection Taxo Recast
+
+**Read the collection taxonomy recast**.   **Returns NULL upon success.**   Note: The collection data is returned only if manageable.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = collections_api.CollectionsApi(api_client)
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Read Collection Taxo Recast
+        api_response = api_instance.get_collection_taxonomy_recast(collection_id)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling CollectionsApi->get_collection_taxonomy_recast: %s\n" % e)
+```
+
+
+### Parameters
+
+| Name              | Type    | Description                                         | Notes |
+| ----------------- | ------- | --------------------------------------------------- | ----- |
+| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -487,7 +575,7 @@ Name | Type | Description  | Notes
 
 Search Collections
 
-**Search for collections.**  🔒 *For admins only.*
+**Search for collections.**  Note: Only manageable collections are returned.
 
 ### Example
 
@@ -535,9 +623,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. |
+| Name      | Type    | Description                                                   | Notes |
+| --------- | ------- | ------------------------------------------------------------- | ----- |
+| **title** | **str** | Search by title, use % for searching with &#39;any char&#39;. |
 
 ### Return type
 
@@ -555,10 +643,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -567,7 +655,7 @@ Name | Type | Description  | Notes
 
 Update Collection
 
-**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   **Returns NULL upon success.**   🔒 *For admins only.*
+**Update the collection**. Note that some updates are silently failing when not compatible  with the composing projects.   **Returns NULL upon success.**   Note: The collection is updated only if manageable.
 
 ### Example
 
@@ -645,10 +733,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **collection_id** | **int**| Internal, the unique numeric id of this collection. |
- **collection_model** | [**CollectionModel**](CollectionModel.md)|  |
+| Name                 | Type                                      | Description                                         | Notes |
+| -------------------- | ----------------------------------------- | --------------------------------------------------- | ----- |
+| **collection_id**    | **int**                                   | Internal, the unique numeric id of this collection. |
+| **collection_model** | [**CollectionModel**](CollectionModel.md) |                                                     |
 
 ### Return type
 
@@ -666,10 +754,99 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_collection_taxonomy_recast**
+> bool, date, datetime, dict, float, int, list, str, none_type update_collection_taxonomy_recast(collection_id, taxonomy_recast)
+
+Update Collection Taxo Recast
+
+**Create or Update the collection taxonomy recast**.   **Returns NULL upon success.**   Note: The collection is updated only if manageable.
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import collections_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.taxonomy_recast import TaxonomyRecast
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = collections_api.CollectionsApi(api_client)
+    collection_id = 1 # int | Internal, the unique numeric id of this collection.
+    taxonomy_recast = TaxonomyRecast(
+        from_to={
+            "key": 1,
+        },
+        doc={
+            "key": "key_example",
+        },
+    ) # TaxonomyRecast | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update Collection Taxo Recast
+        api_response = api_instance.update_collection_taxonomy_recast(collection_id, taxonomy_recast)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling CollectionsApi->update_collection_taxonomy_recast: %s\n" % e)
+```
+
+
+### Parameters
+
+| Name                | Type                                    | Description                                         | Notes |
+| ------------------- | --------------------------------------- | --------------------------------------------------- | ----- |
+| **collection_id**   | **int**                                 | Internal, the unique numeric id of this collection. |
+| **taxonomy_recast** | [**TaxonomyRecast**](TaxonomyRecast.md) |                                                     |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**object_query**](ObjectApi.md#object_query) | **GET** /object/{object_id} | Object Query
-[**object_query_history**](ObjectApi.md#object_query_history) | **GET** /object/{object_id}/history | Object Query History
+| Method                                                        | HTTP request                        | Description          |
+| ------------------------------------------------------------- | ----------------------------------- | -------------------- |
+| [**object_query**](ObjectApi.md#object_query)                 | **GET** /object/{object_id}         | Object Query         |
+| [**object_query_history**](ObjectApi.md#object_query_history) | **GET** /object/{object_id}/history | Object Query History |
 
 
 # **object_query**
@@ -61,9 +61,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **object_id** | **int**| Internal, the unique numeric id of this object. |
+| Name          | Type    | Description                                     | Notes |
+| ------------- | ------- | ----------------------------------------------- | ----- |
+| **object_id** | **int** | Internal, the unique numeric id of this object. |
 
 ### Return type
 
@@ -81,10 +81,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -141,9 +141,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **object_id** | **int**| Internal, the unique numeric id of this object. |
+| Name          | Type    | Description                                     | Notes |
+| ------------- | ------- | ----------------------------------------------- | ----- |
+| **object_id** | **int** | Internal, the unique numeric id of this object. |
 
 ### Return type
 
@@ -161,10 +161,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

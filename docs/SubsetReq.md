@@ -1,6 +1,6 @@
 # SubsetReq
 
-Subset request. 
+Subset request.
 
 ## Properties
 Name | Type | Description | Notes

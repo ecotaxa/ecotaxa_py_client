@@ -1,6 +1,6 @@
 # ImportReq
 
-Import request, from UI choices. 
+Import request, from UI choices.
 
 ## Properties
 Name | Type | Description | Notes

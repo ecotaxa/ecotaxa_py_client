@@ -20,7 +20,7 @@ from ecotaxa_py_client.model.collection_model import CollectionModel
 from ecotaxa_py_client.model.constants import Constants
 from ecotaxa_py_client.model.create_collection_req import CreateCollectionReq
 from ecotaxa_py_client.model.create_project_req import CreateProjectReq
-from ecotaxa_py_client.model.darwin_core_export_rsp import DarwinCoreExportRsp
+from ecotaxa_py_client.model.darwin_core_export_req import DarwinCoreExportReq
 from ecotaxa_py_client.model.directory_entry_model import DirectoryEntryModel
 from ecotaxa_py_client.model.directory_model import DirectoryModel
 from ecotaxa_py_client.model.export_req import ExportReq
@@ -56,8 +56,10 @@ from ecotaxa_py_client.model.project_set_column_stats_model import ProjectSetCol
 from ecotaxa_py_client.model.project_summary_model import ProjectSummaryModel
 from ecotaxa_py_client.model.project_taxo_stats_model import ProjectTaxoStatsModel
 from ecotaxa_py_client.model.project_user_stats_model import ProjectUserStatsModel
+from ecotaxa_py_client.model.reset_password_req import ResetPasswordReq
 from ecotaxa_py_client.model.sample_model import SampleModel
 from ecotaxa_py_client.model.sample_taxo_stats_model import SampleTaxoStatsModel
+from ecotaxa_py_client.model.sci_export_type_enum import SciExportTypeEnum
 from ecotaxa_py_client.model.simple_import_req import SimpleImportReq
 from ecotaxa_py_client.model.simple_import_rsp import SimpleImportRsp
 from ecotaxa_py_client.model.subset_req import SubsetReq
@@ -67,7 +69,9 @@ from ecotaxa_py_client.model.taxa_search_rsp import TaxaSearchRsp
 from ecotaxa_py_client.model.taxon_central import TaxonCentral
 from ecotaxa_py_client.model.taxon_model import TaxonModel
 from ecotaxa_py_client.model.taxon_usage_model import TaxonUsageModel
+from ecotaxa_py_client.model.taxonomy_recast import TaxonomyRecast
 from ecotaxa_py_client.model.taxonomy_tree_status import TaxonomyTreeStatus
+from ecotaxa_py_client.model.user_activate_req import UserActivateReq
 from ecotaxa_py_client.model.user_activity import UserActivity
 from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
 from ecotaxa_py_client.model.validation_error import ValidationError

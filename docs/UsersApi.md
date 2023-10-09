@@ -2,20 +2,119 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**create_user**](UsersApi.md#create_user) | **POST** /users/create | Create User
-[**get_admin_users**](UsersApi.md#get_admin_users) | **GET** /users/user_admins | Get Admin Users
-[**get_current_user_prefs**](UsersApi.md#get_current_user_prefs) | **GET** /users/my_preferences/{project_id} | Get Current User Prefs
-[**get_user**](UsersApi.md#get_user) | **GET** /users/{user_id} | Get User
-[**get_users**](UsersApi.md#get_users) | **GET** /users | Get Users
-[**get_users_admins**](UsersApi.md#get_users_admins) | **GET** /users/admins | Get Users Admins
-[**search_organizations**](UsersApi.md#search_organizations) | **GET** /organizations/search | Search Organizations
-[**search_user**](UsersApi.md#search_user) | **GET** /users/search | Search User
-[**set_current_user_prefs**](UsersApi.md#set_current_user_prefs) | **PUT** /users/my_preferences/{project_id} | Set Current User Prefs
-[**show_current_user**](UsersApi.md#show_current_user) | **GET** /users/me | Show Current User
-[**update_user**](UsersApi.md#update_user) | **PUT** /users/{user_id} | Update User
+| Method                                                           | HTTP request                                | Description            |
+| ---------------------------------------------------------------- | ------------------------------------------- | ---------------------- |
+| [**activate_user**](UsersApi.md#activate_user)                   | **POST** /users/activate/{user_id}/{status} | Activate User          |
+| [**create_user**](UsersApi.md#create_user)                       | **POST** /users/create                      | Create User            |
+| [**get_admin_users**](UsersApi.md#get_admin_users)               | **GET** /users/user_admins                  | Get Admin Users        |
+| [**get_current_user_prefs**](UsersApi.md#get_current_user_prefs) | **GET** /users/my_preferences/{project_id}  | Get Current User Prefs |
+| [**get_user**](UsersApi.md#get_user)                             | **GET** /users/{user_id}                    | Get User               |
+| [**get_users**](UsersApi.md#get_users)                           | **GET** /users                              | Get Users              |
+| [**get_users_admins**](UsersApi.md#get_users_admins)             | **GET** /users/admins                       | Get Users Admins       |
+| [**reset_user_password**](UsersApi.md#reset_user_password)       | **POST** /users/reset_user_password         | Reset User Password    |
+| [**search_organizations**](UsersApi.md#search_organizations)     | **GET** /organizations/search               | Search Organizations   |
+| [**search_user**](UsersApi.md#search_user)                       | **GET** /users/search                       | Search User            |
+| [**set_current_user_prefs**](UsersApi.md#set_current_user_prefs) | **PUT** /users/my_preferences/{project_id}  | Set Current User Prefs |
+| [**show_current_user**](UsersApi.md#show_current_user)           | **GET** /users/me                           | Show Current User      |
+| [**update_user**](UsersApi.md#update_user)                       | **PUT** /users/{user_id}                    | Update User            |
 
+
+# **activate_user**
+> bool, date, datetime, dict, float, int, list, str, none_type activate_user(user_id, status, unknown_base_type)
+
+Activate User
+
+Activate a new user if external validation is on., return **NULL upon success.**  🔒 Depending on logged user, different authorizations apply: - An administrator or user administrator can activate a user or bypass the activation and inform the user when a modification request value/reason is provided. - An ordinary logged user cannot activate another account. If back-end configuration for self-creation check is Google reCAPTCHA, then no_bot is a pair [remote IP, reCAPTCHA response].
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import users_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.unknownbasetype import UNKNOWNBASETYPE
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = users_api.UsersApi(api_client)
+    user_id = 1 # int | Internal, the unique numeric id of this user.
+    status = "1" # str | Internal, the status name assign to this user.
+    unknown_base_type = None # UNKNOWN_BASE_TYPE | 
+    no_bot = [
+        "['127.0.0.1', 'ffqsdfsdf']",
+    ] # [str] | not-a-robot proof (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Activate User
+        api_response = api_instance.activate_user(user_id, status, unknown_base_type)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling UsersApi->activate_user: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Activate User
+        api_response = api_instance.activate_user(user_id, status, unknown_base_type, no_bot=no_bot)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling UsersApi->activate_user: %s\n" % e)
+```
+
+
+### Parameters
+
+| Name                  | Type                                          | Description                                    | Notes      |
+| --------------------- | --------------------------------------------- | ---------------------------------------------- | ---------- |
+| **user_id**           | **int**                                       | Internal, the unique numeric id of this user.  |
+| **status**            | **str**                                       | Internal, the status name assign to this user. |
+| **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |                                                |
+| **no_bot**            | **[str]**                                     | not-a-robot proof                              | [optional] |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_user**
 > bool, date, datetime, dict, float, int, list, str, none_type create_user(user_model_with_rights)
@@ -62,10 +161,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         password="$foobar45$",
         name="userName",
         organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-        active=True,
+        status=1,
+        status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
+        status_admin_comment="",
         country="France",
         usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
         usercreationreason="Analysis of size and shapes of plastic particles",
+        mail_status=True,
+        mail_status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
         can_do=[1,4],
         last_used_projects=[
             ProjectSummaryModel(
@@ -75,8 +178,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         ],
     ) # UserModelWithRights | 
     no_bot = [
-        "['127.0.0.1', 'ffqsdfsdf'",
+        "['127.0.0.1', 'ffqsdfsdf']",
     ] # [str] | not-a-robot proof (optional)
+    token = "token_example" # str | token in the url to validate request (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -90,7 +194,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Create User
-        api_response = api_instance.create_user(user_model_with_rights, no_bot=no_bot)
+        api_response = api_instance.create_user(user_model_with_rights, no_bot=no_bot, token=token)
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling UsersApi->create_user: %s\n" % e)
@@ -99,10 +203,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  |
- **no_bot** | **[str]**| not-a-robot proof | [optional]
+| Name                       | Type                                              | Description                          | Notes      |
+| -------------------------- | ------------------------------------------------- | ------------------------------------ | ---------- |
+| **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md) |                                      |
+| **no_bot**                 | **[str]**                                         | not-a-robot proof                    | [optional] |
+| **token**                  | **str**                                           | token in the url to validate request | [optional] |
 
 ### Return type
 
@@ -120,10 +225,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -195,9 +300,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -254,10 +359,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
+| Name           | Type    | Description                          | Notes |
+| -------------- | ------- | ------------------------------------ | ----- |
+| **project_id** | **int** | Internal, numeric id of the project. |
+| **key**        | **str** | The preference key, as text.         |
 
 ### Return type
 
@@ -275,10 +380,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -335,9 +440,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, the unique numeric id of this user. |
+| Name        | Type    | Description                                   | Notes |
+| ----------- | ------- | --------------------------------------------- | ----- |
+| **user_id** | **int** | Internal, the unique numeric id of this user. |
 
 ### Return type
 
@@ -355,10 +460,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -416,9 +521,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. | [optional] if omitted the server will use the default value of ""
+| Name    | Type    | Description                                                                                                                                      | Notes                                                             |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| **ids** | **str** | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. | [optional] if omitted the server will use the default value of "" |
 
 ### Return type
 
@@ -436,10 +541,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -500,9 +605,108 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reset_user_password**
+> bool, date, datetime, dict, float, int, list, str, none_type reset_user_password(reset_password_req)
+
+Reset User Password
+
+reset user password **return NULL on success**  🔒 Depending on logged user, different authorizations apply: - An administrator or user administrator can reset a user password. - An unlogged user can ask for a reset  in two steps. and receive a mail with a token. But must eventually provide a no-robot proof.  If back-end configuration for self-creation check is Google reCAPTCHA, then no_bot is a pair [remote IP, reCAPTCHA response].
+
+### Example
+
+* OAuth Authentication (BearerOrCookieAuth):
+
+```python
+import time
+import ecotaxa_py_client
+from ecotaxa_py_client.api import users_api
+from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.model.reset_password_req import ResetPasswordReq
+from pprint import pprint
+# Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: BearerOrCookieAuth
+configuration = ecotaxa_py_client.Configuration(
+    host = "https://ecotaxa.obs-vlfr.fr/api"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with ecotaxa_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = users_api.UsersApi(api_client)
+    reset_password_req = ResetPasswordReq(
+        id=1,
+        email="email_example",
+        password="password_example",
+    ) # ResetPasswordReq | 
+    no_bot = [
+        "['127.0.0.1', 'ffqsdfsdf']",
+    ] # [str] | not-a-robot proof (optional)
+    token = "token_example" # str | token in the url to validate request (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Reset User Password
+        api_response = api_instance.reset_user_password(reset_password_req)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling UsersApi->reset_user_password: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Reset User Password
+        api_response = api_instance.reset_user_password(reset_password_req, no_bot=no_bot, token=token)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling UsersApi->reset_user_password: %s\n" % e)
+```
+
+
+### Parameters
+
+| Name                   | Type                                        | Description                          | Notes      |
+| ---------------------- | ------------------------------------------- | ------------------------------------ | ---------- |
+| **reset_password_req** | [**ResetPasswordReq**](ResetPasswordReq.md) |                                      |
+| **no_bot**             | **[str]**                                   | not-a-robot proof                    | [optional] |
+| **token**              | **str**                                     | token in the url to validate request | [optional] |
+
+### Return type
+
+**bool, date, datetime, dict, float, int, list, str, none_type**
+
+### Authorization
+
+[BearerOrCookieAuth](../README.md#BearerOrCookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -547,9 +751,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Search by name, use % for searching with &#39;any char&#39;. |
+| Name     | Type    | Description                                                  | Notes |
+| -------- | ------- | ------------------------------------------------------------ | ----- |
+| **name** | **str** | Search by name, use % for searching with &#39;any char&#39;. |
 
 ### Return type
 
@@ -567,10 +771,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -579,7 +783,7 @@ No authorization required
 
 Search User
 
-**Search users using various criteria**, search is case insensitive and might contain % chars.
+**Search users using various criteria**, search is case-insensitive and might contain % chars.
 
 ### Example
 
@@ -628,9 +832,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **by_name** | **str**| Search by name, use % for searching with &#39;any char&#39;. | [optional]
+| Name        | Type    | Description                                                  | Notes      |
+| ----------- | ------- | ------------------------------------------------------------ | ---------- |
+| **by_name** | **str** | Search by name, use % for searching with &#39;any char&#39;. | [optional] |
 
 ### Return type
 
@@ -648,10 +852,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -709,11 +913,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
- **value** | **str**| The value to set this preference to, as text. |
+| Name           | Type    | Description                                   | Notes |
+| -------------- | ------- | --------------------------------------------- | ----- |
+| **project_id** | **int** | Internal, numeric id of the project.          |
+| **key**        | **str** | The preference key, as text.                  |
+| **value**      | **str** | The value to set this preference to, as text. |
 
 ### Return type
 
@@ -731,10 +935,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -806,9 +1010,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -858,10 +1062,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         password="$foobar45$",
         name="userName",
         organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-        active=True,
+        status=1,
+        status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
+        status_admin_comment="",
         country="France",
         usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
         usercreationreason="Analysis of size and shapes of plastic particles",
+        mail_status=True,
+        mail_status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
         can_do=[1,4],
         last_used_projects=[
             ProjectSummaryModel(
@@ -883,10 +1091,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, numeric id of the user. |
- **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  |
+| Name                       | Type                                              | Description                       | Notes |
+| -------------------------- | ------------------------------------------------- | --------------------------------- | ----- |
+| **user_id**                | **int**                                           | Internal, numeric id of the user. |
+| **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md) |                                   |
 
 ### Return type
 
@@ -904,10 +1112,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

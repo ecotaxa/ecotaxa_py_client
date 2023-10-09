@@ -2,20 +2,20 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**add_taxon_in_central**](TaxonomyTreeApi.md#add_taxon_in_central) | **PUT** /taxon/central | Add Taxon In Central
-[**get_taxon_in_central**](TaxonomyTreeApi.md#get_taxon_in_central) | **GET** /taxon/central/{taxon_id} | Get Taxon In Central
-[**pull_taxa_update_from_central**](TaxonomyTreeApi.md#pull_taxa_update_from_central) | **GET** /taxa/pull_from_central | Pull Taxa Update From Central
-[**push_taxa_stats_in_central**](TaxonomyTreeApi.md#push_taxa_stats_in_central) | **GET** /taxa/stats/push_to_central | Push Taxa Stats In Central
-[**query_root_taxa**](TaxonomyTreeApi.md#query_root_taxa) | **GET** /taxa | Query Root Taxa
-[**query_taxa**](TaxonomyTreeApi.md#query_taxa) | **GET** /taxon/{taxon_id} | Query Taxa
-[**query_taxa_set**](TaxonomyTreeApi.md#query_taxa_set) | **GET** /taxon_set/query | Query Taxa Set
-[**query_taxa_usage**](TaxonomyTreeApi.md#query_taxa_usage) | **GET** /taxon/{taxon_id}/usage | Query Taxa Usage
-[**reclassif_project_stats**](TaxonomyTreeApi.md#reclassif_project_stats) | **GET** /taxa/reclassification_history/{project_id} | Reclassif Project Stats
-[**reclassif_stats**](TaxonomyTreeApi.md#reclassif_stats) | **GET** /taxa/reclassification_stats | Reclassif Stats
-[**search_taxa**](TaxonomyTreeApi.md#search_taxa) | **GET** /taxon_set/search | Search Taxa
-[**taxa_tree_status**](TaxonomyTreeApi.md#taxa_tree_status) | **GET** /taxa/status | Taxa Tree Status
+| Method                                                                                | HTTP request                                        | Description                   |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------------------------- |
+| [**add_taxon_in_central**](TaxonomyTreeApi.md#add_taxon_in_central)                   | **PUT** /taxon/central                              | Add Taxon In Central          |
+| [**get_taxon_in_central**](TaxonomyTreeApi.md#get_taxon_in_central)                   | **GET** /taxon/central/{taxon_id}                   | Get Taxon In Central          |
+| [**pull_taxa_update_from_central**](TaxonomyTreeApi.md#pull_taxa_update_from_central) | **GET** /taxa/pull_from_central                     | Pull Taxa Update From Central |
+| [**push_taxa_stats_in_central**](TaxonomyTreeApi.md#push_taxa_stats_in_central)       | **GET** /taxa/stats/push_to_central                 | Push Taxa Stats In Central    |
+| [**query_root_taxa**](TaxonomyTreeApi.md#query_root_taxa)                             | **GET** /taxa                                       | Query Root Taxa               |
+| [**query_taxa**](TaxonomyTreeApi.md#query_taxa)                                       | **GET** /taxon/{taxon_id}                           | Query Taxa                    |
+| [**query_taxa_set**](TaxonomyTreeApi.md#query_taxa_set)                               | **GET** /taxon_set/query                            | Query Taxa Set                |
+| [**query_taxa_usage**](TaxonomyTreeApi.md#query_taxa_usage)                           | **GET** /taxon/{taxon_id}/usage                     | Query Taxa Usage              |
+| [**reclassif_project_stats**](TaxonomyTreeApi.md#reclassif_project_stats)             | **GET** /taxa/reclassification_history/{project_id} | Reclassif Project Stats       |
+| [**reclassif_stats**](TaxonomyTreeApi.md#reclassif_stats)                             | **GET** /taxa/reclassification_stats                | Reclassif Stats               |
+| [**search_taxa**](TaxonomyTreeApi.md#search_taxa)                                     | **GET** /taxon_set/search                           | Search Taxa                   |
+| [**taxa_tree_status**](TaxonomyTreeApi.md#taxa_tree_status)                           | **GET** /taxa/status                                | Taxa Tree Status              |
 
 
 # **add_taxon_in_central**
@@ -84,14 +84,14 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| The taxon/category verbatim name. |
- **parent_id** | **int**| It&#39;s not possible to create a root taxon. |
- **taxotype** | **str**| The taxon type, &#39;M&#39; for Morpho or &#39;P&#39; for Phylo. |
- **creator_email** | **str**| The email of the taxo creator. |
- **source_desc** | **str**| The source description. | [optional]
- **source_url** | **str**| The source url. | [optional]
+| Name              | Type    | Description                                                      | Notes      |
+| ----------------- | ------- | ---------------------------------------------------------------- | ---------- |
+| **name**          | **str** | The taxon/category verbatim name.                                |
+| **parent_id**     | **int** | It&#39;s not possible to create a root taxon.                    |
+| **taxotype**      | **str** | The taxon type, &#39;M&#39; for Morpho or &#39;P&#39; for Phylo. |
+| **creator_email** | **str** | The email of the taxo creator.                                   |
+| **source_desc**   | **str** | The source description.                                          | [optional] |
+| **source_url**    | **str** | The source url.                                                  | [optional] |
 
 ### Return type
 
@@ -109,10 +109,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,9 +169,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+| Name         | Type    | Description                                    | Notes |
+| ------------ | ------- | ---------------------------------------------- | ----- |
+| **taxon_id** | **int** | Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
@@ -189,10 +189,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -263,9 +263,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -336,9 +336,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -399,9 +399,9 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -458,9 +458,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+| Name         | Type    | Description                                    | Notes |
+| ------------ | ------- | ---------------------------------------------- | ----- |
+| **taxon_id** | **int** | Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
@@ -478,10 +478,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -538,9 +538,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ids** | **str**| The separator between numbers is arbitrary non-digit, e.g. &#39;:&#39;, &#39;|&#39; or &#39;,&#39;. |
+| Name    | Type    | Description                                                                   | Notes                 |
+| ------- | ------- | ----------------------------------------------------------------------------- | --------------------- |
+| **ids** | **str** | The separator between numbers is arbitrary non-digit, e.g. &#39;:&#39;, &#39; | &#39; or &#39;,&#39;. |
 
 ### Return type
 
@@ -558,10 +558,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -618,9 +618,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taxon_id** | **int**| Internal, the unique numeric id of this taxon. |
+| Name         | Type    | Description                                    | Notes |
+| ------------ | ------- | ---------------------------------------------- | ----- |
+| **taxon_id** | **int** | Internal, the unique numeric id of this taxon. |
 
 ### Return type
 
@@ -638,10 +638,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -697,9 +697,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
+| Name           | Type    | Description                          | Notes |
+| -------------- | ------- | ------------------------------------ | ----- |
+| **project_id** | **int** | Internal, numeric id of the project. |
 
 ### Return type
 
@@ -717,10 +717,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -777,9 +777,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taxa_ids** | **str**| String containing the list of one or more taxa id separated by non-num char. |
+| Name         | Type    | Description                                                                  | Notes |
+| ------------ | ------- | ---------------------------------------------------------------------------- | ----- |
+| **taxa_ids** | **str** | String containing the list of one or more taxa id separated by non-num char. |
 
 ### Return type
 
@@ -797,10 +797,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -867,10 +867,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **query** | **str**| Use this query for matching returned taxa names. |
- **project_id** | **int**| Internal, numeric id of the project. | [optional]
+| Name           | Type    | Description                                      | Notes      |
+| -------------- | ------- | ------------------------------------------------ | ---------- |
+| **query**      | **str** | Use this query for matching returned taxa names. |
+| **project_id** | **int** | Internal, numeric id of the project.             | [optional] |
 
 ### Return type
 
@@ -888,10 +888,10 @@ Name | Type | Description  | Notes
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -963,9 +963,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

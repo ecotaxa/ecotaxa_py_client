@@ -1,6 +1,6 @@
 # ImportRsp
 
-Import response. 
+Import response.
 
 ## Properties
 Name | Type | Description | Notes

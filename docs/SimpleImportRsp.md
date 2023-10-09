@@ -1,6 +1,6 @@
 # SimpleImportRsp
 
-Simple Import, response. 
+Simple Import, response.
 
 ## Properties
 Name | Type | Description | Notes
