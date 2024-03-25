@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-| Method                                            | HTTP request       | Description     |
-| ------------------------------------------------- | ------------------ | --------------- |
-| [**do_nothing**](MiscApi.md#do_nothing)           | **GET** /noop      | Do Nothing      |
-| [**query_ml_models**](MiscApi.md#query_ml_models) | **GET** /ml_models | Query Ml Models |
-| [**system_error**](MiscApi.md#system_error)       | **GET** /error     | System Error    |
-| [**used_constants**](MiscApi.md#used_constants)   | **GET** /constants | Used Constants  |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**do_nothing**](MiscApi.md#do_nothing) | **GET** /noop | Do Nothing
+[**query_ml_models**](MiscApi.md#query_ml_models) | **GET** /ml_models | Query Ml Models
+[**system_error**](MiscApi.md#system_error) | **GET** /error | System Error
+[**used_constants**](MiscApi.md#used_constants) | **GET** /constants | Used Constants
 
 
 # **do_nothing**
@@ -77,9 +77,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -140,9 +140,9 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -213,9 +213,9 @@ This endpoint does not need any parameter.
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -276,9 +276,9 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

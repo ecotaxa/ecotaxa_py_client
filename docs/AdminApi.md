@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-| Method                                             | HTTP request            | Description     |
-| -------------------------------------------------- | ----------------------- | --------------- |
-| [**db_direct_query**](AdminApi.md#db_direct_query) | **GET** /admin/db/query | Direct Db Query |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**db_direct_query**](AdminApi.md#db_direct_query) | **GET** /admin/db/query | Direct Db Query
 
 
 # **db_direct_query**
@@ -59,9 +59,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name  | Type    | Description         | Notes |
-| ----- | ------- | ------------------- | ----- |
-| **q** | **str** | The SQL to execute. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**| The SQL to execute. |
 
 ### Return type
 
@@ -79,10 +79,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

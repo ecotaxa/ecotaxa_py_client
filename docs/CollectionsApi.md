@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-| Method                                                                                       | HTTP request                                     | Description                   |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------- |
-| [**collection_by_short_title**](CollectionsApi.md#collection_by_short_title)                 | **GET** /collections/by_short_title              | Collection By Short Title     |
-| [**collection_by_title**](CollectionsApi.md#collection_by_title)                             | **GET** /collections/by_title                    | Collection By Title           |
-| [**create_collection**](CollectionsApi.md#create_collection)                                 | **POST** /collections/create                     | Create Collection             |
-| [**darwin_core_format_export**](CollectionsApi.md#darwin_core_format_export)                 | **POST** /collections/export/darwin_core         | Darwin Core Format Export     |
-| [**erase_collection**](CollectionsApi.md#erase_collection)                                   | **DELETE** /collections/{collection_id}          | Erase Collection              |
-| [**get_collection**](CollectionsApi.md#get_collection)                                       | **GET** /collections/{collection_id}             | Get Collection                |
-| [**get_collection_taxonomy_recast**](CollectionsApi.md#get_collection_taxonomy_recast)       | **GET** /collections/{collection_id}/taxo_recast | Read Collection Taxo Recast   |
-| [**search_collections**](CollectionsApi.md#search_collections)                               | **GET** /collections/search                      | Search Collections            |
-| [**update_collection**](CollectionsApi.md#update_collection)                                 | **PUT** /collections/{collection_id}             | Update Collection             |
-| [**update_collection_taxonomy_recast**](CollectionsApi.md#update_collection_taxonomy_recast) | **PUT** /collections/{collection_id}/taxo_recast | Update Collection Taxo Recast |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**collection_by_short_title**](CollectionsApi.md#collection_by_short_title) | **GET** /collections/by_short_title | Collection By Short Title
+[**collection_by_title**](CollectionsApi.md#collection_by_title) | **GET** /collections/by_title | Collection By Title
+[**create_collection**](CollectionsApi.md#create_collection) | **POST** /collections/create | Create Collection
+[**darwin_core_format_export**](CollectionsApi.md#darwin_core_format_export) | **POST** /collections/export/darwin_core | Darwin Core Format Export
+[**erase_collection**](CollectionsApi.md#erase_collection) | **DELETE** /collections/{collection_id} | Erase Collection
+[**get_collection**](CollectionsApi.md#get_collection) | **GET** /collections/{collection_id} | Get Collection
+[**get_collection_taxonomy_recast**](CollectionsApi.md#get_collection_taxonomy_recast) | **GET** /collections/{collection_id}/taxo_recast | Read Collection Taxo Recast
+[**search_collections**](CollectionsApi.md#search_collections) | **GET** /collections/search | Search Collections
+[**update_collection**](CollectionsApi.md#update_collection) | **PUT** /collections/{collection_id} | Update Collection
+[**update_collection_taxonomy_recast**](CollectionsApi.md#update_collection_taxonomy_recast) | **PUT** /collections/{collection_id}/taxo_recast | Update Collection Taxo Recast
 
 
 # **collection_by_short_title**
@@ -58,9 +58,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name  | Type    | Description                      | Notes |
-| ----- | ------- | -------------------------------- | ----- |
-| **q** | **str** | Search by **exact** short title. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**| Search by **exact** short title. |
 
 ### Return type
 
@@ -78,10 +78,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,9 +127,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name  | Type    | Description                | Notes |
-| ----- | ------- | -------------------------- | ----- |
-| **q** | **str** | Search by **exact** title. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**| Search by **exact** title. |
 
 ### Return type
 
@@ -147,10 +147,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -210,9 +210,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                      | Type                                              | Description | Notes |
-| ------------------------- | ------------------------------------------------- | ----------- | ----- |
-| **create_collection_req** | [**CreateCollectionReq**](CreateCollectionReq.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_collection_req** | [**CreateCollectionReq**](CreateCollectionReq.md)|  |
 
 ### Return type
 
@@ -230,10 +230,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -291,6 +291,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         formulae={
             "key": "key_example",
         },
+        extra_xml=["<associatedParty>\n    <individualName><givenName>Coco</givenName><surName>Rico</surName>\n    </individualName>\n    <organizationName>CHICK</organizationName>\n      </associatedParty>"],
     ) # DarwinCoreExportReq | 
 
     # example passing only required values which don't have defaults set
@@ -305,9 +306,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                       | Type                                              | Description | Notes |
-| -------------------------- | ------------------------------------------------- | ----------- | ----- |
-| **darwin_core_export_req** | [**DarwinCoreExportReq**](DarwinCoreExportReq.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **darwin_core_export_req** | [**DarwinCoreExportReq**](DarwinCoreExportReq.md)|  |
 
 ### Return type
 
@@ -325,10 +326,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -384,9 +385,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name              | Type    | Description                                         | Notes |
-| ----------------- | ------- | --------------------------------------------------- | ----- |
-| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -404,10 +405,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -464,9 +465,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name              | Type    | Description                                         | Notes |
-| ----------------- | ------- | --------------------------------------------------- | ----- |
-| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -484,10 +485,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -543,9 +544,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name              | Type    | Description                                         | Notes |
-| ----------------- | ------- | --------------------------------------------------- | ----- |
-| **collection_id** | **int** | Internal, the unique numeric id of this collection. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
 
 ### Return type
 
@@ -563,10 +564,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -623,9 +624,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name      | Type    | Description                                                   | Notes |
-| --------- | ------- | ------------------------------------------------------------- | ----- |
-| **title** | **str** | Search by title, use % for searching with &#39;any char&#39;. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **title** | **str**| Search by title, use % for searching with &#39;any char&#39;. |
 
 ### Return type
 
@@ -643,10 +644,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -733,10 +734,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type                                      | Description                                         | Notes |
-| -------------------- | ----------------------------------------- | --------------------------------------------------- | ----- |
-| **collection_id**    | **int**                                   | Internal, the unique numeric id of this collection. |
-| **collection_model** | [**CollectionModel**](CollectionModel.md) |                                                     |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **collection_model** | [**CollectionModel**](CollectionModel.md)|  |
 
 ### Return type
 
@@ -754,10 +755,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -822,10 +823,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                | Type                                    | Description                                         | Notes |
-| ------------------- | --------------------------------------- | --------------------------------------------------- | ----- |
-| **collection_id**   | **int**                                 | Internal, the unique numeric id of this collection. |
-| **taxonomy_recast** | [**TaxonomyRecast**](TaxonomyRecast.md) |                                                     |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**| Internal, the unique numeric id of this collection. |
+ **taxonomy_recast** | [**TaxonomyRecast**](TaxonomyRecast.md)|  |
 
 ### Return type
 
@@ -843,10 +844,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

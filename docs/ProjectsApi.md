@@ -2,25 +2,25 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-| Method                                                                          | HTTP request                                       | Description                  |
-| ------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------- |
-| [**create_project**](ProjectsApi.md#create_project)                             | **POST** /projects/create                          | Create Project               |
-| [**erase_project**](ProjectsApi.md#erase_project)                               | **DELETE** /projects/{project_id}                  | Erase Project                |
-| [**import_file**](ProjectsApi.md#import_file)                                   | **POST** /file_import/{project_id}                 | Import File                  |
-| [**project_check**](ProjectsApi.md#project_check)                               | **GET** /projects/{project_id}/check               | Project Check                |
-| [**project_merge**](ProjectsApi.md#project_merge)                               | **POST** /projects/{project_id}/merge              | Project Merge                |
-| [**project_query**](ProjectsApi.md#project_query)                               | **GET** /projects/{project_id}                     | Project Query                |
-| [**project_recompute_geography**](ProjectsApi.md#project_recompute_geography)   | **POST** /projects/{project_id}/recompute_geo      | Project Recompute Geography  |
-| [**project_recompute_sunpos**](ProjectsApi.md#project_recompute_sunpos)         | **POST** /projects/{project_id}/recompute_sunpos   | Project Recompute Sunpos     |
-| [**project_set_get_column_stats**](ProjectsApi.md#project_set_get_column_stats) | **GET** /project_set/column_stats                  | Project Set Get Column Stats |
-| [**project_set_get_stats**](ProjectsApi.md#project_set_get_stats)               | **GET** /project_set/taxo_stats                    | Project Set Get Stats        |
-| [**project_set_get_user_stats**](ProjectsApi.md#project_set_get_user_stats)     | **GET** /project_set/user_stats                    | Project Set Get User Stats   |
-| [**project_stats**](ProjectsApi.md#project_stats)                               | **GET** /projects/{project_id}/stats               | Project Stats                |
-| [**project_subset**](ProjectsApi.md#project_subset)                             | **POST** /projects/{project_id}/subset             | Project Subset               |
-| [**search_projects**](ProjectsApi.md#search_projects)                           | **GET** /projects/search                           | Search Projects              |
-| [**set_project_predict_settings**](ProjectsApi.md#set_project_predict_settings) | **PUT** /projects/{project_id}/prediction_settings | Set Project Predict Settings |
-| [**simple_import**](ProjectsApi.md#simple_import)                               | **POST** /simple_import/{project_id}               | Simple Import                |
-| [**update_project**](ProjectsApi.md#update_project)                             | **PUT** /projects/{project_id}                     | Update Project               |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_project**](ProjectsApi.md#create_project) | **POST** /projects/create | Create Project
+[**erase_project**](ProjectsApi.md#erase_project) | **DELETE** /projects/{project_id} | Erase Project
+[**import_file**](ProjectsApi.md#import_file) | **POST** /file_import/{project_id} | Import File
+[**project_check**](ProjectsApi.md#project_check) | **GET** /projects/{project_id}/check | Project Check
+[**project_merge**](ProjectsApi.md#project_merge) | **POST** /projects/{project_id}/merge | Project Merge
+[**project_query**](ProjectsApi.md#project_query) | **GET** /projects/{project_id} | Project Query
+[**project_recompute_geography**](ProjectsApi.md#project_recompute_geography) | **POST** /projects/{project_id}/recompute_geo | Project Recompute Geography
+[**project_recompute_sunpos**](ProjectsApi.md#project_recompute_sunpos) | **POST** /projects/{project_id}/recompute_sunpos | Project Recompute Sunpos
+[**project_set_get_column_stats**](ProjectsApi.md#project_set_get_column_stats) | **GET** /project_set/column_stats | Project Set Get Column Stats
+[**project_set_get_stats**](ProjectsApi.md#project_set_get_stats) | **GET** /project_set/taxo_stats | Project Set Get Stats
+[**project_set_get_user_stats**](ProjectsApi.md#project_set_get_user_stats) | **GET** /project_set/user_stats | Project Set Get User Stats
+[**project_stats**](ProjectsApi.md#project_stats) | **GET** /projects/{project_id}/stats | Project Stats
+[**project_subset**](ProjectsApi.md#project_subset) | **POST** /projects/{project_id}/subset | Project Subset
+[**search_projects**](ProjectsApi.md#search_projects) | **GET** /projects/search | Search Projects
+[**set_project_predict_settings**](ProjectsApi.md#set_project_predict_settings) | **PUT** /projects/{project_id}/prediction_settings | Set Project Predict Settings
+[**simple_import**](ProjectsApi.md#simple_import) | **POST** /simple_import/{project_id} | Simple Import
+[**update_project**](ProjectsApi.md#update_project) | **PUT** /projects/{project_id} | Update Project
 
 
 # **create_project**
@@ -81,9 +81,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                   | Type                                        | Description | Notes |
-| ---------------------- | ------------------------------------------- | ----------- | ----- |
-| **create_project_req** | [**CreateProjectReq**](CreateProjectReq.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_project_req** | [**CreateProjectReq**](CreateProjectReq.md)|  |
 
 ### Return type
 
@@ -101,10 +101,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -170,10 +170,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name             | Type     | Description                                                                                          | Notes                                                                |
-| ---------------- | -------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| **project_id**   | **int**  | Internal, numeric id of the project.                                                                 |
-| **only_objects** | **bool** | If set, the project structure is kept, but emptied from any object, sample, acquisition and process. | [optional] if omitted the server will use the default value of False |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **only_objects** | **bool**| If set, the project structure is kept, but emptied from any object, sample, acquisition and process. | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -191,10 +191,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -261,10 +261,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type                          | Description                          | Notes |
-| -------------- | ----------------------------- | ------------------------------------ | ----- |
-| **project_id** | **int**                       | Internal, numeric id of the project. |
-| **import_req** | [**ImportReq**](ImportReq.md) |                                      |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **import_req** | [**ImportReq**](ImportReq.md)|  |
 
 ### Return type
 
@@ -282,10 +282,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -341,9 +341,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                          | Notes |
-| -------------- | ------- | ------------------------------------ | ----- |
-| **project_id** | **int** | Internal, numeric id of the project. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -361,10 +361,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -423,11 +423,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                  | Type     | Description                                                                                                                                        | Notes |
-| --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **project_id**        | **int**  | Internal, numeric id of the project.                                                                                                               |
-| **source_project_id** | **int**  | Id of the other project. All objects from this source project will be moved to the project_id above and the source project itself will be deleted. |
-| **dry_run**           | **bool** | If set, then only a diagnostic of doability will be done.                                                                                          |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **source_project_id** | **int**| Id of the other project. All objects from this source project will be moved to the project_id above and the source project itself will be deleted. |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. |
 
 ### Return type
 
@@ -445,10 +445,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -515,10 +515,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name             | Type     | Description                          | Notes                                                                |
-| ---------------- | -------- | ------------------------------------ | -------------------------------------------------------------------- |
-| **project_id**   | **int**  | Internal, numeric id of the project. |
-| **for_managing** | **bool** | For managing this project.           | [optional] if omitted the server will use the default value of False |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **for_managing** | **bool**| For managing this project. | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -536,10 +536,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -595,9 +595,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                          | Notes |
-| -------------- | ------- | ------------------------------------ | ----- |
-| **project_id** | **int** | Internal, numeric id of the project. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -615,10 +615,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -674,9 +674,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                          | Notes |
-| -------------- | ------- | ------------------------------------ | ----- |
-| **project_id** | **int** | Internal, numeric id of the project. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -694,10 +694,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -766,12 +766,12 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                                                                 | Notes      |
-| -------------- | ------- | --------------------------------------------------------------------------- | ---------- |
-| **ids**        | **str** | String containing the list of one or more id separated by non-num char.     |
-| **names**      | **str** | Coma-separated prefixed columns, on which stats are needed.                 |
-| **limit**      | **int** | Only compute stats on this number of objects per category.                  | [optional] |
-| **categories** | **str** | String containing the Categories, one or more id separated by non-num char. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | **str**| String containing the list of one or more id separated by non-num char. |
+ **names** | **str**| Coma-separated prefixed columns, on which stats are needed. |
+ **limit** | **int**| Only compute stats on this number of objects per category. | [optional]
+ **categories** | **str**| String containing the Categories, one or more id separated by non-num char. | [optional]
 
 ### Return type
 
@@ -789,10 +789,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -859,10 +859,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name         | Type    | Description                                                                                                                                                                         | Notes                                                             |
-| ------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| **ids**      | **str** | String containing the list of one or more project id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project.                  |
-| **taxa_ids** | **str** | **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. | [optional] if omitted the server will use the default value of "" |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | **str**| String containing the list of one or more project id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
+ **taxa_ids** | **str**| **If several taxa_ids are provided**, one stat record will be returned per requested taxa, if populated.    **If taxa_ids is all**, all valued taxa in the project(s) are returned. | [optional] if omitted the server will use the default value of ""
 
 ### Return type
 
@@ -880,10 +880,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -940,9 +940,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name    | Type    | Description                                                                                                                                                | Notes |
-| ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **ids** | **str** | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one stat record will be returned per project. |
 
 ### Return type
 
@@ -960,10 +960,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1019,9 +1019,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                          | Notes |
-| -------------- | ------- | ------------------------------------ | ----- |
-| **project_id** | **int** | Internal, numeric id of the project. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
 
 ### Return type
 
@@ -1039,10 +1039,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1107,10 +1107,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type                          | Description                          | Notes |
-| -------------- | ----------------------------- | ------------------------------------ | ----- |
-| **project_id** | **int**                       | Internal, numeric id of the project. |
-| **subset_req** | [**SubsetReq**](SubsetReq.md) |                                      |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **subset_req** | [**SubsetReq**](SubsetReq.md)|  |
 
 ### Return type
 
@@ -1128,10 +1128,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1197,17 +1197,17 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                  | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                     | Notes                                                                |
-| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| **also_others**       | **bool** |                                                                                                                                                                                                                                                                                                                                                                                                                 | [optional] if omitted the server will use the default value of False |
-| **not_granted**       | **bool** | Return projects on which the current user has _no permission_, but visible to him/her.                                                                                                                                                                                                                                                                                                                          | [optional] if omitted the server will use the default value of False |
-| **for_managing**      | **bool** | Return projects that can be written to (including erased) by the current user.                                                                                                                                                                                                                                                                                                                                  | [optional] if omitted the server will use the default value of False |
-| **title_filter**      | **str**  | Use this pattern for matching returned projects names.                                                                                                                                                                                                                                                                                                                                                          | [optional] if omitted the server will use the default value of ""    |
-| **instrument_filter** | **str**  | Only return projects where this instrument was used.                                                                                                                                                                                                                                                                                                                                                            | [optional] if omitted the server will use the default value of ""    |
-| **filter_subset**     | **bool** | Only return projects having &#39;subset&#39; in their names.                                                                                                                                                                                                                                                                                                                                                    | [optional] if omitted the server will use the default value of False |
-| **order_field**       | **str**  | One of [&#39;instrument&#39;, &#39;instrument_url&#39;, &#39;highest_right&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;description&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]                                                           |
-| **window_start**      | **int**  | Skip &#x60;window_start&#x60; before returning data.                                                                                                                                                                                                                                                                                                                                                            | [optional]                                                           |
-| **window_size**       | **int**  | Return only &#x60;window_size&#x60; lines.                                                                                                                                                                                                                                                                                                                                                                      | [optional]                                                           |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **also_others** | **bool**|  | [optional] if omitted the server will use the default value of False
+ **not_granted** | **bool**| Return projects on which the current user has _no permission_, but visible to him/her. | [optional] if omitted the server will use the default value of False
+ **for_managing** | **bool**| Return projects that can be written to (including erased) by the current user. | [optional] if omitted the server will use the default value of False
+ **title_filter** | **str**| Use this pattern for matching returned projects names. | [optional] if omitted the server will use the default value of ""
+ **instrument_filter** | **str**| Only return projects where this instrument was used. | [optional] if omitted the server will use the default value of ""
+ **filter_subset** | **bool**| Only return projects having &#39;subset&#39; in their names. | [optional] if omitted the server will use the default value of False
+ **order_field** | **str**| One of [&#39;instrument&#39;, &#39;instrument_url&#39;, &#39;highest_right&#39;, &#39;projid&#39;, &#39;title&#39;, &#39;visible&#39;, &#39;status&#39;, &#39;objcount&#39;, &#39;pctvalidated&#39;, &#39;pctclassified&#39;, &#39;classifsettings&#39;, &#39;classiffieldlist&#39;, &#39;popoverfieldlist&#39;, &#39;comments&#39;, &#39;description&#39;, &#39;rf_models_used&#39;, &#39;cnn_network_id&#39;] | [optional]
+ **window_start** | **int**| Skip &#x60;window_start&#x60; before returning data. | [optional]
+ **window_size** | **int**| Return only &#x60;window_size&#x60; lines. | [optional]
 
 ### Return type
 
@@ -1225,10 +1225,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1285,10 +1285,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name           | Type    | Description                          | Notes |
-| -------------- | ------- | ------------------------------------ | ----- |
-| **project_id** | **int** | Internal, numeric id of the project. |
-| **settings**   | **str** | The new prediction settings.         |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **settings** | **str**| The new prediction settings. |
 
 ### Return type
 
@@ -1306,10 +1306,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1375,11 +1375,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                  | Type                                      | Description                                                                                                                                       | Notes |
-| --------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **project_id**        | **int**                                   | Internal, numeric id of the project.                                                                                                              |
-| **dry_run**           | **bool**                                  | If set, then only a diagnostic of doability will be done. In this case, plain value check. If no dry_run, this call will create a background job. |
-| **simple_import_req** | [**SimpleImportReq**](SimpleImportReq.md) |                                                                                                                                                   |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **dry_run** | **bool**| If set, then only a diagnostic of doability will be done. In this case, plain value check. If no dry_run, this call will create a background job. |
+ **simple_import_req** | [**SimpleImportReq**](SimpleImportReq.md)|  |
 
 ### Return type
 
@@ -1397,10 +1397,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1535,10 +1535,10 @@ feret = Feret [pixel]''',
 
 ### Parameters
 
-| Name              | Type                                | Description                          | Notes |
-| ----------------- | ----------------------------------- | ------------------------------------ | ----- |
-| **project_id**    | **int**                             | Internal, numeric id of the project. |
-| **project_model** | [**ProjectModel**](ProjectModel.md) |                                      |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Internal, numeric id of the project. |
+ **project_model** | [**ProjectModel**](ProjectModel.md)|  |
 
 ### Return type
 
@@ -1556,10 +1556,10 @@ feret = Feret [pixel]''',
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-| Method                                                  | HTTP request                   | Description        |
-| ------------------------------------------------------- | ------------------------------ | ------------------ |
-| [**erase_job**](JobsApi.md#erase_job)                   | **DELETE** /jobs/{job_id}      | Erase Job          |
-| [**get_job**](JobsApi.md#get_job)                       | **GET** /jobs/{job_id}/        | Get Job            |
-| [**get_job_file**](JobsApi.md#get_job_file)             | **GET** /jobs/{job_id}/file    | Get Job File       |
-| [**get_job_log_file**](JobsApi.md#get_job_log_file)     | **GET** /jobs/{job_id}/log     | Get Job Log File   |
-| [**list_jobs**](JobsApi.md#list_jobs)                   | **GET** /jobs/                 | List Jobs          |
-| [**reply_job_question**](JobsApi.md#reply_job_question) | **POST** /jobs/{job_id}/answer | Reply Job Question |
-| [**restart_job**](JobsApi.md#restart_job)               | **GET** /jobs/{job_id}/restart | Restart Job        |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**erase_job**](JobsApi.md#erase_job) | **DELETE** /jobs/{job_id} | Erase Job
+[**get_job**](JobsApi.md#get_job) | **GET** /jobs/{job_id}/ | Get Job
+[**get_job_file**](JobsApi.md#get_job_file) | **GET** /jobs/{job_id}/file | Get Job File
+[**get_job_log_file**](JobsApi.md#get_job_log_file) | **GET** /jobs/{job_id}/log | Get Job Log File
+[**list_jobs**](JobsApi.md#list_jobs) | **GET** /jobs/ | List Jobs
+[**reply_job_question**](JobsApi.md#reply_job_question) | **POST** /jobs/{job_id}/answer | Reply Job Question
+[**restart_job**](JobsApi.md#restart_job) | **GET** /jobs/{job_id}/restart | Restart Job
 
 
 # **erase_job**
@@ -65,9 +65,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name       | Type    | Description                                  | Notes |
-| ---------- | ------- | -------------------------------------------- | ----- |
-| **job_id** | **int** | Internal, the unique numeric id of this job. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -85,10 +85,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -145,9 +145,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name       | Type    | Description                                  | Notes |
-| ---------- | ------- | -------------------------------------------- | ----- |
-| **job_id** | **int** | Internal, the unique numeric id of this job. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -165,10 +165,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -211,6 +211,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = jobs_api.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
+    range = "Range_example" # str |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -219,14 +220,24 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
         pprint(api_response)
     except ecotaxa_py_client.ApiException as e:
         print("Exception when calling JobsApi->get_job_file: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get Job File
+        api_response = api_instance.get_job_file(job_id, range=range)
+        pprint(api_response)
+    except ecotaxa_py_client.ApiException as e:
+        print("Exception when calling JobsApi->get_job_file: %s\n" % e)
 ```
 
 
 ### Parameters
 
-| Name       | Type    | Description                                  | Notes |
-| ---------- | ------- | -------------------------------------------- | ----- |
-| **job_id** | **int** | Internal, the unique numeric id of this job. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **range** | **str**|  | [optional]
 
 ### Return type
 
@@ -244,10 +255,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description               | Response headers |
-| ----------- | ------------------------- | ---------------- |
-| **200**     | Return the produced file. | -                |
-| **422**     | Validation Error          | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Return the produced file. |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -303,9 +314,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name       | Type    | Description                                  | Notes |
-| ---------- | ------- | -------------------------------------------- | ----- |
-| **job_id** | **int** | Internal, the unique numeric id of this job. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -323,10 +334,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -383,9 +394,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name          | Type     | Description                                                         | Notes |
-| ------------- | -------- | ------------------------------------------------------------------- | ----- |
-| **for_admin** | **bool** | If FALSE return the jobs for current user, else return all of them. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **for_admin** | **bool**| If FALSE return the jobs for current user, else return all of them. |
 
 ### Return type
 
@@ -403,10 +414,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -472,10 +483,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name       | Type                                                                      | Description                                  | Notes      |
-| ---------- | ------------------------------------------------------------------------- | -------------------------------------------- | ---------- |
-| **job_id** | **int**                                                                   | Internal, the unique numeric id of this job. |
-| **body**   | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |                                              | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**|  | [optional]
 
 ### Return type
 
@@ -493,10 +504,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -552,9 +563,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name       | Type    | Description                                  | Notes |
-| ---------- | ------- | -------------------------------------------- | ----- |
-| **job_id** | **int** | Internal, the unique numeric id of this job. |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Internal, the unique numeric id of this job. |
 
 ### Return type
 
@@ -572,10 +583,10 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 
 ### HTTP response details
 
-| Status code | Description         | Response headers |
-| ----------- | ------------------- | ---------------- |
-| **200**     | Successful Response | -                |
-| **422**     | Validation Error    | -                |
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

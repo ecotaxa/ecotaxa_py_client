@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **account_validation** | **bool** | Require validation by a Users Administrator before activation. | [optional]  if omitted the server will use the default value of False
 **short_token_age** | **int** | Email confirmation, password reset token lifespan. | [optional]  if omitted the server will use the default value of 1
 **profile_token_age** | **int** | Profile modification token lifespan. | [optional]  if omitted the server will use the default value of 24
+**recaptchaid** | **bool** | use Google ReCaptcha | [optional]  if omitted the server will use the default value of False
+**add_ticket** | **str** | string separator, permits to add ticket number when asking more information before user validation | [optional]  if omitted the server will use the default value of ""
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
