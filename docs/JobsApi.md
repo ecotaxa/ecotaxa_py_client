@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **erase_job**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_job(job_id)
+> object erase_job(job_id)
 
 Erase Job
 
@@ -25,11 +25,10 @@ Erase Job
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -41,37 +40,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
 
-    # example passing only required values which don't have defaults set
     try:
         # Erase Job
         api_response = api_instance.erase_job(job_id)
+        print("The response of JobsApi->erase_job:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->erase_job: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -81,7 +78,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -104,12 +100,11 @@ Returns **information about the job** corresponding to the given id.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.job_model import JobModel
+from ecotaxa_py_client.models.job_model import JobModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -121,33 +116,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
 
-    # example passing only required values which don't have defaults set
     try:
         # Get Job
         api_response = api_instance.get_job(job_id)
+        print("The response of JobsApi->get_job:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->get_job: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
 
 ### Return type
 
@@ -162,7 +155,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -173,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_file**
-> bool, date, datetime, dict, float, int, list, str, none_type get_job_file(job_id)
+> object get_job_file(job_id, range=range)
 
 Get Job File
 
@@ -184,11 +176,10 @@ Get Job File
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -200,48 +191,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
-    range = "Range_example" # str |  (optional)
+    range = 'range_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Get Job File
-        api_response = api_instance.get_job_file(job_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling JobsApi->get_job_file: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Get Job File
         api_response = api_instance.get_job_file(job_id, range=range)
+        print("The response of JobsApi->get_job_file:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->get_job_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
- **range** | **str**|  | [optional]
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
+ **range** | **str**|  | [optional] 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -251,7 +231,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, application/zip, text/tab-separated-values
-
 
 ### HTTP response details
 
@@ -263,7 +242,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_log_file**
-> bool, date, datetime, dict, float, int, list, str, none_type get_job_log_file(job_id)
+> object get_job_log_file(job_id)
 
 Get Job Log File
 
@@ -274,11 +253,10 @@ Get Job Log File
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -290,37 +268,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
 
-    # example passing only required values which don't have defaults set
     try:
         # Get Job Log File
         api_response = api_instance.get_job_log_file(job_id)
+        print("The response of JobsApi->get_job_log_file:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->get_job_log_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -330,7 +306,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -342,7 +317,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_jobs**
-> [JobModel] list_jobs(for_admin)
+> List[JobModel] list_jobs(for_admin)
 
 List Jobs
 
@@ -353,12 +328,11 @@ List Jobs
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.job_model import JobModel
+from ecotaxa_py_client.models.job_model import JobModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -370,37 +344,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
-    for_admin = False # bool | If FALSE return the jobs for current user, else return all of them.
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
+    for_admin = false # bool | If FALSE return the jobs for current user, else return all of them.
 
-    # example passing only required values which don't have defaults set
     try:
         # List Jobs
         api_response = api_instance.list_jobs(for_admin)
+        print("The response of JobsApi->list_jobs:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->list_jobs: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **for_admin** | **bool**| If FALSE return the jobs for current user, else return all of them. |
+ **for_admin** | **bool**| If FALSE return the jobs for current user, else return all of them. | 
 
 ### Return type
 
-[**[JobModel]**](JobModel.md)
+[**List[JobModel]**](JobModel.md)
 
 ### Authorization
 
@@ -410,7 +382,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -422,7 +393,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reply_job_question**
-> bool, date, datetime, dict, float, int, list, str, none_type reply_job_question(job_id)
+> object reply_job_question(job_id, body=body)
 
 Reply Job Question
 
@@ -433,11 +404,10 @@ Reply Job Question
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -449,48 +419,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
-    body = {} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} |  (optional)
+    body = None # object |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Reply Job Question
-        api_response = api_instance.reply_job_question(job_id)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling JobsApi->reply_job_question: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Reply Job Question
         api_response = api_instance.reply_job_question(job_id, body=body)
+        print("The response of JobsApi->reply_job_question:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->reply_job_question: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
- **body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**|  | [optional]
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
+ **body** | **object**|  | [optional] 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -500,7 +459,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -512,7 +470,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **restart_job**
-> bool, date, datetime, dict, float, int, list, str, none_type restart_job(job_id)
+> object restart_job(job_id)
 
 Restart Job
 
@@ -523,11 +481,10 @@ Restart Job
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import jobs_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -539,37 +496,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jobs_api.JobsApi(api_client)
+    api_instance = ecotaxa_py_client.JobsApi(api_client)
     job_id = 47445 # int | Internal, the unique numeric id of this job.
 
-    # example passing only required values which don't have defaults set
     try:
         # Restart Job
         api_response = api_instance.restart_job(job_id)
+        print("The response of JobsApi->restart_job:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->restart_job: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Internal, the unique numeric id of this job. |
+ **job_id** | **int**| Internal, the unique numeric id of this job. | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -579,7 +534,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 

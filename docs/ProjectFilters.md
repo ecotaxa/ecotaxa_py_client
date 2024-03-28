@@ -3,6 +3,7 @@
 How to reduce project data.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **taxo** | **str** | Coma-separated list of numeric taxonomy/category ids. Only include objects classified with one of them. | [optional] 
@@ -32,8 +33,24 @@ Name | Type | Description | Notes
 **freetxtval** | **str** | Text to match in the column defined by freetxt, for an object to be include. | [optional] 
 **filt_annot** | **str** | Coma-separated list of annotators, i.e. persons who validated the classification at any point in time. | [optional] 
 **filt_last_annot** | **str** | Coma-separated list of annotators, i.e. persons who validated the classification in last. | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ProjectFilters from a JSON string
+project_filters_instance = ProjectFilters.from_json(json)
+# print the JSON string representation of the object
+print(ProjectFilters.to_json())
+
+# convert the object into a dict
+project_filters_dict = project_filters_instance.to_dict()
+# create an instance of ProjectFilters from a dict
+project_filters_form_dict = project_filters.from_dict(project_filters_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

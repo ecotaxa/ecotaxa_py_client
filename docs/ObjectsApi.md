@@ -33,12 +33,11 @@ Classify Auto Object Set
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.classify_auto_req import ClassifyAutoReq
+from ecotaxa_py_client.models.classify_auto_req import ClassifyAutoReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -50,44 +49,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    classify_auto_req = ClassifyAutoReq(
-        target_ids=[
-            1,
-        ],
-        classifications=[
-            1,
-        ],
-        scores=[
-            3.14,
-        ],
-        keep_log=True,
-    ) # ClassifyAutoReq | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    classify_auto_req = ecotaxa_py_client.ClassifyAutoReq() # ClassifyAutoReq | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Classify Auto Object Set
         api_response = api_instance.classify_auto_object_set(classify_auto_req)
+        print("The response of ObjectsApi->classify_auto_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->classify_auto_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **classify_auto_req** | [**ClassifyAutoReq**](ClassifyAutoReq.md)|  |
+ **classify_auto_req** | [**ClassifyAutoReq**](ClassifyAutoReq.md)|  | 
 
 ### Return type
 
@@ -101,7 +87,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -124,12 +109,11 @@ Classify Object Set
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.classify_req import ClassifyReq
+from ecotaxa_py_client.models.classify_req import ClassifyReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -141,37 +125,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    classify_req = ClassifyReq(
-        target_ids=[634509,6234516,976544],
-        classifications=[7546,3421,788],
-        wanted_qualification="V",
-    ) # ClassifyReq | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    classify_req = ecotaxa_py_client.ClassifyReq() # ClassifyReq | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Classify Object Set
         api_response = api_instance.classify_object_set(classify_req)
+        print("The response of ObjectsApi->classify_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->classify_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **classify_req** | [**ClassifyReq**](ClassifyReq.md)|  |
+ **classify_req** | [**ClassifyReq**](ClassifyReq.md)|  | 
 
 ### Return type
 
@@ -186,7 +164,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -197,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **erase_object_set**
-> bool, date, datetime, dict, float, int, list, str, none_type erase_object_set(request_body)
+> object erase_object_set(request_body)
 
 Erase Object Set
 
@@ -208,11 +185,10 @@ Erase Object Set
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -224,37 +200,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    request_body = [634509,6234516,976544] # [int] | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    request_body = [634509,6234516,976544] # List[int] | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Erase Object Set
         api_response = api_instance.erase_object_set(request_body)
+        print("The response of ObjectsApi->erase_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->erase_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_body** | **[int]**|  |
+ **request_body** | [**List[int]**](int.md)|  | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -264,7 +238,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -287,13 +260,12 @@ Export Object Set
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
-from ecotaxa_py_client.model.export_rsp import ExportRsp
+from ecotaxa_py_client.models.body_export_object_set_object_set_export_post import BodyExportObjectSetObjectSetExportPost
+from ecotaxa_py_client.models.export_rsp import ExportRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -305,64 +277,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set_object_set_export_post = BodyExportObjectSetObjectSetExportPost(
-        filters=ProjectFilters(
-            taxo="12,7654,5409",
-            taxochild="Y",
-            statusfilter="NV",
-            map_n="44.34",
-            map_w="3.88",
-            map_e="7.94",
-            map_s="42.42",
-            depthmin="10",
-            depthmax="110",
-            samples="10987,3456,987,38",
-            instrum="uvp5",
-            daytime="N,A",
-            month="11,12",
-            fromdate="2020-10-09",
-            todate="2021-10-09",
-            fromtime="1:17:00",
-            totime="23:32:00",
-            inverttime="0",
-            validfromdate="2020-10-09 10:00:00",
-            validtodate="2021-10-09 10:00:00",
-            freenum="n01",
-            freenumst="0",
-            freenumend="999999",
-            freetxt="p01",
-            freetxtval="zooprocess",
-            filt_annot="34,67,67",
-            filt_last_annot="34,67",
-        ),
-        request=None,
-    ) # BodyExportObjectSetObjectSetExportPost | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    body_export_object_set_object_set_export_post = ecotaxa_py_client.BodyExportObjectSetObjectSetExportPost() # BodyExportObjectSetObjectSetExportPost | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Export Object Set
         api_response = api_instance.export_object_set(body_export_object_set_object_set_export_post)
+        print("The response of ObjectsApi->export_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->export_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  |
+ **body_export_object_set_object_set_export_post** | [**BodyExportObjectSetObjectSetExportPost**](BodyExportObjectSetObjectSetExportPost.md)|  | 
 
 ### Return type
 
@@ -376,7 +315,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -399,13 +337,12 @@ Start a backup export job for the given object set and options. If filters are e
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_export_object_set_backup_object_set_export_backup_post import BodyExportObjectSetBackupObjectSetExportBackupPost
-from ecotaxa_py_client.model.export_rsp import ExportRsp
+from ecotaxa_py_client.models.body_export_object_set_backup_object_set_export_backup_post import BodyExportObjectSetBackupObjectSetExportBackupPost
+from ecotaxa_py_client.models.export_rsp import ExportRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -417,67 +354,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set_backup_object_set_export_backup_post = BodyExportObjectSetBackupObjectSetExportBackupPost(
-        filters=ProjectFilters(
-            taxo="12,7654,5409",
-            taxochild="Y",
-            statusfilter="NV",
-            map_n="44.34",
-            map_w="3.88",
-            map_e="7.94",
-            map_s="42.42",
-            depthmin="10",
-            depthmax="110",
-            samples="10987,3456,987,38",
-            instrum="uvp5",
-            daytime="N,A",
-            month="11,12",
-            fromdate="2020-10-09",
-            todate="2021-10-09",
-            fromtime="1:17:00",
-            totime="23:32:00",
-            inverttime="0",
-            validfromdate="2020-10-09 10:00:00",
-            validtodate="2021-10-09 10:00:00",
-            freenum="n01",
-            freenumst="0",
-            freenumend="999999",
-            freetxt="p01",
-            freetxtval="zooprocess",
-            filt_annot="34,67,67",
-            filt_last_annot="34,67",
-        ),
-        request=BackupExportReq(
-            project_id=1,
-            out_to_ftp=False,
-        ),
-    ) # BodyExportObjectSetBackupObjectSetExportBackupPost | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    body_export_object_set_backup_object_set_export_backup_post = ecotaxa_py_client.BodyExportObjectSetBackupObjectSetExportBackupPost() # BodyExportObjectSetBackupObjectSetExportBackupPost | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Export Object Set Backup
         api_response = api_instance.export_object_set_backup(body_export_object_set_backup_object_set_export_backup_post)
+        print("The response of ObjectsApi->export_object_set_backup:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->export_object_set_backup: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set_backup_object_set_export_backup_post** | [**BodyExportObjectSetBackupObjectSetExportBackupPost**](BodyExportObjectSetBackupObjectSetExportBackupPost.md)|  |
+ **body_export_object_set_backup_object_set_export_backup_post** | [**BodyExportObjectSetBackupObjectSetExportBackupPost**](BodyExportObjectSetBackupObjectSetExportBackupPost.md)|  | 
 
 ### Return type
 
@@ -491,7 +392,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -514,13 +414,12 @@ Start a general-purpose export job for the given object set and options.  🔒 C
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_export_object_set_general_object_set_export_general_post import BodyExportObjectSetGeneralObjectSetExportGeneralPost
-from ecotaxa_py_client.model.export_rsp import ExportRsp
+from ecotaxa_py_client.models.body_export_object_set_general_object_set_export_general_post import BodyExportObjectSetGeneralObjectSetExportGeneralPost
+from ecotaxa_py_client.models.export_rsp import ExportRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -532,72 +431,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set_general_object_set_export_general_post = BodyExportObjectSetGeneralObjectSetExportGeneralPost(
-        filters=ProjectFilters(
-            taxo="12,7654,5409",
-            taxochild="Y",
-            statusfilter="NV",
-            map_n="44.34",
-            map_w="3.88",
-            map_e="7.94",
-            map_s="42.42",
-            depthmin="10",
-            depthmax="110",
-            samples="10987,3456,987,38",
-            instrum="uvp5",
-            daytime="N,A",
-            month="11,12",
-            fromdate="2020-10-09",
-            todate="2021-10-09",
-            fromtime="1:17:00",
-            totime="23:32:00",
-            inverttime="0",
-            validfromdate="2020-10-09 10:00:00",
-            validtodate="2021-10-09 10:00:00",
-            freenum="n01",
-            freenumst="0",
-            freenumend="999999",
-            freetxt="p01",
-            freetxtval="zooprocess",
-            filt_annot="34,67,67",
-            filt_last_annot="34,67",
-        ),
-        request=GeneralExportReq(
-            project_id=1,
-            split_by=None,
-            with_images=None,
-            with_internal_ids=False,
-            with_types_row=False,
-            only_annotations=False,
-            out_to_ftp=False,
-        ),
-    ) # BodyExportObjectSetGeneralObjectSetExportGeneralPost | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    body_export_object_set_general_object_set_export_general_post = ecotaxa_py_client.BodyExportObjectSetGeneralObjectSetExportGeneralPost() # BodyExportObjectSetGeneralObjectSetExportGeneralPost | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Export Object Set General
         api_response = api_instance.export_object_set_general(body_export_object_set_general_object_set_export_general_post)
+        print("The response of ObjectsApi->export_object_set_general:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->export_object_set_general: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set_general_object_set_export_general_post** | [**BodyExportObjectSetGeneralObjectSetExportGeneralPost**](BodyExportObjectSetGeneralObjectSetExportGeneralPost.md)|  |
+ **body_export_object_set_general_object_set_export_general_post** | [**BodyExportObjectSetGeneralObjectSetExportGeneralPost**](BodyExportObjectSetGeneralObjectSetExportGeneralPost.md)|  | 
 
 ### Return type
 
@@ -611,7 +469,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -634,13 +491,12 @@ Start a summary export job for the given object set and options.  🔒 Current u
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.export_rsp import ExportRsp
-from ecotaxa_py_client.model.body_export_object_set_summary_object_set_export_summary_post import BodyExportObjectSetSummaryObjectSetExportSummaryPost
+from ecotaxa_py_client.models.body_export_object_set_summary_object_set_export_summary_post import BodyExportObjectSetSummaryObjectSetExportSummaryPost
+from ecotaxa_py_client.models.export_rsp import ExportRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -652,75 +508,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    body_export_object_set_summary_object_set_export_summary_post = BodyExportObjectSetSummaryObjectSetExportSummaryPost(
-        filters=ProjectFilters(
-            taxo="12,7654,5409",
-            taxochild="Y",
-            statusfilter="NV",
-            map_n="44.34",
-            map_w="3.88",
-            map_e="7.94",
-            map_s="42.42",
-            depthmin="10",
-            depthmax="110",
-            samples="10987,3456,987,38",
-            instrum="uvp5",
-            daytime="N,A",
-            month="11,12",
-            fromdate="2020-10-09",
-            todate="2021-10-09",
-            fromtime="1:17:00",
-            totime="23:32:00",
-            inverttime="0",
-            validfromdate="2020-10-09 10:00:00",
-            validtodate="2021-10-09 10:00:00",
-            freenum="n01",
-            freenumst="0",
-            freenumend="999999",
-            freetxt="p01",
-            freetxtval="zooprocess",
-            filt_annot="34,67,67",
-            filt_last_annot="34,67",
-        ),
-        request=SummaryExportReq(
-            project_id=1,
-            quantity=None,
-            summarise_by=None,
-            taxo_mapping={
-                "key": 1,
-            },
-            formulae={
-                "key": "key_example",
-            },
-            out_to_ftp=False,
-        ),
-    ) # BodyExportObjectSetSummaryObjectSetExportSummaryPost | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    body_export_object_set_summary_object_set_export_summary_post = ecotaxa_py_client.BodyExportObjectSetSummaryObjectSetExportSummaryPost() # BodyExportObjectSetSummaryObjectSetExportSummaryPost | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Export Object Set Summary
         api_response = api_instance.export_object_set_summary(body_export_object_set_summary_object_set_export_summary_post)
+        print("The response of ObjectsApi->export_object_set_summary:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->export_object_set_summary: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_export_object_set_summary_object_set_export_summary_post** | [**BodyExportObjectSetSummaryObjectSetExportSummaryPost**](BodyExportObjectSetSummaryObjectSetExportSummaryPost.md)|  |
+ **body_export_object_set_summary_object_set_export_summary_post** | [**BodyExportObjectSetSummaryObjectSetExportSummaryPost**](BodyExportObjectSetSummaryObjectSetExportSummaryPost.md)|  | 
 
 ### Return type
 
@@ -735,7 +547,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -746,7 +557,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_object_set**
-> ObjectSetQueryRsp get_object_set(project_id, project_filters)
+> ObjectSetQueryRsp get_object_set(project_id, project_filters, fields=fields, order_field=order_field, window_start=window_start, window_size=window_size)
 
 Get Object Set
 
@@ -757,13 +568,12 @@ Returns **filtered object Ids** for the given project.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.object_set_query_rsp import ObjectSetQueryRsp
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.project_filters import ProjectFilters
+from ecotaxa_py_client.models.object_set_query_rsp import ObjectSetQueryRsp
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -775,80 +585,41 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
-    project_filters = ProjectFilters(
-        taxo="12,7654,5409",
-        taxochild="Y",
-        statusfilter="NV",
-        map_n="44.34",
-        map_w="3.88",
-        map_e="7.94",
-        map_s="42.42",
-        depthmin="10",
-        depthmax="110",
-        samples="10987,3456,987,38",
-        instrum="uvp5",
-        daytime="N,A",
-        month="11,12",
-        fromdate="2020-10-09",
-        todate="2021-10-09",
-        fromtime="1:17:00",
-        totime="23:32:00",
-        inverttime="0",
-        validfromdate="2020-10-09 10:00:00",
-        validtodate="2021-10-09 10:00:00",
-        freenum="n01",
-        freenumst="0",
-        freenumend="999999",
-        freetxt="p01",
-        freetxtval="zooprocess",
-        filt_annot="34,67,67",
-        filt_last_annot="34,67",
-    ) # ProjectFilters | 
-    fields = "obj.longitude,fre.feret" # str |   Specify the needed object (and ancillary entities) fields.  It follows the naming convention 'prefix.field' : Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \"obj.\"** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \"img.\"** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \"txo.\"** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \"fre.\"** (for example → fre.circ.).                     (optional)
-    order_field = "obj.longitude" # str | Order the result using given field. If prefixed with \"-\" then it will be reversed. (optional)
+    project_filters = ecotaxa_py_client.ProjectFilters() # ProjectFilters | 
+    fields = 'obj.longitude,fre.feret' # str |   Specify the needed object (and ancillary entities) fields.  It follows the naming convention 'prefix.field' : Prefix is either 'obj' for main object, 'fre' for free fields, 'img' for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \"obj.\"** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \"img.\"** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \"txo.\"** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \"fre.\"** (for example → fre.circ.).                     (optional)
+    order_field = 'obj.longitude' # str | Order the result using given field. If prefixed with \"-\" then it will be reversed. (optional)
     window_start = 10 # int |  Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions. (optional)
     window_size = 100 # int |  Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions. (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Get Object Set
-        api_response = api_instance.get_object_set(project_id, project_filters)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->get_object_set: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Get Object Set
         api_response = api_instance.get_object_set(project_id, project_filters, fields=fields, order_field=order_field, window_start=window_start, window_size=window_size)
+        print("The response of ObjectsApi->get_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->get_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **fields** | **str**|   Specify the needed object (and ancillary entities) fields.  It follows the naming convention &#39;prefix.field&#39; : Prefix is either &#39;obj&#39; for main object, &#39;fre&#39; for free fields, &#39;img&#39; for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \&quot;obj.\&quot;** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \&quot;img.\&quot;** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \&quot;txo.\&quot;** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \&quot;fre.\&quot;** (for example → fre.circ.).                     | [optional]
- **order_field** | **str**| Order the result using given field. If prefixed with \&quot;-\&quot; then it will be reversed. | [optional]
- **window_start** | **int**|  Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions. | [optional]
- **window_size** | **int**|  Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions. | [optional]
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  | 
+ **fields** | **str**|   Specify the needed object (and ancillary entities) fields.  It follows the naming convention &#39;prefix.field&#39; : Prefix is either &#39;obj&#39; for main object, &#39;fre&#39; for free fields, &#39;img&#39; for the visible image.  The column obj.imgcount contains the total count of images for the object.  Use a comma to separate fields.  💡 More help :  You can get the field labels by parsing the classiffieldlist returned by a call to https://ecotaxa.obs-vlfr.fr/api/docs#/projects/project_query_projects__project_id__get.  **Note that the following fields must be prefixed with the header \&quot;obj.\&quot;** (for example → obj.orig_id):  acquisid classif_auto_id, classif_auto_score, classif_auto_when, classif_crossvalidation_id, classif_id, classif_qual, classif_who, classif_when, complement_info, depth_max, depth_min, latitude, longitude, objdate, object_link, objid, objtime, orig_id, random_value, similarity, sunpos.  **Note that the following fields must be prefixed with the header \&quot;img.\&quot;** (for example → img.file_name):  file_name, height, imgid, imgrank, file_name, orig, objid, file_name thumb_file_name, thumb_height, thumb_width, width.  **Note that the following fields must be prefixed with the header \&quot;txo.\&quot;** (for example → txo.display_name):  creation_datetime, creator_email, display_name, id, id_instance, id_source, lastupdate_datetime, name, nbrobj, nbrobjcum, parent_id, rename_to source_desc, source_url, taxostatus, taxotype.  **All other fields must be prefixed by the header \&quot;fre.\&quot;** (for example → fre.circ.).                     | [optional] 
+ **order_field** | **str**| Order the result using given field. If prefixed with \&quot;-\&quot; then it will be reversed. | [optional] 
+ **window_start** | **int**|  Allows to return only a slice of the result, by skipping window_start objects before returning data. If no **unique order** is specified, the result can vary for same call and conditions. | [optional] 
+ **window_size** | **int**|  Allows to return only a slice of the result, by returning a _maximum_ of window_size lines. If no **unique order** is specified, the result can vary for same call and conditions. | [optional] 
 
 ### Return type
 
@@ -862,7 +633,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -885,13 +655,12 @@ For the given project, with given filters, **return the classification summary**
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.project_filters import ProjectFilters
-from ecotaxa_py_client.model.object_set_summary_rsp import ObjectSetSummaryRsp
+from ecotaxa_py_client.models.object_set_summary_rsp import ObjectSetSummaryRsp
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -903,65 +672,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
     only_total = True # bool | If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**.
-    project_filters = ProjectFilters(
-        taxo="12,7654,5409",
-        taxochild="Y",
-        statusfilter="NV",
-        map_n="44.34",
-        map_w="3.88",
-        map_e="7.94",
-        map_s="42.42",
-        depthmin="10",
-        depthmax="110",
-        samples="10987,3456,987,38",
-        instrum="uvp5",
-        daytime="N,A",
-        month="11,12",
-        fromdate="2020-10-09",
-        todate="2021-10-09",
-        fromtime="1:17:00",
-        totime="23:32:00",
-        inverttime="0",
-        validfromdate="2020-10-09 10:00:00",
-        validtodate="2021-10-09 10:00:00",
-        freenum="n01",
-        freenumst="0",
-        freenumend="999999",
-        freetxt="p01",
-        freetxtval="zooprocess",
-        filt_annot="34,67,67",
-        filt_last_annot="34,67",
-    ) # ProjectFilters | 
+    project_filters = ecotaxa_py_client.ProjectFilters() # ProjectFilters | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Get Object Set Summary
         api_response = api_instance.get_object_set_summary(project_id, only_total, project_filters)
+        print("The response of ObjectsApi->get_object_set_summary:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->get_object_set_summary: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **only_total** | **bool**| If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **only_total** | **bool**| If True, returns only the **Total number of objects**. Else returns also the **Number of validated ones**, the **number of Dubious ones** and the number of **predicted ones**. | 
+ **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  | 
 
 ### Return type
 
@@ -975,7 +714,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -998,13 +736,12 @@ Predict Object Set
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
-from ecotaxa_py_client.model.prediction_rsp import PredictionRsp
+from ecotaxa_py_client.models.body_predict_object_set_object_set_predict_post import BodyPredictObjectSetObjectSetPredictPost
+from ecotaxa_py_client.models.prediction_rsp import PredictionRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1016,80 +753,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    body_predict_object_set_object_set_predict_post = BodyPredictObjectSetObjectSetPredictPost(
-        filters=ProjectFilters(
-            taxo="12,7654,5409",
-            taxochild="Y",
-            statusfilter="NV",
-            map_n="44.34",
-            map_w="3.88",
-            map_e="7.94",
-            map_s="42.42",
-            depthmin="10",
-            depthmax="110",
-            samples="10987,3456,987,38",
-            instrum="uvp5",
-            daytime="N,A",
-            month="11,12",
-            fromdate="2020-10-09",
-            todate="2021-10-09",
-            fromtime="1:17:00",
-            totime="23:32:00",
-            inverttime="0",
-            validfromdate="2020-10-09 10:00:00",
-            validtodate="2021-10-09 10:00:00",
-            freenum="n01",
-            freenumst="0",
-            freenumend="999999",
-            freetxt="p01",
-            freetxtval="zooprocess",
-            filt_annot="34,67,67",
-            filt_last_annot="34,67",
-        ),
-        request=PredictionReq(
-            project_id=1,
-            source_project_ids=[
-                1,
-            ],
-            learning_limit=1,
-            features=[
-                "features_example",
-            ],
-            categories=[
-                1,
-            ],
-            use_scn=False,
-            pre_mapping={
-                "key": 1,
-            },
-        ),
-    ) # BodyPredictObjectSetObjectSetPredictPost | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    body_predict_object_set_object_set_predict_post = ecotaxa_py_client.BodyPredictObjectSetObjectSetPredictPost() # BodyPredictObjectSetObjectSetPredictPost | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Predict Object Set
         api_response = api_instance.predict_object_set(body_predict_object_set_object_set_predict_post)
+        print("The response of ObjectsApi->predict_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->predict_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  |
+ **body_predict_object_set_object_set_predict_post** | [**BodyPredictObjectSetObjectSetPredictPost**](BodyPredictObjectSetObjectSetPredictPost.md)|  | 
 
 ### Return type
 
@@ -1103,7 +791,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1126,12 +813,11 @@ Query Object Set Parents
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.object_set_query_rsp import ObjectSetQueryRsp
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.models.object_set_query_rsp import ObjectSetQueryRsp
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1143,33 +829,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    request_body = [634509,6234516,976544] # [int] | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    request_body = [634509,6234516,976544] # List[int] | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Query Object Set Parents
         api_response = api_instance.query_object_set_parents(request_body)
+        print("The response of ObjectsApi->query_object_set_parents:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->query_object_set_parents: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_body** | **[int]**|  |
+ **request_body** | [**List[int]**](int.md)|  | 
 
 ### Return type
 
@@ -1183,7 +867,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1206,12 +889,11 @@ Regardless of present classification or state, **set the new classification for 
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.project_filters import ProjectFilters
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1223,67 +905,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
     forced_id = 23025 # int | The new classification Id.
-    reason = "W" # str | The reason of this new classification.
-    project_filters = ProjectFilters(
-        taxo="12,7654,5409",
-        taxochild="Y",
-        statusfilter="NV",
-        map_n="44.34",
-        map_w="3.88",
-        map_e="7.94",
-        map_s="42.42",
-        depthmin="10",
-        depthmax="110",
-        samples="10987,3456,987,38",
-        instrum="uvp5",
-        daytime="N,A",
-        month="11,12",
-        fromdate="2020-10-09",
-        todate="2021-10-09",
-        fromtime="1:17:00",
-        totime="23:32:00",
-        inverttime="0",
-        validfromdate="2020-10-09 10:00:00",
-        validtodate="2021-10-09 10:00:00",
-        freenum="n01",
-        freenumst="0",
-        freenumend="999999",
-        freetxt="p01",
-        freetxtval="zooprocess",
-        filt_annot="34,67,67",
-        filt_last_annot="34,67",
-    ) # ProjectFilters | 
+    reason = 'W' # str | The reason of this new classification.
+    project_filters = ecotaxa_py_client.ProjectFilters() # ProjectFilters | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Reclassify Object Set
         api_response = api_instance.reclassify_object_set(project_id, forced_id, reason, project_filters)
+        print("The response of ObjectsApi->reclassify_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->reclassify_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **forced_id** | **int**| The new classification Id. |
- **reason** | **str**| The reason of this new classification. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **forced_id** | **int**| The new classification Id. | 
+ **reason** | **str**| The reason of this new classification. | 
+ **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  | 
 
 ### Return type
 
@@ -1298,7 +950,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1309,7 +960,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_object_set_to_predicted**
-> bool, date, datetime, dict, float, int, list, str, none_type reset_object_set_to_predicted(project_id, project_filters)
+> object reset_object_set_to_predicted(project_id, project_filters)
 
 Reset Object Set To Predicted
 
@@ -1320,12 +971,11 @@ Reset Object Set To Predicted
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.project_filters import ProjectFilters
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1337,67 +987,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
-    project_filters = ProjectFilters(
-        taxo="12,7654,5409",
-        taxochild="Y",
-        statusfilter="NV",
-        map_n="44.34",
-        map_w="3.88",
-        map_e="7.94",
-        map_s="42.42",
-        depthmin="10",
-        depthmax="110",
-        samples="10987,3456,987,38",
-        instrum="uvp5",
-        daytime="N,A",
-        month="11,12",
-        fromdate="2020-10-09",
-        todate="2021-10-09",
-        fromtime="1:17:00",
-        totime="23:32:00",
-        inverttime="0",
-        validfromdate="2020-10-09 10:00:00",
-        validtodate="2021-10-09 10:00:00",
-        freenum="n01",
-        freenumst="0",
-        freenumend="999999",
-        freetxt="p01",
-        freetxtval="zooprocess",
-        filt_annot="34,67,67",
-        filt_last_annot="34,67",
-    ) # ProjectFilters | 
+    project_filters = ecotaxa_py_client.ProjectFilters() # ProjectFilters | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Reset Object Set To Predicted
         api_response = api_instance.reset_object_set_to_predicted(project_id, project_filters)
+        print("The response of ObjectsApi->reset_object_set_to_predicted:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->reset_object_set_to_predicted: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -1407,7 +1027,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1419,7 +1038,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revert_object_set_to_history**
-> ObjectSetRevertToHistoryRsp revert_object_set_to_history(project_id, dry_run, project_filters)
+> ObjectSetRevertToHistoryRsp revert_object_set_to_history(project_id, dry_run, project_filters, target=target)
 
 Revert Object Set To History
 
@@ -1430,13 +1049,12 @@ Revert Object Set To History
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.project_filters import ProjectFilters
-from ecotaxa_py_client.model.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
+from ecotaxa_py_client.models.object_set_revert_to_history_rsp import ObjectSetRevertToHistoryRsp
+from ecotaxa_py_client.models.project_filters import ProjectFilters
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1448,76 +1066,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
-    dry_run = False # bool | If set, then no real write but consequences of the revert will be replied.
-    project_filters = ProjectFilters(
-        taxo="12,7654,5409",
-        taxochild="Y",
-        statusfilter="NV",
-        map_n="44.34",
-        map_w="3.88",
-        map_e="7.94",
-        map_s="42.42",
-        depthmin="10",
-        depthmax="110",
-        samples="10987,3456,987,38",
-        instrum="uvp5",
-        daytime="N,A",
-        month="11,12",
-        fromdate="2020-10-09",
-        todate="2021-10-09",
-        fromtime="1:17:00",
-        totime="23:32:00",
-        inverttime="0",
-        validfromdate="2020-10-09 10:00:00",
-        validtodate="2021-10-09 10:00:00",
-        freenum="n01",
-        freenumst="0",
-        freenumend="999999",
-        freetxt="p01",
-        freetxtval="zooprocess",
-        filt_annot="34,67,67",
-        filt_last_annot="34,67",
-    ) # ProjectFilters | 
+    dry_run = false # bool | If set, then no real write but consequences of the revert will be replied.
+    project_filters = ecotaxa_py_client.ProjectFilters() # ProjectFilters | 
     target = 465 # int | Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Revert Object Set To History
-        api_response = api_instance.revert_object_set_to_history(project_id, dry_run, project_filters)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling ObjectsApi->revert_object_set_to_history: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Revert Object Set To History
         api_response = api_instance.revert_object_set_to_history(project_id, dry_run, project_filters, target=target)
+        print("The response of ObjectsApi->revert_object_set_to_history:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->revert_object_set_to_history: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **dry_run** | **bool**| If set, then no real write but consequences of the revert will be replied. |
- **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  |
- **target** | **int**| Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. | [optional]
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **dry_run** | **bool**| If set, then no real write but consequences of the revert will be replied. | 
+ **project_filters** | [**ProjectFilters**](ProjectFilters.md)|  | 
+ **target** | **int**| Use null/None for reverting using the last annotation from anyone, or a user id for the last annotation from this user. | [optional] 
 
 ### Return type
 
@@ -1531,7 +1110,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1554,12 +1132,11 @@ Do the required **update for each objects in the set.**  **Returns the number of
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import objects_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
+from ecotaxa_py_client.models.bulk_update_req import BulkUpdateReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1571,41 +1148,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = objects_api.ObjectsApi(api_client)
-    bulk_update_req = BulkUpdateReq(
-        target_ids=[1,5,290],
-        updates=[
-            ColUpdate(
-                ucol="ucol_example",
-                uval="uval_example",
-            ),
-        ],
-    ) # BulkUpdateReq | 
+    api_instance = ecotaxa_py_client.ObjectsApi(api_client)
+    bulk_update_req = ecotaxa_py_client.BulkUpdateReq() # BulkUpdateReq | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update Object Set
         api_response = api_instance.update_object_set(bulk_update_req)
+        print("The response of ObjectsApi->update_object_set:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling ObjectsApi->update_object_set: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
+ **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  | 
 
 ### Return type
 
@@ -1619,7 +1186,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 

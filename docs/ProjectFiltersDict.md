@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **taxo** | **str** |  | [optional] 
@@ -31,8 +32,24 @@ Name | Type | Description | Notes
 **freetxtval** | **str** |  | [optional] 
 **filt_annot** | **str** |  | [optional] 
 **filt_last_annot** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from ecotaxa_py_client.models.project_filters_dict import ProjectFiltersDict
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ProjectFiltersDict from a JSON string
+project_filters_dict_instance = ProjectFiltersDict.from_json(json)
+# print the JSON string representation of the object
+print(ProjectFiltersDict.to_json())
+
+# convert the object into a dict
+project_filters_dict_dict = project_filters_dict_instance.to_dict()
+# create an instance of ProjectFiltersDict from a dict
+project_filters_dict_form_dict = project_filters_dict.from_dict(project_filters_dict_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

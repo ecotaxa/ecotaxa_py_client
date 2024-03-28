@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **do_nothing**
-> bool, date, datetime, dict, float, int, list, str, none_type do_nothing()
+> ResponseDoNothingNoopGet do_nothing()
 
 Do Nothing
 
@@ -22,10 +22,11 @@ Do Nothing
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import misc_api
+from ecotaxa_py_client.models.response_do_nothing_noop_get import ResponseDoNothingNoopGet
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -37,33 +38,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = misc_api.MiscApi(api_client)
+    api_instance = ecotaxa_py_client.MiscApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Do Nothing
         api_response = api_instance.do_nothing()
+        print("The response of MiscApi->do_nothing:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling MiscApi->do_nothing: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+[**ResponseDoNothingNoopGet**](ResponseDoNothingNoopGet.md)
 
 ### Authorization
 
@@ -73,7 +72,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -84,7 +82,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_ml_models**
-> [MLModel] query_ml_models()
+> List[MLModel] query_ml_models()
 
 Query Ml Models
 
@@ -94,11 +92,11 @@ Query Ml Models
 
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import misc_api
-from ecotaxa_py_client.model.ml_model import MLModel
+from ecotaxa_py_client.models.ml_model import MLModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -109,24 +107,26 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = misc_api.MiscApi(api_client)
+    api_instance = ecotaxa_py_client.MiscApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Query Ml Models
         api_response = api_instance.query_ml_models()
+        print("The response of MiscApi->query_ml_models:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling MiscApi->query_ml_models: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MLModel]**](MLModel.md)
+[**List[MLModel]**](MLModel.md)
 
 ### Authorization
 
@@ -137,7 +137,6 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -147,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **system_error**
-> bool, date, datetime, dict, float, int, list, str, none_type system_error()
+> object system_error()
 
 System Error
 
@@ -158,10 +157,10 @@ System Error
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import misc_api
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -173,33 +172,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = misc_api.MiscApi(api_client)
+    api_instance = ecotaxa_py_client.MiscApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # System Error
         api_response = api_instance.system_error()
+        print("The response of MiscApi->system_error:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling MiscApi->system_error: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -209,7 +206,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -230,11 +226,11 @@ Used Constants
 
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import misc_api
-from ecotaxa_py_client.model.constants import Constants
+from ecotaxa_py_client.models.constants import Constants
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -245,19 +241,21 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = misc_api.MiscApi(api_client)
+    api_instance = ecotaxa_py_client.MiscApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Used Constants
         api_response = api_instance.used_constants()
+        print("The response of MiscApi->used_constants:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling MiscApi->used_constants: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -272,7 +270,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 

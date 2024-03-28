@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **instrument_query**
-> [str] instrument_query(project_ids)
+> List[str] instrument_query(project_ids)
 
 Instrument Query
 
@@ -18,11 +18,10 @@ Returns the list of instruments, inside specific project(s) or globally.
 
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import instruments_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -33,28 +32,30 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = instruments_api.InstrumentsApi(api_client)
-    project_ids = "1,2,3" # str | String containing the list of one or more project ids, separated by non-num char, or 'all' for all instruments.
+    api_instance = ecotaxa_py_client.InstrumentsApi(api_client)
+    project_ids = '1,2,3' # str | String containing the list of one or more project ids, separated by non-num char, or 'all' for all instruments.
 
-    # example passing only required values which don't have defaults set
     try:
         # Instrument Query
         api_response = api_instance.instrument_query(project_ids)
+        print("The response of InstrumentsApi->instrument_query:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling InstrumentsApi->instrument_query: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_ids** | **str**| String containing the list of one or more project ids, separated by non-num char, or &#39;all&#39; for all instruments. |
+ **project_ids** | **str**| String containing the list of one or more project ids, separated by non-num char, or &#39;all&#39; for all instruments. | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -64,7 +65,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 

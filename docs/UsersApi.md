@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **activate_user**
-> bool, date, datetime, dict, float, int, list, str, none_type activate_user(user_id, status, unknown_base_type)
+> object activate_user(user_id, status, user_activate_req, no_bot=no_bot)
 
 Activate User
 
@@ -31,12 +31,11 @@ Activate a new user if external validation is on., return **NULL upon success.**
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.unknownbasetype import UNKNOWNBASETYPE
+from ecotaxa_py_client.models.user_activate_req import UserActivateReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -48,54 +47,41 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
     user_id = 1 # int | Internal, the unique numeric id of this user.
-    status = "1" # str | Internal, the status name assign to this user.
-    unknown_base_type = None # UNKNOWN_BASE_TYPE | 
-    no_bot = [
-        "['127.0.0.1', 'ffqsdfsdf']",
-    ] # [str] | not-a-robot proof (optional)
+    status = '1' # str | Internal, the status name assign to this user.
+    user_activate_req = ecotaxa_py_client.UserActivateReq() # UserActivateReq | 
+    no_bot = ['['127.0.0.1', 'ffqsdfsdf']'] # List[str] | not-a-robot proof (optional)
 
-    # example passing only required values which don't have defaults set
     try:
         # Activate User
-        api_response = api_instance.activate_user(user_id, status, unknown_base_type)
+        api_response = api_instance.activate_user(user_id, status, user_activate_req, no_bot=no_bot)
+        print("The response of UsersApi->activate_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->activate_user: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Activate User
-        api_response = api_instance.activate_user(user_id, status, unknown_base_type, no_bot=no_bot)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->activate_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, the unique numeric id of this user. |
- **status** | **str**| Internal, the status name assign to this user. |
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  |
- **no_bot** | **[str]**| not-a-robot proof | [optional]
+ **user_id** | **int**| Internal, the unique numeric id of this user. | 
+ **status** | **str**| Internal, the status name assign to this user. | 
+ **user_activate_req** | [**UserActivateReq**](UserActivateReq.md)|  | 
+ **no_bot** | [**List[str]**](str.md)| not-a-robot proof | [optional] 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -105,7 +91,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -117,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_user**
-> bool, date, datetime, dict, float, int, list, str, none_type create_user(user_model_with_rights)
+> object create_user(user_model_with_rights, no_bot=no_bot, token=token)
 
 Create User
 
@@ -128,12 +113,11 @@ Create User
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.models.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -145,73 +129,39 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
-    user_model_with_rights = UserModelWithRights(
-        id=1,
-        email="ecotaxa.api.user@gmail.com",
-        password="$foobar45$",
-        name="userName",
-        organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-        status=1,
-        status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        status_admin_comment="",
-        country="France",
-        usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        usercreationreason="Analysis of size and shapes of plastic particles",
-        mail_status=True,
-        mail_status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        can_do=[1,4],
-        last_used_projects=[
-            ProjectSummaryModel(
-                projid=1,
-                title="Zooscan Tara Med",
-            ),
-        ],
-    ) # UserModelWithRights | 
-    no_bot = [
-        "['127.0.0.1', 'ffqsdfsdf']",
-    ] # [str] | not-a-robot proof (optional)
-    token = "token_example" # str | token in the url to validate request (optional)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
+    user_model_with_rights = ecotaxa_py_client.UserModelWithRights() # UserModelWithRights | 
+    no_bot = ['['127.0.0.1', 'ffqsdfsdf']'] # List[str] | not-a-robot proof (optional)
+    token = 'token_example' # str | token in the url to validate request (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Create User
-        api_response = api_instance.create_user(user_model_with_rights)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->create_user: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Create User
         api_response = api_instance.create_user(user_model_with_rights, no_bot=no_bot, token=token)
+        print("The response of UsersApi->create_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->create_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  |
- **no_bot** | **[str]**| not-a-robot proof | [optional]
- **token** | **str**| token in the url to validate request | [optional]
+ **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  | 
+ **no_bot** | [**List[str]**](str.md)| not-a-robot proof | [optional] 
+ **token** | **str**| token in the url to validate request | [optional] 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -221,7 +171,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -233,7 +182,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_admin_users**
-> [MinUserModel] get_admin_users()
+> List[MinUserModel] get_admin_users()
 
 Get Admin Users
 
@@ -244,11 +193,11 @@ Get Admin Users
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.min_user_model import MinUserModel
+from ecotaxa_py_client.models.min_user_model import MinUserModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -260,33 +209,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Get Admin Users
         api_response = api_instance.get_admin_users()
+        print("The response of UsersApi->get_admin_users:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_admin_users: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MinUserModel]**](MinUserModel.md)
+[**List[MinUserModel]**](MinUserModel.md)
 
 ### Authorization
 
@@ -296,7 +243,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -318,11 +264,10 @@ Get Current User Prefs
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -334,35 +279,33 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
-    key = "filters" # str | The preference key, as text.
+    key = 'filters' # str | The preference key, as text.
 
-    # example passing only required values which don't have defaults set
     try:
         # Get Current User Prefs
         api_response = api_instance.get_current_user_prefs(project_id, key)
+        print("The response of UsersApi->get_current_user_prefs:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_current_user_prefs: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **key** | **str**| The preference key, as text. | 
 
 ### Return type
 
@@ -376,7 +319,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -399,12 +341,11 @@ Returns **information about the user** corresponding to the given id.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.min_user_model import MinUserModel
+from ecotaxa_py_client.models.min_user_model import MinUserModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -416,33 +357,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
     user_id = 1 # int | Internal, the unique numeric id of this user.
 
-    # example passing only required values which don't have defaults set
     try:
         # Get User
         api_response = api_instance.get_user(user_id)
+        print("The response of UsersApi->get_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, the unique numeric id of this user. |
+ **user_id** | **int**| Internal, the unique numeric id of this user. | 
 
 ### Return type
 
@@ -457,7 +396,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -468,7 +406,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> [UserModelWithRights] get_users()
+> List[UserModelWithRights] get_users(ids=ids)
 
 Get Users
 
@@ -479,12 +417,11 @@ Returns the list of **all users** with their full information, or just some of t
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.models.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -496,38 +433,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
-    ids = "1" # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. (optional) if omitted the server will use the default value of ""
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
+    ids = '' # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. (optional) (default to '')
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Get Users
         api_response = api_instance.get_users(ids=ids)
+        print("The response of UsersApi->get_users:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_users: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. | [optional] if omitted the server will use the default value of ""
+ **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. | [optional] [default to &#39;&#39;]
 
 ### Return type
 
-[**[UserModelWithRights]**](UserModelWithRights.md)
+[**List[UserModelWithRights]**](UserModelWithRights.md)
 
 ### Authorization
 
@@ -537,7 +471,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -549,7 +482,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users_admins**
-> [MinUserModel] get_users_admins()
+> List[MinUserModel] get_users_admins()
 
 Get Users Admins
 
@@ -559,11 +492,11 @@ Get Users Admins
 
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.min_user_model import MinUserModel
+from ecotaxa_py_client.models.min_user_model import MinUserModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -574,24 +507,26 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Get Users Admins
         api_response = api_instance.get_users_admins()
+        print("The response of UsersApi->get_users_admins:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_users_admins: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MinUserModel]**](MinUserModel.md)
+[**List[MinUserModel]**](MinUserModel.md)
 
 ### Authorization
 
@@ -602,7 +537,6 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -612,7 +546,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_user_password**
-> bool, date, datetime, dict, float, int, list, str, none_type reset_user_password(reset_password_req)
+> object reset_user_password(reset_password_req, no_bot=no_bot, token=token)
 
 Reset User Password
 
@@ -623,12 +557,11 @@ reset user password **return NULL on success**  🔒 Depending on logged user, d
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.reset_password_req import ResetPasswordReq
+from ecotaxa_py_client.models.reset_password_req import ResetPasswordReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -640,56 +573,39 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
-    reset_password_req = ResetPasswordReq(
-        id=1,
-        email="email_example",
-        password="password_example",
-    ) # ResetPasswordReq | 
-    no_bot = [
-        "['127.0.0.1', 'ffqsdfsdf']",
-    ] # [str] | not-a-robot proof (optional)
-    token = "token_example" # str | token in the url to validate request (optional)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
+    reset_password_req = ecotaxa_py_client.ResetPasswordReq() # ResetPasswordReq | 
+    no_bot = ['['127.0.0.1', 'ffqsdfsdf']'] # List[str] | not-a-robot proof (optional)
+    token = 'token_example' # str | token in the url to validate request (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Reset User Password
-        api_response = api_instance.reset_user_password(reset_password_req)
-        pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
-        print("Exception when calling UsersApi->reset_user_password: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Reset User Password
         api_response = api_instance.reset_user_password(reset_password_req, no_bot=no_bot, token=token)
+        print("The response of UsersApi->reset_user_password:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->reset_user_password: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reset_password_req** | [**ResetPasswordReq**](ResetPasswordReq.md)|  |
- **no_bot** | **[str]**| not-a-robot proof | [optional]
- **token** | **str**| token in the url to validate request | [optional]
+ **reset_password_req** | [**ResetPasswordReq**](ResetPasswordReq.md)|  | 
+ **no_bot** | [**List[str]**](str.md)| not-a-robot proof | [optional] 
+ **token** | **str**| token in the url to validate request | [optional] 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -699,7 +615,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -711,7 +626,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_organizations**
-> [str] search_organizations(name)
+> List[str] search_organizations(name)
 
 Search Organizations
 
@@ -721,11 +636,10 @@ Search Organizations
 
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -736,28 +650,30 @@ configuration = ecotaxa_py_client.Configuration(
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
-    name = "%vill%" # str | Search by name, use % for searching with 'any char'.
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
+    name = '%vill%' # str | Search by name, use % for searching with 'any char'.
 
-    # example passing only required values which don't have defaults set
     try:
         # Search Organizations
         api_response = api_instance.search_organizations(name)
+        print("The response of UsersApi->search_organizations:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->search_organizations: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Search by name, use % for searching with &#39;any char&#39;. |
+ **name** | **str**| Search by name, use % for searching with &#39;any char&#39;. | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -767,7 +683,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -779,7 +694,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user**
-> [MinUserModel] search_user()
+> List[MinUserModel] search_user(by_name=by_name)
 
 Search User
 
@@ -790,12 +705,11 @@ Search User
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.min_user_model import MinUserModel
+from ecotaxa_py_client.models.min_user_model import MinUserModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -807,38 +721,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
-    by_name = "%userNa%" # str | Search by name, use % for searching with 'any char'. (optional)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
+    by_name = '%userNa%' # str | Search by name, use % for searching with 'any char'. (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Search User
         api_response = api_instance.search_user(by_name=by_name)
+        print("The response of UsersApi->search_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->search_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **by_name** | **str**| Search by name, use % for searching with &#39;any char&#39;. | [optional]
+ **by_name** | **str**| Search by name, use % for searching with &#39;any char&#39;. | [optional] 
 
 ### Return type
 
-[**[MinUserModel]**](MinUserModel.md)
+[**List[MinUserModel]**](MinUserModel.md)
 
 ### Authorization
 
@@ -848,7 +759,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -860,7 +770,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_current_user_prefs**
-> bool, date, datetime, dict, float, int, list, str, none_type set_current_user_prefs(project_id, key, value)
+> object set_current_user_prefs(project_id, key, value)
 
 Set Current User Prefs
 
@@ -871,11 +781,10 @@ Set Current User Prefs
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -887,41 +796,39 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
     project_id = 1 # int | Internal, numeric id of the project.
-    key = "filters" # str | The preference key, as text.
-    value = "{"dispfield": " dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value", "ipp": "500", "magenabled": "1", "popupenabled": "1", "sortby": "orig_id", "sortorder": "asc", "statusfilter": "", "zoom": "90"}" # str | The value to set this preference to, as text.
+    key = 'filters' # str | The preference key, as text.
+    value = '{\"dispfield\": \" dispfield_orig_id dispfield_classif_auto_score dispfield_classif_when dispfield_random_value\", \"ipp\": \"500\", \"magenabled\": \"1\", \"popupenabled\": \"1\", \"sortby\": \"orig_id\", \"sortorder\": \"asc\", \"statusfilter\": \"\", \"zoom\": \"90\"}' # str | The value to set this preference to, as text.
 
-    # example passing only required values which don't have defaults set
     try:
         # Set Current User Prefs
         api_response = api_instance.set_current_user_prefs(project_id, key, value)
+        print("The response of UsersApi->set_current_user_prefs:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->set_current_user_prefs: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Internal, numeric id of the project. |
- **key** | **str**| The preference key, as text. |
- **value** | **str**| The value to set this preference to, as text. |
+ **project_id** | **int**| Internal, numeric id of the project. | 
+ **key** | **str**| The preference key, as text. | 
+ **value** | **str**| The value to set this preference to, as text. | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -931,7 +838,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -954,11 +860,11 @@ Returns **currently authenticated user's** (i.e. you) information, permissions a
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.models.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -970,28 +876,26 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Show Current User
         api_response = api_instance.show_current_user()
+        print("The response of UsersApi->show_current_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->show_current_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1007,7 +911,6 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1017,7 +920,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> bool, date, datetime, dict, float, int, list, str, none_type update_user(user_id, user_model_with_rights)
+> object update_user(user_id, user_model_with_rights)
 
 Update User
 
@@ -1028,12 +931,11 @@ Update User
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import users_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.models.user_model_with_rights import UserModelWithRights
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -1045,60 +947,37 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = users_api.UsersApi(api_client)
+    api_instance = ecotaxa_py_client.UsersApi(api_client)
     user_id = 760 # int | Internal, numeric id of the user.
-    user_model_with_rights = UserModelWithRights(
-        id=1,
-        email="ecotaxa.api.user@gmail.com",
-        password="$foobar45$",
-        name="userName",
-        organisation="Oceanographic Laboratory of Villefranche sur Mer - LOV",
-        status=1,
-        status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        status_admin_comment="",
-        country="France",
-        usercreationdate=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        usercreationreason="Analysis of size and shapes of plastic particles",
-        mail_status=True,
-        mail_status_date=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        can_do=[1,4],
-        last_used_projects=[
-            ProjectSummaryModel(
-                projid=1,
-                title="Zooscan Tara Med",
-            ),
-        ],
-    ) # UserModelWithRights | 
+    user_model_with_rights = ecotaxa_py_client.UserModelWithRights() # UserModelWithRights | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update User
         api_response = api_instance.update_user(user_id, user_model_with_rights)
+        print("The response of UsersApi->update_user:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->update_user: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Internal, numeric id of the user. |
- **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  |
+ **user_id** | **int**| Internal, numeric id of the user. | 
+ **user_model_with_rights** | [**UserModelWithRights**](UserModelWithRights.md)|  | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -1108,7 +987,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 

@@ -21,12 +21,11 @@ Returns **information about the acquisition** corresponding to the given id.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import acquisitions_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
+from ecotaxa_py_client.models.acquisition_model import AcquisitionModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -38,33 +37,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = acquisitions_api.AcquisitionsApi(api_client)
+    api_instance = ecotaxa_py_client.AcquisitionsApi(api_client)
     acquisition_id = 1 # int | Internal, the unique numeric id of this acquisition.
 
-    # example passing only required values which don't have defaults set
     try:
         # Acquisition Query
         api_response = api_instance.acquisition_query(acquisition_id)
+        print("The response of AcquisitionsApi->acquisition_query:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling AcquisitionsApi->acquisition_query: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acquisition_id** | **int**| Internal, the unique numeric id of this acquisition. |
+ **acquisition_id** | **int**| Internal, the unique numeric id of this acquisition. | 
 
 ### Return type
 
@@ -79,7 +76,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -90,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **acquisitions_search**
-> [AcquisitionModel] acquisitions_search(project_id)
+> List[AcquisitionModel] acquisitions_search(project_id)
 
 Acquisitions Search
 
@@ -101,12 +97,11 @@ Returns the **list of all acquisitions for a given project**.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import acquisitions_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.acquisition_model import AcquisitionModel
+from ecotaxa_py_client.models.acquisition_model import AcquisitionModel
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -118,37 +113,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = acquisitions_api.AcquisitionsApi(api_client)
+    api_instance = ecotaxa_py_client.AcquisitionsApi(api_client)
     project_id = 1 # int | The project id.
 
-    # example passing only required values which don't have defaults set
     try:
         # Acquisitions Search
         api_response = api_instance.acquisitions_search(project_id)
+        print("The response of AcquisitionsApi->acquisitions_search:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling AcquisitionsApi->acquisitions_search: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| The project id. |
+ **project_id** | **int**| The project id. | 
 
 ### Return type
 
-[**[AcquisitionModel]**](AcquisitionModel.md)
+[**List[AcquisitionModel]**](AcquisitionModel.md)
 
 ### Authorization
 
@@ -158,7 +151,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -181,12 +173,11 @@ Do the required **update for each acquisition in the set**.  **Return the number
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import acquisitions_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
-from ecotaxa_py_client.model.bulk_update_req import BulkUpdateReq
+from ecotaxa_py_client.models.bulk_update_req import BulkUpdateReq
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -198,41 +189,31 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = acquisitions_api.AcquisitionsApi(api_client)
-    bulk_update_req = BulkUpdateReq(
-        target_ids=[1,5,290],
-        updates=[
-            ColUpdate(
-                ucol="ucol_example",
-                uval="uval_example",
-            ),
-        ],
-    ) # BulkUpdateReq | 
+    api_instance = ecotaxa_py_client.AcquisitionsApi(api_client)
+    bulk_update_req = ecotaxa_py_client.BulkUpdateReq() # BulkUpdateReq | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update Acquisitions
         api_response = api_instance.update_acquisitions(bulk_update_req)
+        print("The response of AcquisitionsApi->update_acquisitions:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling AcquisitionsApi->update_acquisitions: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  |
+ **bulk_update_req** | [**BulkUpdateReq**](BulkUpdateReq.md)|  | 
 
 ### Return type
 
@@ -246,7 +227,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 

@@ -3,13 +3,30 @@
 Prediction response.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**errors** | **[str]** | Showstopper problems found while preparing the prediction. | [optional]  if omitted the server will use the default value of []
-**warnings** | **[str]** | Problems found while preparing the prediction. | [optional]  if omitted the server will use the default value of []
-**job_id** | **int** | The created job, 0 if there were problems. | [optional]  if omitted the server will use the default value of 0
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**errors** | **List[str]** | Showstopper problems found while preparing the prediction. | [optional] [default to []]
+**warnings** | **List[str]** | Problems found while preparing the prediction. | [optional] [default to []]
+**job_id** | **int** | The created job, 0 if there were problems. | [optional] [default to 0]
 
+## Example
+
+```python
+from ecotaxa_py_client.models.prediction_rsp import PredictionRsp
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PredictionRsp from a JSON string
+prediction_rsp_instance = PredictionRsp.from_json(json)
+# print the JSON string representation of the object
+print(PredictionRsp.to_json())
+
+# convert the object into a dict
+prediction_rsp_dict = prediction_rsp_instance.to_dict()
+# create an instance of PredictionRsp from a dict
+prediction_rsp_form_dict = prediction_rsp.from_dict(prediction_rsp_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

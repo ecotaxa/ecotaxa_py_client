@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **db_direct_query**
-> bool, date, datetime, dict, float, int, list, str, none_type db_direct_query(q)
+> object db_direct_query(q)
 
 Direct Db Query
 
@@ -19,11 +19,10 @@ For making selects on the DB. 🔒 Admin only.
 * OAuth Authentication (BearerOrCookieAuth):
 
 ```python
-import time
 import ecotaxa_py_client
-from ecotaxa_py_client.api import admin_api
-from ecotaxa_py_client.model.http_validation_error import HTTPValidationError
+from ecotaxa_py_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
@@ -35,37 +34,35 @@ configuration = ecotaxa_py_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: BearerOrCookieAuth
-configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = admin_api.AdminApi(api_client)
-    q = "select count(1) from objects" # str | The SQL to execute.
+    api_instance = ecotaxa_py_client.AdminApi(api_client)
+    q = 'select count(1) from objects' # str | The SQL to execute.
 
-    # example passing only required values which don't have defaults set
     try:
         # Direct Db Query
         api_response = api_instance.db_direct_query(q)
+        print("The response of AdminApi->db_direct_query:\n")
         pprint(api_response)
-    except ecotaxa_py_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling AdminApi->db_direct_query: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| The SQL to execute. |
+ **q** | **str**| The SQL to execute. | 
 
 ### Return type
 
-**bool, date, datetime, dict, float, int, list, str, none_type**
+**object**
 
 ### Authorization
 
@@ -75,7 +72,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
