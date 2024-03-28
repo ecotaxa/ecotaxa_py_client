@@ -37,13 +37,14 @@ class UserModelWithRights(BaseModel):
     status_date: Optional[datetime] = Field(default=None, description="Timestamp status modification date")
     status_admin_comment: Optional[StrictStr] = Field(default=None, description="Optional Users admininistrator comment about the account status.")
     country: Optional[StrictStr] = Field(default=None, description="The country name, as text (but chosen in a consistent list).")
+    orcid: Optional[StrictStr] = Field(default=None, description="The orcid id https://support.orcid.org.")
     usercreationdate: Optional[datetime] = Field(default=None, description="The date of creation of the user, as text formatted according to the ISO 8601 standard.")
     usercreationreason: Optional[StrictStr] = Field(default=None, description="Paragraph describing the usage of EcoTaxa made by the user.")
     mail_status: Optional[StrictBool] = Field(default=None, description="True for verified, False for waiting for verification, None for no action.")
     mail_status_date: Optional[datetime] = Field(default=None, description="Timestamp mail status modification date")
     can_do: Optional[List[StrictInt]] = Field(default=None, description="List of User's allowed actions : 1 create a project, 2 administrate the app, 3 administrate users, 4 create taxon.")
     last_used_projects: Optional[List[ProjectSummaryModel]] = Field(default=None, description="List of User's last used projects.")
-    __properties: ClassVar[List[str]] = ["id", "email", "password", "name", "organisation", "status", "status_date", "status_admin_comment", "country", "usercreationdate", "usercreationreason", "mail_status", "mail_status_date", "can_do", "last_used_projects"]
+    __properties: ClassVar[List[str]] = ["id", "email", "password", "name", "organisation", "status", "status_date", "status_admin_comment", "country", "orcid", "usercreationdate", "usercreationreason", "mail_status", "mail_status_date", "can_do", "last_used_projects"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -112,6 +113,7 @@ class UserModelWithRights(BaseModel):
             "status_date": obj.get("status_date"),
             "status_admin_comment": obj.get("status_admin_comment"),
             "country": obj.get("country"),
+            "orcid": obj.get("orcid"),
             "usercreationdate": obj.get("usercreationdate"),
             "usercreationreason": obj.get("usercreationreason"),
             "mail_status": obj.get("mail_status"),

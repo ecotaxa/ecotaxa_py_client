@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **status_date** | **datetime** | Timestamp status modification date | [optional] 
 **status_admin_comment** | **str** | Optional Users admininistrator comment about the account status. | [optional] 
 **country** | **str** | The country name, as text (but chosen in a consistent list). | [optional] 
+**orcid** | **str** | The orcid id https://support.orcid.org. | [optional] 
 **usercreationdate** | **datetime** | The date of creation of the user, as text formatted according to the ISO 8601 standard. | [optional] 
 **usercreationreason** | **str** | Paragraph describing the usage of EcoTaxa made by the user. | [optional] 
 **mail_status** | **bool** | True for verified, False for waiting for verification, None for no action. | [optional] 

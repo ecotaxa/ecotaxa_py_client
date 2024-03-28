@@ -31,14 +31,13 @@ class Constants(BaseModel):
     app_manager: Optional[Annotated[List[StrictStr], Field(min_length=2, max_length=2)]] = Field(default=None, description="The application manager identity (name, mail), from config file.")
     countries: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="List of known countries names.")
     user_status: Optional[Dict[str, StrictInt]] = Field(default=None, description="Application User status values")
-    password_regexp: Optional[StrictStr] = Field(default='^(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#?%^&*-+])).{8,20}$', description="8 char. minimum, at least one uppercase, one lowercase, one number and one special char in '#?!@%^&*-' ")
+    password_regexp: Optional[StrictStr] = Field(default='^(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#?%^&*-+])).{8,20}$', description="8 char. minimum, at least one uppercase, one lowercase, one number and one special char in '#?!@%^&*-+' ")
     email_verification: Optional[StrictBool] = Field(default=True, description="Require verification before activation.")
     account_validation: Optional[StrictBool] = Field(default=False, description="Require validation by a Users Administrator before activation.")
     short_token_age: Optional[StrictInt] = Field(default=1, description="Email confirmation, password reset token lifespan.")
     profile_token_age: Optional[StrictInt] = Field(default=24, description="Profile modification token lifespan.")
     recaptchaid: Optional[StrictBool] = Field(default=False, description="use Google ReCaptcha")
-    add_ticket: Optional[StrictStr] = Field(default='', description="string separator, permits to add ticket number when asking more information before user validation")
-    __properties: ClassVar[List[str]] = ["license_texts", "app_manager", "countries", "user_status", "password_regexp", "email_verification", "account_validation", "short_token_age", "profile_token_age", "recaptchaid", "add_ticket"]
+    __properties: ClassVar[List[str]] = ["license_texts", "app_manager", "countries", "user_status", "password_regexp", "email_verification", "account_validation", "short_token_age", "profile_token_age", "recaptchaid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,8 +99,7 @@ class Constants(BaseModel):
             "account_validation": obj.get("account_validation") if obj.get("account_validation") is not None else False,
             "short_token_age": obj.get("short_token_age") if obj.get("short_token_age") is not None else 1,
             "profile_token_age": obj.get("profile_token_age") if obj.get("profile_token_age") is not None else 24,
-            "recaptchaid": obj.get("recaptchaid") if obj.get("recaptchaid") is not None else False,
-            "add_ticket": obj.get("add_ticket") if obj.get("add_ticket") is not None else ''
+            "recaptchaid": obj.get("recaptchaid") if obj.get("recaptchaid") is not None else False
         })
         return _obj
 
