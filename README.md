@@ -18,9 +18,9 @@ Python 3.7+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/ecotaxa/ecotaxa_py_client.git
+pip install git+https://github.com/ecotaxa/ecotaxa_py_client.git@v2
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/ecotaxa/ecotaxa_py_client.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/ecotaxa/ecotaxa_py_client.git@v2`)
 
 Then import the package:
 ```python
