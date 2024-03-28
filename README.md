@@ -60,8 +60,7 @@ import os
 # Defining the host is optional and defaults to https://ecotaxa.obs-vlfr.fr/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ecotaxa_py_client.Configuration(
-    host = "https://ecotaxa.obs-vlfr.fr/api",
-    discard_unknown_keys = True
+    host = "https://ecotaxa.obs-vlfr.fr/api"
 )
 # In case of ssl error
 configuration.verify_ssl=False
