@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.3"
+__version__ = "2.0.4"
 
 # import apis into sdk package
 from ecotaxa_py_client.api.files_api import FilesApi

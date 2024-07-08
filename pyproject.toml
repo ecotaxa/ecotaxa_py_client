@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ecotaxa_py_client"
-version = "2.0.3"
+version = "2.0.4"
 description = "EcoTaxa"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "NoLicense"
