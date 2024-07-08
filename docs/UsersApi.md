@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> List[UserModelWithRights] get_users(ids=ids)
+> List[UserModelWithRights] get_users(ids=ids, summary=summary)
 
 Get Users
 
@@ -440,10 +440,11 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = ecotaxa_py_client.UsersApi(api_client)
     ids = '' # str | String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. (optional) (default to '')
+    summary = true # bool | Return users except rights and last_used_projects if set to True. For users list display purpose. (optional)
 
     try:
         # Get Users
-        api_response = api_instance.get_users(ids=ids)
+        api_response = api_instance.get_users(ids=ids, summary=summary)
         print("The response of UsersApi->get_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -458,6 +459,7 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ids** | **str**| String containing the list of one or more id separated by non-num char.     **If several ids are provided**, one full info is returned per user. | [optional] [default to &#39;&#39;]
+ **summary** | **bool**| Return users except rights and last_used_projects if set to True. For users list display purpose. | [optional] 
 
 ### Return type
 
