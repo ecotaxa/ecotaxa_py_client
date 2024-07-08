@@ -32,7 +32,7 @@ class ProjectModel(BaseModel):
     sample_free_cols: Optional[Dict[str, StrictStr]] = Field(default=None, description="Sample free columns.")
     acquisition_free_cols: Optional[Dict[str, StrictStr]] = Field(default=None, description="Acquisition free columns.")
     process_free_cols: Optional[Dict[str, StrictStr]] = Field(default=None, description="Process free columns.")
-    bodc_variables: Dict[str, str] = Field(default=None, description="BODC quantities from columns. Only the 3 keys listed in example are valid.")
+    bodc_variables: Dict[str, Any] = Field(default=None, description="BODC quantities from columns. Only the 3 keys listed in example are valid.")
     init_classif_list: Optional[List[StrictInt]] = Field(default=None, description="Favorite taxa used in classification.")
     managers: Optional[List[MinUserModel]] = Field(default=None, description="Managers of this project.")
     annotators: Optional[List[MinUserModel]] = Field(default=None, description="Annotators of this project, if not manager.")

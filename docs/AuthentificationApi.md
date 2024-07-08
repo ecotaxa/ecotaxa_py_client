@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://ecotaxa.obs-vlfr.fr/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**login**](AuthentificationApi.md#login) | **POST** /login | Login
+| Method                                    | HTTP request    | Description |
+| ----------------------------------------- | --------------- | ----------- |
+| [**login**](AuthentificationApi.md#login) | **POST** /login | Login       |
 
 
 # **login**
@@ -34,7 +34,10 @@ configuration = ecotaxa_py_client.Configuration(
 with ecotaxa_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = ecotaxa_py_client.AuthentificationApi(api_client)
-    login_req = ecotaxa_py_client.LoginReq() # LoginReq | 
+    login_req = ecotaxa_py_client.LoginReq(
+        password="your_password",
+        username="your@mail.com",
+    ) # LoginReq | 
 
     try:
         # Login
@@ -50,9 +53,9 @@ with ecotaxa_py_client.ApiClient(configuration) as api_client:
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **login_req** | [**LoginReq**](LoginReq.md)|  | 
+| Name          | Type                        | Description | Notes |
+| ------------- | --------------------------- | ----------- | ----- |
+| **login_req** | [**LoginReq**](LoginReq.md) |             |
 
 ### Return type
 
@@ -69,10 +72,10 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+| Status code | Description         | Response headers |
+| ----------- | ------------------- | ---------------- |
+| **200**     | Successful Response | -                |
+| **422**     | Validation Error    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
